@@ -1,0 +1,15 @@
+@import 'fonts';
+@import 'header';
+
+main {
+	padding: 3em 2em 5em 2em;
+	background: #fff;
+}
+
+@import 'tabs';
+
+@import 'filter';
+
+@import 'table';
+
+@import 'footer';
