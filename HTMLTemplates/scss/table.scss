@@ -1,0 +1,40 @@
+table {
+	width: 100%;
+	margin-top: .8em;
+	caption {
+		text-indent: -9999px;
+	}
+	th {
+		text-align: left;
+		background: #000;
+		color: #fff;
+		padding: 15px 10px;
+	}
+	tr {
+		background: #fff;
+		&:nth-child(even) {
+			background: #eee;
+		}
+	}
+	td {
+		padding: 15px 10px;
+		label {
+			display: none;
+		}
+		&:first-child {
+			width: 20px;
+		}
+	}
+	a {
+		color: #000;
+		font-family: 'colaborate-light';
+		&:hover {
+			color: #555;
+		}
+	}
+	.ni {
+		@media screen and (max-width: 480px) {
+				display: none;
+			}
+	}
+}

@@ -1,0 +1,158 @@
+@font-face {
+  font-family: 'colaborate-light';
+  src: url("../fonts/colablig-webfont.eot");
+  src: url("../fonts/colablig-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/colablig-webfont.woff") format("woff"), url("../fonts/colablig-webfont.ttf") format("truetype"), url("../fonts/colablig-webfont.svg#colaboratelightregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'colaborate-thin';
+  src: url("../fonts/colabthi-webfont.eot");
+  src: url("../fonts/colabthi-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/colabthi-webfont.woff") format("woff"), url("../fonts/colabthi-webfont.ttf") format("truetype"), url("../fonts/colabthi-webfont.svg#colaborate-thinregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'colaborate-medium';
+  src: url("../fonts/colabmed-webfont.eot");
+  src: url("../fonts/colabmed-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/colabmed-webfont.woff") format("woff"), url("../fonts/colabmed-webfont.ttf") format("truetype"), url("../fonts/colabmed-webfont.svg#colaborate-mediumregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'desyrel';
+  src: url("../fonts/desyrel-webfont.eot");
+  src: url("../fonts/desyrel-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/desyrel-webfont.woff") format("woff"), url("../fonts/desyrel-webfont.ttf") format("truetype"), url("../fonts/desyrel-webfont.svg#desyrelregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+header {
+  background: #000;
+  padding: 1em 2em; }
+  header h1 {
+    color: #fff;
+    font-family: 'colaborate-thin';
+    font-size: 50px; }
+
+main {
+  padding: 3em 2em 5em 2em;
+  background: #fff; }
+
+.dates {
+  margin-left: -1%; }
+  .dates li {
+    float: left;
+    width: 13%;
+    margin-left: 1%; }
+    @media screen and (max-width: 780px) {
+      .dates li {
+        width: 24%;
+        margin-top: 1%; } }
+    @media screen and (max-width: 480px) {
+      .dates li {
+        width: 32%; } }
+    .dates li a {
+      display: block;
+      text-align: center;
+      background: #ddd;
+      text-decoration: none;
+      font-size: 16px;
+      color: #000;
+      font-family: 'colaborate-medium';
+      padding: 14px 0;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      text-shadow: 1px 1px 0 #fff; }
+      .dates li a span {
+        display: block;
+        font-size: 16px;
+        color: #666;
+        font-family: 'colaborate-light'; }
+      .dates li a:hover {
+        background: #eee; }
+    .dates li.ui-state-active a {
+      background: #fff;
+      border-color: #000; }
+
+.filter {
+  margin-top: 2em; }
+  .filter legend {
+    font-size: 16px;
+    font-family: 'colaborate-medium';
+    display: table;
+    padding-bottom: 10px; }
+  .filter ol {
+    margin-left: -8px; }
+    @media screen and (max-width: 780px) {
+      .filter ol {
+        margin-left: -2px; } }
+    .filter ol li {
+      float: left;
+      width: auto;
+      margin-left: 8px;
+      position: relative; }
+      @media screen and (max-width: 780px) {
+        .filter ol li {
+          margin-left: 2px; } }
+      @media screen and (max-width: 600px) {
+        .filter ol li {
+          width: 50%;
+          margin-left: 0; } }
+      .filter ol li a {
+        font-size: 16px;
+        background: #fff;
+        padding: .5em 1.2em;
+        text-decoration: none;
+        font-family: 'colaborate-light';
+        color: #000;
+        border-radius: 5px;
+        display: block;
+        line-height: 1em;
+        background: #f9f9f9; }
+        .filter ol li a:hover, .filter ol li a.active {
+          background: #000;
+          color: #fff; }
+      .filter ol li div {
+        display: none;
+        position: absolute;
+        top: -30px;
+        left: 90px;
+        width: 140px;
+        padding: 30px 0 0 40px;
+        background: url("../img/arrow.png") 0 0 no-repeat; }
+      .filter ol li:hover div {
+        display: block; }
+        .filter ol li:hover div p {
+          font-family: 'desyrel'; }
+
+table {
+  width: 100%;
+  margin-top: .8em; }
+  table caption {
+    text-indent: -9999px; }
+  table th {
+    text-align: left;
+    background: #000;
+    color: #fff;
+    padding: 15px 10px; }
+  table tr {
+    background: #fff; }
+    table tr:nth-child(even) {
+      background: #eee; }
+  table td {
+    padding: 15px 10px; }
+    table td label {
+      display: none; }
+    table td:first-child {
+      width: 20px; }
+  table a {
+    color: #000;
+    font-family: 'colaborate-light'; }
+    table a:hover {
+      color: #555; }
+  @media screen and (max-width: 480px) {
+    table .ni {
+      display: none; } }
+
+footer {
+  padding: 1em 2em; }

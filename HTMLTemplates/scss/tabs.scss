@@ -1,0 +1,43 @@
+.dates {
+		margin-left: -1%;
+		li {
+			float: left;
+			width: 13%;
+			margin-left: 1%;
+			@media screen and (max-width: 780px) {
+				width: 24%;
+				margin-top: 1%;
+			}
+			@media screen and (max-width: 480px) {
+				width: 32%;
+			}
+			a {
+				display: block;
+				text-align: center;
+				background: #ddd;
+				text-decoration: none;
+				font-size: 16px;
+				color: #000;
+				font-family: 'colaborate-medium';
+				padding: 14px 0;
+				border-radius: 5px;
+				border: 2px solid transparent;
+				text-shadow: 1px 1px 0 #fff;
+				span {
+					display: block;
+					font-size: 16px;
+					color: #666;
+					font-family: 'colaborate-light';
+				}
+				&:hover {
+					background: #eee;
+				}
+			}
+			&.ui-state-active {
+				a {
+					background: #fff;
+					border-color: #000;
+				}
+			}
+		}
+	}
