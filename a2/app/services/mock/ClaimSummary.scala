@@ -1,19 +1,8 @@
 package services.mock
 
-import services.ClaimsService
 import org.joda.time.DateTime
-import play.api.libs.json._
+import play.api.libs.json.{JsPath, Writes}
 import play.api.libs.functional.syntax._
-
-class MockClaimsService extends ClaimsService {
-  override def claimsByDate(date: DateTime): Option[JsArray] = {
-    Some(Json.toJson(ClaimSummary.list).asInstanceOf[JsArray])
-  }
-}
-
-object MockClaimsService {
- def apply() = new MockClaimsService
-}
 
 case class ClaimSummary(nino: String, forename: String, surname: String, claimDateTime: DateTime)
 
