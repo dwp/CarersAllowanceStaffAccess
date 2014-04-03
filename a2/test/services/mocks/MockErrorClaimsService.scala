@@ -2,10 +2,14 @@ package services.mocks
 
 import services.ClaimsService
 import org.joda.time.DateTime
-import play.api.libs.json.{Json, JsArray}
+import play.api.libs.json.{JsArray}
 
 class MockErrorClaimsService(cause: => Option[JsArray]) extends ClaimsService {
-  override def claimsByDate(date: DateTime): Option[JsArray] = {
+  override def claims(date: DateTime) = {
+    cause
+  }
+
+  override def claimsFiltered(date: DateTime, status: String) = {
     cause
   }
 }

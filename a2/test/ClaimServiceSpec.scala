@@ -10,7 +10,7 @@ class ClaimServiceSpec extends Specification with Tags {
     "return claims successfully for specified date" in {
       val date = new DateTime
       val service = getEndpoint
-      val claims = service claimsByDate date
+      val claims = service claims date
       claims must not(beEmpty)
       claims.get.value.size must beGreaterThan(0)
 
@@ -22,16 +22,29 @@ class ClaimServiceSpec extends Specification with Tags {
     "must return None when something unexpected occurred" in {
       val date = new DateTime
       val service = getErrorEndpoint
-      val claims = service claimsByDate date
+      val claims = service claims date
       claims must beEmpty
     }
 
     "must handle an empty list when no claims for a given date" in {
       val date = new DateTime
       val service = getEmptyEndpoint
-      val claims = service claimsByDate date
+      val claims = service claims date
       claims must not(beEmpty)
       claims.get.value.size mustEqual 0
+    }
+    
+    "return only completed claims successfully for specified date when 'completed' status specified" in {
+      val date = new DateTime
+      val service = getEndpoint
+      val claims = service.claimsFiltered(date, "completed")
+      claims must not(beEmpty)
+      claims.get.value.size must beGreaterThan(0)
+
+      for (claimDateTime <- claims.get.value) yield {
+        (claimDateTime \ "claimDateTime").as[DateTime].toLocalDate mustEqual date.toLocalDate
+        (claimDateTime \ "status").as[String] mustEqual "completed"
+      }
     }
   }
 
