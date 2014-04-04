@@ -33,7 +33,7 @@ class ClaimServiceSpec extends Specification with Tags {
       claims must not(beEmpty)
       claims.get.value.size mustEqual 0
     }
-    
+
     "return only completed claims successfully for specified date when 'completed' status specified" in {
       val date = new DateTime
       val service = getEndpoint
@@ -41,10 +41,44 @@ class ClaimServiceSpec extends Specification with Tags {
       claims must not(beEmpty)
       claims.get.value.size must beGreaterThan(0)
 
-      for (claimDateTime <- claims.get.value) yield {
-        (claimDateTime \ "claimDateTime").as[DateTime].toLocalDate mustEqual date.toLocalDate
-        (claimDateTime \ "status").as[String] mustEqual "completed"
+      for (claim <- claims.get.value) yield {
+        (claim \ "claimDateTime").as[DateTime].toLocalDate mustEqual date.toLocalDate
+        (claim \ "status").as[String] mustEqual "completed"
       }
+    }
+
+    "return a full claim when a claim is present" in {
+      val transactionId = "20140101002"
+      val service = getEndpoint
+      val claim = service.fullClaim(transactionId)
+      claim must not(beEmpty)
+      (claim.get \ "transactionId").as[String] mustEqual(transactionId)
+    }
+
+    "must handle an empty response when claim is not present" in {
+      val transactionId = "this-won't-be-found"
+      val service = getErrorEndpoint()
+      val claim = service.fullClaim(transactionId)
+      claim must beEmpty
+    }
+
+    "must update claim status when not in status to be updated" in {
+      val newStatus = "completed"
+      val transactionId = "20140101001"
+      val service = getEndpoint
+      service.updateClaim(transactionId, newStatus) mustEqual(true)
+
+      val claim = service.fullClaim(transactionId)
+      claim must not(beEmpty)
+      (claim.get \ "transactionId").as[String] mustEqual(transactionId)
+      (claim.get \ "status").as[String] mustEqual(newStatus)
+    }
+
+    "must NOT update claim status if claim already in new status" in {
+      val newStatus = "completed"
+      val transactionId = "20140101002"
+      val service = getEndpoint
+      service.updateClaim(transactionId, newStatus) mustEqual(false)
     }
   }
 

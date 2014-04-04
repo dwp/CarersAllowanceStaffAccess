@@ -12,6 +12,14 @@ class MockErrorClaimsService(cause: => Option[JsArray]) extends ClaimsService {
   override def claimsFiltered(date: DateTime, status: String) = {
     cause
   }
+
+  override def fullClaim(transactionId: String) = {
+    cause
+  }
+
+  override def updateClaim(transactionId: String, status: String): Boolean = {
+    false
+  }
 }
 
 object MockErrorClaimsService {
