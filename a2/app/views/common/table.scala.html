@@ -1,0 +1,33 @@
+@(claimList:Option[play.api.libs.json.JsArray])
+
+@import org.joda.time.format.DateTimeFormat
+@import org.joda.time.DateTime
+@import utils.JsValueWrapper.improveJsValue
+
+@dateTime(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy, HH:mm").print(date) }
+@date(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
+
+
+<table>
+    <caption>List of claims</caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th class="ni">NI Number</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(claimList.isDefined){
+            @for(claim <- claimList.get.value){
+                <tr>
+                    <td><label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="@claim.p.transactionId" id="@claim.p.transactionId"></td>
+                    <td><a href="#">@claim.p.forename @claim.p.surname @dateTime(claim.p.claimDateTime.asDate)</a></td>
+                    <td class="ni">@claim.p.nino</td>
+                    <td>@date(claim.p.claimDateTime.asDate)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

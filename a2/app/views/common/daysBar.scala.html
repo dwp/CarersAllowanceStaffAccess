@@ -1,0 +1,16 @@
+@()
+@import org.joda.time.format.DateTimeFormat
+@import org.joda.time.LocalDate
+@import org.joda.time.DateTime
+
+
+@dayName(date:LocalDate) = @{ date.dayOfWeek().getAsText }
+@dayDate(date:LocalDate) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
+@isActiveDay(day: LocalDate) = @{ day == new DateTime().toLocalDate }
+@daysList = @{ Application.daysRec(7,new DateTime().toLocalDate.plusDays(1),Seq())}
+
+<ul class="dates clearfix">
+    @for(day <- daysList){
+        <li @if(isActiveDay(day)){class="active"} ><a href="#">@dayName(day)<span>@dayDate(day)</span></a></li>
+    }
+</ul>
