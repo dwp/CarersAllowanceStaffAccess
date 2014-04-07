@@ -15,9 +15,9 @@
             <th></th>
             <th>Transaction Id</th>
             <th>Name</th>
-            <th>Creation Date</th>
-            <th class="ni">NI Number</th>
             <th>Received Date</th>
+            <th class="ni">NI Number</th>
+            <th>CASA Date</th>
             <th>Status</th>
         </tr>
     </thead>
@@ -34,7 +34,7 @@
                     <td><a href="#">@claim.p.forename @claim.p.surname</a></td>
                     <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
                     <td class="ni">@claim.p.nino</td>
-                    <td class="receivedDate">@date(claim.p.claimDateTime.asDate)</td>
+                    <td class="casaDate">@date(claim.p.claimDateTime.asDate)</td>
                     <td>@claim.p.status</td>
                 </tr>
             }

@@ -10,7 +10,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.goTo("/")
       browser.title() mustEqual("Claims list")
       val today = DateTimeFormat.forPattern("dd/MM/yyyy").print(new LocalDate)
-      val receivedDates = browser.$("#claimsTable .receivedDate")
+      val receivedDates = browser.$("#claimsTable .casaDate")
 
       for (receivedDate <- receivedDates.asScala.toSeq) {
         receivedDate.getText() mustEqual(today)
