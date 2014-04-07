@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th></th>
+            <th>Transaction Id</th>
             <th>Name</th>
             <th>Creation Date</th>
             <th class="ni">NI Number</th>
@@ -29,6 +30,7 @@
                             <label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="@claim.p.transactionId" id="@claim.p.transactionId">
                         }
                     </td>
+                    <td>@claim.p.transactionId</td>
                     <td><a href="#">@claim.p.forename @claim.p.surname</a></td>
                     <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
                     <td class="ni">@claim.p.nino</td>
