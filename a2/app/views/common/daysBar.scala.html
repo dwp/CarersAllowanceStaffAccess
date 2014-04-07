@@ -1,16 +1,18 @@
-@()
+@(currentDate: org.joda.time.LocalDate)
+
 @import org.joda.time.format.DateTimeFormat
 @import org.joda.time.LocalDate
 @import org.joda.time.DateTime
 
-
+@today = @{ new LocalDate }
 @dayName(date:LocalDate) = @{ date.dayOfWeek().getAsText }
 @dayDate(date:LocalDate) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
-@isActiveDay(day: LocalDate) = @{ day == new DateTime().toLocalDate }
-@daysList = @{ Application.daysRec(7,new DateTime().toLocalDate.plusDays(1),Seq())}
+@isActiveDay(day: LocalDate) = @{ day == currentDate }
+@daysList = @{ Application.daysRec(7,today.plusDays(1),Seq())}
+@formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
 
 <ul class="dates clearfix">
     @for(day <- daysList){
-        <li @if(isActiveDay(day)){class="active"} ><a href="#">@dayName(day)<span>@dayDate(day)</span></a></li>
+        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/@{formatToLink(day)}">@dayName(day)<span>@dayDate(day)</span></a></li>
     }
 </ul>

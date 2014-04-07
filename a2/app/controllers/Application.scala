@@ -9,11 +9,13 @@ import org.joda.time.format.DateTimeFormat
 object Application extends Controller with ClaimService{
 
   def index = Action{
-    Ok(views.html.claimsList(claimService.claims(new LocalDate())))
+    val today = new LocalDate
+    Ok(views.html.claimsList(today, claimService.claims(today)))
   }
 
   def claimsForDate(date: String) = Action{
-    Ok(views.html.claimsList(claimService.claims(DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date))))
+    val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
+    Ok(views.html.claimsList(localDate, claimService.claims(localDate)))
   }
 
 

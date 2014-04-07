@@ -4,7 +4,7 @@
 
 # Home page
 GET        /                    controllers.Application.index
-GET        /filter/:date        controllers.Application.claimsForDate(date)
+GET        /filter/:currentDate        controllers.Application.claimsForDate(currentDate)
 
 
 # Map static resources from the /public folder to the /assets URL path

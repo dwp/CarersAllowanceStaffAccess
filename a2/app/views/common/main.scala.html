@@ -1,5 +1,4 @@
-@(title: String,claimsList:Option[play.api.libs.json.JsArray])
-
+@(title: String, currentDate:org.joda.time.LocalDate, claimsList:Option[play.api.libs.json.JsArray])
 
 <!DOCTYPE html>
 
@@ -17,7 +16,7 @@
         <main>
 
             <div id="tabs">
-                @daysBar()
+                @daysBar(currentDate)
             </div>
 
             @filterBar()
