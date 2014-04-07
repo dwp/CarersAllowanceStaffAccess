@@ -1,4 +1,4 @@
-import org.joda.time.DateTime
+import org.joda.time.{LocalDate, DateTime}
 import org.specs2.mutable.{Tags, Specification}
 import play.api.libs.json.JsArray
 import services.ClaimsService
@@ -8,26 +8,26 @@ import services.mocks.MockErrorClaimsService
 class ClaimServiceSpec extends Specification with Tags {
   "Claim Service" should {
     "return claims successfully for specified date" in {
-      val date = new DateTime
-      val service = getEndpoint
+      val date = new LocalDate
+      val service = getEndpoint()
       val claims = service claims date
       claims must not(beEmpty)
       claims.get.value.size must beGreaterThan(0)
 
       for (claimDateTime <- claims.get.value) yield {
-        (claimDateTime \ "claimDateTime").as[DateTime].toLocalDate mustEqual date.toLocalDate
+        (claimDateTime \ "claimDateTime").as[DateTime].toLocalDate mustEqual date
       }
     }
 
     "must return None when something unexpected occurred" in {
-      val date = new DateTime
+      val date = new LocalDate
       val service = getErrorEndpoint
       val claims = service claims date
       claims must beEmpty
     }
 
     "must handle an empty list when no claims for a given date" in {
-      val date = new DateTime
+      val date = new LocalDate
       val service = getEmptyEndpoint
       val claims = service claims date
       claims must not(beEmpty)
@@ -35,14 +35,14 @@ class ClaimServiceSpec extends Specification with Tags {
     }
 
     "return only completed claims successfully for specified date when 'completed' status specified" in {
-      val date = new DateTime
+      val date = new LocalDate
       val service = getEndpoint
       val claims = service.claimsFiltered(date, "completed")
       claims must not(beEmpty)
       claims.get.value.size must beGreaterThan(0)
 
       for (claim <- claims.get.value) yield {
-        (claim \ "claimDateTime").as[DateTime].toLocalDate mustEqual date.toLocalDate
+        (claim \ "claimDateTime").as[DateTime].toLocalDate mustEqual date
         (claim \ "status").as[String] mustEqual "completed"
       }
     }

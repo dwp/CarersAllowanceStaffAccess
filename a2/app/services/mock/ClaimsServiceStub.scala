@@ -1,7 +1,7 @@
 package services.mock
 
 import services.ClaimsService
-import org.joda.time.DateTime
+import org.joda.time.{LocalDate, DateTime}
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.JsArray
@@ -11,11 +11,11 @@ import scala.util.Random
 class ClaimsServiceStub extends ClaimsService {
   var listOfClaims = ClaimSummary.list
 
-  override def claims(date: DateTime) = {
+  override def claims(date: LocalDate) = {
     Some(Json.toJson(listOfClaims).asInstanceOf[JsArray])
   }
 
-  override def claimsFiltered(date: DateTime, status: String) = {
+  override def claimsFiltered(date: LocalDate, status: String) = {
     Some(Json.toJson(listOfClaims.filter{_.status == status}).asInstanceOf[JsArray])
   }
 
