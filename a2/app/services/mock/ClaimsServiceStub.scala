@@ -44,9 +44,12 @@ case class ClaimSummary(transactionId: String, nino: String, forename: String, s
 object ClaimSummary {
   val daysToReport = Application.daysRec(7, new LocalDate plusDays 1, Seq())
 
+  val availableStatuses = Seq("received", "viewed", "completed")
+
   val list: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
-      ClaimSummary(f"201401010$i%02d", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, if(i == 1 || Random.nextFloat() > .5f) "received" else "completed")
+      val statusToUse = if (i == 1) "received" else availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
+      ClaimSummary(f"201401010$i%02d", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
     })(collection.breakOut)
 
   def dayToReport = {
