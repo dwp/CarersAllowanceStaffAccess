@@ -7,10 +7,8 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json.JsArray
 import scala.Some
 import scala.util.Random
-import controllers.Application
 
 class ClaimsServiceStub extends ClaimsService {
-  var listOfClaims = ClaimSummary.list
 
   override def claims(date: LocalDate) = {
     Some(Json.toJson(listOfClaims.filter{_.claimDateTime.toLocalDate == date}.filter{_.status != "completed"}).asInstanceOf[JsArray])
@@ -33,20 +31,22 @@ class ClaimsServiceStub extends ClaimsService {
       case _ => false
     }
 
-}
+  def specialDaysRec(n:Int,today:LocalDate, localDates: Seq[LocalDate]):Seq[LocalDate] = {
+    if (n == 0) localDates
+    else {
+      val day = today.minusDays(1)
+      specialDaysRec( n-1, day, day +: localDates)
+    }
+  }
 
-object ClaimsServiceStub {
- def apply() = new ClaimsServiceStub
-}
 
-case class ClaimSummary(transactionId: String, nino: String, forename: String, surname: String, claimDateTime: DateTime, status: String)
-
-object ClaimSummary {
-  val daysToReport = Application.daysRec(7, new LocalDate plusDays 1, Seq())
+  val daysToReport = specialDaysRec(7, new LocalDate plusDays 1, Seq())
 
   val availableStatuses = Seq("received", "viewed", "completed")
 
   val viewedClaimOnToday = ClaimSummary(f"20140101071", f"AB${Random.nextInt(999999)}%06dD", s"name71", s"surname71", daysToReport(daysToReport.size - 1).toDateTime(new LocalTime()), "viewed")
+
+  def dayToReport = daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime())
 
   val randomList: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
@@ -54,19 +54,22 @@ object ClaimSummary {
       ClaimSummary(f"201401010$i%02d", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
     })(collection.breakOut)
 
-  val list = viewedClaimOnToday +: randomList
+  val list =  randomList :+ viewedClaimOnToday
 
-  def dayToReport = {
-    daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime())
-  }
+  var listOfClaims = list
 
   implicit val claimSummary: Writes[ClaimSummary] = (
     (JsPath \ "transactionId").write[String] and
-    (JsPath \ "nino").write[String] and
-    (JsPath \ "forename").write[String] and
-    (JsPath \ "surname").write[String] and
-    (JsPath \ "claimDateTime").write[DateTime] and
-    (JsPath \ "status").write[String]
-  )(unlift(ClaimSummary.unapply))
-
+      (JsPath \ "nino").write[String] and
+      (JsPath \ "forename").write[String] and
+      (JsPath \ "surname").write[String] and
+      (JsPath \ "claimDateTime").write[DateTime] and
+      (JsPath \ "status").write[String]
+    )(unlift(ClaimSummary.unapply))
 }
+
+object ClaimsServiceStub {
+ def apply() = new ClaimsServiceStub
+}
+
+case class ClaimSummary(transactionId: String, nino: String, forename: String, surname: String, claimDateTime: DateTime, status: String)

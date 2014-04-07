@@ -29,16 +29,5 @@ object Application extends Controller with ClaimService{
     // TODO: Use full claim details to render
     Ok("")
   }
-
-
-
-  @tailrec
-  def daysRec(n:Int,today:LocalDate, localDates: Seq[LocalDate]):Seq[LocalDate] = {
-    if (n == 0) localDates
-    else {
-      val day = today.minusDays(1)
-      daysRec( n-1, day, day +: localDates)
-    }
-  }
 }
 

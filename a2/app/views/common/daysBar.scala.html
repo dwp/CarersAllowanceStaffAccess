@@ -1,4 +1,5 @@
 @(currentDate: org.joda.time.LocalDate)
+@import utils.DateUtils
 
 @import org.joda.time.format.DateTimeFormat
 @import org.joda.time.LocalDate
@@ -8,7 +9,7 @@
 @dayName(date:LocalDate) = @{ date.dayOfWeek().getAsText }
 @dayDate(date:LocalDate) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
 @isActiveDay(day: LocalDate) = @{ day == currentDate }
-@daysList = @{ Application.daysRec(7,today.plusDays(1),Seq())}
+@daysList = @{ DateUtils.daysRec(7,today.plusDays(1),Seq())}
 @formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
 
 <ul class="dates clearfix">

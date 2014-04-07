@@ -16,7 +16,7 @@ class IntegrationSpec extends Specification {
 
     "work from within a browser" in new WithBrowser {
 
-      browser.goTo("http://localhost:" + port)
+      browser.goTo("/")
 
       browser.pageSource must contain("Claims list")
     }
