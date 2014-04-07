@@ -16,5 +16,15 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
         receivedDate.getText() mustEqual(today)
       }
     }
+
+    "Only contain received or viewed statuses" in new WithBrowser {
+      browser.goTo("/")
+
+      val statuses = browser.$("#claimsTable .status")
+
+      for (status <- statuses.asScala.toSeq) {
+        status.getText() must beOneOf("received", "viewed")
+      }
+    }
   }
 }

@@ -13,7 +13,7 @@ class ClaimsServiceStub extends ClaimsService {
   var listOfClaims = ClaimSummary.list
 
   override def claims(date: LocalDate) = {
-    Some(Json.toJson(listOfClaims.filter{_.claimDateTime.toLocalDate == date}).asInstanceOf[JsArray])
+    Some(Json.toJson(listOfClaims.filter{_.claimDateTime.toLocalDate == date}.filter{_.status != "completed"}).asInstanceOf[JsArray])
   }
 
   override def claimsFiltered(date: LocalDate, status: String) = {
