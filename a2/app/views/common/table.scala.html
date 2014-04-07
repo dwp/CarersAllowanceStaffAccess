@@ -14,8 +14,9 @@
         <tr>
             <th></th>
             <th>Name</th>
+            <th>Creation Date</th>
             <th class="ni">NI Number</th>
-            <th>Date</th>
+            <th>Received Date</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,8 @@
             @for(claim <- claimList.get.value){
                 <tr>
                     <td><label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="@claim.p.transactionId" id="@claim.p.transactionId"></td>
-                    <td><a href="#">@claim.p.forename @claim.p.surname @dateTime(claim.p.claimDateTime.asDate)</a></td>
+                    <td><a href="#">@claim.p.forename @claim.p.surname</a></td>
+                    <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
                     <td class="ni">@claim.p.nino</td>
                     <td>@date(claim.p.claimDateTime.asDate)</td>
                 </tr>
