@@ -1,7 +1,8 @@
+import org.fluentlenium.core.domain.FluentWebElement
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.LocalDate
 import org.specs2.mutable.{Specification, Tags}
-import play.api.test.WithBrowser
+import play.api.test.{TestBrowser, WithBrowser}
 import scala.collection.JavaConverters._
 
 class ClaimGridIntegrationSpec extends Specification with Tags {
@@ -9,12 +10,9 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     "Show claims filtered by today's date" in new WithBrowser {
       browser.goTo("/")
       browser.title() mustEqual("Claims list")
-      val today = DateTimeFormat.forPattern("dd/MM/yyyy").print(new LocalDate)
-      val receivedDates = browser.$("#claimsTable .casaDate")
+      val today = new LocalDate
 
-      for (receivedDate <- receivedDates.asScala.toSeq) {
-        receivedDate.getText() mustEqual(today)
-      }
+      checkCasaDates(today, browser)
     }
 
     "Only contain received or viewed statuses" in new WithBrowser {
@@ -22,11 +20,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
-      statuses.size must be_>(0)
-
-      for (status <- statuses) {
-        status.getText() must beOneOf("received", "viewed")
-      }
+      checkForStatus(statuses, Seq("received", "viewed"))
     }
 
     "Filtering by completed only shows completed claims" in new WithBrowser {
@@ -35,11 +29,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
-      statuses.size must be_>(0)
-
-      for (status <- statuses) {
-        status.getText() mustEqual("completed")
-      }
+      checkForStatus(statuses, Seq("completed"))
     }
 
     "Filtering by work queue only shows received or viewed claims" in new WithBrowser {
@@ -48,15 +38,34 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
-      statuses.size must be_>(0)
-
-      for (status <- statuses) {
-        status.getText() must beOneOf("received", "viewed")
-      }
+      checkForStatus(statuses, Seq("received", "viewed"))
     }
 
     "Show claims filtered by specified date" in new WithBrowser {
-      pending
+      val yesterday = new LocalDate().minusDays(1)
+      val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
+
+      browser.goTo("/filter/" + dateString)
+
+      checkCasaDates(yesterday, browser = browser)
+    }
+  }
+
+  def checkCasaDates(date: LocalDate, browser: TestBrowser) = {
+    val receivedDates = browser.$("#claimsTable .casaDate")
+
+    val dateValue = DateTimeFormat.forPattern("dd/MM/yyyy").print(date)
+
+    for (receivedDate <- receivedDates.asScala.toSeq) {
+      receivedDate.getText() mustEqual(dateValue)
+    }
+  }
+  
+  def checkForStatus(actualStatuses: Seq[FluentWebElement], expectedStatuses: Seq[String]) {
+    actualStatuses.size must be_>(0)
+
+    for (status <- actualStatuses) {
+      status.getText() must beOneOf(expectedStatuses:_*)
     }
   }
 }
