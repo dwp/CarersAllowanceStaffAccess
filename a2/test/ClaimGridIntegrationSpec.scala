@@ -26,5 +26,17 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
         status.getText() must beOneOf("received", "viewed")
       }
     }
+
+    "Filtering by completed only shows completed claims" in new WithBrowser {
+      pending
+    }
+
+    "Filtering by work queue only shows received or viewed claims" in new WithBrowser {
+      pending
+    }
+
+    "Show claims filtered by specified date" in new WithBrowser {
+      pending
+    }
   }
 }
