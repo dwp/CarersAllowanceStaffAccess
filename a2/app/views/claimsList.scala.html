@@ -1,5 +1,5 @@
-@(currentDate:org.joda.time.LocalDate, claimList:Option[play.api.libs.json.JsArray])
+@(currentDate:org.joda.time.LocalDate, currentStatus:String, claimList:Option[play.api.libs.json.JsArray])
 
 @import views.html.common._
 
-@main("Claims list", currentDate, claimList)
+@main("Claims list", currentDate,currentStatus, claimList)

@@ -1,14 +1,17 @@
+@(currentDate: org.joda.time.LocalDate, currentStatus:String)
+
+@import org.joda.time.format.DateTimeFormat
+@import org.joda.time.LocalDate
+
+@formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
+@isStatusCompleted = @{ currentStatus == "completed"}
+
 <section class="filter">
     <fieldset>
         <legend>Filter</legend>
         <ol class="clearfix">
-                <!-- <li><a>A-E</a></li>
-								<li><a>F-J</a></li>
-								<li><a>K-O</a></li>
-								<li><a>P-T</a></li>
-								<li><a>U-Z</a></li> -->
-            <li><a href="#" class="active">View all</a></li>
-            <li><a href="#">Completed</a></li>
+            <li><a href="/filter/@{formatToLink(currentDate)}" class="@{if(!isStatusCompleted)"active"}">Work queue</a></li>
+            <li><a href="/filter/@{formatToLink(currentDate)}/completed" class="@{if(isStatusCompleted)"active"}">Completed</a></li>
         </ol>
     </fieldset>
 </section>

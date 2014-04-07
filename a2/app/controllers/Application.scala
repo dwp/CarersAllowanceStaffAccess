@@ -10,12 +10,15 @@ object Application extends Controller with ClaimService{
 
   def index = Action{
     val today = new LocalDate
-    Ok(views.html.claimsList(today, claimService.claims(today)))
+    Ok(views.html.claimsList(today,"", claimService.claims(today)))
   }
 
-  def claimsForDate(date: String) = Action{
+  def claimsForDate(date: String) = claimsForDateFiltered(date,"")
+
+  def claimsForDateFiltered(date: String, status: String) = Action{
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    Ok(views.html.claimsList(localDate, claimService.claims(localDate)))
+    val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
+    Ok(views.html.claimsList(localDate,status, claims))
   }
 
 
