@@ -17,6 +17,7 @@
             <th>Creation Date</th>
             <th class="ni">NI Number</th>
             <th>Received Date</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +29,7 @@
                     <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
                     <td class="ni">@claim.p.nino</td>
                     <td>@date(claim.p.claimDateTime.asDate)</td>
+                    <td>@claim.p.status</td>
                 </tr>
             }
         }
