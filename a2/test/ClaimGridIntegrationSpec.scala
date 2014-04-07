@@ -49,6 +49,22 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       checkCasaDates(yesterday, browser = browser)
     }
+
+    "Update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowser {
+      pending
+      browser.goTo("/")
+
+      val firstViewedRow = browser.$("#claimsTable tr[text()*='viewed']").asScala.toSeq.head
+      println("firstViewedRow=" + firstViewedRow.getText)
+
+      val transactionId = firstViewedRow.find(".transactionId").getText
+
+      firstViewedRow.find("input[type='checkbox']").click
+
+      browser.$("#buttonDiv button").click
+
+      browser.$(s"#claimsTable[contains('$transactionId')]") must beNull
+    }
   }
 
   def checkCasaDates(date: LocalDate, browser: TestBrowser) = {

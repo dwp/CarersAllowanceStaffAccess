@@ -46,11 +46,15 @@ object ClaimSummary {
 
   val availableStatuses = Seq("received", "viewed", "completed")
 
-  val list: List[ClaimSummary] =
+  val viewedClaimOnToday = ClaimSummary(f"20140101071", f"AB${Random.nextInt(999999)}%06dD", s"name71", s"surname71", daysToReport(daysToReport.size - 1).toDateTime(new LocalTime()), "viewed")
+
+  val randomList: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
       val statusToUse = if (i == 1) "received" else availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
       ClaimSummary(f"201401010$i%02d", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
     })(collection.breakOut)
+
+  val list = viewedClaimOnToday +: randomList
 
   def dayToReport = {
     daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime())
