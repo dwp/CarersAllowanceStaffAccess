@@ -24,10 +24,11 @@ class ClaimsServiceStub extends ClaimsService {
 
   override def updateClaim(transactionId: String, newStatus: String): Boolean =
     listOfClaims.filter{_.transactionId == transactionId}.headOption match {
-      case Some(claimFound) if claimFound.status != newStatus =>
-        val updatedClaim = claimFound.copy(status = newStatus)
-        listOfClaims = listOfClaims.filterNot{_.transactionId == transactionId}.+:(updatedClaim)
-        true
+      case Some(claimFound)
+        if claimFound.status != newStatus && claimFound.status != "completed" =>
+          val updatedClaim = claimFound.copy(status = newStatus)
+          listOfClaims = listOfClaims.filterNot{_.transactionId == transactionId}.+:(updatedClaim)
+          true
       case _ => false
     }
 

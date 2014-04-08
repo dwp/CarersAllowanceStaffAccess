@@ -78,6 +78,25 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.title mustEqual s"Claim PDF $transactionId"
     }
+
+    "Open completed claim pdf and check the status hasn't changed" in new WithBrowser {
+
+      import scala.collection.JavaConverters._
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+      browser.goTo(s"/filter/$today/completed")
+
+      val transactionId = "20140102072"
+      browser.$(s"#row_$transactionId .transactionId a").click
+
+      browser.$(s"#row_$transactionId .status").getText mustEqual "completed"
+
+      val gridPageHandle = browser.webDriver.getWindowHandle
+      val pdfTab = browser.webDriver.getWindowHandles.asScala.toSeq.filterNot(_==gridPageHandle)(0)
+
+      browser.webDriver.switchTo().window(pdfTab)
+
+      browser.title mustEqual s"Claim PDF $transactionId"
+    }
   }
 
   def checkCasaDates(date: LocalDate, browser: TestBrowser) = {
