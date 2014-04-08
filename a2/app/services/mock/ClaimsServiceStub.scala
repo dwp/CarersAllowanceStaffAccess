@@ -44,7 +44,9 @@ class ClaimsServiceStub extends ClaimsService {
 
   val availableStatuses = Seq("received", "viewed", "completed")
 
-  val viewedClaimOnToday = ClaimSummary(f"20140101071", f"AB${Random.nextInt(999999)}%06dD", s"name71", s"surname71", daysToReport(daysToReport.size - 1).toDateTime(new LocalTime()), "viewed")
+  val today = daysToReport(daysToReport.size - 1).toDateTime(new LocalTime())
+
+  val viewedClaimOnToday = ClaimSummary(f"20140101071", f"AB${Random.nextInt(999999)}%06dD", s"name71", s"surname71", today, "viewed")
 
   def dayToReport = daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime())
 
