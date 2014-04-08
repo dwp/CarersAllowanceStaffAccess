@@ -54,7 +54,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.goTo("/")
 
-      val transactionId = "20140101071"
+      val transactionId = "20140102071"
       browser.$(s"#$transactionId").click
 
       browser.$("#completeButton").click
