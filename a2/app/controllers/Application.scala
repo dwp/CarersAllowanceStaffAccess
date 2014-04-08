@@ -49,7 +49,9 @@ object Application extends Controller with ClaimServiceComponent with PdfService
 
   def claimPdf(transactionId:String) = Action{
     claimService.updateClaim(transactionId,"viewed")
-    val htmlString = pdfService.claimHtml(transactionId).replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
+    val htmlString = pdfService.claimHtml(transactionId)
+      .replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
+      .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
     Ok(Html(htmlString))
   }
 }
