@@ -60,6 +60,7 @@ class ClaimsServiceStub extends ClaimsService {
 
   var listOfClaims = list
 
+
   implicit val claimSummary: Writes[ClaimSummary] = (
     (JsPath \ "transactionId").write[String] and
       (JsPath \ "nino").write[String] and

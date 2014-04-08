@@ -1,43 +1,57 @@
-@(claimList:Option[play.api.libs.json.JsArray])
+@(claimList:Option[play.api.libs.json.JsArray], currentDate:org.joda.time.LocalDate, currentStatus: String)
 
+@import helper._
 @import org.joda.time.format.DateTimeFormat
 @import org.joda.time.DateTime
 @import utils.JsValueWrapper.improveJsValue
 
 @dateTime(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy, HH:mm").print(date) }
 @date(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
+@currentDateToHiddenValue = @{ DateTimeFormat.forPattern("ddMMyyyy").print(currentDate)}
+@isStatusCompleted = @{ currentStatus == "completed"}
 
-
-<table id="claimsTable">
-    <caption>List of claims</caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Transaction Id</th>
-            <th>Name</th>
-            <th>Received Date</th>
-            <th class="ni">NI Number</th>
-            <th>CASA Date</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(claimList.isDefined){
-            @for(claim <- claimList.get.value){
-                <tr>
-                    <td>
-                        @if(claim.p.status.asString == "viewed") {
-                            <label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="@claim.p.transactionId" id="@claim.p.transactionId">
-                        }
-                    </td>
-                    <td class="transactionId">@claim.p.transactionId</td>
-                    <td><a href="#">@claim.p.forename @claim.p.surname</a></td>
-                    <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
-                    <td class="ni">@claim.p.nino</td>
-                    <td class="casaDate">@date(claim.p.claimDateTime.asDate)</td>
-                    <td class="status">@claim.p.status</td>
-                </tr>
+@form(action = controllers.routes.Application.complete(currentDateToHiddenValue)){
+    <table id="claimsTable">
+        <caption>List of claims</caption>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Transaction Id</th>
+                <th>Name</th>
+                <th>Received Date</th>
+                <th class="ni">NI Number</th>
+                <th>CASA Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(claimList.isDefined){
+                @for((claim,i) <- claimList.get.value.zipWithIndex){
+                    <tr>
+                        <td>
+                            @if(claim.p.status.asString == "viewed") {
+                                <label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                            }
+                        </td>
+                        <td class="transactionId">@claim.p.transactionId</td>
+                        <td><a href="#">@claim.p.forename @claim.p.surname</a></td>
+                        <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
+                        <td class="ni">@claim.p.nino</td>
+                        <td class="casaDate">@date(claim.p.claimDateTime.asDate)</td>
+                        <td class="status">@claim.p.status</td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
+    @if(!isStatusCompleted){
+        <section class="filter">
+            <fieldset>
+                <ol class="clearfix">
+                    <li><button type="submit" class="active" id="completeButton" >Complete</button></li>
+                </ol>
+            </fieldset>
+        </section>
+    }
+}

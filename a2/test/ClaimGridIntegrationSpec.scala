@@ -51,19 +51,15 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowser {
-      pending
+
       browser.goTo("/")
 
-      val firstViewedRow = browser.$("#claimsTable tr[text()*='viewed']").asScala.toSeq.head
-      println("firstViewedRow=" + firstViewedRow.getText)
+      val transactionId = "20140101071"
+      browser.$(s"#$transactionId").click
 
-      val transactionId = firstViewedRow.find(".transactionId").getText
+      browser.$("#completeButton").click
 
-      firstViewedRow.find("input[type='checkbox']").click
-
-      browser.$("#buttonDiv button").click
-
-      browser.$(s"#claimsTable[contains('$transactionId')]") must beNull
+      browser.pageSource() must not contain transactionId
     }
   }
 
