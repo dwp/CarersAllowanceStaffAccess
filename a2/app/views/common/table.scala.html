@@ -27,15 +27,15 @@
         <tbody>
             @if(claimList.isDefined){
                 @for((claim,i) <- claimList.get.value.zipWithIndex){
-                    <tr>
+                    <tr id="row_@claim.p.transactionId">
                         <td>
-                            @if(claim.p.status.asString == "viewed") {
-                                <label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
-                            }
+                        @if(claim.p.status.asString == "viewed") {
+                            <label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                        }
                         </td>
-                        <td class="transactionId">@claim.p.transactionId</td>
-                        <td><a href="#">@claim.p.forename @claim.p.surname</a></td>
-                        <td><a>@dateTime(claim.p.claimDateTime.asDate)</a></td>
+                        <td class="transactionId"><a href="/claimPdf/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
+                        <td>@claim.p.forename @claim.p.surname</td>
+                        <td>@dateTime(claim.p.claimDateTime.asDate)</td>
                         <td class="ni">@claim.p.nino</td>
                         <td class="casaDate">@date(claim.p.claimDateTime.asDate)</td>
                         <td class="status">@claim.p.status</td>

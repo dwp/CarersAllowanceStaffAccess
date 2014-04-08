@@ -61,6 +61,23 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.pageSource() must not contain transactionId
     }
+
+    "Open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowser {
+      import scala.collection.JavaConverters._
+      browser.goTo("/")
+
+      val transactionId = "20140102070"
+      browser.$(s"#row_$transactionId .transactionId a").click
+
+      browser.$(s"#row_$transactionId .status").getText mustEqual "viewed"
+
+      val gridPageHandle = browser.webDriver.getWindowHandle
+      val pdfTab = browser.webDriver.getWindowHandles.asScala.toSeq.filterNot(_==gridPageHandle)(0)
+
+      browser.webDriver.switchTo().window(pdfTab)
+
+      browser.title mustEqual s"Claim PDF $transactionId"
+    }
   }
 
   def checkCasaDates(date: LocalDate, browser: TestBrowser) = {

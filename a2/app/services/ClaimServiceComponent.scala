@@ -2,6 +2,6 @@ package services
 
 import services.mock.ClaimsServiceStub
 
-trait ClaimService {
+trait ClaimServiceComponent {
   val claimService = ClaimsServiceStub()
 }

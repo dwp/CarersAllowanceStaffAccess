@@ -64,7 +64,7 @@ class ClaimServiceSpec extends Specification with Tags {
 
     "must update claim status when not in status to be updated" in {
       val newStatus = "completed"
-      val transactionId = "20140101001"
+      val transactionId = "20140102070"
       val service = getEndpoint
       service.updateClaim(transactionId, newStatus) mustEqual(true)
 

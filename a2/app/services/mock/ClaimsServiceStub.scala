@@ -46,18 +46,19 @@ class ClaimsServiceStub extends ClaimsService {
 
   val today = daysToReport(daysToReport.size - 1).toDateTime(new LocalTime())
 
-  val mandatoryClaims = Seq(ClaimSummary(f"20140102071", f"AB${Random.nextInt(999999)}%06dD", s"name71", s"surname71", today, "viewed"),
-                            ClaimSummary(f"20140102072", f"AB${Random.nextInt(999999)}%06dD", s"name72", s"surname72", today, "completed"))
+  val mandatoryClaims = Seq(ClaimSummary("20140102070", f"AB${Random.nextInt(999999)}%06dD", "name70", "surname70", today, "received"),
+                            ClaimSummary("20140102071", f"AB${Random.nextInt(999999)}%06dD", "name71", "surname71", today, "viewed"),
+                            ClaimSummary("20140102072", f"AB${Random.nextInt(999999)}%06dD", "name72", "surname72", today, "completed"))
 
   def dayToReport = daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime())
 
   val randomList: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
-      val statusToUse = if (i == 1) "received" else availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
+      val statusToUse = availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
       ClaimSummary(f"201401010$i%02d", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
     })(collection.breakOut)
 
-  val list =  randomList ++ mandatoryClaims
+  val list = mandatoryClaims ++ randomList
 
   var listOfClaims = list
 

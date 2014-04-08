@@ -1,15 +1,14 @@
 package controllers
 
 import play.api.mvc._
-import org.joda.time.{DateTime, LocalDate}
-import scala.annotation.tailrec
-import services.ClaimService
+import org.joda.time.LocalDate
+import services.{PdfServiceComponent, ClaimServiceComponent}
 import org.joda.time.format.DateTimeFormat
-import play.api.data.Form
 import play.api.data._
 import play.api.data.Forms._
+import play.api.templates.Html
 
-object Application extends Controller with ClaimService{
+object Application extends Controller with ClaimServiceComponent with PdfServiceComponent {
 
   def index = Action{
     val today = new LocalDate
@@ -48,13 +47,10 @@ object Application extends Controller with ClaimService{
 
   }
 
-
-
-  def renderClaim(transactionId:String) = Action{
-    // TODO: Update claim status in future when "viewed" status kicks in
-    // TODO: Get full claim details
-    // TODO: Use full claim details to render
-    Ok("")
+  def claimPdf(transactionId:String) = Action{
+    claimService.updateClaim(transactionId,"viewed")
+    val htmlString = pdfService.claimHtml(transactionId).replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
+    Ok(Html(htmlString))
   }
 }
 
