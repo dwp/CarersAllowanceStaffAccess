@@ -4,7 +4,7 @@ import sbt.Keys._
 
 object ApplicationBuild extends Build {
 
-  val name = "casa"
+  val name = "a2"
   val version = "1.0-SNAPSHOT"
 
   val dependencies = Seq(
