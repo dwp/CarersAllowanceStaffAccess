@@ -47,16 +47,16 @@ class ClaimsServiceStub extends ClaimsService {
 
   val today = daysToReport(daysToReport.size - 1).toDateTime(new LocalTime())
 
-  val mandatoryClaims = Seq(ClaimSummary("20140102070", f"AB${Random.nextInt(999999)}%06dD", "name70", "surname70", today, "received"),
-                            ClaimSummary("20140102071", f"AB${Random.nextInt(999999)}%06dD", "name71", "surname71", today, "viewed"),
-                            ClaimSummary("20140102072", f"AB${Random.nextInt(999999)}%06dD", "name72", "surname72", today, "completed"))
+  val mandatoryClaims = Seq(ClaimSummary("20140102070","claim", f"AB${Random.nextInt(999999)}%06dD", "name70", "surname70", today, "received"),
+                            ClaimSummary("20140102071","claim", f"AB${Random.nextInt(999999)}%06dD", "name71", "surname71", today, "viewed"),
+                            ClaimSummary("20140102072","claim", f"AB${Random.nextInt(999999)}%06dD", "name72", "surname72", today, "completed"))
 
   def dayToReport = daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime())
 
   val randomList: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
       val statusToUse = availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
-      ClaimSummary(f"201401010$i%02d", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
+      ClaimSummary(f"201401010$i%02d",if (Random.nextFloat() > 0.5f) "claim" else "circs", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
     })(collection.breakOut)
 
   val list = mandatoryClaims ++ randomList
@@ -66,11 +66,12 @@ class ClaimsServiceStub extends ClaimsService {
 
   implicit val claimSummary: Writes[ClaimSummary] = (
     (JsPath \ "transactionId").write[String] and
-      (JsPath \ "nino").write[String] and
-      (JsPath \ "forename").write[String] and
-      (JsPath \ "surname").write[String] and
-      (JsPath \ "claimDateTime").write[DateTime] and
-      (JsPath \ "status").write[String]
+    (JsPath \ "claimType").write[String] and
+    (JsPath \ "nino").write[String] and
+    (JsPath \ "forename").write[String] and
+    (JsPath \ "surname").write[String] and
+    (JsPath \ "claimDateTime").write[DateTime] and
+    (JsPath \ "status").write[String]
     )(unlift(ClaimSummary.unapply))
 }
 
@@ -78,4 +79,4 @@ object ClaimsServiceStub {
  def apply() = new ClaimsServiceStub
 }
 
-case class ClaimSummary(transactionId: String, nino: String, forename: String, surname: String, claimDateTime: DateTime, status: String)
+case class ClaimSummary(transactionId: String, claimType:String, nino: String, forename: String, surname: String, claimDateTime: DateTime, status: String)
