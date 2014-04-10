@@ -82,11 +82,23 @@ class ClaimServiceSpec extends Specification with Tags {
       service.updateClaim(transactionId, newStatus) mustEqual(false)
     }
 
-    "must return number of claims for the claims history" in {
+    "must return number of claims in work queue for each day" in {
       val service = getEndpoint()
       val claimNumber = service.claimNumbersFiltered("viewed","received")
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new DateTime())
       (claimNumber \ today).as[Int] must be_>(0)
+    }
+
+    "must return 0 claims in work queue for today" in {
+      import utils.JsValueWrapper.improveJsValue
+      val service = getEndpoint()
+      val claims = service.claims(new LocalDate())
+      claims.get.value.foreach(jsvalue => service.updateClaim(jsvalue.p.transactionId.asString,"completed"))
+
+      val claimNumber = service.claimNumbersFiltered("viewed","received")
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new DateTime())
+      (claimNumber \ today).as[Int] mustEqual 0
+
     }
   }
 

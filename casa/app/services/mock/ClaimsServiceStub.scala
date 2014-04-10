@@ -41,6 +41,7 @@ class ClaimsServiceStub extends ClaimsService {
     listOfClaims.foreach(cs => {
       val localDate = cs.claimDateTime.toLocalDate
       val currentCount = daysMap.get(localDate).getOrElse(0)
+      if (!daysMap.exists(t => t._1 == localDate)) daysMap = daysMap + (localDate -> 0)
       if (status.exists(_ == cs.status)){
         daysMap = daysMap + (localDate -> (currentCount + 1))
       }
