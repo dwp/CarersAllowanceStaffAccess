@@ -7,6 +7,7 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json.JsArray
 import scala.Some
 import scala.util.Random
+import org.joda.time.format.DateTimeFormat
 
 class ClaimsServiceStub extends ClaimsService {
 
@@ -31,6 +32,26 @@ class ClaimsServiceStub extends ClaimsService {
           true
       case _ => false
     }
+
+
+  override def claimNumbersFiltered(status: String*): JsObject = {
+
+    var daysMap = Map.empty[LocalDate,Int]
+
+    listOfClaims.foreach(cs => {
+      val localDate = cs.claimDateTime.toLocalDate
+      val currentCount = daysMap.get(localDate).getOrElse(0)
+      if (status.exists(_ == cs.status)){
+        daysMap = daysMap + (localDate -> (currentCount + 1))
+      }
+    })
+
+    def dateToString(date: LocalDate) = {
+      DateTimeFormat.forPattern("ddMMyyyy").print(date)
+    }
+
+    JsObject(daysMap.map(t => dateToString(t._1) -> JsNumber(t._2)).toSeq)
+  }
 
   def specialDaysRec(n:Int,today:LocalDate, localDates: Seq[LocalDate]):Seq[LocalDate] = {
     if (n == 0) localDates

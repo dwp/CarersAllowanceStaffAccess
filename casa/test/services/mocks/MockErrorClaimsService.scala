@@ -2,7 +2,7 @@ package services.mocks
 
 import services.ClaimsService
 import org.joda.time.{LocalDate, DateTime}
-import play.api.libs.json.{JsArray}
+import play.api.libs.json.{JsString, JsObject, JsArray}
 
 class MockErrorClaimsService(cause: => Option[JsArray]) extends ClaimsService {
   override def claims(date: LocalDate) = {
@@ -19,6 +19,10 @@ class MockErrorClaimsService(cause: => Option[JsArray]) extends ClaimsService {
 
   override def updateClaim(transactionId: String, status: String): Boolean = {
     false
+  }
+
+  override def claimNumbersFiltered(status: String*): JsObject = {
+    JsObject(Seq("property"->JsString("value")))
   }
 }
 

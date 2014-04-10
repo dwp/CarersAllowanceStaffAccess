@@ -1,3 +1,4 @@
+import org.joda.time.format.DateTimeFormat
 import org.joda.time.{LocalDate, DateTime}
 import org.specs2.mutable.{Tags, Specification}
 import play.api.libs.json.JsArray
@@ -79,6 +80,13 @@ class ClaimServiceSpec extends Specification with Tags {
       val transactionId = "20140101002"
       val service = getErrorEndpoint
       service.updateClaim(transactionId, newStatus) mustEqual(false)
+    }
+
+    "must return number of claims for the claims history" in {
+      val service = getEndpoint()
+      val claimNumber = service.claimNumbersFiltered("viewed","received")
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new DateTime())
+      (claimNumber \ today).as[Int] must be_>(0)
     }
   }
 

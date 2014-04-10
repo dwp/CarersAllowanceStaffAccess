@@ -1,9 +1,8 @@
-@(currentDate: org.joda.time.LocalDate)
+@(claimsList:Option[play.api.libs.json.JsArray],currentDate: org.joda.time.LocalDate)
 @import utils.DateUtils
 
 @import org.joda.time.format.DateTimeFormat
 @import org.joda.time.LocalDate
-@import org.joda.time.DateTime
 
 @today = @{ new LocalDate }
 @dayName(date:LocalDate) = @{ date.dayOfWeek().getAsText }
@@ -11,9 +10,11 @@
 @isActiveDay(day: LocalDate) = @{ day == currentDate }
 @daysList = @{ DateUtils.daysRec(7,today.plusDays(1),Seq())}
 @formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
+@claimNumbers = @{Application.claimService.claimNumbersFiltered("received","viewed")}
 
 <ul class="dates clearfix">
+
     @for(day <- daysList){
-        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/@{formatToLink(day)}">@dayName(day)<span>@dayDate(day)</span></a></li>
+        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/@{formatToLink(day)}">@dayName(day) (@{claimNumbers \ formatToLink(day)})<span>@dayDate(day)</span></a></li>
     }
 </ul>
