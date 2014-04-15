@@ -23,19 +23,10 @@ object ClaimServiceImpl extends ClaimsService{
   implicit val context = scala.concurrent.ExecutionContext.Implicits.global
 
   class HttpMethodWrapper(url:String){
-    def get[T](m:Response => T):T = {
-      val futureResponse = WS.url(url).get().map(response =>m(response))
-      Await.result(futureResponse,timeout)
-    }
+    def get[T](m:Response => T):T = Await.result(WS.url(url).get().map(m(_)),timeout)
 
-    def put[T](pf:Response => T) = new {
-
-      def exec(map:Map[String,Seq[String]] = Map.empty[String,Seq[String]]):T = {
-        val futureResponse = WS.url(url).put(map).map(response =>
-          pf(response)
-        )
-        Await.result(futureResponse,timeout)
-      }
+    def put[T](m:Response => T) = new {
+      def exec(map:Map[String,Seq[String]] = Map.empty[String,Seq[String]]):T =  Await.result(WS.url(url).put(map).map(m(_)),timeout)
     }
   }
 
