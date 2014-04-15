@@ -22,7 +22,7 @@ object ApplicationBuild extends Build {
 
   var sTest: Seq[Def.Setting[_]] = Seq()
 
-  if (System.getProperty("include") != null ) {
+  if (System.getProperty("claimsServiceUrl") != null ) {
 
     sTest = Seq(testOptions in Test += Tests.Argument("claimsServiceUrl", System.getProperty("claimsServiceUrl")))
   }
