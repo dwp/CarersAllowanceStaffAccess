@@ -20,13 +20,6 @@ object ApplicationBuild extends Build {
     resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases")
 
-  var sTest: Seq[Def.Setting[_]] = Seq()
 
-  if (System.getProperty("claimsServiceUrl") != null ) {
-
-    sTest = Seq(testOptions in Test += Tests.Argument("claimsServiceUrl", System.getProperty("claimsServiceUrl")))
-  }
-
-
-  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV) ++ sR ++ sTest:_*)
+  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV) ++ sR:_*)
 }
