@@ -11,15 +11,10 @@
 @daysList = @{ DateUtils.daysRec(7,today.plusDays(1),Seq())}
 @formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
 @claimNumbers = @{Application.claimService.claimNumbersFiltered("received","viewed")}
-@extractNum(day: LocalDate) = @{
-    val key = formatToLink(day)
-    if (claimNumbers.value.contains(key)) "("+(claimNumbers \ key)+")"
-    else  ""
-}
 
 <ul class="dates clearfix">
 
     @for(day <- daysList){
-        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/@{formatToLink(day)}">@dayName(day) @extractNum(day)<span>@dayDate(day)</span></a></li>
+        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/@{formatToLink(day)}">@dayName(day) (@{claimNumbers \ formatToLink(day)})<span>@dayDate(day)</span></a></li>
     }
 </ul>
