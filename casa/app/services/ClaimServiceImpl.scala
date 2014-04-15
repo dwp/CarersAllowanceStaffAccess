@@ -56,13 +56,13 @@ object ClaimServiceImpl extends ClaimsService{
 
   }
 
-  override def claimNumbersFiltered(status: String*): JsObject = Json.parse("{}").as[JsObject]
-   /* s"$url/claims/${status.mkString(",")}" get { response =>
+  override def claimNumbersFiltered(status: String*): JsObject =
+    s"$url/counts/${status.mkString(",")}" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
         case Status.BAD_REQUEST => Json.parse("{}").as[JsObject]
       }
-    }*/
+    }
 
 
   override def updateClaim(transactionId: String, status: String): JsBoolean =
