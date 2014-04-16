@@ -3,7 +3,7 @@ package services
 import scala.concurrent.duration._
 import org.joda.time.LocalDate
 import play.api.libs.json._
-import play.api.Play
+import play.api.{Logger, Play}
 import play.api.libs.ws.{Response, WS}
 import org.joda.time.format.DateTimeFormat
 import play.api.http.Status
@@ -17,18 +17,14 @@ import scala.Some
 
 object ClaimServiceImpl extends ClaimsService{
 
-  val url = Play.configuration(Play.current).getString("claimsServiceUrl").getOrElse("http://localhost:9002")
+  val url = getUrl
   val timeout = Play.configuration(Play.current).getInt("ws.timeout").getOrElse(30).seconds
 
   implicit val context = scala.concurrent.ExecutionContext.Implicits.global
 
-  def getUrl = {
-    val urlParam = System.getProperty("claimsServiceUrl")
-    if (urlParam != null && urlParam.trim.length > 0){
-      urlParam
-    }else{
-      Play.configuration(Play.current).getString("claimsServiceUrl").getOrElse("http://localhost:9002")
-    }
+  def getUrl = Play.configuration(Play.current).getString("claimsServiceUrl") match {
+                case Some(s) if s.length > 0 => Logger.info(s"Getting claimServiceUrl value ($s)");s
+                case _ => Logger.info("Getting default url value"); "http://localhost:9002"
   }
 
   class HttpMethodWrapper(url:String){
