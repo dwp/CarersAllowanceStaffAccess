@@ -2,13 +2,13 @@ package controllers
 
 import play.api.mvc._
 import org.joda.time.LocalDate
-import services.{PdfServiceComponent, ClaimServiceComponent}
+import services.ClaimServiceComponent
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
 
-object Application extends Controller with ClaimServiceComponent with PdfServiceComponent {
+object Application extends Controller with ClaimServiceComponent {
 
   def index = Action{
     val today = new LocalDate
@@ -47,12 +47,10 @@ object Application extends Controller with ClaimServiceComponent with PdfService
 
   }
 
-  def claimPdf(transactionId:String) = Action{
-    claimService.updateClaim(transactionId,"viewed")
-    val htmlString = pdfService.claimHtml(transactionId)
-      .replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
-      .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
-    Ok(Html(htmlString))
+  def renderClaim(transactionId:String) = Action {
+    claimService.renderClaim(transactionId) match {
+      case Some(renderedClaim) => Ok(Html(renderedClaim))
+      case _ => BadRequest
+    }
   }
 }
-

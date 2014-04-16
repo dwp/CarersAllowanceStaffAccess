@@ -7,7 +7,7 @@ GET         /                                   controllers.Application.index
 GET         /filter/:currentDate                controllers.Application.claimsForDate(currentDate)
 GET         /filter/:currentDate/:status        controllers.Application.claimsForDateFiltered(currentDate,status)
 POST        /complete                           controllers.Application.complete(currentDate)
-GET         /claimPdf/:transactionId            controllers.Application.claimPdf(transactionId)
+GET         /render/:transactionId            controllers.Application.renderClaim(transactionId)
 
 
 

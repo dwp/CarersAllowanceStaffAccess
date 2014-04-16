@@ -9,4 +9,5 @@ trait ClaimsService {
   def fullClaim(transactionId: String): Option[JsValue]
   def updateClaim(transactionId: String, status: String): JsBoolean
   def claimNumbersFiltered(status:String*):JsObject
+  def renderClaim(transactionId: String): Option[String]
 }

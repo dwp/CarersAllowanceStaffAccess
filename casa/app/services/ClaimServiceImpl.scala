@@ -82,6 +82,12 @@ object ClaimServiceImpl extends ClaimsService{
       }
     }
 
-
-
+  override def renderClaim(transactionId: String) = {
+    s"$url/render/$transactionId" get { response =>
+      response.status match {
+        case Status.OK => Some(response.body)
+        case Status.BAD_REQUEST => None
+      }
+    }
+  }
 }

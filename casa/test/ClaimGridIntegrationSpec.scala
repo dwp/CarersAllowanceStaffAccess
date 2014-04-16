@@ -76,7 +76,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.webDriver.switchTo().window(pdfTab)
 
-      browser.title mustEqual s"Claim PDF $transactionId"
+      browser.title mustEqual s"Claim $transactionId"
     }
 
     "Open completed claim pdf and check the status hasn't changed" in new WithBrowser {
@@ -95,7 +95,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.webDriver.switchTo().window(pdfTab)
 
-      browser.title mustEqual s"Claim PDF $transactionId"
+      browser.title mustEqual s"Claim $transactionId"
     }
   }
 
