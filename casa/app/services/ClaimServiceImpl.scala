@@ -22,11 +22,20 @@ object ClaimServiceImpl extends ClaimsService{
 
   implicit val context = scala.concurrent.ExecutionContext.Implicits.global
 
+  def getUrl = {
+    val urlParam = System.getProperty("claimsServiceUrl")
+    if (urlParam != null && urlParam.trim.length > 0){
+      urlParam
+    }else{
+      Play.configuration(Play.current).getString("claimsServiceUrl").getOrElse("http://localhost:9002")
+    }
+  }
+
   class HttpMethodWrapper(url:String){
-    def get[T](m:Response => T):T = Await.result(WS.url(url).get().map(m(_)),timeout)
+    def get[T](m:Response => T):T = Await.result(WS.url(url).get().map(m),timeout)
 
     def put[T](m:Response => T) = new {
-      def exec(map:Map[String,Seq[String]] = Map.empty[String,Seq[String]]):T =  Await.result(WS.url(url).put(map).map(m(_)),timeout)
+      def exec(map:Map[String,Seq[String]] = Map.empty[String,Seq[String]]):T =  Await.result(WS.url(url).put(map).map(m),timeout)
     }
   }
 

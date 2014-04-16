@@ -20,6 +20,7 @@ object ApplicationBuild extends Build {
     resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases")
 
+  var testOption:Setting[_] = javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""})
 
-  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV) ++ sR:_*)
+  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV +: testOption) ++ sR:_*)
 }
