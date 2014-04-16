@@ -63,7 +63,6 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowser {
-      pending
       import scala.collection.JavaConverters._
       browser.goTo("/")
 
@@ -81,7 +80,6 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Open completed claim pdf and check the status hasn't changed" in new WithBrowser {
-      pending
       import scala.collection.JavaConverters._
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
       browser.goTo(s"/filter/$today/completed")
