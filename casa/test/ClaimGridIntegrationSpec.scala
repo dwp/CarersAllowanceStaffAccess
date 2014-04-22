@@ -66,7 +66,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       import scala.collection.JavaConverters._
       browser.goTo("/")
 
-      val transactionId = "20140102070"
+      val transactionId = "1111070"
       browser.$(s"#row_$transactionId .transactionId a").click
 
       browser.$(s"#row_$transactionId .status").getText mustEqual "viewed"
@@ -84,7 +84,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
       browser.goTo(s"/filter/$today/completed")
 
-      val transactionId = "20140102072"
+      val transactionId = "1111072"
       browser.$(s"#row_$transactionId .transactionId a").click
 
       browser.$(s"#row_$transactionId .status").getText mustEqual "completed"
