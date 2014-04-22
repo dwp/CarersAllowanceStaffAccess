@@ -1,0 +1,132 @@
+.red-theme {
+
+	background: #fff;
+
+	main {
+		background: #ddd;
+	}
+
+
+	header {
+		background: #fff;
+		position: relative;
+		h1 {
+			color: #000;
+		}
+
+	
+		
+	}
+	
+	
+	
+	.dates {
+		background: #f9f9f9;
+		li {
+			a {
+				background: #9e0030;
+				color: #fff;
+				text-shadow: none;
+				border: 2px solid #9e0030;
+				
+				span {
+					color: #fff;
+				}
+				&:hover {
+					border-color: #d1003f;
+					background: #d1003f;
+					color: #fff;
+					span {
+						color: #fff;
+					}
+				}
+			}
+			&.active {
+				a {
+					background: #fff;
+					border-color: #9e0030;
+					color: #000;
+					span {
+						color: #666;
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+.filter {
+	background: #f9f9f9;
+	position: relative;
+	
+	ol {
+		li {
+			a {
+				color: #000;
+				background: #eee;
+				
+				div {
+					p {
+						color: #fff;
+					}
+				}
+				
+				&:hover, &.active {
+					background: #ddd;
+					color: #000;
+				}
+			}
+		}
+	}
+	
+}
+	
+	
+	
+	
+	
+	table {
+		position: relative;
+		border-color: #9e0030;
+
+		th {
+			background: #9e0030;
+			color: #fff;
+		}
+		tr {
+			background: #fff;
+			border-top: 1px dashed #ccc;
+			&:nth-child(even) {
+				background: #fff;
+			}
+			&:hover {
+				background: #eee;
+			}
+			
+			&:first-child {
+				border: 0;
+			}
+			
+		}
+
+		a {
+			color: #000;
+			&:hover {
+				color: #555;
+			}
+		}
+		
+	}
+	
+	
+	
+	footer {
+		color: #000;
+	}
+
+	
+	
+	
+	
+}

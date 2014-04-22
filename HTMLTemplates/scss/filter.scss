@@ -1,10 +1,9 @@
 .filter {
-	margin-top: 2em;
+	padding: 0 3em;
+	background: #3e3e3e;
+	
 	legend {
-		font-size: 16px;
-		font-family: 'colaborate-medium';
-		display: table;
-		padding-bottom: 10px;
+		text-indent: -9999px;
 	}
 	ol {
 		margin-left: -8px;
@@ -24,20 +23,21 @@
 				margin-left: 0;
 			}
 			a {
-				font-size: 16px;
-				background: #fff;
-				padding: .5em 1.2em;
+				background: #666;
 				text-decoration: none;
-				font-family: 'colaborate-light';
-				color: #000;
-				border-radius: 5px;
+				color: #fff;
+				border-radius: 5px 5px 0 0;
+				font-size: 16px;
+				padding: 15px 30px;
 				display: block;
 				line-height: 1em;
-				background: #f9f9f9;
+				cursor: pointer;
+				font-weight: 300;
 				&:hover, &.active {
-					background: #000;
-					color: #fff;
+					background: #fff;
+					color: #000;
 				}
+
 			}
 			div {
 				display: none;

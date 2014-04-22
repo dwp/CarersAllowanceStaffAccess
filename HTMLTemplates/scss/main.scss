@@ -2,7 +2,7 @@
 @import 'header';
 
 main {
-	padding: 3em 2em 5em 2em;
+	padding: 1em 3em 4em 3em;
 	background: #fff;
 }
 
@@ -13,3 +13,7 @@ main {
 @import 'table';
 
 @import 'footer';
+
+@import 'theme';
+
+@import 'red-theme';

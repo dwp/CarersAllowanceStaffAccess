@@ -1,5 +1,8 @@
 .dates {
 		margin-left: -1%;
+		padding: 2em 3em;
+		background: #3e3e3e;
+		
 		li {
 			float: left;
 			width: 13%;
@@ -18,25 +21,24 @@
 				text-decoration: none;
 				font-size: 16px;
 				color: #000;
-				font-family: 'colaborate-medium';
+				font-weight: 600;
 				padding: 14px 0;
 				border-radius: 5px;
 				border: 2px solid transparent;
-				text-shadow: 1px 1px 0 #fff;
 				span {
 					display: block;
 					font-size: 16px;
 					color: #666;
-					font-family: 'colaborate-light';
+					font-weight: 200;
 				}
 				&:hover {
 					background: #eee;
 				}
 			}
-			&.ui-state-active {
+			&.active {
 				a {
 					background: #fff;
-					border-color: #000;
+					border-color: #fff;
 				}
 			}
 		}
