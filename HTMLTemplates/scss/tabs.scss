@@ -1,7 +1,10 @@
 .dates {
 		margin-left: -1%;
-		padding: 2em 3em;
+		padding: 2.5em 3em 2em 3em;
 		background: #3e3e3e;
+		@media screen and (max-width: 600px) {
+			padding: 2.5em 1.5em 2em 1.5em;
+		}
 		
 		li {
 			float: left;
@@ -17,7 +20,7 @@
 			a {
 				display: block;
 				text-align: center;
-				background: #ddd;
+				background: #ccc;
 				text-decoration: none;
 				font-size: 16px;
 				color: #000;
@@ -28,7 +31,6 @@
 				span {
 					display: block;
 					font-size: 16px;
-					color: #666;
 					font-weight: 200;
 				}
 				&:hover {

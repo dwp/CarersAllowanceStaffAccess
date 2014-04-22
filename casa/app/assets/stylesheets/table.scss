@@ -1,6 +1,7 @@
 table {
 	width: 100%;
 	margin-top: .8em;
+	border: 6px solid #000;
 	caption {
 		text-indent: -9999px;
 	}
@@ -8,16 +9,22 @@ table {
 		text-align: left;
 		background: #000;
 		color: #fff;
-		padding: 15px 10px;
+		padding: 15px;
+		font-size: 18px;
+		font-weight: normal;
 	}
 	tr {
 		background: #fff;
-		&:nth-child(even) {
-			background: #eee;
+		border-top: 1px dashed #bbb;
+		&:hover {
+				background: #eee;
+			}
+		&:first-child {
+			border: 0;
 		}
 	}
 	td {
-		padding: 15px 10px;
+		padding: 15px;
 		label {
 			display: none;
 		}
@@ -27,14 +34,30 @@ table {
 	}
 	a {
 		color: #000;
-		font-family: 'colaborate-light';
+
 		&:hover {
 			color: #555;
 		}
 	}
-	.ni {
-		@media screen and (max-width: 480px) {
+	.ni, .view {
+		@media screen and (max-width: 700px) {
 				display: none;
 			}
+	}
+}
+
+.completebutton {
+	margin-top: 2em;
+	text-align: right;
+	button {
+		background: #000;
+		border: 0;
+		border-radius: 5px;
+		color: #fff;
+		padding: 10px 15px;
+		line-height: 1em;
+		&:hover {
+			background: #666;
+		}
 	}
 }

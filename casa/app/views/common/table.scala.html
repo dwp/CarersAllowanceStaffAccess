@@ -17,12 +17,10 @@
             <tr>
                 <th></th>
                 <th>Transaction Id</th>
-                <th>Name</th>
+                <th class="view">Name</th>
                 <th class="ni">NI Number</th>
-                <th>Claim type</th>
-                <th>Submit Date</th>
-
-
+                <th class="view">Claim type</th>
+                <th class="view">Submit Date</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -36,10 +34,10 @@
                         }
                         </td>
                         <td class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
-                        <td>@claim.p.surname @claim.p.forename</td>
+                        <td class="view">@claim.p.surname @claim.p.forename</td>
                         <td class="ni">@claim.p.nino</td>
-                        <td>@claim.p.claimType</td>
-                        <td>@dateTime(claim.p.claimDateTime.asDate)</td>
+                        <td class="view">@claim.p.claimType</td>
+                        <td class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td class="status">@claim.p.status</td>
                     </tr>
@@ -49,12 +47,8 @@
     </table>
 
     @if(!isStatusCompleted){
-        <section class="filter">
-            <fieldset>
-                <ol class="clearfix">
-                    <li><button type="submit" class="active" id="completeButton" >Complete</button></li>
-                </ol>
-            </fieldset>
-        </section>
+        <div class="completebutton">
+        	<button type="submit" class="active" id="completeButton" >Complete</button>
+        </div>
     }
 }

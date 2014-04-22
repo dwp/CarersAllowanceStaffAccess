@@ -1,10 +1,12 @@
 .filter {
-	margin-top: 2em;
+	padding: 0 3em;
+	background: #3e3e3e;
+	@media screen and (max-width: 600px) {
+		padding: 0 1.5em;
+	}
+	
 	legend {
-		font-size: 16px;
-		font-family: 'colaborate-medium';
-		display: table;
-		padding-bottom: 10px;
+		text-indent: -9999px;
 	}
 	ol {
 		margin-left: -8px;
@@ -14,30 +16,29 @@
 		li {
 			float: left;
 			width: auto;
-			margin-left: 8px;
+			margin-left: 6px;
 			position: relative;
-			@media screen and (max-width: 780px) {
-				margin-left: 2px;
-			}
 			@media screen and (max-width: 600px) {
-				width: 50%;
-				margin-left: 0;
+				width: 46%;
 			}
-			a,button {
-				font-size: 16px;
-				background: #fff;
-				padding: .5em 1.2em;
+			a {
+				background: #666;
 				text-decoration: none;
-				font-family: 'colaborate-light';
-				color: #000;
-				border-radius: 5px;
+				color: #fff;
+				border-radius: 5px 5px 0 0;
+				font-size: 16px;
+				padding: 15px 30px;
 				display: block;
 				line-height: 1em;
-				background: #f9f9f9;
-				&:hover, &.active {
-					background: #000;
-					color: #fff;
+				cursor: pointer;
+				font-weight: 300;
+				text-align: center;
+				&.active {
+					background: #fff;
+					color: #000;
+					font-weight: 600;
 				}
+
 			}
 			div {
 				display: none;
@@ -46,6 +47,7 @@
 				left: 90px;
 				width: 140px;
 				padding: 30px 0 0 40px;
+				background: url('../img/arrow.png') 0 0 no-repeat;
 			}
 			&:hover {
 				div {

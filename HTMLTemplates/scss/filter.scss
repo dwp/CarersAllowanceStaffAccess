@@ -1,6 +1,9 @@
 .filter {
 	padding: 0 3em;
 	background: #3e3e3e;
+	@media screen and (max-width: 600px) {
+		padding: 0 1.5em;
+	}
 	
 	legend {
 		text-indent: -9999px;
@@ -13,14 +16,10 @@
 		li {
 			float: left;
 			width: auto;
-			margin-left: 8px;
+			margin-left: 6px;
 			position: relative;
-			@media screen and (max-width: 780px) {
-				margin-left: 2px;
-			}
 			@media screen and (max-width: 600px) {
-				width: 50%;
-				margin-left: 0;
+				width: 46%;
 			}
 			a {
 				background: #666;
@@ -33,9 +32,11 @@
 				line-height: 1em;
 				cursor: pointer;
 				font-weight: 300;
-				&:hover, &.active {
+				text-align: center;
+				&.active {
 					background: #fff;
 					color: #000;
+					font-weight: 600;
 				}
 
 			}

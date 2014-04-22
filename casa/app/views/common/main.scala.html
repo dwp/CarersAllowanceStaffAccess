@@ -13,18 +13,21 @@
     </head>
     <body>
         @header()
+        
+        <div id="tabs">
+            @daysBar(claimsList,currentDate)
+        </div>
+
+        @filterBar(currentDate,currentStatus)
+        
         <main>
-
-            <div id="tabs">
-                @daysBar(claimsList,currentDate)
-            </div>
-
-            @filterBar(currentDate,currentStatus)
             @table(claimsList,currentDate,currentStatus)
         </main>
+        
         @footer()
 
         <script src="@routes.Assets.at("javascripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/jquery-ui.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/custom.js")" type="text/javascript"></script>
     </body>
 </html>

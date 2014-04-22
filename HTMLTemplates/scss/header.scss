@@ -2,11 +2,19 @@ header {
 	background: #000;
 	padding: 1em 3em;
 	position: relative;
+	box-shadow: 0 0 15px rgba(0,0,0,.1);
+	@media screen and (max-width: 600px) {
+		padding: 1em 1.5em;
+	}
 
 	h1 {
 		color: #fff;
 		font-family: 'colaborate-thin';
 		font-size: 36px;
+		padding-right: 3em;
+		@media screen and (max-width: 600px) {
+			padding: 0;
+		}
 	}
 	
 	.theme-switch {
@@ -14,6 +22,12 @@ header {
 			top: 50%;
 			right: 3em;
 			margin-top: -10px;
+			@media screen and (max-width: 600px) {
+				right: 1.5em;
+				top: auto;
+				margin: 0;
+				bottom: 1.5em;
+			}
 			li {
 				display: inline-block;
 			}
@@ -33,7 +47,7 @@ header {
 					background: #9e0030;
 				}
 				&.theme-blue {
-					background: #99cccd;
+					background: #4477b0;
 				}
 			}
 		}
