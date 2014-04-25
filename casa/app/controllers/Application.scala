@@ -7,7 +7,7 @@ import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
-import play.api.libs.json.{JsValue, JsArray}
+import play.api.libs.json.JsArray
 
 object Application extends Controller with ClaimServiceComponent {
 
@@ -20,10 +20,10 @@ object Application extends Controller with ClaimServiceComponent {
     data match {
       case Some(data) =>
       {
-        def claimTypeOrderer = new Ordering[JsValue] {
-          def compare(x:JsValue, y:JsValue) = y.\("claimType").toString().compare(x.\("claimType").toString())
+        case class ClaimSummaryOrder(claimType:String, claimDateTime:String) extends Ordered[ClaimSummaryOrder] {
+          def compare(other:ClaimSummaryOrder):Int = Ordering.Tuple2(Ordering.String, Ordering.String).compare((other.claimType, other.claimDateTime), (claimType, claimDateTime))
         }
-        Some(JsArray(data.value.sorted(claimTypeOrderer)))
+        Some(JsArray(data.value.sortBy(f => ClaimSummaryOrder(f.\("claimType").toString(), f.\("claimDateTime").toString()))))
       }
       case _ => data
     }
