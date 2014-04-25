@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc._
-import org.joda.time.LocalDate
+import org.joda.time.{DateTime, LocalDate}
 import services.ClaimServiceComponent
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
@@ -13,18 +13,12 @@ object Application extends Controller with ClaimServiceComponent {
 
   def index = Action{
     val today = new LocalDate
-    Ok(views.html.claimsList(today,"", sortByClaimType(claimService.claims(today))))
+    Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today))))
   }
 
-  def sortByClaimType (data : Option[JsArray]):Option[JsArray] = {
+  def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
     data match {
-      case Some(data) =>
-      {
-        case class ClaimSummaryOrder(claimType:String, claimDateTime:String) extends Ordered[ClaimSummaryOrder] {
-          def compare(other:ClaimSummaryOrder):Int = Ordering.Tuple2(Ordering.String, Ordering.String).compare((other.claimType, other.claimDateTime), (claimType, claimDateTime))
-        }
-        Some(JsArray(data.value.sortBy(f => ClaimSummaryOrder(f.\("claimType").toString(), f.\("claimDateTime").toString()))))
-      }
+      case Some(data) => Some(JsArray(data.value.seq.sortWith(_.\("claimDateTime").as[DateTime].getMillis > _.\("claimDateTime").as[DateTime].getMillis).sortWith(_.\("claimType").toString() > _.\("claimType").toString())))
       case _ => data
     }
   }
@@ -34,7 +28,7 @@ object Application extends Controller with ClaimServiceComponent {
   def claimsForDateFiltered(date: String, status: String) = Action{
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
-    Ok(views.html.claimsList(localDate,status, sortByClaimType(claims)))
+    Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims)))
   }
 
   case class ClaimsToComplete(completedCheckboxes:List[String])
