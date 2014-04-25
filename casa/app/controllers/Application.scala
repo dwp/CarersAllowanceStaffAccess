@@ -7,12 +7,26 @@ import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
+import play.api.libs.json.{JsValue, JsArray}
 
 object Application extends Controller with ClaimServiceComponent {
 
   def index = Action{
     val today = new LocalDate
-    Ok(views.html.claimsList(today,"", claimService.claims(today)))
+    Ok(views.html.claimsList(today,"", sortByClaimType(claimService.claims(today))))
+  }
+
+  def sortByClaimType (data : Option[JsArray]):Option[JsArray] = {
+    data match {
+      case Some(data) =>
+      {
+        def claimTypeOrderer = new Ordering[JsValue] {
+          def compare(x:JsValue, y:JsValue) = y.\("claimType").toString().compare(x.\("claimType").toString())
+        }
+        Some(JsArray(data.value.sorted(claimTypeOrderer)))
+      }
+      case _ => data
+    }
   }
 
   def claimsForDate(date: String) = claimsForDateFiltered(date,"")
@@ -20,7 +34,7 @@ object Application extends Controller with ClaimServiceComponent {
   def claimsForDateFiltered(date: String, status: String) = Action{
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
-    Ok(views.html.claimsList(localDate,status, claims))
+    Ok(views.html.claimsList(localDate,status, sortByClaimType(claims)))
   }
 
   case class ClaimsToComplete(completedCheckboxes:List[String])
