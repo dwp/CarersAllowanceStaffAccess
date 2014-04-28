@@ -1,13 +1,14 @@
 package controllers
 
 import play.api.mvc._
-import org.joda.time.{DateTime, LocalDate}
+import org.joda.time.LocalDate
 import services.ClaimServiceComponent
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
 import play.api.libs.json.JsArray
+import utils.JsValueWrapper.improveJsValue
 
 object Application extends Controller with ClaimServiceComponent {
 
@@ -18,7 +19,11 @@ object Application extends Controller with ClaimServiceComponent {
 
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
     data match {
-      case Some(data) => Some(JsArray(data.value.seq.sortWith(_.\("claimDateTime").as[DateTime].getMillis > _.\("claimDateTime").as[DateTime].getMillis).sortWith(_.\("claimType").toString() > _.\("claimType").toString())))
+      case Some(data) =>
+        Some(JsArray(
+          data.value.seq.sortWith(_.p.claimDateTime.asLong > _.p.claimDateTime.asLong)
+                        .sortWith(_.p.claimType.asType < _.p.claimType.asType)
+        ))
       case _ => data
     }
   }

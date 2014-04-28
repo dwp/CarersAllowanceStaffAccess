@@ -32,4 +32,9 @@ class ImprovedValue(jsValue:JsValue) {
   def asDate = jsValue.as[DateTime]
 
   def asInt = jsValue.as[Int]
+
+  def asLong = jsValue.as[Long]
+
+  def asType = if (asString == "claim") 1 else 2
+
 }

@@ -5,6 +5,7 @@ import org.specs2.mutable.{Specification, Tags}
 import play.api.test.{TestBrowser, WithBrowser}
 import scala.collection.JavaConverters._
 
+
 class ClaimGridIntegrationSpec extends Specification with Tags {
   "Claim Grid" should {
     "Show claims filtered by today's date" in new WithBrowser {
@@ -95,6 +96,27 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.webDriver.switchTo().window(pdfTab)
 
       browser.title mustEqual s"Claim $transactionId"
+    }
+
+    "Should show claims first then Circs" in new WithBrowser {
+      import scala.collection.JavaConverters._
+
+      browser.goTo("/")
+      val claimTypes = browser.$("#claimsTable .view")
+      val claimTypeList = claimTypes.asScala.toSeq.filter(f => (((f.getText == "claim") || (f.getText == "circs"))))
+
+
+      def isClaimOrCircs(claimType:String) = if(claimType == "claim") 1 else 2
+
+      var previousValue = isClaimOrCircs(claimTypeList.head.getText)
+
+      previousValue must beEqualTo(1)
+
+      claimTypeList.foreach(f => {
+        val value = isClaimOrCircs(f.getText)
+        value must beGreaterThanOrEqualTo(previousValue)
+        previousValue = value
+      })
     }
   }
 
