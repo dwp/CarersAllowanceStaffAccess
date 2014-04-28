@@ -1,8 +1,9 @@
-import org.fluentlenium.core.domain.FluentWebElement
+import org.fluentlenium.core.domain.{FluentList, FluentWebElement}
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.LocalDate
 import org.specs2.mutable.{Specification, Tags}
 import play.api.test.{TestBrowser, WithBrowser}
+import scala._
 import scala.collection.JavaConverters._
 
 
@@ -99,25 +100,47 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Should show claims first then Circs" in new WithBrowser {
-      import scala.collection.JavaConverters._
-
       browser.goTo("/")
       val claimTypes = browser.$("#claimsTable .view")
-      val claimTypeList = claimTypes.asScala.toSeq.filter(f => (((f.getText == "claim") || (f.getText == "circs"))))
-
-
-      def isClaimOrCircs(claimType:String) = if(claimType == "claim") 1 else 2
-
-      var previousValue = isClaimOrCircs(claimTypeList.head.getText)
-
-      previousValue must beEqualTo(1)
-
-      claimTypeList.foreach(f => {
-        val value = isClaimOrCircs(f.getText)
-        value must beGreaterThanOrEqualTo(previousValue)
-        previousValue = value
-      })
+      assertClaimTypesOrdering (claimTypes)
     }
+
+    "Should show claims first then Circs filtered by date" in new WithBrowser {
+      val yesterday = new LocalDate().minusDays(1)
+      val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
+
+      browser.goTo("/filter/" + dateString)
+
+      val claimTypes = browser.$("#claimsTable .view")
+      assertClaimTypesOrdering (claimTypes)
+    }
+
+    "Should show claims first then Circs for completed" in new WithBrowser {
+
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+      browser.goTo(s"/filter/$today/completed")
+
+      val claimTypes = browser.$("#claimsTable .view")
+      assertClaimTypesOrdering (claimTypes)
+    }
+  }
+
+  def assertClaimTypesOrdering (claimTypes:FluentList[FluentWebElement]) = {
+
+    val claimTypeList = claimTypes.asScala.toSeq.filter(f => f.getText == "claim" || f.getText == "circs")
+
+
+    def isClaimOrCircs(claimType:String) = if(claimType == "claim") 1 else 2
+
+    var previousValue = isClaimOrCircs(claimTypeList.head.getText)
+
+    previousValue must beEqualTo(1)
+
+    claimTypeList.foreach(f => {
+      val value = isClaimOrCircs(f.getText)
+      value must beGreaterThanOrEqualTo(previousValue)
+      previousValue = value
+    })
   }
 
   def checkCasaDates(date: LocalDate, browser: TestBrowser) = {
