@@ -9,6 +9,7 @@ import scala.collection.JavaConverters._
 
 class ClaimGridIntegrationSpec extends Specification with Tags {
   "Claim Grid" should {
+    // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
     "Show claims filtered by today's date" in new WithBrowser {
       browser.goTo("/")
       browser.title() mustEqual("Claims list")
@@ -43,6 +44,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
+    // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
     "Show claims filtered by specified date" in new WithBrowser {
       val yesterday = new LocalDate().minusDays(1)
       val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
