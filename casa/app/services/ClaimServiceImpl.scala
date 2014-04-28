@@ -43,7 +43,7 @@ object ClaimServiceImpl extends ClaimsService{
     s"$url/claims/$dateString" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.BAD_REQUEST => None
+        case Status.NOT_FOUND => None
       }
     }
   }
@@ -55,7 +55,7 @@ object ClaimServiceImpl extends ClaimsService{
     s"$url/claims/$dateString/$status" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.BAD_REQUEST => None
+        case Status.NOT_FOUND => None
       }
     }
 
@@ -91,7 +91,7 @@ object ClaimServiceImpl extends ClaimsService{
     s"$url/render/$transactionId" get { response =>
       response.status match {
         case Status.OK => Some(response.body)
-        case Status.BAD_REQUEST => None
+        case Status.NOT_FOUND => None
       }
     }
   }
