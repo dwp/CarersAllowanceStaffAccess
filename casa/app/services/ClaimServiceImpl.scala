@@ -90,9 +90,19 @@ object ClaimServiceImpl extends ClaimsService{
   override def renderClaim(transactionId: String) = {
     s"$url/render/$transactionId" get { response =>
       response.status match {
-        case Status.OK => Some(response.body)
+        case Status.OK =>
+          val html = response.body
+          Some(
+            html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
+                .replace("##CHECK##","""<img src="/public/img/yes.png"/>""")
+                .replace("##CROSS##","""<img src="/public/img/no.png"/>""")
+                .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
+
+          )
         case Status.NOT_FOUND => None
       }
     }
+
+
   }
 }
