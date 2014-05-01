@@ -94,8 +94,8 @@ object ClaimServiceImpl extends ClaimsService{
           val html = response.body
           Some(
             html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
-                .replace("##CHECK##","""<img src="/public/img/yes.png"/>""")
-                .replace("##CROSS##","""<img src="/public/img/no.png"/>""")
+                .replace("##CHECK##","""<img src="/assets/img/yes.png"/>""")
+                .replace("##CROSS##","""<img src="/assets/img/no.png"/>""")
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
 
           )
