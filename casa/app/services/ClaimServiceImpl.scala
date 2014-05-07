@@ -4,18 +4,16 @@ import scala.concurrent.duration._
 import org.joda.time.LocalDate
 import play.api.libs.json._
 import play.api.{Logger, Play}
-import play.api.libs.ws.{Response, WS}
 import org.joda.time.format.DateTimeFormat
 import play.api.http.Status
-import scala.concurrent.Await
 import scala.language.postfixOps
 import scala.language.implicitConversions
 import play.api.libs.json.JsObject
 import play.api.libs.json.JsArray
 import scala.Some
+import utils.HttpUtils.HttpMethodWrapper
 
-
-object ClaimServiceImpl extends ClaimsService{
+object ClaimServiceImpl extends ClaimsService {
 
   val url = getUrl
   val timeout = Play.configuration(Play.current).getInt("ws.timeout").getOrElse(30).seconds
@@ -27,15 +25,7 @@ object ClaimServiceImpl extends ClaimsService{
                 case _ => Logger.info("Getting default url value"); "http://localhost:9002"
   }
 
-  class HttpMethodWrapper(url:String){
-    def get[T](m:Response => T):T = Await.result(WS.url(url).get().map(m),timeout)
-
-    def put[T](m:Response => T) = new {
-      def exec(map:Map[String,Seq[String]] = Map.empty[String,Seq[String]]):T =  Await.result(WS.url(url).put(map).map(m),timeout)
-    }
-  }
-
-  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url)
+  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
 
   override def claims(date: LocalDate): Option[JsArray] = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
@@ -69,7 +59,6 @@ object ClaimServiceImpl extends ClaimsService{
       }
     }
 
-
   override def updateClaim(transactionId: String, status: String): JsBoolean =
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
@@ -77,7 +66,6 @@ object ClaimServiceImpl extends ClaimsService{
         case Status.BAD_REQUEST => JsBoolean(false)
       }
     } exec()
-
 
   override def fullClaim(transactionId: String): Option[JsValue] =
     s"$url/claim/$transactionId/" get { response =>
@@ -102,7 +90,5 @@ object ClaimServiceImpl extends ClaimsService{
         case Status.NOT_FOUND => None
       }
     }
-
-
   }
 }

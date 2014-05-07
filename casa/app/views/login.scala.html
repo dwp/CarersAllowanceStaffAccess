@@ -1,0 +1,55 @@
+@(form: Form[(String,String)])(implicit flash: Flash)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Carer's Allowance Staff Access (CASA)</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("img/favicon.png")">
+
+    </head>
+    <body>
+
+        <header>
+            <a href="@routes.Application.index" id="logo"><span>CASA Login</span></a>
+        </header>
+
+        @helper.form(controllers.routes.Auth.authenticate) {
+
+            <h1>Sign in</h1>
+
+            @form.globalError.map { error =>
+                <p class="error">
+                    @error.message
+                </p>
+            }
+
+            @flash.get("success").map { message =>
+                <p class="success">
+                    @message
+                </p>
+            }
+
+            <p>
+                <input name="userId" placeholder="user id" id="userId" value="@form("userId").value">
+            </p>
+            <p>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit" id="loginbutton">Login</button>
+            </p>
+
+        }
+
+        <p class="note">
+            Please, use your <em>Staff Id</em> and your password to log in to CASA.
+        </p>
+
+    </body>
+</html>
+    
+
+

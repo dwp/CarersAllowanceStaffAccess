@@ -1,17 +1,11 @@
+import controllers.Auth
 import org.specs2.mutable._
-import org.specs2.runner._
-import org.junit.runner._
 
 import play.api.test._
 import play.api.test.Helpers._
 
-/**
- * Add your spec here.
- * You can mock out a whole application including requests, plugins etc.
- * For more information, consult the wiki.
- */
-@RunWith(classOf[JUnitRunner])
 class ApplicationSpec extends Specification {
+  val userInput = Seq("userId"-> "test", "password"-> "john")
 
   "Application" should {
 
@@ -19,12 +13,24 @@ class ApplicationSpec extends Specification {
       route(FakeRequest(GET, "/boum")) must beNone
     }
 
-    "render the index page" in new WithApplication{
+    "redirect to the login page when user not authenticated" in new WithApplication {
       val home = route(FakeRequest(GET, "/")).get
 
-      status(home) must equalTo(OK)
-      contentType(home) must beSome.which(_ == "text/html")
-      contentAsString(home) must contain ("Claims list")
+      status(home) must equalTo(SEE_OTHER)
+
+      redirectLocation(home) must beSome("/login")
+    }
+
+    "render the index page when user is authenticated" in new WithApplication {
+      val login = route(FakeRequest(GET, "/login")).get
+
+      contentAsString(login) must contain ("CASA")
+
+      val authRequest = FakeRequest().withSession().withFormUrlEncodedBody(userInput: _*)
+
+      val result = Auth.authenticate(authRequest)
+
+      redirectLocation(result) must beSome("/")
     }
   }
 }

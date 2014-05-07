@@ -1,6 +1,6 @@
 package services
 
-import org.joda.time.{LocalDate, DateTime}
+import org.joda.time.LocalDate
 import play.api.libs.json._
 
 trait ClaimsService {

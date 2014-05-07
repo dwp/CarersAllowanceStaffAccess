@@ -10,12 +10,13 @@ import play.api.templates.Html
 import play.api.libs.json.JsArray
 import utils.JsValueWrapper.improveJsValue
 
-object Application extends Controller with ClaimServiceComponent {
+object Application extends Controller with ClaimServiceComponent with Secured {
 
-  def index = Action{
-    val today = new LocalDate
-    Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today))))
+  def index = IsAuthenticated { username => implicit request =>
+      val today = new LocalDate
+      Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today))))
   }
+
 
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
     data match {
@@ -30,11 +31,12 @@ object Application extends Controller with ClaimServiceComponent {
 
   def claimsForDate(date: String) = claimsForDateFiltered(date,"")
 
-  def claimsForDateFiltered(date: String, status: String) = Action{
+  def claimsForDateFiltered(date: String, status: String) = IsAuthenticated { username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
     Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims)))
   }
+
 
   case class ClaimsToComplete(completedCheckboxes:List[String])
 
@@ -44,7 +46,7 @@ object Application extends Controller with ClaimServiceComponent {
     )(ClaimsToComplete.apply)(ClaimsToComplete.unapply)
   )
 
-  def complete(currentDate:String) = Action{ implicit request =>
+  def complete(currentDate:String) = IsAuthenticated { username => implicit request =>
 
     val redirect = Redirect(routes.Application.claimsForDate(currentDate))
 
@@ -60,7 +62,7 @@ object Application extends Controller with ClaimServiceComponent {
 
   }
 
-  def renderClaim(transactionId:String) = Action {
+  def renderClaim(transactionId:String) = IsAuthenticated { username => implicit request =>
     claimService.renderClaim(transactionId) match {
       case Some(renderedClaim) => Ok(Html(renderedClaim))
       case _ => BadRequest
