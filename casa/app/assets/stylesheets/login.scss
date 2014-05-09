@@ -1,0 +1,104 @@
+.login {
+	background: #fff;
+
+
+	fieldset {
+		margin: 4em auto;
+		position: relative;
+		width: 660px;
+		@media screen and (max-width: 720px) {
+			margin: 2em auto;
+			width: auto;
+		}
+		
+			legend {
+				font-size: 24px;
+				background: #ddd;
+				display: table;
+				width: 90%;
+				padding: 4% 5%;
+				border-radius: 10px 10px 0 0;
+				line-height: 1em;
+			}
+			
+		
+			div {
+				background: #f9f9f9;
+				border-radius: 0 0 10px 10px;
+				padding: 5% 5% 7% 4%;
+				box-shadow: 0 0 200px 1px rgba(0,0,0,.2);
+				border: 1px solid #ddd;
+				
+				p {
+					text-align: right;
+					color: red;
+					font-family: 'colaborate-light';
+				}
+				
+				label {
+					display: inline-block;
+					width: 30%;
+					line-height: 1em;
+					text-align: left;
+					font-size: 18px;
+					font-weight: 100;
+					font-family: 'colaborate-light';
+					
+					@media screen and (max-width: 720px) {
+						display: block;
+						width: 100%;
+						padding-bottom: 10px;
+					}
+					
+				}
+				
+				input {
+					width: 64%;
+					padding: 15px;
+					border: 1px solid #ddd;
+					line-height: 1em;
+					border-radius: 5px;
+					font-size: 18px;
+					font-weight: 100;
+					color: #666;
+					font-family: 'colaborate-thin';
+					display: inline-block;
+					&:hover, &:input:selected {
+						box-shadow:inset 0 0 0 2px rgba(0,0,0,1);
+					}
+					
+					@media screen and (max-width: 720px) {
+						display: block;
+						width: 90%;
+						padding: 5%;
+					}
+					
+				}
+				
+				button {
+					padding: .8em 1.4em;
+					border: 0;
+					background: #000;
+					color: #fff;
+					border-radius: 5px;
+					font-family: 'colaborate-light';
+					&:hover {
+						background: #666;
+					}
+				}
+				
+				li {
+					margin-top: 1em;
+					text-align: right;
+				}
+				
+				.submit {
+					margin-top: 2em;
+				}
+				
+			}
+		
+		
+	}
+
+}

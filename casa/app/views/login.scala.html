@@ -10,43 +10,54 @@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("img/favicon.png")">
 
     </head>
-    <body>
+    <body class="login">
 
-        <header>
-            <a href="@routes.Application.index" id="logo"><span>CASA Login</span></a>
-        </header>
+		
+		<main>
 
         @helper.form(controllers.routes.Auth.authenticate) {
+		
+			<fieldset>
+			
+	            <legend>Carer's Allowance Staff Access (CASA)</legend>
+				
+				<div>
+				
+				
+				@form.globalError.map { error =>
+	                <p class="error">
+	                    @error.message
+	                </p>
+	            }
+	
+	            @flash.get("success").map { message =>
+	                <p class="success">
+	                    @message
+	                </p>
+	            }
 
-            <h1>Sign in</h1>
+	            <ul>
+	                <li>
+	                	<label for="userId">Staff ID</label>
+	                	<input name="userId" id="userId" value="@form("userId").value">
+	                </li>
+					<li>
+						<label for="password">Password</label>
+	                	<input type="password" name="password" id="password">
+					</li>
+					<li class="submit">
+	                	<button type="submit" id="loginbutton">Login</button>		
+					</li>
+	            </ul>
+	            
+				</div>
+	            
+	         
+			</fieldset>
+	        }
 
-            @form.globalError.map { error =>
-                <p class="error">
-                    @error.message
-                </p>
-            }
+		</main>
 
-            @flash.get("success").map { message =>
-                <p class="success">
-                    @message
-                </p>
-            }
-
-            <p>
-                <input name="userId" placeholder="user id" id="userId" value="@form("userId").value">
-            </p>
-            <p>
-                <input type="password" name="password" id="password" placeholder="Password">
-            </p>
-            <p>
-                <button type="submit" id="loginbutton">Login</button>
-            </p>
-
-        }
-
-        <p class="note">
-            Please, use your <em>Staff Id</em> and your password to log in to CASA.
-        </p>
 
     </body>
 </html>
