@@ -51,6 +51,15 @@ header {
 				}
 			}
 		}
+		
+	.logout {
+		a {
+			color: #fff;
+			&:hover {
+				color: #ccc;
+			}
+		}
+	}	
 }
 
 
