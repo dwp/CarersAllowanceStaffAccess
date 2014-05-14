@@ -1,8 +1,7 @@
 package services
 
-import play.api.libs.json.JsBoolean
-
+import play.api.libs.json.JsValue
 
 trait AccessControlService {
-  def authenticate(userId: String, password: String): JsBoolean
+  def findByUserId(userId: String): JsValue
 }

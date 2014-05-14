@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc._
-import services.AccessControlServiceComponent
+import services.{AccessControlServiceComponent, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
 import views.html
@@ -13,9 +13,21 @@ object Auth extends Controller with AccessControlServiceComponent {
       "userId" -> text,
       "password" -> text
     ) verifying ("Invalid user id or password", result => result match {
-      case (userId, password) => accessControlService.authenticate(userId, password).value
+      case (userId, password) => checkUser(userId, password)
     })
   )
+
+  def checkUser(userId: String, inputPassword: String): Boolean = {
+    val userJson =  accessControlService.findByUserId(userId)
+
+    val password = (userJson \ "password").as[String]
+
+    if(password.length() > 4) {
+        if (PasswordService.checkPassword(inputPassword, password.toString())) true
+        else false
+      }
+    else false
+  }
 
   /**
    * Login page.

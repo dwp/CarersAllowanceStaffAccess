@@ -22,12 +22,11 @@ object AccessControlServiceImpl extends AccessControlService {
     case _ => Logger.info("Getting default url value"); "http://localhost:9003"
   }
 
-  override def authenticate(userId: String, password: String): JsBoolean =
-//    s"$url/user/$userId/$password" post { response =>
-//      response.status match {
-//        case Status.OK => JsBoolean(true)
-//        case Status.BAD_REQUEST => JsBoolean(false)
-//      }
-//    } exec()
-    if(userId=="test") JsBoolean(true) else JsBoolean(false)
+  override def findByUserId(userId: String): JsValue =
+    s"$url/user/$userId" post { response =>
+      response.status match {
+        case Status.OK => response.json
+        case Status.BAD_REQUEST => new JsBoolean(false)
+      }
+    } exec()
 }

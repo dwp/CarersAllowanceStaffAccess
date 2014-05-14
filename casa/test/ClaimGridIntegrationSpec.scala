@@ -15,23 +15,17 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
   "Claim Grid" should {
     // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
 
-    "Show claims filtered by today's date" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+    "Show claims filtered by today's date" in new WithBrowser() {
+      login(browser)
 
-      browser.title() mustEqual("Claims list")
+      browser.title() mustEqual "Claims list"
       val today = new LocalDate
 
       checkCasaDates(today, browser)
     }
 
     "Only contain received or viewed statuses" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
@@ -39,10 +33,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Filtering by completed only shows completed claims" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
       browser.goTo(s"/filter/$today/completed")
@@ -53,10 +44,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Filtering by work queue only shows received or viewed claims" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
       browser.goTo(s"/filter/$today")
@@ -68,10 +56,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
     // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
     "Show claims filtered by specified date" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val yesterday = new LocalDate().minusDays(1)
       val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
@@ -82,10 +67,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val transactionId = "20140102071"
       browser.$(s"#$transactionId").click
@@ -98,10 +80,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     "Open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowser {
       import scala.collection.JavaConverters._
 
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val transactionId = "1111070"
       browser.$(s"#row_$transactionId .transactionId a").click
@@ -120,10 +99,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       import scala.collection.JavaConverters._
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       browser.goTo(s"/filter/$today/completed")
 
@@ -141,10 +117,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "Should show claims first then Circs" in new WithBrowser {
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       val claimTypes = browser.$("#claimsTable .view")
       assertClaimTypesOrdering (claimTypes)
@@ -154,10 +127,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       val yesterday = new LocalDate().minusDays(1)
       val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
 
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       browser.goTo("/filter/" + dateString)
 
@@ -168,16 +138,20 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     "Should show claims first then Circs for completed" in new WithBrowser {
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
-      browser.goTo("/login")
-      browser.fill("#userId") `with` userId
-      browser.fill("#password") `with` password
-      browser.submit("button[type='submit']")
+      login(browser)
 
       browser.goTo(s"/filter/$today/completed")
 
       val claimTypes = browser.$("#claimsTable .view")
       assertClaimTypesOrdering (claimTypes)
     }
+  }
+
+  def login(browser: TestBrowser) = {
+    browser.goTo("/login")
+    browser.fill("#userId") `with` userId
+    browser.fill("#password") `with` password
+    browser.submit("button[type='submit']")
   }
 
   def assertClaimTypesOrdering (claimTypes:FluentList[FluentWebElement]) = {
@@ -204,7 +178,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     val dateValue = DateTimeFormat.forPattern("dd/MM/yyyy").print(date)
 
     for (receivedDate <- receivedDates.asScala.toSeq) {
-      receivedDate.getText() mustEqual(dateValue)
+      receivedDate.getText mustEqual dateValue
     }
   }
   
@@ -212,7 +186,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     actualStatuses.size must be_>(0)
 
     for (status <- actualStatuses) {
-      status.getText() must beOneOf(expectedStatuses:_*)
+      status.getText must beOneOf(expectedStatuses:_*)
     }
   }
 }

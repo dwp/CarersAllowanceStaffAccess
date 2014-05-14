@@ -62,8 +62,8 @@ object ClaimServiceImpl extends ClaimsService {
   override def updateClaim(transactionId: String, status: String): JsBoolean =
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
-        case Status.OK => JsBoolean(true)
-        case Status.BAD_REQUEST => JsBoolean(false)
+        case Status.OK => new JsBoolean(true)
+        case Status.BAD_REQUEST => new JsBoolean(false)
       }
     } exec()
 
