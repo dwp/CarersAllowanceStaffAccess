@@ -12,9 +12,9 @@ object Auth extends Controller with AccessControlServiceComponent {
     tuple(
       "userId" -> text,
       "password" -> text
-    ) verifying ("Invalid user id or password", result => result match {
-      case (userId, password) => checkUser(userId, password)
-    })
+    ) verifying ("Invalid user id or password",
+      result => result match {case (userId, password) => checkUser(userId, password)}
+    )
   )
 
   def checkUser(userId: String, inputPassword: String): Boolean = {

@@ -28,8 +28,6 @@ class AuthSpec extends Specification {
       status(result) mustEqual SEE_OTHER
 
       redirectLocation(result) must beSome("/")
-
-      println(result.value)
     }
 
     "not authenticate invalid user" in new WithApplication() {
