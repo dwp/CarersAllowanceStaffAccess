@@ -1,9 +1,9 @@
 .red-theme {
 
-	background: #fff;
+	background: #000;
 
 	main {
-		background: #ddd;
+		background: #fff;
 	}
 
 
@@ -21,7 +21,7 @@
 	
 	
 	.dates {
-		background: #f9f9f9;
+		background: #ddd;
 		li {
 			a {
 				background: #9e0030;
@@ -57,14 +57,14 @@
 	
 	
 .filter {
-	background: #f9f9f9;
+	background: #ddd;
 	position: relative;
 	
 	ol {
 		li {
 			a {
-				color: #666;
-				background: #fff;
+				color: #000;
+				background: #eee;
 				
 				div {
 					p {
@@ -73,7 +73,7 @@
 				}
 				
 				&.active {
-					background: #ddd;
+					background: #fff;
 					color: #000;
 				}
 			}
@@ -118,14 +118,7 @@
 		}
 		
 	}
-	
-	
-	
-	footer {
-		color: #000;
-	}
 
-	
 	
 	
 	

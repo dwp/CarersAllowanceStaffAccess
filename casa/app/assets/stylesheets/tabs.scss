@@ -20,7 +20,7 @@
 			a {
 				display: block;
 				text-align: center;
-				background: #ccc;
+				background: #fff;
 				text-decoration: none;
 				font-size: 16px;
 				color: #000;
@@ -39,8 +39,9 @@
 			}
 			&.active {
 				a {
-					background: #fff;
-					border-color: #fff;
+					background: #000;
+					border-color: #ccc;
+					color: #fff;
 				}
 			}
 		}

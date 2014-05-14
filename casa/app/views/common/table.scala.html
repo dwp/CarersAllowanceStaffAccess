@@ -30,7 +30,7 @@
                     <tr id="row_@claim.p.transactionId">
                         <td>
                         @if(claim.p.status.asString == "viewed") {
-                            <label for="@claim.p.transactionId">Claim 1</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                            <label for="@claim.p.transactionId">Claim</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
                         }
                         </td>
                         <td class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>

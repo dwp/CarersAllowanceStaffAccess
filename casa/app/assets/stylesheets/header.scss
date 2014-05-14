@@ -3,6 +3,8 @@ header {
 	padding: 1em 3em;
 	position: relative;
 	box-shadow: 0 0 15px rgba(0,0,0,.1);
+	overflow: hidden;
+	
 	@media screen and (max-width: 600px) {
 		padding: 1em 1.5em;
 	}
@@ -10,26 +12,27 @@ header {
 	h1 {
 		color: #fff;
 		font-family: 'colaborate-thin';
-		font-size: 36px;
-		padding-right: 3em;
-		@media screen and (max-width: 600px) {
-			padding: 0;
+		font-size: 32px;
+		float: left;
+		width: auto;
+		@media screen and (max-width: 680px) {
+			float: none;
+			width: auto;
 		}
 	}
-	
-	.theme-switch {
-			position: absolute;
-			top: 50%;
-			right: 3em;
-			margin-top: -10px;
-			@media screen and (max-width: 600px) {
-				right: 1.5em;
-				top: auto;
-				margin: 0;
-				bottom: 1.5em;
-			}
+
+			
+}
+
+
+.theme-switch {
+			
+			display: inline-block;
+			margin-right: 10px;
+			
 			li {
 				display: inline-block;
+				margin-right: 4px;
 			}
 			a {
 				color: #fff;
@@ -51,16 +54,49 @@ header {
 				}
 			}
 		}
-		
-	.logout {
-		a {
-			color: #fff;
-			&:hover {
-				color: #ccc;
-			}
-		}
-	}	
-}
 
+
+
+aside {
+
+	float: right;
+	width: auto;
+	margin-top: 5px;
+	
+	@media screen and (max-width: 680px) {
+			float: none;
+			width: auto;
+			margin-top: 20px;
+		}
+	
+	p {
+		color: #666;
+		font-family: 'colaborate-thin';
+		font-size: 18px;
+		padding-top: 3px;
+		span {
+			color: #000;
+			font-family: 'colaborate-thin';
+		}
+	}
+	
+	a.log {
+		color: #fff;
+		display: inline-block;
+		background: transparent;
+		padding: .4em 1em;
+		text-decoration: none;
+		background: #000;
+		border-radius: 5px;
+		margin-left: 10px;
+		font-size: 16px;
+		top: -2px;
+		position: relative;
+		&:hover {
+			background: #666;
+		}
+	}
+	
+}
 
 
