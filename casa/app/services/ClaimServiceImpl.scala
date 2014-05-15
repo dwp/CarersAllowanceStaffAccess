@@ -85,10 +85,16 @@ object ClaimServiceImpl extends ClaimsService {
                 .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")
                 .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
+                .replace("""<style type="text/css">""", styleSheetForHtmlOutput + """ <style type="text/css">""")
 
           )
         case Status.NOT_FOUND => None
       }
     }
+  }
+
+  def styleSheetForHtmlOutput = {
+    """<link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimHtmlOutput.css"/>
+      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script>$(document).ready(function() {$('span').css('font-family','inherit').css('font-size','inherit').css('color', 'inherit');});</script>"""
   }
 }
