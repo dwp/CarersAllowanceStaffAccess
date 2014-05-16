@@ -2,7 +2,7 @@ header {
 	background: #000;
 	padding: 1em 3em;
 	position: relative;
-	box-shadow: 0 0 15px rgba(0,0,0,.1);
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	overflow: hidden;
 	
 	@media screen and (max-width: 600px) {
@@ -22,7 +22,7 @@ header {
 	}
 
 			
-}
+
 
 
 .theme-switch {
@@ -99,4 +99,5 @@ aside {
 	
 }
 
+}
 
