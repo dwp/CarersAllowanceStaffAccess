@@ -1,3 +1,12 @@
+tr{
+    vertical-align: middle;
+}
+
+td:not(:empty){
+    padding-bottom: 3px;
+    padding-top: 5px;
+}
+
 td[id*='Heading']
 {
     font-size: 20px!important;
