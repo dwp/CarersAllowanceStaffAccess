@@ -13,7 +13,7 @@ class PasswordSpec extends Specification {
   "Auth" should {
 
     "render the password management page" in new WithApplication {
-      val digestPassword = route(FakeRequest(GET, "/digestPassword")).get
+      val digestPassword = route(FakeRequest(GET, "/password")).get
 
       status(digestPassword) must equalTo(OK)
       contentType(digestPassword) must beSome.which(_ == "text/html")
@@ -21,7 +21,7 @@ class PasswordSpec extends Specification {
     }
 
     "have error on invalid password" in new WithApplication() {
-      val digestPassword = route(FakeRequest(GET, "/digestPassword")).get
+      val digestPassword = route(FakeRequest(GET, "/password")).get
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(invalidPassword: _*)
 
@@ -31,7 +31,7 @@ class PasswordSpec extends Specification {
     }
 
     "have 2 errors when both passwords are invalid" in new WithApplication() {
-      val digestPassword = route(FakeRequest(GET, "/digestPassword")).get
+      val digestPassword = route(FakeRequest(GET, "/password")).get
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(invalidPasswords: _*)
 
@@ -41,7 +41,7 @@ class PasswordSpec extends Specification {
     }
 
     "have error on non matching passwords" in new WithApplication() {
-      val digestPassword = route(FakeRequest(GET, "/digestPassword")).get
+      val digestPassword = route(FakeRequest(GET, "/password")).get
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(nonMatchingPasswords: _*)
 
@@ -51,7 +51,7 @@ class PasswordSpec extends Specification {
     }
 
     "generate encrypted password on valid input"in new WithApplication() {
-      val digestPassword = route(FakeRequest(GET, "/digestPassword")).get
+      val digestPassword = route(FakeRequest(GET, "/password")).get
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(validPasswords: _*)
 
@@ -61,7 +61,7 @@ class PasswordSpec extends Specification {
     }
 
     "display the digested password and user id on successful encryption"in new WithApplication() {
-      val digestPassword = route(FakeRequest(GET, "/digestPassword")).get
+      val digestPassword = route(FakeRequest(GET, "/password")).get
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(validPasswords: _*)
 

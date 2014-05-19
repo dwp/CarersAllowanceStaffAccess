@@ -1,11 +1,13 @@
 .login {
 	background: #fff;
+	
+
 
 
 	fieldset {
 		margin: 4em auto;
 		position: relative;
-		width: 660px;
+		width: 700px;
 		@media screen and (max-width: 720px) {
 			margin: 2em auto;
 			width: auto;
@@ -19,63 +21,95 @@
 				padding: 4% 5%;
 				border-radius: 10px 10px 0 0;
 				line-height: 1em;
+				color: #000;
+				
+				@media screen and (max-width: 720px) {
+					font-size: 20px;
+				}
 			}
+			
+			.error {
+
+				margin-bottom: 3em;
+				border-radius: 5px;
+				
+				h2 {
+					font-family: 'colaborate-light';
+					color: #d80000;
+					font-size: 22px;
+				}			
+				
+				ol {
+					padding-left: 1em;
+				}
+				
+				li {
+					color: #d80000;
+					font-family: 'colaborate-light';
+					overflow: visible;
+					font-size: 18px;
+					list-style: disc;
+					&:first-child {
+						border: 0;
+					}
+				}
+				
+			}
+			
+			.success {
+				color: #4477b0;
+				font-family: 'colaborate-light';
+				font-size: 18px;
+				text-align: right;
+			}
+			
 			
 		
 			div {
 				background: #f9f9f9;
 				border-radius: 0 0 10px 10px;
-				padding: 5% 5% 7% 4%;
+				padding: 5% 5% 7% 5%;
 				box-shadow: 0 0 200px 1px rgba(0,0,0,.2);
 				border: 1px solid #ddd;
 				
-				p {
-					text-align: right;
-					color: red;
-					font-family: 'colaborate-light';
-				}
 				
 				label {
-					float: left;
-					width: 30%;
 					line-height: 1em;
 					text-align: left;
 					font-size: 18px;
 					font-weight: 100;
 					font-family: 'colaborate-light';
-					padding-top: 17px;
+					padding-bottom: 10px;
+					display: block;		
 					
-					@media screen and (max-width: 720px) {
-						display: block;
-						width: 100%;
-						padding-top: 0;
-						padding-bottom: 10px;
-						float: none;
+					@media screen and (min-width: 720px) {
+						float: left;
+						width: 36%;
+						padding: 16px 0;
 					}
-					
+								
 				}
 				
 				input {
-					width: 64%;
+					display: block;
 					padding: 15px;
 					border: 1px solid #ddd;
 					line-height: 1em;
 					border-radius: 5px;
 					font-size: 18px;
 					font-weight: 100;
-					color: #666;
+					color: #000;
 					font-family: 'colaborate-thin';
-					float: right;
-					&:hover, &:input:selected {
-						box-shadow:inset 0 0 0 2px rgba(0,0,0,1);
+					width: 90%;
+					&:hover {
+						border-color: #666;
 					}
 					
-					@media screen and (max-width: 720px) {
-						display: block;
-						width: 90%;
-						padding: 5%;
-						float: none;
+					@media screen and (min-width: 720px) {
+						width: 56%;
+						float: right;
 					}
+
 					
 				}
 				
@@ -86,6 +120,7 @@
 					color: #fff;
 					border-radius: 5px;
 					font-family: 'colaborate-light';
+					font-size: 18px;
 					&:hover {
 						background: #666;
 					}
@@ -93,12 +128,12 @@
 				
 				li {
 					margin-top: 1em;
-					text-align: right;
 					overflow: hidden;
 				}
 				
 				.submit {
 					margin-top: 2em;
+					text-align: right;
 				}
 				
 			}

@@ -11,6 +11,11 @@
 
     </head>
     <body class="login">
+    
+		
+		<header>
+		    <h1>Carer's Allowance Staff Access</h1>
+		</header>
 
 		
 		<main>
@@ -19,22 +24,24 @@
 		
 			<fieldset>
 			
-	            <legend>Carer's Allowance Staff Access (CASA)</legend>
+	            <legend>Login</legend>
 				
 				<div>
-				
-				
-				@form.globalError.map { error =>
-	                <p class="error">
-	                    @error.message
-	                </p>
-	            }
-	
-	            @flash.get("success").map { message =>
-	                <p class="success">
-	                    @message
-	                </p>
-	            }
+
+						@form.globalError.map { error =>
+							<aside class="error">
+								<h2>Please fix the following errors</h2>
+						   	   
+								<ol>
+				                	<li>@error.message</li>
+								</ol>
+							</aside>
+			            }	
+			
+			            @flash.get("success").map { message =>
+			                <p class="success">@message</p>
+			            }
+
 
 	            <ul>
 	                <li>
