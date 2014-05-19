@@ -96,6 +96,9 @@ object ClaimServiceImpl extends ClaimsService {
   def styleSheetForHtmlOutput = {
     """<link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimHtmlOutput.css"/>
        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimPrintHtmlOutput.css" media="print">
-      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script>$(document).ready(function() {$('span').css('font-family','inherit').css('font-size','inherit').css('color', 'inherit').css('line-height', 'inherit');});</script>"""
+      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <script>$(document).ready(function() {
+        $('span').css('font-family','inherit').css('font-size','inherit').css('color', 'inherit').css('line-height', 'inherit');});
+      </script>"""
   }
 }

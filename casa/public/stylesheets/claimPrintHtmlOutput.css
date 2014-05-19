@@ -1,5 +1,14 @@
+header nav, footer {
+    display: none;
+}
+td[id*='Heading']
+{
+    font-size: 30px!important;
+}
+
 span {
     font-family: arial!important;
     color: #000;
     font-size: 24px!important;
+    line-height: 1.8em;
 }
