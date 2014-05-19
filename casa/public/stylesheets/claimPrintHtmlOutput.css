@@ -1,5 +1,20 @@
+header nav, footer {
+    display: none;
+}
+
+td[id*='Heading']
+{
+    font-size: 30px!important;
+}
+
+td:not(:empty){
+    padding-bottom: 3px;
+    padding-top: 5px;
+}
+
 span {
     font-family: arial!important;
     color: #000;
     font-size: 24px!important;
+    line-height: 1.8em;
 }
