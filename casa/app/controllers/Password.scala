@@ -9,6 +9,7 @@ import views.html
 import models.PasswordData
 import play.api.data.validation._
 import play.api.data.validation.ValidationError
+import java.net.URLEncoder
 
 
 object Password extends Controller {
@@ -49,7 +50,7 @@ object Password extends Controller {
       passwordData => {
         /* binding success, we get the actual value. */
         val pass = digestPasswordForUser(passwordData.userId, passwordData.password1)
-        Ok(html.displayDigestedPassword(pass, passwordData.userId))
+        Ok(html.displayDigestedPassword(URLEncoder.encode(pass, "UTF-8"), passwordData.userId))
       }
     )
   }
