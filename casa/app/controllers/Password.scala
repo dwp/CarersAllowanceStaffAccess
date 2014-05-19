@@ -11,7 +11,6 @@ import play.api.data.validation._
 import play.api.data.validation.ValidationError
 import java.net.URLEncoder
 
-
 object Password extends Controller {
 
   val passwordForm = Form(
