@@ -5,6 +5,7 @@ import services.{AccessControlServiceComponent, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
 import views.html
+import play.api.libs.json.JsValue
 
 object Auth extends Controller with AccessControlServiceComponent {
 
@@ -14,6 +15,8 @@ object Auth extends Controller with AccessControlServiceComponent {
       "password" -> text
     ) verifying ("Invalid user id or password",
       result => result match {case (userId, password) => checkUser(userId, password)}
+    ) verifying ("Your password has expired. Please, change it and login again.",
+      res => res match{case(userId,password) => checkPassword(userId)}
     )
   )
 
@@ -23,10 +26,25 @@ object Auth extends Controller with AccessControlServiceComponent {
     val password = (userJson \ "password").as[String]
 
     if(password.length() > 4) {
-        if (PasswordService.checkPassword(inputPassword, password.toString())) true
-        else false
-      }
+      if (PasswordService.checkPassword(inputPassword, password.toString)) true
+      else false
+    }
     else false
+  }
+
+  def checkPassword(userId: String): Boolean = {
+    val userJson =  accessControlService.getDaysToExpiration(userId)
+    if(userJson.toString().equalsIgnoreCase("false")) false
+    else {
+      val days = userJson.as[Int]
+      if(days > 30) false
+      else true
+    }
+  }
+
+  def daysLeftToExpiry(userId: String): Int = {
+    val days = accessControlService.getDaysToExpiration(userId).as[Int]
+    30-days
   }
 
   /**
@@ -42,7 +60,10 @@ object Auth extends Controller with AccessControlServiceComponent {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("userId" -> user._1)
+      user => {
+        val message = "Your password will expire in " + daysLeftToExpiry(user._1) + " days."
+        Redirect(routes.Application.index).withSession("userId" -> user._1).flashing("message"->message)
+      }
     )
   }
 
