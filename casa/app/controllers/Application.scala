@@ -22,7 +22,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
     data match {
       case Some(data) =>
         Some(JsArray(
-          data.value.seq.sortWith(_.p.claimDateTime.asLong > _.p.claimDateTime.asLong)
+          data.value.seq.sortWith(_.p.claimDateTime.asLong < _.p.claimDateTime.asLong)
                         .sortWith(_.p.claimType.asType < _.p.claimType.asType)
         ))
       case _ => data
