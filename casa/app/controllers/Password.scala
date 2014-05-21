@@ -34,7 +34,7 @@ object Password extends Controller {
   }
 
   /**
-   * Login page.
+   * Display the create password page.
    */
   def display = Action { implicit request =>
     Ok(html.password(passwordForm))
@@ -54,12 +54,8 @@ object Password extends Controller {
     )
   }
 
-  def displayEncryptedPassword = Action { implicit request =>
-    Ok(html.password(passwordForm))
-  }
-
   /**
-   * Encrypt a user password
+   * Encrypt a user's password
    *
    * @param userId - the staff id of the user
    * @param password - plain user password

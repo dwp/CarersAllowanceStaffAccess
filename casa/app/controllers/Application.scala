@@ -17,7 +17,6 @@ object Application extends Controller with ClaimServiceComponent with Secured {
       Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today))))
   }
 
-
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
     data match {
       case Some(data) =>
@@ -36,7 +35,6 @@ object Application extends Controller with ClaimServiceComponent with Secured {
     val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
     Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims)))
   }
-
 
   case class ClaimsToComplete(completedCheckboxes:List[String])
 

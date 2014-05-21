@@ -37,14 +37,9 @@ object Auth extends Controller with AccessControlServiceComponent {
     if(userJson.toString().equalsIgnoreCase("false")) false
     else {
       val days = userJson.as[Int]
-      if(days > 30) false
+      if(days <= 0) false
       else true
     }
-  }
-
-  def daysLeftToExpiry(userId: String): Int = {
-    val days = accessControlService.getDaysToExpiration(userId).as[Int]
-    30-days
   }
 
   /**
@@ -60,10 +55,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => {
-        val message = "Your password will expire in " + daysLeftToExpiry(user._1) + " days."
-        Redirect(routes.Application.index).withSession("userId" -> user._1).flashing("message"->message)
-      }
+      user => Redirect(routes.Application.index).withSession("userId" -> user._1)
     )
   }
 
@@ -75,7 +67,6 @@ object Auth extends Controller with AccessControlServiceComponent {
       "success" -> "You've been logged out"
     )
   }
-
 }
 
 /**

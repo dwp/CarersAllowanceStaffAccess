@@ -1,6 +1,5 @@
 import org.specs2.mutable._
 import controllers.Password
-
 import play.api.test._
 import play.api.test.Helpers._
 
@@ -10,7 +9,7 @@ class PasswordSpec extends Specification {
   val invalidPasswords = Seq("userId"-> "test123", "password1"-> "Abc123Abc", "password2"->"abc")
   val nonMatchingPasswords = Seq("userId"-> "test123", "password1"-> "Abc123Abc", "password2"->"Abc345Abc")
 
-  "Auth" should {
+  "Password" should {
 
     "render the password management page" in new WithApplication {
       val digestPassword = route(FakeRequest(GET, "/password")).get

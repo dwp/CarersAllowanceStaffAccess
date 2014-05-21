@@ -6,7 +6,6 @@ import play.api.test.{TestBrowser, WithBrowser}
 import scala._
 import scala.collection.JavaConverters._
 
-
 class ClaimGridIntegrationSpec extends Specification with Tags {
 
   val userId = "test"

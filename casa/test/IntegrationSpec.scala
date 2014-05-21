@@ -1,5 +1,4 @@
 import org.specs2.mutable._
-
 import play.api.test._
 
 /**
