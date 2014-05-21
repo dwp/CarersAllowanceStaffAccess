@@ -10,7 +10,7 @@ object ApplicationBuild extends Build {
   val dependencies = Seq(
     "me.moocar"           % "logback-gelf"        % "0.9.6p2",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "com.dwp.carers" %% "wscommons" % "1.0"
+    "com.dwp.carers"      %% "wscommons"          % "1.0"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
