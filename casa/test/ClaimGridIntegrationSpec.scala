@@ -122,18 +122,6 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       assertClaimTypesOrdering (claimTypes)
     }
 
-    "Should show claims first then Circs filtered by date" in new WithBrowserStub {
-      val yesterday = new LocalDate().minusDays(1)
-      val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
-
-      login(browser)
-
-      browser.goTo("/filter/" + dateString)
-
-      val claimTypes = browser.$("#claimsTable .view")
-      assertClaimTypesOrdering (claimTypes)
-    }
-
     "Should show claims first then Circs for completed" in new WithBrowserStub {
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
