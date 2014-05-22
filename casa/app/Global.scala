@@ -1,6 +1,7 @@
 import play.api.GlobalSettings
 import play.api.mvc._
 import scala.Some
+import play.Play
 
 object Global extends GlobalSettings {
 
@@ -13,6 +14,8 @@ object Global extends GlobalSettings {
    * @return
    */
   override def onRouteRequest(request: RequestHeader): Option[Handler] = {
+    val timeout = Play.application().configuration().getString("application.session.maxAge").toLong
+
     // could also filter out bad request; also find a smarter way to test contains
     if(request.path.contains("assets") || request.path.contains("login")||request.path.contains("logout") ||request.path.contains("password") )
       super.onRouteRequest(request)
@@ -22,7 +25,7 @@ object Global extends GlobalSettings {
           // difference in ms
           val deltaMs = (System.nanoTime() - time.toLong)/1000000
           // if less than 30min ok, else session timeout
-          if(deltaMs < 30*60*1000)  {
+          if(deltaMs < timeout*60*1000)  {
             super.onRouteRequest(request)
           }
           else Some(controllers.Auth.login)
