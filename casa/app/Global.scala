@@ -1,16 +1,21 @@
 import play.api.GlobalSettings
 import play.api.mvc._
+import scala.Some
 
 object Global extends GlobalSettings {
 
+  implicit def anyWithIn[A](a: A) = new {
+    def in(as: A*) = as.exists(_ == a)
+  }
   /**
    * Intercept requests to check for session timeout
-   * @param request
+   * @param request the incoming request
    * @return
    */
   override def onRouteRequest(request: RequestHeader): Option[Handler] = {
-    // could also filter out bad request
-    if(request.path.contains("assets")|| request.path.contains("login")||request.path.contains("logout") ) super.onRouteRequest(request)
+    // could also filter out bad request; also find a smarter way to test contains
+    if(request.path.contains("assets") || request.path.contains("login")||request.path.contains("logout") ||request.path.contains("password") )
+      super.onRouteRequest(request)
     else {
       request.session.get("currentTime") match {
         case Some(time) =>
@@ -26,3 +31,4 @@ object Global extends GlobalSettings {
     }
   }
 }
+
