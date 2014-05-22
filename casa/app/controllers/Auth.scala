@@ -5,7 +5,6 @@ import services.{AccessControlServiceComponent, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
 import views.html
-import play.api.libs.json.JsValue
 
 object Auth extends Controller with AccessControlServiceComponent {
 
@@ -55,7 +54,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("userId" -> user._1)
+      user => Redirect(routes.Application.index).withSession("userId" -> user._1, "currentTime"->System.nanoTime().toString)
     )
   }
 
