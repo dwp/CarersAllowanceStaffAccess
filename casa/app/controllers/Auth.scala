@@ -14,6 +14,8 @@ object Auth extends Controller with AccessControlServiceComponent {
       "password" -> text
     ) verifying ("Invalid user id or password",
       result => result match {case (userId, password) => checkUser(userId, password)}
+    ) verifying ("Your password has expired. Please, change it and login again.",
+      res => res match{case(userId,password) => checkPassword(userId)}
     )
   )
 
@@ -23,10 +25,20 @@ object Auth extends Controller with AccessControlServiceComponent {
     val password = (userJson \ "password").as[String]
 
     if(password.length() > 4) {
-        if (PasswordService.checkPassword(inputPassword, password.toString())) true
-        else false
-      }
+      if (PasswordService.checkPassword(inputPassword, password.toString)) true
+      else false
+    }
     else false
+  }
+
+  def checkPassword(userId: String): Boolean = {
+    val userJson =  accessControlService.getDaysToExpiration(userId)
+    if(userJson.toString().equalsIgnoreCase("false")) false
+    else {
+      val days = userJson.as[Int]
+      if(days <= 0) false
+      else true
+    }
   }
 
   /**
@@ -42,7 +54,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("userId" -> user._1)
+      user => Redirect(routes.Application.index).withSession("userId" -> user._1, "currentTime"->System.nanoTime().toString)
     )
   }
 
@@ -54,7 +66,6 @@ object Auth extends Controller with AccessControlServiceComponent {
       "success" -> "You've been logged out"
     )
   }
-
 }
 
 /**

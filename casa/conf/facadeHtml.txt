@@ -1,0 +1,3044 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    a {text-decoration: none}
+  </style>
+</head>
+<body text="#000000" link="#000000" alink="#000000" vlink="#000000">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td width="50%">&nbsp;</td><td align="center">
+
+<a name="JR_PAGE_ANCHOR_0_1"></a>
+<table class="jrPage" cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 862px; border-collapse: collapse; background-color: white;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:99px"></td>
+<td style="width:36px"></td>
+<td style="width:108px"></td>
+<td style="width:9px"></td>
+<td style="width:3px"></td>
+<td style="width:112px"></td>
+<td style="width:3px"></td>
+<td style="width:151px"></td>
+<td style="width:3px"></td>
+<td style="width:9px"></td>
+<td style="width:16px"></td>
+<td style="width:109px"></td>
+<td style="width:25px"></td>
+<td style="width:120px"></td>
+<td style="width:15px"></td>
+<td style="width:4px"></td>
+<td style="width:3px"></td>
+<td style="width:1px"></td>
+<td style="width:3px"></td>
+<td style="width:7px"></td>
+<td style="width:15px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="2" style="border-top: 1px solid #000000; border-left: 1px solid #000000; width: 135px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Transaction:</span></td>
+<td colspan="4" style="border-top: 1px solid #000000; ">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:189px"></td>
+<td style="width:43px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 189px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 18px; line-height: 1.1777344; font-weight: bold;">TEST432</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:187px"></td>
+<td style="width:45px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td>
+</td>
+<td style="width: 45px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">MR</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="5" style="border-top: 1px solid #000000; width: 289px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; width: 120px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:33px">
+<td colspan="20" style="background-color: #FFFFFF; width: 840px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 21px; line-height: 1.1777344;">Date Claim Received 24-04-2014 10:51</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td colspan="20" style="background-color: #CCCCCC; width: 840px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Summary</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:28px">
+<td colspan="20">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="background-color: #E6E6E6; ">
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:252px"></td>
+<td style="width:270px"></td>
+<td style="width:28px"></td>
+<td style="width:289px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="3">
+</td>
+<td rowspan="2" style="width: 289px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">About the care you </span></td>
+</tr>
+<tr valign="top" style="height:25px">
+<td>
+</td>
+<td rowspan="2" style="width: 270px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: Helvetica; color: #FFFFFF; font-size: 21px; line-height: 1.0; font-weight: bold;">About you - the carer</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td>
+</td>
+<td colspan="2">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">National Insurance number</span></td>
+<td>
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Last name</span></td>
+<td>
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 15px; line-height: 1.1499023;">Caseone</span></td>
+<td colspan="3">
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">First name</span></td>
+<td>
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 15px; line-height: 1.1499023;">Test </span></td>
+<td colspan="3">
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Test </span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" rowspan="2" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Title</span></td>
+<td>
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Mr</span></td>
+<td colspan="3">
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Dame</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="19">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Date of birth</span></td>
+<td>
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">28-09-1976</span></td>
+<td colspan="3">
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">12-09-1980</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="3" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Address</span></td>
+<td colspan="2">
+</td>
+<td colspan="16" rowspan="2">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:270px"></td>
+<td style="width:330px"></td>
+</tr>
+<tr valign="top" style="height:60px">
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:304px"></td>
+<td style="width:295px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 304px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">1 Preston Road</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 304px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Preston</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:295px"></td>
+<td style="width:304px"></td>
+</tr>
+<tr valign="top" style="height:60px">
+<td>
+</td>
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:270px"></td>
+<td style="width:34px"></td>
+</tr>
+<tr valign="top" style="height:60px">
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:304px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 304px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">1 Preston Road</span></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 304px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Preston</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="5">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="3" rowspan="2" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Postcode</span></td>
+<td colspan="2">
+</td>
+<td colspan="4" rowspan="2" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">PR1 1HB</span></td>
+<td colspan="13">
+</td>
+</tr>
+<tr valign="top" style="height:25px">
+<td colspan="2">
+</td>
+<td colspan="2">
+</td>
+<td colspan="4" rowspan="2" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">PR1 1HB</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="3" rowspan="2" style="width: 243px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">How we can contact you</span></td>
+<td>
+</td>
+<td colspan="4" rowspan="2" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">07111 111 111</span></td>
+<td colspan="3">
+</td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:25px">
+<td>
+</td>
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="4" rowspan="2" style="width: 252px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">What's their relationship to you?</span></td>
+<td colspan="18">
+</td>
+</tr>
+<tr valign="top" style="height:22px">
+<td colspan="7">
+</td>
+<td colspan="4" rowspan="2" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Partner</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="11">
+</td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="16" style="background-color: #E6E6E6; width: 825px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">About your partner</span></td>
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="9" rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you had a partner/spouse living with you since your claim date: 21/07/2013?</span></td>
+<td colspan="2">
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:9px">
+<td colspan="13">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="18">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:829px"></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="background-color: #999999; ">
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:3px"></td>
+<td style="width:825px"></td>
+<td style="width:1px"></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td>
+</td>
+<td style="background-color: #E6E6E6; width: 825px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Claim Dates</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="9" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">When do you want your Carer's Allowance claim to start?</span></td>
+<td colspan="2">
+</td>
+<td colspan="4" style="width: 270px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">21-07-2013</span></td>
+<td colspan="7">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="18" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1; *line-height: normal; font-weight: bold;">Claim Summary</span></td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">Nationality</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">British</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">Armed Forces Independence Payment (AFIP)</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">##CHECK##</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">35 hours a week care</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">##CHECK##</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">EEA Money</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">##CROSS##</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">Outside England, Scotland or Wales</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">##CROSS##</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">State Pension</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">##CHECK##</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="10" style="border: 1px solid #000000; width: 534px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1; *line-height: normal;">Welsh Comms</span></td>
+<td colspan="7" style="border: 1px solid #000000; width: 294px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: center;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">##CROSS##</span></td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:6px">
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:490px">
+<td colspan="22">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 99px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Transaction:</span></td>
+<td colspan="2" style="width: 144px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">TEST432</span></td>
+<td colspan="19">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="22">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<p style="page-break-before: always"></p>
+<a name="JR_PAGE_ANCHOR_0_2"></a>
+<table class="jrPage" cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 862px; border-collapse: collapse; background-color: white;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:99px"></td>
+<td style="width:19px"></td>
+<td style="width:3px"></td>
+<td style="width:13px"></td>
+<td style="width:108px"></td>
+<td style="width:28px"></td>
+<td style="width:96px"></td>
+<td style="width:3px"></td>
+<td style="width:183px"></td>
+<td style="width:52px"></td>
+<td style="width:54px"></td>
+<td style="width:4px"></td>
+<td style="width:21px"></td>
+<td style="width:102px"></td>
+<td style="width:3px"></td>
+<td style="width:15px"></td>
+<td style="width:25px"></td>
+<td style="width:1px"></td>
+<td style="width:7px"></td>
+<td style="width:22px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="border-top: 1px solid #000000; border-left: 1px solid #000000; width: 135px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Transaction:</span></td>
+<td colspan="3" style="border-top: 1px solid #000000; ">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:189px"></td>
+<td style="width:43px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 189px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 18px; line-height: 1.1777344; font-weight: bold;">TEST432</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:187px"></td>
+<td style="width:45px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td>
+</td>
+<td style="width: 45px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">MR</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="3" style="border-top: 1px solid #000000; width: 289px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="3" style="border-top: 1px solid #000000; width: 120px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:33px">
+<td colspan="19" style="background-color: #FFFFFF; width: 840px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344;">Date Claim Received 24-04-2014 10:51</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:6px">
+<td colspan="20">
+</td>
+</tr>
+<tr valign="top" style="height:25px">
+<td colspan="2" rowspan="2" style="width: 118px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Service version: </span></td>
+<td>
+</td>
+<td colspan="3" style="width: 150px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">0.1</span></td>
+<td colspan="3">
+</td>
+<td colspan="9" rowspan="2" style="width: 279px; word-wrap: break-word; text-indent: 0px; text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 21px; line-height: 1.1777344; font-weight: bold; font-style: italic;">Carer's Allowance</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="7">
+</td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="12">
+</td>
+<td colspan="6" style="width: 168px; word-wrap: break-word; text-indent: 0px; text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 21px; line-height: 1.1777344; font-style: italic;">Claim Form</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="9">
+</td>
+<td colspan="9" style="width: 279px; word-wrap: break-word; text-indent: 0px; text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">This form was completed in English</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:9px">
+<td colspan="20">
+</td>
+</tr>
+<tr valign="top" style="height:957px">
+<td colspan="19">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:957px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:292px"></td>
+<td style="width:3px"></td>
+<td style="width:1px"></td>
+<td style="width:10px"></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" style="background-color: #CCCCCC; width: 825px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: Arial; color: #FFFFFF; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 1 - About you - the carer</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:169px">
+<td colspan="5">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:829px"></td>
+</tr>
+<tr valign="top" style="height:169px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:1px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 21px; line-height: 1.1777344;">Your Details</span></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Title</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Mr</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">First name</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Test </span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Last name</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">National Insurance number</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Date of birth</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">28-09-1976</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="4">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="3" style="background-color: #E6E6E6; width: 825px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Your Contact Details</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:84px">
+<td colspan="5">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:829px"></td>
+</tr>
+<tr valign="top" style="height:84px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:1px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Address</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">1 Preston Road</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="2">
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Preston</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">PostCode</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">PR1 1HB</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="5" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">How we can contact you</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">How we can contact you</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">07111 111 111</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="5" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Your claim date</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">When do you want your Carer's Allowance claim to start?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">21-07-2013</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="5" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Your nationality and residency</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">What is your nationality?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">British</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you normally live in England, Scotland or Wales?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:6px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="5" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Time outside of England, Scotland or Wales</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you been out of England, Scotland or Wales for more than 52 weeks in the last 3 years before your claim date?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:7px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:45px">
+<td colspan="4" style="background-color: #E6E6E6; width: 828px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Money you get from other European Economic Area (EEA) countries or Switzerland</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you, or any member of your family, receive any benefits or pensions from any other European Economic Area (EEA) state or Switzerland?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:45px">
+<td rowspan="3">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+</tr>
+<tr valign="top" style="height:52px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you, or a member of your family, made a claim for any benefits or pensions from any other European Economic Area (EEA) state or Switzerland?</span></td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+</tr>
+<tr valign="top" style="height:46px">
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Are you, or a member of your family, working in or paying insurance to, another European Economic Area (EEA) state or Switzerland?</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:6px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="5" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Marital Status</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">What is your marital status?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Single</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you had a partner/spouse living with you since your claim date: 21/07/2013?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="5" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">More about you</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you been on a course of education since your claim date: 21/07/2013?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you get State Pension?</span></td>
+<td>
+</td>
+<td colspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="2">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:180px">
+<td colspan="19">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:180px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:1px"></td>
+<td style="width:10px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #CCCCCC; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 3 - About the care you provide</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Details of the person you care for</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Title</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Dame</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">First name</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Test </span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Last name</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:34px">
+<td colspan="5">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 99px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Transaction:</span></td>
+<td colspan="4" style="width: 144px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">TEST432</span></td>
+<td colspan="5">
+</td>
+<td colspan="4" style="width: 181px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Page 1 of </span></td>
+<td>
+</td>
+<td colspan="2" style="width: 40px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">4</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:10px">
+<td colspan="20">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<p style="page-break-before: always"></p>
+<a name="JR_PAGE_ANCHOR_0_3"></a>
+<table class="jrPage" cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 862px; border-collapse: collapse; background-color: white;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:99px"></td>
+<td style="width:36px"></td>
+<td style="width:108px"></td>
+<td style="width:124px"></td>
+<td style="width:3px"></td>
+<td style="width:235px"></td>
+<td style="width:54px"></td>
+<td style="width:25px"></td>
+<td style="width:102px"></td>
+<td style="width:3px"></td>
+<td style="width:15px"></td>
+<td style="width:25px"></td>
+<td style="width:9px"></td>
+<td style="width:22px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="2" style="border-top: 1px solid #000000; border-left: 1px solid #000000; width: 135px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Transaction:</span></td>
+<td colspan="2" style="border-top: 1px solid #000000; ">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:189px"></td>
+<td style="width:43px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 189px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 18px; line-height: 1.1777344; font-weight: bold;">TEST432</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:187px"></td>
+<td style="width:45px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td>
+</td>
+<td style="width: 45px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">MR</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="2" style="border-top: 1px solid #000000; width: 289px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="3" style="border-top: 1px solid #000000; width: 120px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:33px">
+<td colspan="13" style="background-color: #FFFFFF; width: 840px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344;">Date Claim Received 24-04-2014 10:51</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:423px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:423px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:1px"></td>
+<td style="width:3px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #CCCCCC; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 3 - About the care you provide</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="6">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Date of birth</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">12-09-1980</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do they live at the same address as you?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td colspan="5" style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Contact details of the person you care for</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:84px">
+<td colspan="5">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:84px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:4px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Address</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">1 Preston Road</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="2">
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Preston</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">PostCode</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">PR1 1HB</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td colspan="5" style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Relationship and other claims</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">What's their relationship to you?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Partner</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Does this person get Armed Forces Independence Payment (AFIP)?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td colspan="5" style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">More about the care you provide</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you spend 35 hours or more each week caring for the person you care for?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:37px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Did you care for this person for 35 hours or more each week before your claim date?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">When did you start to care for this person?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">21-01-2012</span></td>
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="6">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:69px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:69px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:4px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #CCCCCC; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 4 - About Your Education</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you been on a course of education since your claim date: 21/07/2013?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:7px">
+<td colspan="4">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:64px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:64px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:1px"></td>
+<td style="width:10px"></td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #CCCCCC; width: 829px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 5 - About Your Employment </span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you been employed at any time since 21/01/2013?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:61px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:61px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:4px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="4" style="background-color: #CCCCCC; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 6 - About Self Employment</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you been self-employed at any time since 14/07/2013?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:283px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:283px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:4px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:6px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="4" style="background-color: #CCCCCC; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 7 - About Other Money</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Benefits and payments</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you &nbsp;claimed or received any other benefits since your claim date: 21/07/2013?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:7px">
+<td>
+</td>
+<td rowspan="2" style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:19px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you received any payments for the person you care for or any other person since your claim date 21/07/2013</span></td>
+<td>
+</td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:15px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="4" style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Statutory Pay</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you had any Statutory Sick Pay (SSP) since the date you want to claim from 21/07/2013?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:7px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:28px">
+<td colspan="5">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Have you had any Statutory Maternity Pay (SMP), Statutory Paternity Pay (SPP) or Statutory Adoption Pay (SAP) since the date you want to claim from 21/07/2013?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:25px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="5">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:333px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:333px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="background-color: #CCCCCC; width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 9 - Customer Consent and Declaration</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:301px">
+<td colspan="2">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 99px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Transaction:</span></td>
+<td colspan="2" style="width: 144px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">TEST432</span></td>
+<td colspan="3">
+</td>
+<td colspan="3" style="width: 181px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Page 2 of </span></td>
+<td>
+</td>
+<td colspan="2" style="width: 40px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">4</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:10px">
+<td colspan="14">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<p style="page-break-before: always"></p>
+<a name="JR_PAGE_ANCHOR_0_4"></a>
+<table class="jrPage" cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 892px; border-collapse: collapse; background-color: white;">
+<tr valign="top" style="height:0">
+<td style="width:892px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+<td style="width:30px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:99px"></td>
+<td style="width:36px"></td>
+<td style="width:108px"></td>
+<td style="width:124px"></td>
+<td style="width:3px"></td>
+<td style="width:235px"></td>
+<td style="width:54px"></td>
+<td style="width:25px"></td>
+<td style="width:102px"></td>
+<td style="width:3px"></td>
+<td style="width:15px"></td>
+<td style="width:25px"></td>
+<td style="width:9px"></td>
+<td style="width:52px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="2" style="border-top: 1px solid #000000; border-left: 1px solid #000000; width: 135px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Transaction:</span></td>
+<td colspan="2" style="border-top: 1px solid #000000; ">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:189px"></td>
+<td style="width:43px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 189px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 18px; line-height: 1.1777344; font-weight: bold;">TEST432</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:187px"></td>
+<td style="width:45px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td>
+</td>
+<td style="width: 45px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">MR</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="2" style="border-top: 1px solid #000000; width: 289px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="3" style="border-top: 1px solid #000000; width: 120px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:33px">
+<td colspan="13" style="background-color: #FFFFFF; width: 840px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344;">Date Claim Received 24-04-2014 10:51</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1149px">
+<td colspan="14">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+<td style="width:52px"></td>
+</tr>
+<tr valign="top" style="height:1149px">
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+<td style="width:60px"></td>
+</tr>
+<tr valign="top" style="height:94px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:94px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:1px"></td>
+<td style="width:3px"></td>
+</tr>
+<tr valign="top" style="height:31px">
+<td colspan="4" style="background-color: #E6E6E6; width: 829px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Additional Information</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you want to tell us any additional information about your claim?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you live in Wales and would like to receive future communications in Welsh?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">No</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:7px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="5">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Consent</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:63px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:63px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:495px"></td>
+<td style="width:37px"></td>
+<td style="width:295px"></td>
+<td style="width:4px"></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 495px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Do you agree to us getting information from any other person or organisation you have told us about on this claim?</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:7px">
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:28px">
+<td colspan="4">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Disclaimer</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:520px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:520px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:378px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:378px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:378px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">I understand that if I am paid Carer's Allowance it may affect the benefits paid to [Test Caseone].</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">If the person you are caring for receives certain benefits, the amount they receive may be affected by your claim for Carer's Allowance. Because of this we need both of you to understand the potential consequences of your claim to Carer's Allowance.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">If [Test Caseone] gets a Severe Disability Premium with their income-based Jobseeker's Allowance, Income Support, income-related Employment and Support Allowance, Housing Benefit, they may no longer get that premium if we pay Carer's Allowance to you.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">If [Test Caseone]'s Pension Credit includes an extra amount for severe disability, they may no longer get that extra amount if we pay Carer's Allowance to you.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">This could also affect any reduction in Council Tax [Test Caseone] may be entitled to. To find out more about it, please contact the Local Authority.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">We will need to check [Test Caseone] entitlement to Disability Living Allowance, Personal Independence Payment, Attendance Allowance, Constant Attendance Allowance or Armed Forces Independence Payment when considering your claim.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">We may contact [Test Caseone] or their representative to establish whether 35 hours caring per week is taking place.</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr valign="top" style="height:142px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:142px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:495px"></td>
+<td style="width:7px"></td>
+<td style="width:295px"></td>
+<td style="width:34px"></td>
+</tr>
+<tr valign="top" style="height:27px">
+<td rowspan="2" style="width: 495px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Please tick this box to declare that you have understood the notes and you have made / will make the person you are caring for / or their representative aware that there could be a change to their benefits.</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:43px">
+<td colspan="3">
+</td>
+</tr>
+<tr valign="top" style="height:72px">
+<td colspan="4">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td style="background-color: #E6E6E6; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">Declaration</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:376px">
+<td colspan="2">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+<td style="width:60px"></td>
+</tr>
+<tr valign="top" style="height:376px">
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:525px"></td>
+<td style="width:19px"></td>
+<td style="width:295px"></td>
+<td style="width:52px"></td>
+</tr>
+<tr valign="top" style="height:216px">
+<td colspan="4">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:892px"></td>
+</tr>
+<tr valign="top" style="height:216px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+<td style="width:60px"></td>
+</tr>
+<tr valign="top" style="height:216px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:216px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">I declare that I understand the Carer's Allowance Claim Notes and that the information provided on this claim form is correct and complete.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">I understand that I must report all changes in my circumstances or that of the person that I am caring for which may affect my entitlement promptly and by failing to do so I may be liable to prosecution or face a financial penalty.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">I will use the online service or phone 0345 608 4321 or write to Carer's Allowance Unit, Palatine House, Lancaster Road, Preston, PR1 1HB to report a change in my circumstances or that of the person that I am caring for.</span></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">If I give false or incomplete information or fail to report changes in my circumstances or that of the person that I am caring for promptly, I understand that my Carer's Allowance may be stopped or reduced and any overpayment of Carer's Allowance may be recovered. In addition I may be prosecuted or face a financial penalty.</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr valign="top" style="height:6px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:75px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Please tick this box if this claim form has been filled in by someone else, if so, please ensure that you understand the declarations above as another person cannot make the declarations on your behalf.</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Your name and/or organisation</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Some Org</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:45px">
+<td style="width: 525px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Please tick this box to confirm that you understand and make the declarations above.</span></td>
+<td>
+</td>
+<td style="width: 295px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Yes</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:91px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:91px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td style="background-color: #CCCCCC; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 10 - Customer Evidence List</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:60px">
+<td colspan="2">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 99px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Transaction:</span></td>
+<td colspan="2" style="width: 144px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">TEST432</span></td>
+<td colspan="3">
+</td>
+<td colspan="3" style="width: 181px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Page 3 of </span></td>
+<td>
+</td>
+<td colspan="2" style="width: 40px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">4</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:10px">
+<td colspan="14">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<p style="page-break-before: always"></p>
+<a name="JR_PAGE_ANCHOR_0_5"></a>
+<table class="jrPage" cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 862px; border-collapse: collapse; background-color: white;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:862px"></td>
+</tr>
+<tr valign="top" style="height:1350px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:99px"></td>
+<td style="width:36px"></td>
+<td style="width:108px"></td>
+<td style="width:124px"></td>
+<td style="width:3px"></td>
+<td style="width:235px"></td>
+<td style="width:54px"></td>
+<td style="width:25px"></td>
+<td style="width:102px"></td>
+<td style="width:3px"></td>
+<td style="width:15px"></td>
+<td style="width:25px"></td>
+<td style="width:9px"></td>
+<td style="width:22px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td colspan="2" style="border-top: 1px solid #000000; border-left: 1px solid #000000; width: 135px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 21px; line-height: 1.1777344; font-weight: bold;">Transaction:</span></td>
+<td colspan="2" style="border-top: 1px solid #000000; ">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:189px"></td>
+<td style="width:43px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 189px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 18px; line-height: 1.1777344; font-weight: bold;">TEST432</span></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:187px"></td>
+<td style="width:45px"></td>
+</tr>
+<tr valign="top" style="height:30px">
+<td>
+</td>
+<td style="width: 45px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">MR</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="2" style="border-top: 1px solid #000000; width: 289px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">Caseone</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td colspan="3" style="border-top: 1px solid #000000; width: 120px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #FFFFFF; font-size: 15px; line-height: 1.1777344;">AB123456C</span></td>
+<td style="border-top: 1px solid #000000; ">
+</td>
+<td style="border-top: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:4px">
+<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; ">
+</td>
+<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:33px">
+<td colspan="13" style="background-color: #FFFFFF; width: 840px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344;">Date Claim Received 24-04-2014 10:51</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:234px">
+<td colspan="13">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:840px"></td>
+</tr>
+<tr valign="top" style="height:234px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:1px"></td>
+<td style="width:795px"></td>
+<td style="width:36px"></td>
+<td style="width:7px"></td>
+</tr>
+<tr valign="top" style="height:4px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:27px">
+<td colspan="3" style="background-color: #CCCCCC; width: 832px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: Arial; color: #000000; font-size: 18px; line-height: 1.1499023; font-weight: bold;">Part 10 - Customer Evidence List</span></td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:163px">
+<td colspan="3">
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:163px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td>
+<div style="width: 100%; height: 100%; position: relative;">
+<div style="position: absolute; overflow: hidden; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+<div style="position: relative; width: 100%; height: 100%; ">
+<table cellpadding="0" cellspacing="0" border="0" style="empty-cells: show; width: 100%; border-collapse: collapse;">
+<tr valign="top" style="height:0">
+<td style="width:832px"></td>
+</tr>
+<tr valign="top" style="height:54px">
+<td style="width: 832px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">The Carers Allowance unit will contact you if they need any further information.</span></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr valign="top" style="height:109px">
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1px">
+<td colspan="4">
+</td>
+</tr>
+<tr valign="top" style="height:31px">
+<td>
+</td>
+<td style="width: 795px; word-wrap: break-word; text-indent: 0px; text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 18px; line-height: 1.1777344; font-weight: bold;">*************************END OF PRINT**********************</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:3px">
+<td colspan="4">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+<td>
+</td>
+</tr>
+<tr valign="top" style="height:1008px">
+<td colspan="14">
+</td>
+</tr>
+<tr valign="top" style="height:30px">
+<td style="width: 99px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Transaction:</span></td>
+<td colspan="2" style="width: 144px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">TEST432</span></td>
+<td colspan="3">
+</td>
+<td colspan="3" style="width: 181px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: right;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">Page 4 of </span></td>
+<td>
+</td>
+<td colspan="2" style="width: 40px; word-wrap: break-word; text-indent: 0px;  vertical-align: middle;text-align: left;">
+<span style="font-family: SansSerif; color: #000000; font-size: 15px; line-height: 1.1777344;">4</span></td>
+<td colspan="2">
+</td>
+</tr>
+<tr valign="top" style="height:10px">
+<td colspan="14">
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+
+</td><td width="50%">&nbsp;</td></tr>
+</table>
+</body>
+</html>

@@ -9,7 +9,8 @@ object ApplicationBuild extends Build {
 
   val dependencies = Seq(
     "me.moocar"           % "logback-gelf"        % "0.9.6p2",
-    "org.jasypt"          % "jasypt"              % "1.9.2"
+    "org.jasypt"          % "jasypt"              % "1.9.2",
+    "com.dwp.carers"      %% "wscommons"          % "1.0"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
@@ -23,5 +24,7 @@ object ApplicationBuild extends Build {
 
   var testOption:Setting[_] = javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""})
 
-  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV +: testOption) ++ sR:_*)
+  var acService:Setting[_] = javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessControlServiceUrl") match { case s:String => s case null => ""})
+
+  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV +: testOption +: acService) ++ sR:_*)
 }

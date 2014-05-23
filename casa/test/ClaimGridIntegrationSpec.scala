@@ -2,10 +2,9 @@ import org.fluentlenium.core.domain.{FluentList, FluentWebElement}
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.LocalDate
 import org.specs2.mutable.{Specification, Tags}
-import play.api.test.{TestBrowser, WithBrowser}
+import play.api.test.{FakeApplication, TestBrowser, WithBrowser}
 import scala._
 import scala.collection.JavaConverters._
-
 
 class ClaimGridIntegrationSpec extends Specification with Tags {
 
@@ -15,7 +14,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
   "Claim Grid" should {
     // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
 
-    "Show claims filtered by today's date" in new WithBrowser() {
+    "Show claims filtered by today's date" in new WithBrowserStub {
       login(browser)
 
       browser.title() mustEqual "Claims list"
@@ -24,7 +23,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkCasaDates(today, browser)
     }
 
-    "Only contain received or viewed statuses" in new WithBrowser {
+    "Only contain received or viewed statuses" in new WithBrowserStub {
       login(browser)
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
@@ -32,7 +31,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
-    "Filtering by completed only shows completed claims" in new WithBrowser {
+    "Filtering by completed only shows completed claims" in new WithBrowserStub {
       login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
@@ -43,7 +42,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("completed"))
     }
 
-    "Filtering by work queue only shows received or viewed claims" in new WithBrowser {
+    "Filtering by work queue only shows received or viewed claims" in new WithBrowserStub {
       login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
@@ -55,7 +54,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
-    "Show claims filtered by specified date" in new WithBrowser {
+    "Show claims filtered by specified date" in new WithBrowserStub {
       login(browser)
 
       val yesterday = new LocalDate().minusDays(1)
@@ -66,7 +65,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkCasaDates(yesterday, browser = browser)
     }
 
-    "Update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowser {
+    "Update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowserStub {
       login(browser)
 
       val transactionId = "20140102071"
@@ -77,7 +76,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.pageSource() must not contain transactionId
     }
 
-    "Open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowser {
+    "Open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowserStub {
       import scala.collection.JavaConverters._
 
       login(browser)
@@ -95,7 +94,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.title mustEqual s"Claim $transactionId"
     }
 
-    "Open completed claim pdf and check the status hasn't changed" in new WithBrowser {
+    "Open completed claim pdf and check the status hasn't changed" in new WithBrowserStub {
       import scala.collection.JavaConverters._
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
@@ -116,26 +115,14 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.title mustEqual s"Claim $transactionId"
     }
 
-    "Should show claims first then Circs" in new WithBrowser {
+    "Should show claims first then Circs" in new WithBrowserStub {
       login(browser)
 
       val claimTypes = browser.$("#claimsTable .view")
       assertClaimTypesOrdering (claimTypes)
     }
 
-    "Should show claims first then Circs filtered by date" in new WithBrowser {
-      val yesterday = new LocalDate().minusDays(1)
-      val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(yesterday)
-
-      login(browser)
-
-      browser.goTo("/filter/" + dateString)
-
-      val claimTypes = browser.$("#claimsTable .view")
-      assertClaimTypesOrdering (claimTypes)
-    }
-
-    "Should show claims first then Circs for completed" in new WithBrowser {
+    "Should show claims first then Circs for completed" in new WithBrowserStub {
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
       login(browser)
@@ -190,3 +177,5 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
   }
 }
+
+class WithBrowserStub extends WithBrowser(app=FakeApplication(additionalConfiguration = Map("enableStub"->"true")))

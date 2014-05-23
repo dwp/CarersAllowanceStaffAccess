@@ -1,6 +1,5 @@
 import controllers.Auth
 import org.specs2.mutable._
-
 import play.api.test._
 import play.api.test.Helpers._
 
@@ -9,16 +8,20 @@ class ApplicationSpec extends Specification {
 
   "Application" should {
 
-    "send 404 on a bad request" in new WithApplication{
-      route(FakeRequest(GET, "/boum")) must beNone
+    "send bad requests to the login page" in new WithApplication{
+      val bad = route(FakeRequest(GET, "/boum")).get
+
+      status(bad) must equalTo(OK)
+
+      contentAsString(bad) must contain ("login")
     }
 
     "redirect to the login page when user not authenticated" in new WithApplication {
       val home = route(FakeRequest(GET, "/")).get
 
-      status(home) must equalTo(SEE_OTHER)
+      status(home) must equalTo(OK)
 
-      redirectLocation(home) must beSome("/login")
+      contentAsString(home) must contain ("login")
     }
 
     "render the index page when user is authenticated" in new WithApplication {

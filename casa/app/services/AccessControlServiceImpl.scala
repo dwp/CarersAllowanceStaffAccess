@@ -8,6 +8,8 @@ import scala.language.postfixOps
 import scala.language.implicitConversions
 import scala.Some
 import utils.HttpUtils.HttpMethodWrapper
+import javassist.tools.web.BadHttpRequest
+import scala.collection.immutable.Range
 
 object AccessControlServiceImpl extends AccessControlService {
   val url = getUrl
@@ -29,4 +31,13 @@ object AccessControlServiceImpl extends AccessControlService {
         case Status.BAD_REQUEST => new JsBoolean(false)
       }
     } exec()
+
+  override def getDaysToExpiration(userId: String): JsValue =
+    s"$url/expire/$userId" post { response =>
+      response.status match {
+        case Status.OK => response.json
+        case Status.BAD_REQUEST => new JsBoolean(false)
+      }
+    } exec()
+
 }
