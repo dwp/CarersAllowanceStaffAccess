@@ -5,9 +5,9 @@ import play.Play
 
 object Global extends GlobalSettings {
 
-  implicit def anyWithIn[A](a: A) = new {
-    def in(as: A*) = as.exists(_ == a)
-  }
+//  implicit def anyWithIn[A](a: A) = new {
+//    def in(as: A*) = as.exists(_ == a)
+//  }
   /**
    * Intercept requests to check for session timeout
    * @param request the incoming request

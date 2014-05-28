@@ -1,4 +1,4 @@
-@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray])
+@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], session: play.api.mvc.Session)
 
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
         <script src="@routes.Assets.at("javascripts/modernizr-2.6.2.min.js")" type="text/javascript"></script>
     </head>
     <body class="theme">
-        @header()
+        @header(session)
         
         <div id="tabs">
             @daysBar(claimsList,currentDate)

@@ -15,7 +15,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
   def index = IsAuthenticated { username => implicit request =>
       val today = new LocalDate
       Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today)))).
-        withSession("userId"->username, "currentTime"->System.nanoTime().toString)
+        withSession("userId"->username, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
   }
 
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
@@ -35,7 +35,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
     Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims))).
-      withSession("userId"->username, "currentTime"->System.nanoTime().toString)
+      withSession("userId"->username, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
   }
 
   case class ClaimsToComplete(completedCheckboxes:List[String])
@@ -65,7 +65,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
   def renderClaim(transactionId:String) = IsAuthenticated { username => implicit request =>
     claimService.renderClaim(transactionId) match {
       case Some(renderedClaim) => Ok(Html(renderedClaim)).
-        withSession("userId"->username, "currentTime"->System.nanoTime().toString)
+        withSession("userId"->username, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
       case _ => BadRequest
     }
   }

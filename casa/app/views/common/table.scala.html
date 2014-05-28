@@ -25,6 +25,11 @@
             </tr>
         </thead>
         <tbody>
+            @if(!isStatusCompleted){
+                <div class="completebutton">
+                    <button type="submit" class="active" id="completeButton1" >Complete</button>
+                </div>
+            }
             @if(claimList.isDefined){
                 @for((claim,i) <- claimList.get.value.zipWithIndex){
                     <tr id="row_@claim.p.transactionId">
@@ -48,7 +53,7 @@
 
     @if(!isStatusCompleted){
         <div class="completebutton">
-        	<button type="submit" class="active" id="completeButton" >Complete</button>
+        	<button type="submit" class="active" id="completeButton2" >Complete</button>
         </div>
     }
 }

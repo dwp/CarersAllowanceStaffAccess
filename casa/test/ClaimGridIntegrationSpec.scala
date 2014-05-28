@@ -71,7 +71,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       val transactionId = "20140102071"
       browser.$(s"#$transactionId").click
 
-      browser.$("#completeButton").click
+      browser.$("#completeButton1").click
 
       browser.pageSource() must not contain transactionId
     }
