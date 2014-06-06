@@ -50,7 +50,7 @@ table {
 .completebutton {
 	margin-top: 2em;
 	text-align: right;
-	button {
+	a, button {
 		background: #000;
 		border: 0;
 		border-radius: 5px;
@@ -61,4 +61,7 @@ table {
 			background: #666;
 		}
 	}
+    a{
+      text-decoration: none;
+    }
 }

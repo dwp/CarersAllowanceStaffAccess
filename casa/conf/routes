@@ -18,5 +18,9 @@ GET         /logout                             controllers.Auth.logout
 GET         /password                           controllers.Password.display
 POST        /password                           controllers.Password.digestPassword
 
+GET         /export                             controllers.Application.export
+GET         /exportCsv                          controllers.Application.csvExport()
+POST        /purge                              controllers.Application.purge
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                       controllers.Assets.at(path="/public", file)

@@ -93,6 +93,25 @@ object ClaimServiceImpl extends ClaimsService {
     }
   }
 
+
+  def export(): Option[JsArray] = {
+    s"$url/export" get { response =>
+      response.status match {
+        case Status.OK => Some(response.json.as[JsArray])
+        case Status.INTERNAL_SERVER_ERROR => None
+      }
+    }
+  }
+
+  def purge(): JsBoolean = {
+    s"$url/purge" post { response =>
+      response.status match {
+        case Status.OK => JsBoolean(true)
+        case Status.INTERNAL_SERVER_ERROR => JsBoolean(false)
+      }
+    } exec()
+  }
+
   def styleSheetForHtmlOutput = {
     """<link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimHtmlOutput.css"/>
        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimPrintHtmlOutput.css" media="print">

@@ -108,6 +108,28 @@ object ClaimServiceMock extends ClaimsService{
     })(collection.breakOut)
 
   var listOfClaimSummaries = mandatoryClaims ++ randomList
+
+  def export(): Option[JsArray] = {
+    val oldClaims = listOfClaimSummaries.filter( _.claimDateTime.isBefore(new DateTime().minus(20)) )
+    val dateFormat = DateTimeFormat.forPattern("ddMMyyyy")
+
+    if (oldClaims.size > 0){
+      val header = Seq("claimType","nino","forename","surname","claimDateTime","status")
+      val values = oldClaims.map(c => Seq(c.claimType,c.nino,c.forename,c.surname,dateFormat.print(c.claimDateTime),c.status))
+
+      Some(Json.toJson(header +: values).as[JsArray])
+    }else{
+      None
+    }
+  }
+
+  def purge(): JsBoolean = {
+    val newList = listOfClaimSummaries.filterNot(_.claimDateTime.isBefore(new DateTime().minus(20)))
+    val result = newList.size != listOfClaimSummaries.size
+    listOfClaimSummaries = newList
+
+    JsBoolean(result)
+  }
 }
 
 

@@ -1,13 +1,13 @@
 package controllers
 
 import play.api.mvc._
-import org.joda.time.LocalDate
+import org.joda.time.{DateTime, LocalDate}
 import services.ClaimServiceComponent
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
-import play.api.libs.json.JsArray
+import play.api.libs.json.{Json, JsArray}
 import utils.JsValueWrapper.improveJsValue
 
 object Application extends Controller with ClaimServiceComponent with Secured {
@@ -65,5 +65,25 @@ object Application extends Controller with ClaimServiceComponent with Secured {
       case Some(renderedClaim) => Ok(Html(renderedClaim))
       case _ => BadRequest
     }
+  }
+
+  def export() = IsAuthenticated {username => implicit request =>
+    Ok(views.html.export(claimService.export()))
+  }
+
+  def csvExport() = IsAuthenticated { username => implicit request =>
+    val stringValue = claimService.export() match {
+      case Some(s) => s.value.map(_.as[JsArray].value.mkString(",")).mkString("\n")
+      case None => ""
+    }
+
+    val fileName = s"exports${DateTimeFormat.forPattern("dd-MM-yyyy").print(new DateTime)}.csv"
+
+    Ok(stringValue).as("text/csv").withHeaders("content-disposition"->s"attachment; filename='$fileName'")
+  }
+
+  def purge() = IsAuthenticated {username => implicit request =>
+    claimService.purge()
+    Redirect(routes.Application.export())
   }
 }
