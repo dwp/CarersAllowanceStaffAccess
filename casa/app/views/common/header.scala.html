@@ -1,9 +1,15 @@
-
+@(session: play.api.mvc.Session)
 <header>
     <h1>Carer's Allowance Staff Access</h1>
     
-	<aside>		
-        <p>You are currently logged in as <span>Steve Moody</span> <a href="@routes.Auth.logout()" class="log">Logout</a></p>
+	<aside>
+        <p>
+            @if(session.get("days").map(days => days.toInt).getOrElse(0) <= 0) {
+                Your password has expired. <a href = "@controllers.routes.Password.display()" class="log"> Change Password</a>
+            }
+
+            You are currently logged in as <span><b>@session.get("userId")</b></span> <a href="@routes.Auth.logout()" class="log">Logout</a>
+        </p>
 	</aside>
 </header>
 

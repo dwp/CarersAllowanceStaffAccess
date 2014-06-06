@@ -21,5 +21,17 @@ class IntegrationSpec extends Specification {
 
       browser.pageSource must contain("Claims list")
     }
+
+    "display a message to user with expired password" in new WithBrowser {
+      browser.goTo("/login")
+
+      browser.pageSource must contain("CASA")
+
+      browser.fill("#userId") `with` "test1"
+      browser.fill("#password") `with` "john"
+      browser.submit("button[type='submit']")
+
+      browser.pageSource must contain("Your password has expired")
+    }
   }
 }

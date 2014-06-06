@@ -5,7 +5,7 @@ import services.{AccessControlServiceComponent, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
 import views.html
-import play.api.libs.json.JsValue
+import scala.Predef._
 
 object Auth extends Controller with AccessControlServiceComponent {
 
@@ -15,8 +15,6 @@ object Auth extends Controller with AccessControlServiceComponent {
       "password" -> text
     ) verifying ("Invalid user id or password",
       result => result match {case (userId, password) => checkUser(userId, password)}
-    ) verifying ("Your password has expired. Please, change it and login again.",
-      res => res match{case(userId,password) => checkPassword(userId)}
     )
   )
 
@@ -42,6 +40,8 @@ object Auth extends Controller with AccessControlServiceComponent {
     }
   }
 
+  def getDaysToExpiration(userId: String): String = accessControlService.getDaysToExpiration(userId).toString()
+
   /**
    * Login page.
    */
@@ -55,7 +55,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("userId" -> user._1)
+      user => Redirect(routes.Application.index).withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1), "currentTime"->System.nanoTime().toString)
     )
   }
 

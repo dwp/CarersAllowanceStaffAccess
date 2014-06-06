@@ -16,7 +16,7 @@ class PasswordSpec extends Specification {
 
       status(digestPassword) must equalTo(OK)
       contentType(digestPassword) must beSome.which(_ == "text/html")
-      contentAsString(digestPassword) must contain ("CASA")
+      contentAsString(digestPassword) must contain ("password")
     }
 
     "have error on invalid password" in new WithApplication() {
