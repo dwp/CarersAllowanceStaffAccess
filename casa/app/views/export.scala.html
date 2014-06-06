@@ -1,4 +1,4 @@
-@(csvClaims:Option[play.api.libs.json.JsArray])
+@(csvClaims:Option[play.api.libs.json.JsArray])(implicit session: play.api.mvc.Session)
 
 @import play.api.libs.json._
 @import helper._
@@ -25,7 +25,7 @@
         <script src="@routes.Assets.at("javascripts/modernizr-2.6.2.min.js")" type="text/javascript"></script>
     </head>
     <body class="theme">
-        @common.header()
+        @common.header(session)
 
         <main>
             @if(csvClaims.isDefined){
@@ -59,6 +59,7 @@
 
             }else{
                 <h1>No data</h1>
+                <a href="/">Go home</a>
             }
         </main>
 

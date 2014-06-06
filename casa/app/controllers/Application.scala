@@ -9,13 +9,14 @@ import play.api.data.Forms._
 import play.api.templates.Html
 import play.api.libs.json.{Json, JsArray}
 import utils.JsValueWrapper.improveJsValue
+import scala.language.implicitConversions
 
 object Application extends Controller with ClaimServiceComponent with Secured {
 
-  def index = IsAuthenticated { username => implicit request =>
+
+  def index = IsAuthenticated { implicit username => implicit request =>
       val today = new LocalDate
-      Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today)))).
-        withSession("userId"->username, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
+      Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today))))
   }
 
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
@@ -31,11 +32,10 @@ object Application extends Controller with ClaimServiceComponent with Secured {
 
   def claimsForDate(date: String) = claimsForDateFiltered(date,"")
 
-  def claimsForDateFiltered(date: String, status: String) = IsAuthenticated { username => implicit request =>
+  def claimsForDateFiltered(date: String, status: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
-    Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims))).
-      withSession("userId"->username, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
+    Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims)))
   }
 
   case class ClaimsToComplete(completedCheckboxes:List[String])
@@ -46,7 +46,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
     )(ClaimsToComplete.apply)(ClaimsToComplete.unapply)
   )
 
-  def complete(currentDate:String) = IsAuthenticated { username => implicit request =>
+  def complete(currentDate:String) = IsAuthenticated { implicit username => implicit request =>
 
     val redirect = Redirect(routes.Application.claimsForDate(currentDate))
 
@@ -62,19 +62,18 @@ object Application extends Controller with ClaimServiceComponent with Secured {
 
   }
 
-  def renderClaim(transactionId:String) = IsAuthenticated { username => implicit request =>
+  def renderClaim(transactionId:String) = IsAuthenticated { implicit username => implicit request =>
     claimService.renderClaim(transactionId) match {
-      case Some(renderedClaim) => Ok(Html(renderedClaim)).
-        withSession("userId"->username, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
+      case Some(renderedClaim) => Ok(Html(renderedClaim))
       case _ => BadRequest
     }
   }
 
-  def export() = IsAuthenticated {username => implicit request =>
+  def export() = IsAuthenticated { implicit username => implicit request =>
     Ok(views.html.export(claimService.export()))
   }
 
-  def csvExport() = IsAuthenticated { username => implicit request =>
+  def csvExport() = IsAuthenticated { implicit username => implicit request =>
     val stringValue = claimService.export() match {
       case Some(s) => s.value.map(_.as[JsArray].value.mkString(",")).mkString("\n")
       case None => ""
@@ -85,7 +84,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
     Ok(stringValue).as("text/csv").withHeaders("content-disposition"->s"attachment; filename='$fileName'")
   }
 
-  def purge() = IsAuthenticated {username => implicit request =>
+  def purge() = IsAuthenticated { implicit username => implicit request =>
     claimService.purge()
     Redirect(routes.Application.export())
   }
