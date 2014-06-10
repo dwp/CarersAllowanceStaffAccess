@@ -29,7 +29,6 @@
 
         <main>
             @if(csvClaims.isDefined){
-                @form(action = controllers.routes.Application.purge()){
                     <table id="claimsTable">
                         <caption>List of claims</caption>
                         <thead>
@@ -55,8 +54,6 @@
                         <a class="active" target="_blank" href="@{controllers.routes.Application.csvExport().url}"> Download</a>
                         <a class="active" id="purgeButton" href="#" onclick="confirmPurge();" >Purge</a>
                     </div>
-                }
-
             }else{
                 <h1>No data</h1>
                 <a href="/">Go home</a>
