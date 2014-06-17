@@ -4,14 +4,15 @@
 @import org.joda.time.LocalDate
 
 @formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
-@isStatusCompleted = @{ currentStatus == "completed"}
 
 <section class="filter">
     <fieldset>
         <legend>Filter</legend>
         <ol class="clearfix">
-            <li><a href="/filter/@{formatToLink(currentDate)}" class="@{if(!isStatusCompleted)"active"}">Work queue</a></li>
-            <li><a href="/filter/@{formatToLink(currentDate)}/completed" class="@{if(isStatusCompleted)"active"}">Completed</a></li>
+            <li><a href="/filter/surname/@{formatToLink(currentDate)}/atom" class="@{if(currentStatus.equals("atom"))"active"}">Claims A - M</a></li>
+            <li><a href="/filter/surname/@{formatToLink(currentDate)}/ntoz" class="@{if(currentStatus.equals("ntoz"))"active"}">Claims N - Z</a></li>
+            <li><a href="/circs/@{formatToLink(currentDate)}" class="@{if(currentStatus.equals("circs"))"active"}">Circs</a></li>
+            <li><a href="/filter/@{formatToLink(currentDate)}/completed" class="@{if(currentStatus.equals("completed"))"active"}">Completed</a></li>
         </ol>
     </fieldset>
 </section>

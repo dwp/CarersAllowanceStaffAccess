@@ -14,7 +14,6 @@ import play.api.libs.json.JsBoolean
 import scala.Some
 import play.api.libs.json.JsNumber
 import play.api.libs.json.JsObject
-import services.ClaimSummary
 
 object ClaimServiceMock extends ClaimsService{
   def claims(date: LocalDate): Option[JsArray] = {
@@ -23,6 +22,19 @@ object ClaimServiceMock extends ClaimsService{
 
   def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
     Some(Json.toJson(listOfClaimSummaries.filter{_.status == status}.filter{_.claimDateTime.toLocalDate == date}).asInstanceOf[JsArray])
+  }
+
+  def circs(date: LocalDate): Option[JsArray]= {
+    Some(Json.toJson(listOfCircsSummaries.filter{_.claimDateTime.toLocalDate == date}).asInstanceOf[JsArray])
+  }
+
+  def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray] = {
+
+    val regex = if(sortBy=="atom") "[a-m].*".r else "[n-z].*".r
+
+    val listSum = listOfClaimSummaries.filter{_.claimDateTime.toLocalDate == date}.filter{_.status != "completed"}
+
+    Some(Json.toJson(listSum dropWhile (c => regex.findAllMatchIn(c.surname) == None)).asInstanceOf[JsArray])
   }
 
   def fullClaim(transactionId: String): Option[JsValue] = {
@@ -107,7 +119,14 @@ object ClaimServiceMock extends ClaimsService{
       ClaimSummary(f"99990$i%02d",if (Random.nextFloat() > 0.5f) "claim" else "circs", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
     })(collection.breakOut)
 
+  val listOfCircsSummaries: List[ClaimSummary] =
+    (for(i <- 1 to 70) yield {
+      val statusToUse = availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
+      ClaimSummary(f"99990$i%02d", "circs", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
+    })(collection.breakOut)
+
   var listOfClaimSummaries = mandatoryClaims ++ randomList
+
 
   def export(): Option[JsArray] = {
     val oldClaims = listOfClaimSummaries.filter( _.claimDateTime.isBefore(new DateTime().minus(20)) )

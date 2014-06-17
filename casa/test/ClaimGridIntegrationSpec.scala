@@ -12,7 +12,6 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
   val password = "john"
 
   "Claim Grid" should {
-    // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
 
     "Show claims filtered by today's date" in new WithBrowserStub {
       login(browser)
@@ -25,6 +24,8 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
     "Only contain received or viewed statuses" in new WithBrowserStub {
       login(browser)
+
+      browser.goTo("/")
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
@@ -42,18 +43,36 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("completed"))
     }
 
-    "Filtering by work queue only shows received or viewed claims" in new WithBrowserStub {
+    "Filtering by work queue only shows received or viewed claims for default sort a to m" in new WithBrowserStub {
       login(browser)
-
-      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
-      browser.goTo(s"/filter/$today")
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
-    // TODO:checkCasaDates not working due to '.casaDate' class removed from UI : Prafulla
+    "Filtering by surname a to m shows only received or viewed claims for claimants with surnames starting with a to m" in new WithBrowserStub {
+      login(browser)
+
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+      browser.goTo(s"/filter/surname/$today/atom")
+
+      val statuses = browser.$("#claimsTable .status").asScala.toSeq
+
+      checkForStatus(statuses, Seq("received", "viewed"))
+    }
+
+    "Filtering by surname n to z shows only received or viewed claims for claimants with surnames starting with n to z" in new WithBrowserStub {
+      login(browser)
+
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+      browser.goTo(s"/filter/surname/$today/ntoz")
+
+      val statuses = browser.$("#claimsTable .status").asScala.toSeq
+
+      checkForStatus(statuses, Seq("received", "viewed"))
+    }
+
     "Show claims filtered by specified date" in new WithBrowserStub {
       login(browser)
 
@@ -115,11 +134,15 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.title mustEqual s"Claim $transactionId"
     }
 
-    "Should show claims first then Circs" in new WithBrowserStub {
+    "Should show circs under the circs tab" in new WithBrowserStub {
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+
       login(browser)
 
+      browser.goTo(s"/circs/$today")
+
       val claimTypes = browser.$("#claimsTable .view")
-      assertClaimTypesOrdering (claimTypes)
+      assertCircsType (claimTypes)
     }
 
     "Should show claims first then Circs for completed" in new WithBrowserStub {
@@ -141,10 +164,21 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     browser.submit("button[type='submit']")
   }
 
+  def assertCircsType (claimTypes:FluentList[FluentWebElement]) = {
+
+    val circsTypeList = claimTypes.asScala.toSeq.filter(f => f.getText == "circs")
+
+    circsTypeList.size must be_>(0)
+
+    val claimsTypeList = claimTypes.asScala.toSeq.filter(f => f.getText == "claim")
+
+    claimsTypeList must beEmpty
+
+  }
+
   def assertClaimTypesOrdering (claimTypes:FluentList[FluentWebElement]) = {
 
     val claimTypeList = claimTypes.asScala.toSeq.filter(f => f.getText == "claim" || f.getText == "circs")
-
 
     def isClaimOrCircs(claimType:String) = if(claimType == "claim") 1 else 2
 

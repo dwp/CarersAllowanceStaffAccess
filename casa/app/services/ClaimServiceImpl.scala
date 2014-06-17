@@ -38,6 +38,30 @@ object ClaimServiceImpl extends ClaimsService {
     }
   }
 
+  override def circs(date: LocalDate): Option[JsArray] = {
+    val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
+
+    s"$url/circs/$dateString" get { response =>
+      response.status match {
+        case Status.OK => Some(response.json.as[JsArray])
+        case Status.NOT_FOUND => None
+      }
+    }
+  }
+
+  def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray] = {
+
+    val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
+
+    s"$url/claims/surname/$dateString/$sortBy" get { response =>
+      response.status match {
+        case Status.OK => Some(response.json.as[JsArray])
+        case Status.NOT_FOUND => None
+      }
+    }
+
+  }
+
   override def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
 
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
