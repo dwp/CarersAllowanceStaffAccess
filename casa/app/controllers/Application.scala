@@ -13,10 +13,11 @@ import scala.language.implicitConversions
 
 object Application extends Controller with ClaimServiceComponent with Secured {
 
+  val defaultStatus = "atom"
 
   def index = IsAuthenticated { implicit username => implicit request =>
       val today = new LocalDate
-      Ok(views.html.claimsList(today,"atom", sortByDateTime(claimService.claimsFilteredBySurname(today, "atom"))))
+      Ok(views.html.claimsList(today,defaultStatus, sortByDateTime(claimService.claimsFilteredBySurname(today, defaultStatus))))
   }
 
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
@@ -72,7 +73,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
 
   def complete(currentDate:String) = IsAuthenticated { implicit username => implicit request =>
 
-    val redirect = Redirect(routes.Application.claimsForDateFilteredBySurname(currentDate, "atom"))
+    val redirect = Redirect(routes.Application.claimsForDateFilteredBySurname(currentDate, defaultStatus))
 
     form.bindFromRequest.fold(
       errors => redirect

@@ -4,15 +4,19 @@
 @import org.joda.time.LocalDate
 
 @formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
+@isStatusCompleted = @{ currentStatus == "completed"}
+@isStatusAtoM = @{ currentStatus == "atom"}
+@isStatusNtoZ = @{ currentStatus == "ntoz"}
+@isStatusCircs = @{ currentStatus == "circs"}
 
 <section class="filter">
     <fieldset>
         <legend>Filter</legend>
         <ol class="clearfix">
-            <li><a href="/filter/surname/@{formatToLink(currentDate)}/atom" class="@{if(currentStatus.equals("atom"))"active"}">Claims A - M</a></li>
-            <li><a href="/filter/surname/@{formatToLink(currentDate)}/ntoz" class="@{if(currentStatus.equals("ntoz"))"active"}">Claims N - Z</a></li>
-            <li><a href="/circs/@{formatToLink(currentDate)}" class="@{if(currentStatus.equals("circs"))"active"}">Circs</a></li>
-            <li><a href="/filter/@{formatToLink(currentDate)}/completed" class="@{if(currentStatus.equals("completed"))"active"}">Completed</a></li>
+            <li><a href="/filter/surname/@{formatToLink(currentDate)}/atom" class="@{if(isStatusAtoM)"active"}">Claims A - M</a></li>
+            <li><a href="/filter/surname/@{formatToLink(currentDate)}/ntoz" class="@{if(isStatusNtoZ)"active"}">Claims N - Z</a></li>
+            <li><a href="/circs/@{formatToLink(currentDate)}" class="@{if(isStatusCircs)"active"}">Circs</a></li>
+            <li><a href="/filter/@{formatToLink(currentDate)}/completed" class="@{if(isStatusCompleted)"active"}">Completed</a></li>
         </ol>
     </fieldset>
 </section>
