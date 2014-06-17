@@ -25,7 +25,7 @@ object ClaimServiceMock extends ClaimsService{
   }
 
   def circs(date: LocalDate): Option[JsArray]= {
-    Some(Json.toJson(listOfCircsSummaries.filter{_.claimDateTime.toLocalDate == date}).asInstanceOf[JsArray])
+    Some(Json.toJson(listOfCircsSummaries.filter{_.claimDateTime.toLocalDate == date}.filter{_.status != "completed"}).asInstanceOf[JsArray])
   }
 
   def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray] = {
