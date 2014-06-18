@@ -15,3 +15,5 @@ span {
     line-height: 1.2em;
 }
 
+thead { display: none; }
+tfoot { display: none; }
