@@ -43,7 +43,7 @@ p[class="htmlPageBreak"]{
 }
 
 thead { display: table-header-group; }
-tfoot { display: table-footer-group; text-align: right}
+tfoot { display: none; text-align: right; page-break-after: always}
 
 td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='DetailPageHeader'], td[class='DetailPageFooter'] {
     display: none;
@@ -72,4 +72,9 @@ td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='Deta
     font-size: 22px;
     font-weight: bold;
     padding: 20px 0;
+}
+
+@page { counter-increment:pageNumber
+    @bottom-right {
+    content: "Page" counter(pageNumber) "of" counter(pages); }
 }
