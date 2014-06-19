@@ -23,7 +23,7 @@ header nav, footer {
 
 td[id*='Heading']
 {
-    font-size: 30px!important;
+    font-size: 18pt!important;
 }
 
 td:not(:empty){
@@ -34,8 +34,8 @@ td:not(:empty){
 span {
     font-family: arial!important;
     color: #000;
-    font-size: 24px!important;
-    line-height: 1.2em;
+    font-size: 16pt!important;
+    line-height: 1.4em;
 }
 
 p[class="htmlPageBreak"]{
@@ -55,10 +55,10 @@ td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='Deta
 }
 
 .topHeader{
-    font-size: 20px;
+    font-size: 14.5pt;
     text-align: left;
     font-weight: normal;
-    padding: 10px 0;
+    padding: 7.5pt 0;
     font-family: arial;
 }
 
@@ -68,7 +68,7 @@ td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='Deta
 
 .topHeaderBackGround .topHeader {
     font-weight: normal;
-    font-size: 22px;
+    font-size: 16pt;
     font-weight: bold;
-    padding: 20px 0;
+    padding: 14.5pt 0;
 }
