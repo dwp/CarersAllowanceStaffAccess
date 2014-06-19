@@ -155,6 +155,10 @@ object ClaimServiceImpl extends ClaimsService {
                  $('#PrintPageHeaderId tr:nth-child(2)').append("<th class='topHeader' colspan='5'>"+header+"</th>");
         });
         $('#PrintPageHeaderId').append("</tr>")
+        $('td.SummaryPageHeader').closest('tr').addClass('SummaryPageHeader');
+        $('td.SummaryPageDateHeader').closest('tr').addClass('SummaryPageDateHeader');
+        $('td.DetailPageHeader').closest('tr').addClass('DetailPageHeader');
+        $('td.DetailPageFooter').closest('tr').addClass('DetailPageFooter');
         $('span').css('font-family','inherit').css('font-size','inherit').css('color', 'inherit').css('line-height', 'inherit');});
       </script>"""
   }

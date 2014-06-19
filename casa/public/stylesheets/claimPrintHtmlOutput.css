@@ -49,6 +49,10 @@ td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='Deta
     display: none;
 }
 
+tr[class='SummaryPageHeader'], tr[class='SummaryPageDateHeader'], tr[class='DetailPageHeader'], tr[class='DetailPageFooter']{
+    display: none;
+}
+
 #pageNumber:after {
     counter-increment: pageNumber;
     content: "Page " counter(pageNumber) " of X ";
