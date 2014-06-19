@@ -43,16 +43,10 @@ p[class="htmlPageBreak"]{
 }
 
 thead { display: table-header-group; }
-tfoot { display: table-footer-group; text-align: right; page-break-after: always}
+tfoot { display: none; text-align: right; page-break-after: always}
 
 td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='DetailPageHeader'], td[class='DetailPageFooter'] {
     display: none;
-}
-
-
-#pageNumber:after {
-    counter-increment: pageNumber;
-    content: "Page " counter(pageNumber) " of " counter(pages);
 }
 
 .topHeader{
