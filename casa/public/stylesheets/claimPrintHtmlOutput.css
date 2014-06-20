@@ -13,10 +13,6 @@ blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-
 
 * { overflow: visible !important; }
 
-div{
-    display: inline ;
-}
-
 header nav, footer {
     display: none;
 }
@@ -39,17 +35,13 @@ span {
 }
 
 p[class="htmlPageBreak"]{
-    display:none
+    display:none ;
 }
 
 thead { display: table-header-group; }
-tfoot { display: table-footer-group; text-align: right; page-break-after: always}
+tfoot { display: table-footer-group; text-align: right; page-break-after: always;}
 
-td[class='SummaryPageHeader'], td[class='SummaryPageDateHeader'], td[class='DetailPageHeader'], td[class='DetailPageFooter'] {
-    display: none;
-}
-
-tr[class='SummaryPageHeader'], tr[class='SummaryPageDateHeader'], tr[class='DetailPageHeader'], tr[class='DetailPageFooter']{
+.SummaryPageHeader, .SummaryPageDateHeader, .DetailPageHeader, .DetailPageFooter{
     display: none;
 }
 
