@@ -17,24 +17,22 @@ header nav, footer {
     display: none;
 }
 
-td[id*='Heading']
-{
-    font-size: 18pt!important;
-}
-
 td:not(:empty){
     padding-bottom: 3px;
     padding-top: 5px;
 }
 
-span {
-    font-family: arial!important;
-    color: #000;
-    font-size: 16pt!important;
-    line-height: 1.4em;
+td[id*='Heading']
+{
+    font-size: 14.5pt!important;
 }
 
-
+span {
+    font-family: arial!important;
+    color: #000!important;
+    font-size: 10.5pt;
+    line-height: 0.875em;
+}
 
 thead { display: table-header-group; }
 tfoot { display: table-footer-group; text-align: right; page-break-after: always;}
@@ -65,4 +63,8 @@ tfoot { display: table-footer-group; text-align: right; page-break-after: always
     font-size: 16pt;
     font-weight: bold;
     padding: 14.5pt 0;
+}
+
+p[class="htmlPageBreak"]{
+    display:none;
 }
