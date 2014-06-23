@@ -7,16 +7,17 @@ import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
-import play.api.libs.json.{Json, JsArray}
+import play.api.libs.json.JsArray
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 
 object Application extends Controller with ClaimServiceComponent with Secured {
 
+  val defaultStatus = "atom"
 
   def index = IsAuthenticated { implicit username => implicit request =>
       val today = new LocalDate
-      Ok(views.html.claimsList(today,"", sortByClaimTypeDateTime(claimService.claims(today))))
+      Ok(views.html.claimsList(today,defaultStatus, sortByDateTime(claimService.claimsFilteredBySurname(today, defaultStatus))))
   }
 
   def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
@@ -28,6 +29,30 @@ object Application extends Controller with ClaimServiceComponent with Secured {
         ))
       case _ => data
     }
+  }
+
+  def sortByDateTime (data : Option[JsArray]):Option[JsArray] = {
+    data match {
+      case Some(data) =>
+        Some(JsArray(
+          data.value.seq.sortWith(_.p.claimDateTime.asLong < _.p.claimDateTime.asLong)
+        ))
+      case _ => data
+    }
+  }
+
+  def claimsForDateFilteredBySurname(date: String, sortBy: String) = IsAuthenticated { implicit username => implicit request =>
+    val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
+
+    val claims = claimService.claimsFilteredBySurname(localDate, sortBy)
+
+    Ok(views.html.claimsList(localDate,sortBy, sortByDateTime(claims)))
+  }
+
+  def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
+    val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
+    val circs = claimService.circs(localDate)
+    Ok(views.html.claimsList(localDate,"circs", sortByDateTime(circs)))
   }
 
   def claimsForDate(date: String) = claimsForDateFiltered(date,"")
@@ -48,7 +73,7 @@ object Application extends Controller with ClaimServiceComponent with Secured {
 
   def complete(currentDate:String) = IsAuthenticated { implicit username => implicit request =>
 
-    val redirect = Redirect(routes.Application.claimsForDate(currentDate))
+    val redirect = Redirect(routes.Application.claimsForDateFilteredBySurname(currentDate, defaultStatus))
 
     form.bindFromRequest.fold(
       errors => redirect

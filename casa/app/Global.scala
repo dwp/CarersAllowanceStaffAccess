@@ -1,13 +1,19 @@
-import play.api.GlobalSettings
+import play.api.{Logger, Application, GlobalSettings}
 import play.api.mvc._
 import scala.Some
 import play.Play
 
 object Global extends GlobalSettings {
 
-//  implicit def anyWithIn[A](a: A) = new {
-//    def in(as: A*) = as.exists(_ == a)
-//  }
+
+  override def onStart(app: Application): Unit = {
+    Logger.info("SA is now starting")
+  }
+
+  override def onStop(app: Application): Unit = {
+    Logger.info("SA is now stopping")
+  }
+
   /**
    * Intercept requests to check for session timeout
    * @param request the incoming request

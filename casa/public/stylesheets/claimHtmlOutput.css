@@ -5,13 +5,15 @@ td:not(:empty){
 
 td[id*='Heading']
 {
-    font-size: 20px!important;
+    font-size: 14.5pt!important;
 }
 
 span {
     font-family: arial!important;
     color: #000!important;
-    font-size: 14px;
-    line-height: 1.2em;
+    font-size: 10.5pt;
+    line-height: 0.875em;
 }
 
+thead { display: none; }
+tfoot { display: none; }

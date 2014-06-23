@@ -35,5 +35,6 @@ class ApplicationSpec extends Specification {
 
       redirectLocation(result) must beSome("/")
     }
+
   }
 }
