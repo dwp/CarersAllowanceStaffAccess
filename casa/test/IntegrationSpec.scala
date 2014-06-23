@@ -27,7 +27,7 @@ class IntegrationSpec extends Specification {
 
       browser.pageSource must contain("CASA")
 
-      browser.fill("#userId") `with` "test1"
+      browser.fill("#userId") `with` "expired"
       browser.fill("#password") `with` "john"
       browser.submit("button[type='submit']")
 
