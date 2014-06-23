@@ -11,7 +11,6 @@ video {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertic
                                                  section {	display: block;}body,ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before,
                                                                                                                                                   blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
 
-* { overflow: visible !important; }
 
 header nav, footer {
     display: none;
