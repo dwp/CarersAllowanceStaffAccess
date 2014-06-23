@@ -7,9 +7,9 @@ article, aside, canvas, details, embed, figure, figcaption, footer, header, hgro
 ruby, section, summary,time, mark, audio,
 video {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}
 /* HTML5 display-role reset for older browsers */article, aside,
-details, figcaption, figure, footer, header, hgroup, menu, nav,
-section {	display: block;}body,ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before,
-blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
+                                                 details, figcaption, figure, footer, header, hgroup, menu, nav,
+                                                 section {	display: block;}body,ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before,
+                                                                                                                                                  blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
 
 * { overflow: visible !important; }
 
@@ -24,14 +24,14 @@ td:not(:empty){
 
 td[id*='Heading']
 {
-    font-size: 14.5pt!important;
+    font-size: 16pt!important;
 }
 
 span {
     font-family: arial!important;
     color: #000!important;
-    font-size: 10.5pt;
-    line-height: 0.875em;
+    font-size: 14pt!important;
+    line-height: 1.2em;
 }
 
 thead { display: table-header-group; }
@@ -63,8 +63,4 @@ tfoot { display: table-footer-group; text-align: right; page-break-after: always
     font-size: 16pt;
     font-weight: bold;
     padding: 14.5pt 0;
-}
-
-p[class="htmlPageBreak"]{
-    display:none;
 }
