@@ -34,9 +34,7 @@ span {
     line-height: 1.4em;
 }
 
-p[class="htmlPageBreak"]{
-    display:none ;
-}
+
 
 thead { display: table-header-group; }
 tfoot { display: table-footer-group; text-align: right; page-break-after: always;}
