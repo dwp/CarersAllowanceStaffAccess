@@ -11,13 +11,13 @@
 @isStatusCompleted = @{ currentStatus == "completed"}
 
 @form(action = controllers.routes.Application.complete(currentDateToHiddenValue)){
-    <table id="claimsTable">
+    <table id="claimsTable" class="tablesorter">
         <caption>List of claims</caption>
         <thead>
             <tr>
                 <th></th>
-                <th>Transaction Id</th>
-                <th class="view">Name</th>
+                <th id="thTransactionId">Transaction Id</th>
+                <th id="thNameId" class="view">Name</th>
                 <th class="ni">NI Number</th>
                 <th class="view">Claim type</th>
                 <th class="view">Submit Date</th>
@@ -38,11 +38,11 @@
                             <label for="@claim.p.transactionId">Claim</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
                         }
                         </td>
-                        <td class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
-                        <td class="view">@claim.p.surname @claim.p.forename</td>
-                        <td class="ni">@claim.p.nino</td>
-                        <td class="view">@claim.p.claimType</td>
-                        <td class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
+                        <td id="transactionId" class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
+                        <td id="name" class="view">@claim.p.surname @claim.p.forename</td>
+                        <td id="nino" class="ni">@claim.p.nino</td>
+                        <td id="claimType" class="view">@claim.p.claimType</td>
+                        <td id="claimDate" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td class="status">@claim.p.status</td>
                     </tr>

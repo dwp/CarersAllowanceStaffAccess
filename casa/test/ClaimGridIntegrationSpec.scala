@@ -155,6 +155,60 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       val claimTypes = browser.$("#claimsTable .view")
       assertClaimTypesOrdering (claimTypes)
     }
+
+    "Sort by transaction id should return the same number of entries as the original list" in new WithBrowserStub {
+      login(browser)
+
+      browser.goTo("/")
+
+      val transactionIds = browser.$("#transactionId").asScala.toSeq
+
+      browser.$("#thTransactionId").click()
+
+      val transactionIdsSorted = browser.$("#claimsTable .transactionId").asScala.toSeq
+
+      transactionIds.size must beEqualTo(transactionIdsSorted.size)
+    }
+
+    "Sort by name should return the same number of entries as the original list" in new WithBrowserStub {
+      login(browser)
+
+      browser.goTo("/")
+
+      val names = browser.$("#claimsTable .name").asScala.toSeq
+
+      browser.$("#thNameId").click()
+
+      val namesSorted = browser.$("#claimsTable .name").asScala.toSeq
+
+      names.size must beEqualTo(namesSorted.size)
+    }
+
+    "Should sort by transaction id " in new WithBrowserStub {
+      login(browser)
+
+      browser.goTo("/")
+
+      val transactionIds = browser.$("#transactionId").asScala.toList
+
+      browser.$("#thTransactionId").click()
+
+      val transactionIdsSorted = browser.$("#claimsTable .transactionId").asScala.toList
+
+      compareSort(transactionIdsSorted)
+    }.pendingUntilFixed("The javascript code does not seem to get executed on click from the test")
+
+    "Should sort by name" in new WithBrowserStub {
+      login(browser)
+
+      browser.goTo("/")
+
+      browser.$("#thNameId").click()
+
+      val namesSorted = browser.$("#name").asScala.toList
+
+      compareSort(namesSorted)
+    }.pendingUntilFixed("The javascript code does not seem to get executed on click from the test")
   }
 
   def login(browser: TestBrowser) = {
@@ -209,6 +263,16 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     for (status <- actualStatuses) {
       status.getText must beOneOf(expectedStatuses:_*)
     }
+  }
+
+  def compareSort(data: List[FluentWebElement]) {
+    data.size must be_>(0)
+    var previous = ""
+    for (current <- data) {
+      current.getText.compareTo(previous) must be_>=(0)
+      previous = current.getText
+    }
+
   }
 }
 
