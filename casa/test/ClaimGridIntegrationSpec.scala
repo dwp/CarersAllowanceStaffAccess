@@ -184,7 +184,8 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       names.size must beEqualTo(namesSorted.size)
     }
 
-    "Should sort by transaction id " in new WithBrowserStub {
+    "sort by transaction id " in new WithBrowserStub {
+      pending
       login(browser)
 
       browser.goTo("/")
@@ -198,7 +199,8 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       compareSort(transactionIdsSorted)
     }.pendingUntilFixed("The javascript code does not seem to get executed on click from the test")
 
-    "Should sort by name" in new WithBrowserStub {
+    "sort by name" in new WithBrowserStub {
+      pending
       login(browser)
 
       browser.goTo("/")

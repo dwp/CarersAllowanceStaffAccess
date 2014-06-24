@@ -6,11 +6,13 @@
 @header(csvClaims:JsArray) = @{
     csvClaims.value.toList match {
         case head :: tail => head.as[JsArray]
+        case _ => JsArray()
     }
 }
 @valueList(csvClaims:JsArray) = @{
     csvClaims.value.toList match {
         case head :: tail => tail
+        case _ => List.empty[JsValue]
     }
 }
 <!DOCTYPE html>
