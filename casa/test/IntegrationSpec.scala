@@ -10,7 +10,7 @@ class IntegrationSpec  extends Specification with Tags {
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowserStub {
+    "work from within a browser" in new WithBrowser {
       browser.goTo("/login")
 
       browser.pageSource must contain("CASA")
@@ -22,7 +22,7 @@ class IntegrationSpec  extends Specification with Tags {
       browser.pageSource must contain("Claims list")
     }
 
-    "display a message to user with expired password" in new WithBrowserStub  {
+    "display a message to user with expired password" in new WithBrowser {
       browser.goTo("/login")
 
       browser.pageSource must contain("CASA")
