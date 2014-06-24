@@ -103,22 +103,24 @@ object ClaimServiceMock extends ClaimsService{
 
   val transIdPrefix = "1111"
 
-  val mandatoryClaims = Seq(ClaimSummary(s"${transIdPrefix}070","claim", f"AB${Random.nextInt(999999)}%06dD", "name70", "surname70", today, "received"),
-    ClaimSummary(s"${transIdPrefix}071","claim", f"AB${Random.nextInt(999999)}%06dD", "name71", "surname71", today, "viewed"),
-    ClaimSummary(s"${transIdPrefix}072","claim", f"AB${Random.nextInt(999999)}%06dD", "name72", "surname72", today, "completed"))
+  val mandatoryClaims = Seq(ClaimSummary(s"${transIdPrefix}070","claim", f"AB${Random.nextInt(999999)}%06dD", "aname", "asurname", today, "received"),
+    ClaimSummary(s"${transIdPrefix}071","claim", f"AB${Random.nextInt(999999)}%06dD", "lname", "lsurname", today, "viewed"),
+    ClaimSummary(s"${transIdPrefix}072","claim", f"AB${Random.nextInt(999999)}%06dD", "mname", "msurname", today, "completed"))
 
-  def dayToReport = daysToReport(Math.abs(Random.nextInt) % daysToReport.size).toDateTime(new LocalTime(Random.nextInt(23), Random.nextInt(59)))
+  def dayToReport = daysToReport(Math.abs(Random.nextInt()) % daysToReport.size).toDateTime(new LocalTime(Random.nextInt(23), Random.nextInt(59)))
+
+  val alphaLetters = Seq("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z")
 
   val randomList: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
-      val statusToUse = availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
-      ClaimSummary(f"99990$i%02d",if (Random.nextFloat() > 0.5f) "claim" else "circs", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
+      val statusToUse = availableStatuses(Math.abs(Random.nextInt()) % availableStatuses.size)
+      ClaimSummary(f"99990$i%02d",if (Random.nextFloat() > 0.5f) "claim" else "circs", f"AB${Random.nextInt(999999)}%06dD", f"${alphaLetters(i)}name",  f"${alphaLetters(i)}surname", dayToReport, statusToUse)
     })(collection.breakOut)
 
   val listOfCircsSummaries: List[ClaimSummary] =
     (for(i <- 1 to 70) yield {
-      val statusToUse = availableStatuses(Math.abs(Random.nextInt) % availableStatuses.size)
-      ClaimSummary(f"99990$i%02d", "circs", f"AB${Random.nextInt(999999)}%06dD", s"name$i", s"surname$i", dayToReport, statusToUse)
+      val statusToUse = availableStatuses(Math.abs(Random.nextInt()) % availableStatuses.size)
+      ClaimSummary(f"99990$i%02d", "circs", f"AB${Random.nextInt(999999)}%06dD", f"${alphaLetters(i)}name",  f"${alphaLetters(i)}surname", dayToReport, statusToUse)
     })(collection.breakOut)
 
   var listOfClaimSummaries = mandatoryClaims ++ randomList
