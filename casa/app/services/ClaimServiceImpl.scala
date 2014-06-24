@@ -172,7 +172,7 @@ object ClaimServiceImpl extends ClaimsService {
       <body text="#000000" link="#000000" alink="#000000" vlink="#000000">
         <table style="margin: 0 auto;">
           <thead id='PrintPageHeaderId'></thead>
-          <tfoot><tr><td colspan='5'><span id="pageNumber"></span></td></tr></tfoot>
+          <tfoot><tr><td colspan='5'><span class="pageNumber"></span></td></tr></tfoot>
           <tbody>
            <tr><td colspan='5'>
     """

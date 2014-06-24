@@ -40,9 +40,9 @@ tfoot { display: table-footer-group; text-align: right; page-break-after: always
     display: none;
 }
 
-#pageNumber:after {
-    counter-increment: pageNumber;
-    content: "Page " counter(pageNumber) " of X ";
+.pageNumber:after {
+    counter-increment: number;
+    content: "Page " counter(number) " of " counter(pages);
 }
 
 .topHeader{
