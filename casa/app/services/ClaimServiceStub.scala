@@ -30,7 +30,7 @@ object ClaimServiceMock extends ClaimsService{
 
     val listSum = listOfClaimSummaries.filter{_.claimDateTime.toLocalDate == date}.filter{_.status != "completed"}
 
-    Some(Json.toJson(listSum dropWhile (c => regex.findAllMatchIn(c.surname) == None)).asInstanceOf[JsArray])
+    Some(Json.toJson(listSum dropWhile (c => regex.findAllMatchIn(c.surname).isEmpty)).asInstanceOf[JsArray])
   }
 
   def fullClaim(transactionId: String): Option[JsValue] = {
