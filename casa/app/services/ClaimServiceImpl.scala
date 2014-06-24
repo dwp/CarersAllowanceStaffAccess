@@ -108,10 +108,10 @@ object ClaimServiceImpl extends ClaimsService {
             html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
                 .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")
                 .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
-                .replace("</body>", footerForPrint)
+                //.replace("</body>", footerForPrint)
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
-                .replace("""<style type="text/css">""", styleSheetForHtmlOutput + """ <style type="text/css">""")
-                .replace("""<body text="#000000" link="#000000" alink="#000000" vlink="#000000">""", headerForPrint)
+                //.replace("""<style type="text/css">""", styleSheetForHtmlOutput + """ <style type="text/css">""")
+                //.replace("""<body text="#000000" link="#000000" alink="#000000" vlink="#000000">""", headerForPrint)
 
           )
         case Status.NOT_FOUND => None
