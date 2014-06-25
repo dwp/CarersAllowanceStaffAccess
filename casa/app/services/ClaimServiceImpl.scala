@@ -108,11 +108,7 @@ object ClaimServiceImpl extends ClaimsService {
             html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
                 .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")
                 .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
-                //.replace("</body>", footerForPrint)
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
-                //.replace("""<style type="text/css">""", styleSheetForHtmlOutput + """ <style type="text/css">""")
-                //.replace("""<body text="#000000" link="#000000" alink="#000000" vlink="#000000">""", headerForPrint)
-
           )
         case Status.NOT_FOUND => None
       }
@@ -137,52 +133,4 @@ object ClaimServiceImpl extends ClaimsService {
       }
     } exec()
   }
-
-  def styleSheetForHtmlOutput = {
-    """<link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimHtmlOutput.css"/>
-       <link rel="stylesheet" type="text/css" href="/assets/stylesheets/claimPrintHtmlOutput.css" media="print">
-      <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
-      <script>$(document).ready(function() {
-        $('#PrintPageHeaderId').append("<tr class='topHeaderBackGround'>")
-          $('td.SummaryPageHeader span').each(function(){
-             var header = $(this).html().trim();
-             $('#PrintPageHeaderId tr').append("<th class='topHeader'>"+header+"</th>");
-          });
-        $('#PrintPageHeaderId').append("</tr>")
-        $('#PrintPageHeaderId').append("<tr class='topHeaderBackGround'>")
-              $('td.SummaryPageDateHeader span').each(function(){
-                 var header = $(this).html();
-                 $('#PrintPageHeaderId tr:nth-child(2)').append("<th class='topHeader' colspan='5'>"+header+"</th>");
-        });
-        $('#PrintPageHeaderId').append("</tr>")
-        $('td.SummaryPageHeader').closest('tr').addClass('SummaryPageHeader');
-        $('td.SummaryPageDateHeader').closest('tr').addClass('SummaryPageDateHeader');
-        $('td.DetailPageHeader').closest('tr').addClass('DetailPageHeader');
-        $('td.DetailPageFooter').closest('tr').addClass('DetailPageFooter');
-        $('div').css('height', '');
-        $('tr').css('height', '');
-        $('td').css('height', '');
-        $('span').css('height', '');
-        $('span').css('font-family','inherit').css('font-size','inherit').css('color', 'inherit').css('line-height', 'inherit');});
-      </script>"""
-  }
-
-  def headerForPrint = {
-    """
-      <body text="#000000" link="#000000" alink="#000000" vlink="#000000">
-        <table style="margin: 0 auto;">
-          <thead id='PrintPageHeaderId'></thead>
-          <tfoot><tr><td colspan='5'><span class="pageNumber"></span></td></tr></tfoot>
-          <tbody>
-           <tr><td colspan='5'>
-    """
-  }
-
-  def footerForPrint = {
-    """</td></tr>
-        </tbody>
-        </table>
-      </body>"""
-  }
-
 }
