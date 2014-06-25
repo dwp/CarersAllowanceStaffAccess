@@ -1,4 +1,4 @@
-@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], session: play.api.mvc.Session)
+@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], claimNumbers:play.api.libs.json.JsObject, session: play.api.mvc.Session)
 
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
         @header(session)
         
         <div id="tabs">
-            @daysBar(claimsList,currentDate)
+            @daysBar(claimsList,claimNumbers,currentDate)
         </div>
 
         @filterBar(currentDate,currentStatus)

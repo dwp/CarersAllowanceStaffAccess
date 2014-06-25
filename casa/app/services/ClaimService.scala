@@ -1,33 +1,27 @@
 package services
 
-import scala.concurrent.duration._
+import utils.HttpUtils.HttpMethodWrapper
 import org.joda.time.LocalDate
 import play.api.libs.json._
-import play.api.{Logger, Play}
 import org.joda.time.format.DateTimeFormat
 import play.api.http.Status
-import scala.language.postfixOps
-import scala.language.implicitConversions
-import play.api.libs.json.JsObject
 import play.api.libs.json.JsArray
+import play.api.libs.json.JsObject
+import play.api.libs.json.JsBoolean
 import scala.Some
-import utils.HttpUtils.HttpMethodWrapper
+import scala.language.implicitConversions
 
-object ClaimServiceImpl extends ClaimsService {
+trait ClaimService extends CASARemoteService {
 
-  val url = getUrl
-  val timeout = Play.configuration(Play.current).getInt("ws.timeout").getOrElse(30).seconds
+  override def getUrlPropertyName = "claimsServiceUrl"
 
-  implicit val context = scala.concurrent.ExecutionContext.Implicits.global
+  override def getTimeoutPropertyName = "ws.timeout"
 
-  def getUrl = Play.configuration(Play.current).getString("claimsServiceUrl") match {
-                case Some(s) if s.length > 0 => Logger.info(s"Getting claimServiceUrl value ($s)");s
-                case _ => Logger.info("Getting default url value"); "http://localhost:9002"
-  }
+  override def getDefaultUrl = "http://localhost:9002"
 
   implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
 
-  override def claims(date: LocalDate): Option[JsArray] = {
+  def getClaims(date: LocalDate): Option[JsArray] = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
     s"$url/claims/$dateString" get { response =>
@@ -38,7 +32,7 @@ object ClaimServiceImpl extends ClaimsService {
     }
   }
 
-  override def circs(date: LocalDate): Option[JsArray] = {
+  def getCircs(date: LocalDate): Option[JsArray] = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
     s"$url/circs/$dateString" get { response =>
@@ -62,7 +56,7 @@ object ClaimServiceImpl extends ClaimsService {
 
   }
 
-  override def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
+  def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
 
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
@@ -75,7 +69,7 @@ object ClaimServiceImpl extends ClaimsService {
 
   }
 
-  override def claimNumbersFiltered(status: String*): JsObject =
+  def claimNumbersFiltered(status: String*): JsObject =
     s"$url/counts/${status.mkString(",")}" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
@@ -83,7 +77,7 @@ object ClaimServiceImpl extends ClaimsService {
       }
     }
 
-  override def updateClaim(transactionId: String, status: String): JsBoolean =
+  def updateClaim(transactionId: String, status: String): JsBoolean =
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
         case Status.OK => new JsBoolean(true)
@@ -91,7 +85,7 @@ object ClaimServiceImpl extends ClaimsService {
       }
     } exec()
 
-  override def fullClaim(transactionId: String): Option[JsValue] =
+  def fullClaim(transactionId: String): Option[JsValue] =
     s"$url/claim/$transactionId/" get { response =>
       response.status match {
         case Status.OK => Some(response.json)
@@ -99,19 +93,19 @@ object ClaimServiceImpl extends ClaimsService {
       }
     }
 
-  override def renderClaim(transactionId: String) = {
+  def buildClaimHtml(transactionId: String) = {
     s"$url/render/$transactionId" get { response =>
       response.status match {
         case Status.OK =>
           val html = response.body
           Some(
-            html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
-                .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")
-                .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
-                .replace("</body>", footerForPrint)
-                .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
-                .replace("""<style type="text/css">""", styleSheetForHtmlOutput + """ <style type="text/css">""")
-                .replace("""<body text="#000000" link="#000000" alink="#000000" vlink="#000000">""", headerForPrint)
+            html.replace("<title></title>", s"<title>Claim PDF $transactionId</title>")
+              .replace("##CHECK##", """<img src="/assets/img/yes.png" style="height:20px;"/>""")
+              .replace("##CROSS##", """<img src="/assets/img/no.png" style="height:20px;"/>""")
+              .replace("</body>", footerForPrint)
+              .replace("</body>", "<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
+              .replace( """<style type="text/css">""", styleSheetForHtmlOutput + """ <style type="text/css">""")
+              .replace( """<body text="#000000" link="#000000" alink="#000000" vlink="#000000">""", headerForPrint)
 
           )
         case Status.NOT_FOUND => None
@@ -120,7 +114,7 @@ object ClaimServiceImpl extends ClaimsService {
   }
 
 
-  def export(): Option[JsArray] = {
+  def getOldClaims: Option[JsArray] = {
     s"$url/export" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
@@ -129,11 +123,11 @@ object ClaimServiceImpl extends ClaimsService {
     }
   }
 
-  def purge(): JsBoolean = {
+  def purgeOldClaims(): JsBoolean = {
     s"$url/purge" post { response =>
       response.status match {
-        case Status.OK => JsBoolean(true)
-        case Status.INTERNAL_SERVER_ERROR => JsBoolean(false)
+        case Status.OK => JsBoolean(value = true)
+        case Status.INTERNAL_SERVER_ERROR => JsBoolean(value = false)
       }
     } exec()
   }
@@ -172,7 +166,7 @@ object ClaimServiceImpl extends ClaimsService {
       <body text="#000000" link="#000000" alink="#000000" vlink="#000000">
         <table style="margin: 0 auto;">
           <thead id='PrintPageHeaderId'></thead>
-          <tfoot><tr><td colspan='5'><span class="pageNumber"></span></td></tr></tfoot>
+          <tfoot><tr><td colspan='5'><span id="pageNumber"></span></td></tr></tfoot>
           <tbody>
            <tr><td colspan='5'>
     """
