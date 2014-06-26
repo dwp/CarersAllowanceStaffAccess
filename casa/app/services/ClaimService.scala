@@ -11,7 +11,7 @@ import play.api.libs.json.JsBoolean
 import scala.Some
 import scala.language.implicitConversions
 
-trait ClaimService extends CASARemoteService {
+trait ClaimService extends CasaRemoteService {
 
   override def getUrlPropertyName = "claimsServiceUrl"
 

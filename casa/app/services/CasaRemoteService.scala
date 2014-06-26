@@ -4,7 +4,7 @@ import scala.concurrent.duration._
 import play.api.{Logger, Play}
 import scala.language.implicitConversions
 
-trait CASARemoteService {
+trait CasaRemoteService {
 
   def getUrlPropertyName: String
 

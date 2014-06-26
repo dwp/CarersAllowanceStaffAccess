@@ -6,7 +6,7 @@ import scala.language.postfixOps
 import scala.language.implicitConversions
 import utils.HttpUtils.HttpMethodWrapper
 
-trait AccessControlService extends CASARemoteService {
+trait AccessControlService extends CasaRemoteService {
   override def getUrlPropertyName = "accessControlServiceUrl"
 
   override def getTimeoutPropertyName = "ws.timeout"
