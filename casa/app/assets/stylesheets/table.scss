@@ -1,17 +1,18 @@
 table {
 	width: 100%;
-	margin-top: .8em;
+	padding: 0;
+	margin: 0;
 	border: 6px solid #000;
 	caption {
 		text-indent: -9999px;
+		font-size: 0;
 	}
 	th {
 		text-align: left;
 		background: #000;
 		color: #fff;
 		padding: 15px;
-		font-size: 18px;
-		font-weight: normal;
+		font-size: 16px;
         cursor: pointer;
 	}
 	tr {
@@ -25,12 +26,19 @@ table {
 		}
 	}
 	td {
-		padding: 15px;
+		padding: 20px 15px;
+		font-size: 16px;
 		label {
 			display: none;
 		}
 		&:first-child {
 			width: 20px;
+		}
+		input {
+			width: 18px;
+			height: 18px;
+			background: #fff;
+			border: none;
 		}
 		
 	}
@@ -48,21 +56,27 @@ table {
 	}
 }
 
-.completebutton {
-	margin-top: 2em;
+.actions {
+	margin: 0 0 1.5em 0;
 	text-align: right;
-	a, button {
+
+	button, a {
+		display: inline-block;
 		background: #000;
-		border: 0;
-		border-radius: 5px;
+		padding: .5em .75em;
+		border: 1px solid #000;
 		color: #fff;
-		padding: 10px 15px;
+		text-decoration: none;
 		line-height: 1em;
+		border-radius: 4px;
+
 		&:hover {
-			background: #666;
+			background: #fff;
+			color: #000;
 		}
 	}
-    a{
-      text-decoration: none;
-    }
+	&.below {
+		margin-top: 1.5em;
+		margin-bottom: 0;
+	}
 }

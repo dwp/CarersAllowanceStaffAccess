@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             @if(!isStatusCompleted){
-                <div class="completebutton">
+                <div class="actions">
                     <button type="submit" class="active" id="completeButton1" >Complete</button>
                 </div>
             }
@@ -51,12 +51,11 @@
         </tbody>
     </table>
 
-    @if(!isStatusCompleted){
-        <div class="completebutton">
-        	<button type="submit" class="active" id="completeButton2" >Complete</button>
-        </div>
-    }
-}
-    <div class="completebutton">
+	<div class="actions below">
         <a class="active" id="exportButton" href="@{controllers.routes.Application.export.url}" >Export</a>
+        @if(!isStatusCompleted){
+        	<button type="submit" class="active" id="completeButton2" >Complete</button>
+		}
     </div>
+}
+    

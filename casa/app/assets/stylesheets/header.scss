@@ -57,47 +57,53 @@ header {
 
 
 
-aside {
-
-	float: right;
-	width: auto;
-	margin-top: 5px;
+	aside {
 	
-	@media screen and (max-width: 680px) {
-			float: none;
-			width: auto;
-			margin-top: 20px;
-		}
-	
-	p {
-		color: #666;
-		font-family: 'colaborate-thin';
-		font-size: 18px;
-		padding-top: 3px;
-		span {
+		float: right;
+		width: auto;
+		margin-top: 5px;
+		
+		@media screen and (max-width: 680px) {
+				float: none;
+				width: auto;
+				margin-top: 20px;
+			}
+		
+		p {
 			color: #000;
-			font-family: 'colaborate-thin';
+			font-size: 16px;
+			padding-top: 8px;
+			display: block;
+			text-align: right;
+			font-weight: 100;
+			span {
+				color: #4477b0;
+			}
 		}
+		
+		a.log {
+			color: #000;
+			display: inline-block;
+			margin-left: 10px;
+			font-size: 16px;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		
 	}
-	
-	a.log {
+
+}
+
+.expired {
+	text-align: center;
+	color: #ccc;
+	padding: .5em 0;
+	font-size: 16px;
+	a {
 		color: #fff;
-		display: inline-block;
-		background: transparent;
-		padding: .4em 1em;
-		text-decoration: none;
-		background: #000;
-		border-radius: 5px;
-		margin-left: 10px;
-		font-size: 16px;
-		top: -2px;
-		position: relative;
 		&:hover {
-			background: #666;
+			text-decoration: none;
 		}
 	}
-	
 }
-
-}
-
