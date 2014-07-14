@@ -1,12 +1,16 @@
 footer {
 	padding: 1.5em 3em;
 	color: #fff;
-	@media screen and (max-width: 600px) {
-		padding: 1.5em;
-	}
+	
 	p {
 		font-size: 14px;
 	}
 	
+	@media screen and (max-width: 600px) {
+		padding: 1em;
+		p {
+			font-size: 12px;
+		}
+	}
 	
 }

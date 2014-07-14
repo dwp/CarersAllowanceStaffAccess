@@ -3,11 +3,12 @@
 
 * {outline: none;}
 
+
 main {
 	padding: 1.5em 3em;
 	background: #fff;
 	@media screen and (max-width: 600px) {
-		padding: 1.5em;
+		padding: 1em;
 	}
 }
 
@@ -23,4 +24,13 @@ main {
 
 @import 'footer';
 
-@import 'theme';
+.login {
+	
+	header {
+		background: #000;	
+		h1 {
+			color: #fff;
+		}		
+	}	
+
+}

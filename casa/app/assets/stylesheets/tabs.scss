@@ -1,47 +1,66 @@
 .dates {
 		margin-left: -1%;
 		padding: 2.5em 3em 2em 3em;
-		background: #3e3e3e;
+		background: #ddd;
 		@media screen and (max-width: 600px) {
-			padding: 2.5em 1.5em 2em 1.5em;
+			padding: 1.5em 1em;
 		}
 		
 		li {
 			float: left;
-			width: 13%;
+			width: 13.2%;
 			margin-left: 1%;
 			@media screen and (max-width: 780px) {
 				width: 24%;
 				margin-top: 1%;
 			}
-			@media screen and (max-width: 480px) {
-				width: 32%;
+			@media screen and (max-width: 600px) {
+				float: none;
+				margin: 0;
+				width: auto;
+				border-top: 1px solid #fff;
+				&:first-child {
+					border: 0;
+				}
 			}
 			a {
 				display: block;
 				text-align: center;
-				background: #fff;
+				background: #4477b0;
 				text-decoration: none;
 				font-size: 16px;
-				color: #000;
+				color: #fff;
 				font-weight: 600;
-				padding: 14px 0;
-				border-radius: 5px;
-				border: 2px solid transparent;
+				padding: 16px 0;
+				border: 2px solid #4477b0;
+				@media screen and (max-width: 600px) {
+					padding: 8px 0;
+					font-size: 14px;
+				}
 				span {
 					display: block;
 					font-size: 16px;
 					font-weight: 200;
+					color: #fff;
+					@media screen and (max-width: 600px) {
+						display: inline;
+						font-size: 14px;
+					}
 				}
 				&:hover {
-					background: #eee;
+					border-color: #6899d0;
+					background: #6899d0;
+					color: #fff;
 				}
 			}
 			&.active {
 				a {
-					background: #000;
-					border-color: #ccc;
-					color: #fff;
+					background: #fff;
+					border-color: #4477b0;
+					color: #000;
+					span {
+						color: #666;
+					}
 				}
 			}
 		}

@@ -2,32 +2,41 @@ table {
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	border: 6px solid #000;
+	border: 6px solid #4477b0;
 	caption {
 		text-indent: -9999px;
 		font-size: 0;
 	}
 	th {
 		text-align: left;
-		background: #000;
+		background: #4477b0;
 		color: #fff;
 		padding: 15px;
 		font-size: 16px;
         cursor: pointer;
+        @media screen and (max-width: 600px) {
+	        font-size: 14px;
+        }
 	}
 	tr {
 		background: #fff;
-		border-top: 1px dashed #bbb;
+		border-top: 1px dashed #99cccd;
+		&:nth-child(even) {
+			background: #fff;
+		}
 		&:hover {
-				background: #eee;
-			}
+			background: #f9f9f9;
+		}
 		&:first-child {
 			border: 0;
 		}
 	}
 	td {
-		padding: 20px 15px;
+		padding: 25px 15px;
 		font-size: 16px;
+		&:hover {
+			background: #eee;
+		}
 		label {
 			display: none;
 		}
@@ -39,6 +48,14 @@ table {
 			height: 18px;
 			background: #fff;
 			border: none;
+		}
+		
+		@media screen and (max-width: 700px) {
+			padding: 15px 10px;
+		}
+		
+		@media screen and (max-width: 600px) {
+			font-size: 14px;
 		}
 		
 	}
@@ -59,6 +76,9 @@ table {
 .actions {
 	margin: 0 0 1.5em 0;
 	text-align: right;
+	@media screen and (max-width: 600px) {
+		margin-bottom: 1em;
+	}
 
 	button, a {
 		display: inline-block;
@@ -68,7 +88,10 @@ table {
 		color: #fff;
 		text-decoration: none;
 		line-height: 1em;
-		border-radius: 4px;
+		
+		@media screen and (max-width: 600px) {
+			font-size: 13px;
+		}
 
 		&:hover {
 			background: #fff;
@@ -80,3 +103,4 @@ table {
 		margin-bottom: 0;
 	}
 }
+

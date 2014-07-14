@@ -1,16 +1,16 @@
 header {
-	background: #000;
+	background: #fff;
 	padding: 1em 3em;
 	position: relative;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	overflow: hidden;
 	
 	@media screen and (max-width: 600px) {
-		padding: 1em 1.5em;
+		padding: 1em;
 	}
 
 	h1 {
-		color: #fff;
+		color: #000;
 		font-family: 'colaborate-thin';
 		font-size: 32px;
 		float: left;
@@ -18,11 +18,10 @@ header {
 		@media screen and (max-width: 680px) {
 			float: none;
 			width: auto;
+			font-size: 22px;
 		}
 	}
-
 			
-
 
 
 .theme-switch {
@@ -79,6 +78,12 @@ header {
 			span {
 				color: #4477b0;
 			}
+			@media screen and (max-width: 680px) {
+				text-align: left;
+				padding-top: 0;
+				color: #666;
+				font-size: 14px;
+			}
 		}
 		
 		a.log {
@@ -89,6 +94,10 @@ header {
 			&:hover {
 				text-decoration: none;
 			}
+			@media screen and (max-width: 600px) {
+				font-size: 13px;
+			}
+			
 		}
 		
 	}
@@ -107,3 +116,4 @@ header {
 		}
 	}
 }
+
