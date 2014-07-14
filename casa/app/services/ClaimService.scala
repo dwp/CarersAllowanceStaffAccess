@@ -10,6 +10,7 @@ import play.api.libs.json.JsObject
 import play.api.libs.json.JsBoolean
 import scala.Some
 import scala.language.implicitConversions
+import monitoring.Counters
 
 trait ClaimService extends CasaRemoteService {
 
@@ -28,6 +29,9 @@ trait ClaimService extends CasaRemoteService {
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
         case Status.NOT_FOUND => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -39,6 +43,9 @@ trait ClaimService extends CasaRemoteService {
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
         case Status.NOT_FOUND => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -51,6 +58,9 @@ trait ClaimService extends CasaRemoteService {
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
         case Status.NOT_FOUND => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
 
@@ -64,6 +74,9 @@ trait ClaimService extends CasaRemoteService {
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
         case Status.NOT_FOUND => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
 
@@ -73,7 +86,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/counts/${status.mkString(",")}" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
-        case Status.BAD_REQUEST => Json.parse("{}").as[JsObject]
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          Json.parse("{}").as[JsObject]
       }
     }
 
@@ -81,7 +96,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
         case Status.OK => new JsBoolean(true)
-        case Status.BAD_REQUEST => new JsBoolean(false)
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          new JsBoolean(false)
       }
     } exec()
 
@@ -89,7 +106,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claim/$transactionId/" get { response =>
       response.status match {
         case Status.OK => Some(response.json)
-        case Status.BAD_REQUEST => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
 
@@ -105,6 +124,9 @@ trait ClaimService extends CasaRemoteService {
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
           )
         case Status.NOT_FOUND => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -114,7 +136,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/export" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.INTERNAL_SERVER_ERROR => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -123,7 +147,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/purge" post { response =>
       response.status match {
         case Status.OK => JsBoolean(value = true)
-        case Status.INTERNAL_SERVER_ERROR => JsBoolean(value = false)
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          JsBoolean(value = false)
       }
     } exec()
   }

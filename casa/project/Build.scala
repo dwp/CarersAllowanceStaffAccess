@@ -11,7 +11,8 @@ object ApplicationBuild extends Build {
     "org.specs2"         %% "specs2"              % "2.3.6" % "test" withSources() withJavadoc(),
     "me.moocar"           % "logback-gelf"        % "0.9.6p2",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "com.dwp.carers"      %% "wscommons"          % "1.0"
+    "com.dwp.carers"     %% "wscommons"           % "1.0",
+    "com.dwp.carers"     %% "carerscommon"        % "5.2"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
