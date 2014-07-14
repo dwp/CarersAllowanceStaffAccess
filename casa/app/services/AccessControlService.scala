@@ -6,6 +6,7 @@ import play.api.http.Status
 import scala.language.postfixOps
 import scala.language.implicitConversions
 import utils.HttpUtils.HttpMethodWrapper
+import monitoring.Counters
 
 trait AccessControlService extends CasaRemoteService {
   override def getUrlPropertyName = "accessControlServiceUrl"
@@ -20,10 +21,10 @@ trait AccessControlService extends CasaRemoteService {
     s"$url/user/$userId" post { response =>
       response.status match {
         case Status.OK => response.json
-        case Status.BAD_REQUEST => {
+        case _ =>
           Logger.error(s"Access control service could not find user [${userId}]. Response ${response.status}:${response.body}")
+          Counters.incrementAcSubmissionErrorStatus(response.status)
           new JsBoolean(false)
-        }
       }
     } exec()
 
@@ -31,10 +32,10 @@ trait AccessControlService extends CasaRemoteService {
     s"$url/expire/$userId" post { response =>
       response.status match {
         case Status.OK => response.json
-        case Status.BAD_REQUEST => {
+        case _ =>
           Logger.error(s"Access control service could not find expiry date for user [${userId}]. Response ${response.status}:${response.body}")
+          Counters.incrementAcSubmissionErrorStatus(response.status)
           new JsBoolean(false)
-        }
       }
     } exec()
 

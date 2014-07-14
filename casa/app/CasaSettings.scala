@@ -4,8 +4,11 @@ import play.api.mvc._
 import scala.Some
 import play.Play
 import utils.Injector
+import monitor.MonitorFilter
+import monitoring._
+import monitoring.CasaMonitorRegistration
 
-class CasaSettings extends GlobalSettings {
+class CasaSettings extends WithFilters(MonitorFilter) with Injector with CasaMonitorRegistration with GlobalSettings {
 
   this: Injector =>
 
@@ -13,11 +16,15 @@ class CasaSettings extends GlobalSettings {
 
   override def onStart(app: Application): Unit = {
     Logger.info("SA is now starting")
+
+    registerReporters()
   }
 
   override def onStop(app: Application): Unit = {
     Logger.info("SA is now stopping")
   }
+
+
 
   /**
    * Intercept requests to check for session timeout

@@ -10,6 +10,7 @@ import play.api.libs.json.JsArray
 import play.api.libs.json.JsObject
 import play.api.libs.json.JsBoolean
 import scala.language.implicitConversions
+import monitoring.Counters
 
 trait ClaimService extends CasaRemoteService {
 
@@ -27,10 +28,12 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claims/$dateString" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => {
+        case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date  ${dateString}")
           None
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -41,10 +44,12 @@ trait ClaimService extends CasaRemoteService {
     s"$url/circs/$dateString" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => {
+        case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find coc for date ${dateString}")
           None
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -56,10 +61,13 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claims/surname/$dateString/$sortBy" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => {
+        case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date ${dateString} and sort by ${sortBy}.")
           None
-        }
+        
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
 
@@ -72,10 +80,12 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claims/$dateString/$status" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => {
+        case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date  ${dateString} and status ${status}.")
           None
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
 
@@ -85,10 +95,13 @@ trait ClaimService extends CasaRemoteService {
     s"$url/counts/${status.mkString(",")}" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
-        case Status.BAD_REQUEST => {
+        case Status.BAD_REQUEST => 
           Logger.error(s"Claim service could not count claims with status ${status}")
+          Counters.incrementCsSubmissionErrorStatus(response.status)
           Json.parse("{}").as[JsObject]
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          Json.parse("{}").as[JsObject]
       }
     }
 
@@ -96,10 +109,13 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
         case Status.OK => new JsBoolean(true)
-        case Status.BAD_REQUEST => {
+        case Status.BAD_REQUEST => 
           Logger.error(s"Claim service did not update claim transactionId [${transactionId}] and status ${status}.")
+          Counters.incrementCsSubmissionErrorStatus(response.status)
           new JsBoolean(false)
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          new JsBoolean(false)
       }
     } exec()
 
@@ -107,10 +123,13 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claim/$transactionId/" get { response =>
       response.status match {
         case Status.OK => Some(response.json)
-        case Status.BAD_REQUEST => {
+        case Status.BAD_REQUEST => 
           Logger.error(s"Claim service did not find claim transactionId [${transactionId}].")
+          Counters.incrementCsSubmissionErrorStatus(response.status)
           None
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
 
@@ -125,10 +144,12 @@ trait ClaimService extends CasaRemoteService {
                 .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
           )
-        case Status.NOT_FOUND => {
+        case Status.NOT_FOUND =>
           Logger.error(s"Claim service could not build html for claim transactionId [${transactionId}].")
           None
-        }
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -138,7 +159,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/export" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.INTERNAL_SERVER_ERROR => None
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          None
       }
     }
   }
@@ -147,7 +170,9 @@ trait ClaimService extends CasaRemoteService {
     s"$url/purge" post { response =>
       response.status match {
         case Status.OK => JsBoolean(value = true)
-        case Status.INTERNAL_SERVER_ERROR => JsBoolean(value = false)
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          JsBoolean(value = false)
       }
     } exec()
   }
