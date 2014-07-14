@@ -1,5 +1,6 @@
 package services
 
+import play.api.Logger
 import utils.HttpUtils.HttpMethodWrapper
 import org.joda.time.LocalDate
 import play.api.libs.json._
@@ -8,7 +9,6 @@ import play.api.http.Status
 import play.api.libs.json.JsArray
 import play.api.libs.json.JsObject
 import play.api.libs.json.JsBoolean
-import scala.Some
 import scala.language.implicitConversions
 
 trait ClaimService extends CasaRemoteService {
@@ -27,7 +27,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claims/$dateString" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => None
+        case Status.NOT_FOUND => {
+          Logger.warn(s"Claim service did not find claims for date  ${dateString}")
+          None
+        }
       }
     }
   }
@@ -38,7 +41,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/circs/$dateString" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => None
+        case Status.NOT_FOUND => {
+          Logger.warn(s"Claim service did not find coc for date ${dateString}")
+          None
+        }
       }
     }
   }
@@ -50,7 +56,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claims/surname/$dateString/$sortBy" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => None
+        case Status.NOT_FOUND => {
+          Logger.warn(s"Claim service did not find claims for date ${dateString} and sort by ${sortBy}.")
+          None
+        }
       }
     }
 
@@ -63,7 +72,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claims/$dateString/$status" get { response =>
       response.status match {
         case Status.OK => Some(response.json.as[JsArray])
-        case Status.NOT_FOUND => None
+        case Status.NOT_FOUND => {
+          Logger.warn(s"Claim service did not find claims for date  ${dateString} and status ${status}.")
+          None
+        }
       }
     }
 
@@ -73,7 +85,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/counts/${status.mkString(",")}" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
-        case Status.BAD_REQUEST => Json.parse("{}").as[JsObject]
+        case Status.BAD_REQUEST => {
+          Logger.error(s"Claim service could not count claims with status ${status}")
+          Json.parse("{}").as[JsObject]
+        }
       }
     }
 
@@ -81,7 +96,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
         case Status.OK => new JsBoolean(true)
-        case Status.BAD_REQUEST => new JsBoolean(false)
+        case Status.BAD_REQUEST => {
+          Logger.error(s"Claim service did not update claim transactionId [${transactionId}] and status ${status}.")
+          new JsBoolean(false)
+        }
       }
     } exec()
 
@@ -89,7 +107,10 @@ trait ClaimService extends CasaRemoteService {
     s"$url/claim/$transactionId/" get { response =>
       response.status match {
         case Status.OK => Some(response.json)
-        case Status.BAD_REQUEST => None
+        case Status.BAD_REQUEST => {
+          Logger.error(s"Claim service did not find claim transactionId [${transactionId}].")
+          None
+        }
       }
     }
 
@@ -104,7 +125,10 @@ trait ClaimService extends CasaRemoteService {
                 .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
           )
-        case Status.NOT_FOUND => None
+        case Status.NOT_FOUND => {
+          Logger.error(s"Claim service could not build html for claim transactionId [${transactionId}].")
+          None
+        }
       }
     }
   }
