@@ -15,10 +15,9 @@
 			&:first-child {
 					border: 0;
 				}
-			@media screen and (max-width: 780px) {
-				width: 24%;
-				margin-top: 1%;
-			}
+			@media screen and (max-width: 1024px) {
+				width: 14%;
+			}	
 			@media screen and (max-width: 700px) {
 				float: none;
 				margin: 0;
