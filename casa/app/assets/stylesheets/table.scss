@@ -78,19 +78,23 @@ table {
 	button, a {
 		display: inline-block;
 		background: #000;
-		padding: .7em 1em;
-		border: 1px solid #000;
+		padding: .75em 1.2em;
 		color: #fff;
 		text-decoration: none;
 		line-height: 1em;
+		border: 0;
+		-webkit-transition: all 200ms ease-in;
+	    -moz-transition: all 200ms ease-in;
+	    -ms-transition: all 200ms ease-in;
+	    -o-transition: all 200ms ease-in;
+	   transition: all 200ms ease-in;
 		
 		@media screen and (max-width: 700px) {
 			font-size: 13px;
 		}
 
 		&:hover {
-			background: #fff;
-			color: #000;
+			background: #666;
 		}
 	}
 	&.below {
