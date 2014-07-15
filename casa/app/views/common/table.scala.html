@@ -19,7 +19,7 @@
                 <th id="thTransactionId">Transaction Id</th>
                 <th id="thNameId" class="view">Name</th>
                 <th class="ni">NI Number</th>
-                <th class="view">Claim type</th>
+                <th>Claim type</th>
                 <th class="view">Submit Date</th>
                 <th>Status</th>
             </tr>
@@ -41,7 +41,7 @@
                         <td id="transactionId" class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
                         <td id="name" class="name view">@claim.p.surname @claim.p.forename</td>
                         <td id="nino" class="ni">@claim.p.nino</td>
-                        <td id="claimType" class="view">@claim.p.claimType</td>
+                        <td id="claimType" class="claimtype">@claim.p.claimType</td>
                         <td id="claimDate" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td class="status">@claim.p.status</td>

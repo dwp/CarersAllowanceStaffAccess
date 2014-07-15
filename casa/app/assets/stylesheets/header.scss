@@ -2,11 +2,13 @@ header {
 	background: #fff;
 	padding: 1em 3em;
 	position: relative;
-	box-shadow: 0 0 10px rgba(0,0,0,.1);
+	border-bottom: 1px solid #bbb;
 	overflow: hidden;
-	
-	@media screen and (max-width: 600px) {
-		padding: 1em;
+	@media screen and (max-width: 1200px) {
+		padding: 1.5em 2em;
+	}
+	@media screen and (max-width: 700px) {
+		padding: 1em .5em;
 	}
 
 	h1 {
@@ -15,7 +17,7 @@ header {
 		font-size: 32px;
 		float: left;
 		width: auto;
-		@media screen and (max-width: 680px) {
+		@media screen and (max-width: 700px) {
 			float: none;
 			width: auto;
 			font-size: 22px;
@@ -62,7 +64,7 @@ header {
 		width: auto;
 		margin-top: 5px;
 		
-		@media screen and (max-width: 680px) {
+		@media screen and (max-width: 700px) {
 				float: none;
 				width: auto;
 				margin-top: 20px;
@@ -78,7 +80,7 @@ header {
 			span {
 				color: #4477b0;
 			}
-			@media screen and (max-width: 680px) {
+			@media screen and (max-width: 700px) {
 				text-align: left;
 				padding-top: 0;
 				color: #666;
@@ -89,12 +91,12 @@ header {
 		a.log {
 			color: #000;
 			display: inline-block;
-			margin-left: 10px;
+			margin-left: 12px;
 			font-size: 16px;
 			&:hover {
 				text-decoration: none;
 			}
-			@media screen and (max-width: 600px) {
+			@media screen and (max-width: 700px) {
 				font-size: 13px;
 			}
 			
@@ -114,6 +116,11 @@ header {
 		&:hover {
 			text-decoration: none;
 		}
+	}
+	@media screen and (max-width: 700px) {
+		font-size: 13px;
+		text-align: left;
+		padding: .5em;
 	}
 }
 

@@ -1,10 +1,13 @@
 .filter {
-	padding: .4em 3em 0 3em;
+	padding: .5em 3em 0 3em;
 	background: #ddd;
 	position: relative;
-	
-	@media screen and (max-width: 600px) {
-		padding: 0 1em;
+	z-index: 999;
+	@media screen and (max-width: 1200px) {
+		padding: .4em 2em 0 2em;
+	}
+	@media screen and (max-width: 700px) {
+		padding: 0 .5em;
 	}
 	
 	legend {
@@ -12,42 +15,61 @@
 		font-size: 0;
 	}
 	ol {
-		margin-left: -10px;
-		@media screen and (max-width: 780px) {
-			margin-left: -5px;
+		margin-left: -5px;
+		@media screen and (max-width: 700px) {
+			padding-bottom: 1.5em;
 		}
 		li {
 			float: left;
 			width: auto;
-			margin-left: 10px;
+			margin-left: 5px;
 			position: relative;
-			@media screen and (max-width: 600px) {
-				width: 48%;
-				margin: 5px 0 0 5px;
+			@media screen and (max-width: 700px) {
+				width: 49%;
+				margin: 1% 0 0 1%;
 			}
 			a {
 				background: #eee;
 				text-decoration: none;
-				color: #000;
+				color: #535353;
 				font-size: 16px;
-				padding: 16px 30px;
+				padding: 22px 34px 17px 34px;
 				display: block;
 				line-height: 1em;
 				cursor: pointer;
 				font-weight: 300;
 				text-align: center;
+				border: 1px solid #ddd;
+				border-bottom: 0;
+				bottom: -1px;
+				position: relative;
+				-webkit-transition: all 200ms ease-in;
+			   -moz-transition: all 200ms ease-in;
+			   -ms-transition: all 200ms ease-in;
+			   -o-transition: all 200ms ease-in;
+			   transition: all 200ms ease-in;
+				
+				&:hover {
+					background: #f9f9f9;
+				}
+				
 				&.active {
 					background: #fff;
 					color: #000;
-					font-weight: 600;
+					border-color: #aaa;
+					padding-bottom: 18px;
+					@media screen and (max-width: 700px) {
+						padding-bottom: 17px;
+						border-color: #000;
+					}
 				}
 				
-				&:hover {
-					background: #fff;
-				}
-				
-				@media screen and (max-width: 600px) {
+				@media screen and (max-width: 700px) {
 					font-size: 13px;
+					bottom: 0;
+					padding: 17px 0;
+					text-align: center;
+					border-bottom: 1px solid #ddd;
 				}
 
 			}

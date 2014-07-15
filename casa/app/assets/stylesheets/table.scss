@@ -14,19 +14,17 @@ table {
 		padding: 15px;
 		font-size: 16px;
         cursor: pointer;
-        @media screen and (max-width: 600px) {
-	        font-size: 14px;
+        @media screen and (max-width: 700px) {
+	        font-size: 13px;
         }
 	}
 	tr {
 		background: #fff;
 		border-top: 1px dashed #99cccd;
 		&:nth-child(even) {
-			background: #fff;
-		}
-		&:hover {
 			background: #f9f9f9;
 		}
+
 		&:first-child {
 			border: 0;
 		}
@@ -34,9 +32,6 @@ table {
 	td {
 		padding: 25px 15px;
 		font-size: 16px;
-		&:hover {
-			background: #eee;
-		}
 		label {
 			display: none;
 		}
@@ -54,8 +49,8 @@ table {
 			padding: 15px 10px;
 		}
 		
-		@media screen and (max-width: 600px) {
-			font-size: 14px;
+		@media screen and (max-width: 700px) {
+			font-size: 13px;
 		}
 		
 	}
@@ -76,20 +71,20 @@ table {
 .actions {
 	margin: 0 0 1.5em 0;
 	text-align: right;
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 700px) {
 		margin-bottom: 1em;
 	}
 
 	button, a {
 		display: inline-block;
 		background: #000;
-		padding: .5em .75em;
+		padding: .7em 1em;
 		border: 1px solid #000;
 		color: #fff;
 		text-decoration: none;
 		line-height: 1em;
 		
-		@media screen and (max-width: 600px) {
+		@media screen and (max-width: 700px) {
 			font-size: 13px;
 		}
 

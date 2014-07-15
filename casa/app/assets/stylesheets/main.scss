@@ -7,8 +7,13 @@
 main {
 	padding: 1.5em 3em;
 	background: #fff;
-	@media screen and (max-width: 600px) {
-		padding: 1em;
+	border-top: 1px solid #aaa;
+	@media screen and (max-width: 1200px) {
+		padding: 1.5em 2em;
+	}
+	@media screen and (max-width: 700px) {
+		padding: 1em .5em;
+		border: 0;
 	}
 }
 
@@ -28,6 +33,7 @@ main {
 	
 	header {
 		background: #000;	
+		border-color: #000;
 		h1 {
 			color: #fff;
 		}		
