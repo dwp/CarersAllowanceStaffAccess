@@ -67,7 +67,7 @@ header {
 		@media screen and (max-width: 700px) {
 				float: none;
 				width: auto;
-				margin-top: 20px;
+				margin-top: 10px;
 			}
 		
 		p {
@@ -98,6 +98,8 @@ header {
 			}
 			@media screen and (max-width: 700px) {
 				font-size: 13px;
+				display: block;
+				margin: 10px 0 0 0;
 			}
 			
 		}
