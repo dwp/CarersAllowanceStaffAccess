@@ -1,16 +1,18 @@
 package services
 
-import play.api.Logger
-import utils.HttpUtils.HttpMethodWrapper
-import org.joda.time.LocalDate
-import play.api.libs.json._
-import org.joda.time.format.DateTimeFormat
-import play.api.http.Status
-import play.api.libs.json.JsArray
-import play.api.libs.json.JsObject
-import play.api.libs.json.JsBoolean
-import scala.language.implicitConversions
+import javax.xml.bind.DatatypeConverter
+
+import com.dwp.carers.security.encryption.{NotEncryptedException, EncryptorAES}
+import com.dwp.exceptions.DwpRuntimeException
 import monitoring.Counters
+import org.joda.time.LocalDate
+import org.joda.time.format.DateTimeFormat
+import play.api.Logger
+import play.api.http.Status
+import play.api.libs.json.{JsArray, JsBoolean, JsObject, _}
+import utils.HttpUtils.HttpMethodWrapper
+
+import scala.language.implicitConversions
 
 trait ClaimService extends CasaRemoteService {
 
@@ -27,7 +29,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/claims/$dateString" get { response =>
       response.status match {
-        case Status.OK => Some(response.json.as[JsArray])
+        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date  ${dateString}")
           None
@@ -43,7 +45,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/circs/$dateString" get { response =>
       response.status match {
-        case Status.OK => Some(response.json.as[JsArray])
+        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find coc for date ${dateString}")
           None
@@ -60,7 +62,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/claims/surname/$dateString/$sortBy" get { response =>
       response.status match {
-        case Status.OK => Some(response.json.as[JsArray])
+        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date ${dateString} and sort by ${sortBy}.")
           None
@@ -79,7 +81,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/claims/$dateString/$status" get { response =>
       response.status match {
-        case Status.OK => Some(response.json.as[JsArray])
+        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date  ${dateString} and status ${status}.")
           None
@@ -158,7 +160,7 @@ trait ClaimService extends CasaRemoteService {
   def getOldClaims: Option[JsArray] = {
     s"$url/export" get { response =>
       response.status match {
-        case Status.OK => Some(response.json.as[JsArray])
+        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
           None
@@ -175,5 +177,32 @@ trait ClaimService extends CasaRemoteService {
           JsBoolean(value = false)
       }
     } exec()
+  }
+
+  private def decryptArray(toDecrypt:JsArray):JsArray = {
+    val ret = toDecrypt.value.map { jsValue =>
+      JsObject(jsValue.as[JsObject].value.map { tuple =>
+        if (tuple._2.isInstanceOf[JsString]){
+          tuple._1 -> JsString(decryptString(tuple._2.as[JsString].value))
+        }else{
+          tuple
+        }
+      }.toSeq)
+    }
+
+    Json.toJson(ret).as[JsArray]
+  }
+
+  def decryptString(text: String) = {
+    try {
+      (new EncryptorAES).decrypt(DatatypeConverter.parseBase64Binary(text))
+    } catch {
+      case e: NotEncryptedException =>
+        // Means field was not encrypted.
+        text
+      case e: DwpRuntimeException =>
+        Logger.error("Could not decrypt node.")
+        throw e
+    }
   }
 }
