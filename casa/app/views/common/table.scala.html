@@ -33,9 +33,10 @@
             @if(claimList.isDefined){
                 @for((claim,i) <- claimList.get.value.zipWithIndex){
                     <tr id="row_@claim.p.transactionId">
-                        <td>
+                        <td class="checked">
                         @if(claim.p.status.asString == "viewed") {
-                            <label for="@claim.p.transactionId">Claim</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                            <input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                            <label for="@claim.p.transactionId">Claim</label>
                         }
                         </td>
                         <td id="transactionId" class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
@@ -57,5 +58,7 @@
         	<button type="submit" class="active" id="completeButton2" >Complete</button>
 		}
     </div>
+
+    
 }
     

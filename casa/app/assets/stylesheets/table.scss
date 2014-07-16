@@ -2,7 +2,7 @@ table {
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	border: 6px solid #4477b0;
+	border: 3px solid #4477b0;
 	caption {
 		text-indent: -9999px;
 		font-size: 0;
@@ -32,9 +32,7 @@ table {
 	td {
 		padding: 25px 15px;
 		font-size: 16px;
-		label {
-			display: none;
-		}
+		
 		&:first-child {
 			width: 20px;
 		}
@@ -111,3 +109,32 @@ table {
 	}
 }
 
+
+ 				.checked {
+	 				position: relative;
+					   input {
+						   position: absolute;
+						   left: -9999px;
+					   }
+					   
+					   label {
+						   display: block;
+						   background: #fff;
+						   cursor: pointer;
+						   border: 1px solid #4477b0;
+						   width: 25px;
+						   height: 25px;
+						   text-indent: -9999px;
+						   
+						   &:hover {
+							   border-color: #000;
+						   }
+
+					   }
+					   
+					   input:checked + label {
+						   background: #fff url('/assets/img/tick.png') center no-repeat;
+						   background-size: 15px 15px;
+						   border-color: #000;
+					   }
+				   }
