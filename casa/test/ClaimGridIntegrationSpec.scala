@@ -141,7 +141,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.goTo(s"/circs/$today")
 
-      val claimTypes = browser.$("#claimsTable .view")
+      val claimTypes = browser.$("#claimsTable .claimtype")
       assertCircsType (claimTypes)
     }
 
@@ -152,7 +152,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.goTo(s"/filter/$today/completed")
 
-      val claimTypes = browser.$("#claimsTable .view")
+      val claimTypes = browser.$("#claimsTable .claimtype")
       assertClaimTypesOrdering (claimTypes)
     }
 
