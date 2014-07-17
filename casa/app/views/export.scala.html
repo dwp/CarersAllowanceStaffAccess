@@ -3,6 +3,7 @@
 @import play.api.libs.json._
 @import helper._
 @import play.i18n.Messages
+@import org.joda.time.format.DateTimeFormat
 
 @header(csvClaims:JsArray) = @{
     csvClaims.value.toList match {
@@ -16,6 +17,19 @@
         case _ => List.empty[JsValue]
     }
 }
+
+@renderColumn(csvClaims:JsArray, columnIdx: Int, value: String) = @{
+    // if column is a date then format the date (identify by the convention that the column title contains 'date'),
+    // otherwise just display the value passed in
+    csvClaims.value.toList(0)(columnIdx).as[String].toLowerCase.contains("date") match {
+        case true => {
+            val parsedDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(value)
+            DateTimeFormat.forPattern("dd-MMM-yyyy").print(parsedDate)
+        }
+        case _ => value
+    }
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -44,8 +58,8 @@
                         <tbody>
                             @for( row <- valueList(csvClaims.get)){
                                 <tr>
-                                    @for(elem <- row.as[JsArray].value){
-                                        <td>@{elem.as[JsString].value}</td>
+                                    @for((elem, idx) <- row.as[JsArray].value.zipWithIndex){
+                                        <td>@renderColumn(csvClaims.get, idx, elem.as[JsString].value)</td>
                                     }
                                 </tr>
                             }
