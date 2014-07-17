@@ -1,7 +1,8 @@
-@(csvClaims:Option[play.api.libs.json.JsArray])(implicit session: play.api.mvc.Session)
+@(csvClaims:Option[play.api.libs.json.JsArray])(implicit session: play.api.mvc.Session, lang: Lang)
 
 @import play.api.libs.json._
 @import helper._
+@import play.i18n.Messages
 
 @header(csvClaims:JsArray) = @{
     csvClaims.value.toList match {
@@ -36,7 +37,7 @@
                         <thead>
                             <tr>
                                 @for( elem <- header(csvClaims.get).value){
-                                    <th>@{elem.as[JsString].value}</th>
+                                    <th>@Messages.get(elem.as[JsString].value)</th>
                                 }
                             </tr>
                         </thead>
