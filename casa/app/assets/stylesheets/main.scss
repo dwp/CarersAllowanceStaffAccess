@@ -40,3 +40,37 @@ main {
 	}	
 
 }
+
+.export {
+	
+	.filter {
+		padding-top: 35px;
+	}
+	
+	table {
+		
+		td {
+		
+			&:first-child {
+				width: auto;
+			}
+		
+		}
+	
+	}
+	
+	.no-data {
+		text-align: center;
+		padding: 5em 0 6em 0;
+		p {
+			color: #000;
+			font-family: 'colaborate-thin';
+			font-size: 32px;
+			display: inline-block;
+			@media screen and (max-width: 700px) {
+				font-size: 22px;
+			}
+		}
+	}
+	
+}

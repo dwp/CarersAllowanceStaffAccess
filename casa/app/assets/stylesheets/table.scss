@@ -35,7 +35,16 @@ table {
 		
 		&:first-child {
 			width: 20px;
+			padding: 22px;
+			@media screen and (max-width: 700px) {
+				padding: 22px 15px;
+			}
 		}
+		
+		&:first-letter {
+			text-transform: uppercase;
+		}
+		
 		input {
 			width: 18px;
 			height: 18px;
@@ -49,6 +58,9 @@ table {
 		
 		&.transactionId {
 			width: 12%;
+			@media screen and (max-width: 700px) {
+				width: 25%;
+			}
 		}
 		
 		@media screen and (max-width: 700px) {
@@ -67,6 +79,11 @@ table {
 			color: #555;
 		}
 	}
+	
+	.ni {
+		text-transform: uppercase;
+	}
+	
 	.ni, .view {
 		@media screen and (max-width: 700px) {
 				display: none;
@@ -88,12 +105,12 @@ table {
 		color: #fff;
 		text-decoration: none;
 		line-height: 1em;
-		border: 0;
 		-webkit-transition: all 200ms ease-in;
 	    -moz-transition: all 200ms ease-in;
 	    -ms-transition: all 200ms ease-in;
 	    -o-transition: all 200ms ease-in;
 	   transition: all 200ms ease-in;
+	   border: 0;
 		
 		@media screen and (max-width: 700px) {
 			font-size: 13px;
