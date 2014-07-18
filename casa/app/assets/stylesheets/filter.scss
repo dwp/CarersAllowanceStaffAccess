@@ -3,6 +3,7 @@
 	background: #ddd;
 	position: relative;
 	z-index: 999;
+
 	@media screen and (max-width: 1200px) {
 		padding: .4em 2em 0 2em;
 	}
@@ -28,7 +29,7 @@
 				width: 49%;
 				margin: 1% 0 0 1%;
 			}
-			a {
+			a, span {
 				background: #eee;
 				text-decoration: none;
 				color: #535353;
