@@ -95,7 +95,7 @@ object ClaimServiceMock extends ClaimsService{
     }
   }
 
-  val daysToReport = specialDaysRec(7, new LocalDate plusDays 1, Seq())
+  val daysToReport = specialDaysRec(8, new LocalDate plusDays 1, Seq())
 
   val availableStatuses = Seq("received", "viewed", "completed")
 

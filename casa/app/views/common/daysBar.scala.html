@@ -8,7 +8,7 @@
 @dayName(date:LocalDate) = @{ date.dayOfWeek().getAsText }
 @dayDate(date:LocalDate) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
 @isActiveDay(day: LocalDate) = @{ day == currentDate }
-@daysList = @{ DateUtils.daysRec(7,today.plusDays(1),Seq())}
+@daysList = @{ DateUtils.daysRec(8,today.plusDays(1),Seq())}
 @formatToLink(day: LocalDate) = @{ DateTimeFormat.forPattern("ddMMyyyy").print(day)}
 @claimNumbers = @{Application.claimService.claimNumbersFiltered("received","viewed")}
 
