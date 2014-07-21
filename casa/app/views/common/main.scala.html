@@ -1,11 +1,15 @@
-@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], session: play.api.mvc.Session)
+@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], claimNumbers:play.api.libs.json.JsObject, session: play.api.mvc.Session)
 
 
 <!DOCTYPE html>
 
 <html>
     <head>
+    
         <title>@title</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("img/favicon.png")">
@@ -15,12 +19,12 @@
         <script src="@routes.Assets.at("javascripts/modernizr-2.6.2.min.js")" type="text/javascripts"></script>
 
     </head>
-    <body class="theme">
+    <body>
         @header(session)
         
-        <div id="tabs">
-            @daysBar(claimsList,currentDate)
-        </div>
+        <nav id="tabs">
+            @daysBar(claimsList,claimNumbers,currentDate)
+        </nav>
 
         @filterBar(currentDate,currentStatus)
         

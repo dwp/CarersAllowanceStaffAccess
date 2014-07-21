@@ -6,11 +6,11 @@ import play.api.test._
  * An integration test will fire up a whole play application in a real (or headless) browser
  */
 
-class IntegrationSpec  extends Specification with Tags {
+class IntegrationSpec  extends Specification with MockInjector with Tags {
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowser {
+    "work from within a browser" in new WithBrowser(app = FakeApplication(withGlobal = Some(global))) {
       browser.goTo("/login")
 
       browser.pageSource must contain("CASA")
@@ -22,7 +22,7 @@ class IntegrationSpec  extends Specification with Tags {
       browser.pageSource must contain("Claims list")
     }
 
-    "display a message to user with expired password" in new WithBrowser {
+    "display a message to user with expired password" in new WithBrowser(app = FakeApplication(withGlobal = Some(global))) {
       browser.goTo("/login")
 
       browser.pageSource must contain("CASA")

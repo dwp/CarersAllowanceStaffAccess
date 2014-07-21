@@ -1,36 +1,74 @@
 table {
 	width: 100%;
-	margin-top: .8em;
-	border: 6px solid #000;
+	padding: 0;
+	margin: 0;
+	border: 3px solid #4477b0;
 	caption {
 		text-indent: -9999px;
+		font-size: 0;
 	}
 	th {
 		text-align: left;
-		background: #000;
+		background: #4477b0;
 		color: #fff;
 		padding: 15px;
-		font-size: 18px;
-		font-weight: normal;
+		font-size: 16px;
         cursor: pointer;
+        @media screen and (max-width: 700px) {
+	        font-size: 13px;
+        }
 	}
 	tr {
 		background: #fff;
-		border-top: 1px dashed #bbb;
-		&:hover {
-				background: #eee;
-			}
+		border-top: 1px dashed #99cccd;
+		&:nth-child(even) {
+			background: #f9f9f9;
+		}
+
 		&:first-child {
 			border: 0;
 		}
 	}
 	td {
-		padding: 15px;
-		label {
-			display: none;
-		}
+		padding: 25px 15px;
+		font-size: 16px;
+		
 		&:first-child {
 			width: 20px;
+			padding: 22px;
+			@media screen and (max-width: 700px) {
+				padding: 22px 15px;
+			}
+		}
+		
+		&:first-letter {
+			text-transform: uppercase;
+		}
+		
+		input {
+			width: 18px;
+			height: 18px;
+			background: #fff;
+			border: none;
+		}
+		
+		&.name {
+			width: 20%;
+		}
+		
+		&.transactionId {
+			width: 12%;
+			@media screen and (max-width: 700px) {
+				width: 25%;
+			}
+		}
+		
+		@media screen and (max-width: 700px) {
+			padding: 15px 10px;
+		}
+		
+		@media screen and (max-width: 700px) {
+			font-size: 13px;
 		}
 		
 	}
@@ -41,6 +79,11 @@ table {
 			color: #555;
 		}
 	}
+	
+	.ni {
+		text-transform: uppercase;
+	}
+	
 	.ni, .view {
 		@media screen and (max-width: 700px) {
 				display: none;
@@ -48,21 +91,63 @@ table {
 	}
 }
 
-.completebutton {
-	margin-top: 2em;
+.actions {
+	margin: 0 0 1.5em 0;
 	text-align: right;
-	a, button {
+	@media screen and (max-width: 700px) {
+		margin-bottom: 1em;
+	}
+
+	button, a {
+		display: inline-block;
 		background: #000;
-		border: 0;
-		border-radius: 5px;
+		padding: .75em 1.2em;
 		color: #fff;
-		padding: 10px 15px;
+		text-decoration: none;
 		line-height: 1em;
+
+	   border: 0;
+		
+		@media screen and (max-width: 700px) {
+			font-size: 13px;
+		}
+
 		&:hover {
 			background: #666;
 		}
 	}
-    a{
-      text-decoration: none;
-    }
+	&.below {
+		margin-top: 1.5em;
+		margin-bottom: 0;
+	}
 }
+
+
+ 				.checked {
+	 				position: relative;
+					   input {
+						   position: absolute;
+						   left: -9999px;
+					   }
+					   
+					   label {
+						   display: block;
+						   background: #fff;
+						   cursor: pointer;
+						   border: 1px solid #4477b0;
+						   width: 25px;
+						   height: 25px;
+						   text-indent: -9999px;
+						   
+						   &:hover {
+							   border-color: #000;
+						   }
+
+					   }
+					   
+					   input:checked + label {
+						   background: #fff url('/assets/img/tick.png') center no-repeat;
+						   background-size: 15px 15px;
+						   border-color: #000;
+					   }
+				   }

@@ -3,11 +3,17 @@
 
 * {outline: none;}
 
+
 main {
-	padding: 1em 3em 4em 3em;
+	padding: 1.5em 3em;
 	background: #fff;
-	@media screen and (max-width: 600px) {
-		padding: 1em 1.5em 4em 1.5em;
+	border-top: 1px solid #aaa;
+	@media screen and (max-width: 1200px) {
+		padding: 1.5em 2em;
+	}
+	@media screen and (max-width: 700px) {
+		padding: 1em .5em;
+		border: 0;
 	}
 }
 
@@ -23,4 +29,48 @@ main {
 
 @import 'footer';
 
-@import 'theme';
+.login {
+	
+	header {
+		background: #000;	
+		border-color: #000;
+		h1 {
+			color: #fff;
+		}		
+	}	
+
+}
+
+.export {
+	
+	.filter {
+		padding-top: 35px;
+	}
+	
+	table {
+		
+		td {
+		
+			&:first-child {
+				width: auto;
+			}
+		
+		}
+	
+	}
+	
+	.no-data {
+		text-align: center;
+		padding: 5em 0 6em 0;
+		p {
+			color: #000;
+			font-family: 'colaborate-thin';
+			font-size: 32px;
+			display: inline-block;
+			@media screen and (max-width: 700px) {
+				font-size: 22px;
+			}
+		}
+	}
+	
+}

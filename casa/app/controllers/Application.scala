@@ -2,7 +2,7 @@ package controllers
 
 import play.api.mvc._
 import org.joda.time.{DateTime, LocalDate}
-import services.ClaimServiceComponent
+import services.ClaimService
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
@@ -11,27 +11,30 @@ import play.api.libs.json.JsArray
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 
-object Application extends Controller with ClaimServiceComponent with Secured {
+class Application extends Controller with Secured {
+
+  this: ClaimService =>
 
   val defaultStatus = "atom"
 
   def index = IsAuthenticated { implicit username => implicit request =>
-      val today = new LocalDate
-      Ok(views.html.claimsList(today,defaultStatus, sortByDateTime(claimService.claimsFilteredBySurname(today, defaultStatus))))
+    val today = new LocalDate
+    val claimNumbers = claimNumbersFiltered("received", "viewed")
+    Ok(views.html.claimsList(today, defaultStatus, sortByDateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers))
   }
 
-  def sortByClaimTypeDateTime (data : Option[JsArray]):Option[JsArray] = {
+  def sortByClaimTypeDateTime(data: Option[JsArray]): Option[JsArray] = {
     data match {
       case Some(data) =>
         Some(JsArray(
           data.value.seq.sortWith(_.p.claimDateTime.asLong < _.p.claimDateTime.asLong)
-                        .sortWith(_.p.claimType.asType < _.p.claimType.asType)
+            .sortWith(_.p.claimType.asType < _.p.claimType.asType)
         ))
       case _ => data
     }
   }
 
-  def sortByDateTime (data : Option[JsArray]):Option[JsArray] = {
+  def sortByDateTime(data: Option[JsArray]): Option[JsArray] = {
     data match {
       case Some(data) =>
         Some(JsArray(
@@ -44,26 +47,29 @@ object Application extends Controller with ClaimServiceComponent with Secured {
   def claimsForDateFilteredBySurname(date: String, sortBy: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
 
-    val claims = claimService.claimsFilteredBySurname(localDate, sortBy)
+    val claims = claimsFilteredBySurname(localDate, sortBy)
+    val claimNumbers = claimNumbersFiltered("received", "viewed")
 
-    Ok(views.html.claimsList(localDate,sortBy, sortByDateTime(claims)))
+    Ok(views.html.claimsList(localDate, sortBy, sortByDateTime(claims), claimNumbers))
   }
 
   def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    val circs = claimService.circs(localDate)
-    Ok(views.html.claimsList(localDate,"circs", sortByDateTime(circs)))
+    val circs = getCircs(localDate)
+    val claimNumbers = claimNumbersFiltered("received", "viewed")
+    Ok(views.html.claimsList(localDate, "circs", sortByDateTime(circs), claimNumbers))
   }
 
-  def claimsForDate(date: String) = claimsForDateFiltered(date,"")
+  def claimsForDate(date: String) = claimsForDateFiltered(date, "")
 
   def claimsForDateFiltered(date: String, status: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    val claims = if (status.isEmpty) claimService.claims(localDate) else claimService.claimsFiltered(localDate, status)
-    Ok(views.html.claimsList(localDate,status, sortByClaimTypeDateTime(claims)))
+    val claims = if (status.isEmpty) getClaims(localDate) else claimsFiltered(localDate, status)
+    val claimNumbers = claimNumbersFiltered("received", "viewed")
+    Ok(views.html.claimsList(localDate, status, sortByClaimTypeDateTime(claims), claimNumbers))
   }
 
-  case class ClaimsToComplete(completedCheckboxes:List[String])
+  case class ClaimsToComplete(completedCheckboxes: List[String])
 
   val form = Form(
     mapping(
@@ -71,15 +77,15 @@ object Application extends Controller with ClaimServiceComponent with Secured {
     )(ClaimsToComplete.apply)(ClaimsToComplete.unapply)
   )
 
-  def complete(currentDate:String) = IsAuthenticated { implicit username => implicit request =>
+  def complete(currentDate: String) = IsAuthenticated { implicit username => implicit request =>
 
     val redirect = Redirect(routes.Application.claimsForDateFilteredBySurname(currentDate, defaultStatus))
 
     form.bindFromRequest.fold(
       errors => redirect
-      ,claimsToComplete => {
-        for(transId <- claimsToComplete.completedCheckboxes){
-          claimService.updateClaim(transId,"completed")
+      , claimsToComplete => {
+        for (transId <- claimsToComplete.completedCheckboxes) {
+          updateClaim(transId, "completed")
         }
         redirect
       }
@@ -87,30 +93,30 @@ object Application extends Controller with ClaimServiceComponent with Secured {
 
   }
 
-  def renderClaim(transactionId:String) = IsAuthenticated { implicit username => implicit request =>
-    claimService.renderClaim(transactionId) match {
+  def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
+    buildClaimHtml(transactionId) match {
       case Some(renderedClaim) => Ok(Html(renderedClaim))
       case _ => BadRequest
     }
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>
-    Ok(views.html.export(claimService.export()))
+    Ok(views.html.export(getOldClaims))
   }
 
   def csvExport() = IsAuthenticated { implicit username => implicit request =>
-    val stringValue = claimService.export() match {
+    val stringValue = getOldClaims match {
       case Some(s) => s.value.map(_.as[JsArray].value.mkString(",")).mkString("\n")
       case None => ""
     }
 
     val fileName = s"exports${DateTimeFormat.forPattern("dd-MM-yyyy").print(new DateTime)}.csv"
 
-    Ok(stringValue).as("text/csv").withHeaders("content-disposition"->s"attachment; filename='$fileName'")
+    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename='$fileName'")
   }
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
-    claimService.purge()
+    purgeOldClaims()
     Redirect(routes.Application.export())
   }
 }

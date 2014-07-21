@@ -16,34 +16,14 @@ header nav, footer {
     display: none;
 }
 
-td:not(:empty){
-    padding-bottom: 3px;
-    padding-top: 5px;
-}
+thead { display: none; }
+tfoot { display: none; }
 
-td[id*='Heading']
-{
-    font-size: 16pt!important;
-}
 
-span {
-    font-family: arial!important;
-    color: #000!important;
-    font-size: 14pt!important;
-    line-height: 1.2em;
-}
-
-thead { display: table-header-group; }
-tfoot { display: table-footer-group; text-align: right; page-break-after: always;}
-
-.SummaryPageHeader, .SummaryPageDateHeader, .DetailPageHeader, .DetailPageFooter{
-    display: none;
-}
-
-#pageNumber:after {
-    counter-increment: pageNumber;
-    content: "Page " counter(pageNumber) " of X ";
-}
+/*.pageNumber:after {
+    counter-increment: number;
+    content: "Page " counter(number) " of " counter(pages);
+}*/
 
 .topHeader{
     font-size: 14.5pt;

@@ -1,47 +1,76 @@
 .dates {
-		margin-left: -1%;
 		padding: 2.5em 3em 2em 3em;
-		background: #3e3e3e;
-		@media screen and (max-width: 600px) {
-			padding: 2.5em 1.5em 2em 1.5em;
+		background: #ddd;
+		@media screen and (max-width: 1200px) {
+			padding: 2.5em 2em;
+		}
+		@media screen and (max-width: 700px) {
+			padding: 1.5em .5em;
 		}
 		
 		li {
 			float: left;
-			width: 13%;
-			margin-left: 1%;
-			@media screen and (max-width: 780px) {
-				width: 24%;
-				margin-top: 1%;
-			}
-			@media screen and (max-width: 480px) {
-				width: 32%;
+			width: 14.2%;
+			border-left: 1px solid #fff;
+			&:first-child {
+					border: 0;
+				}
+			@media screen and (max-width: 1024px) {
+				width: 14%;
+			}	
+			@media screen and (max-width: 700px) {
+				float: none;
+				margin: 0;
+				width: auto;
+				border-top: 1px solid #fff;
+				border-left: 0;
 			}
 			a {
 				display: block;
 				text-align: center;
-				background: #fff;
+				background: #4477b0;
 				text-decoration: none;
 				font-size: 16px;
-				color: #000;
+				color: #fff;
 				font-weight: 600;
-				padding: 14px 0;
-				border-radius: 5px;
-				border: 2px solid transparent;
+				padding: 16px 0;
+				border: 2px solid #4477b0;
+
+				@media screen and (max-width: 700px) {
+					padding: 8px 0;
+					font-size: 14px;
+				}
 				span {
 					display: block;
 					font-size: 16px;
 					font-weight: 200;
+					color: #fff;
+					@media screen and (max-width: 700px) {
+						display: inline;
+						font-size: 14px;
+						padding-left: 5px;
+					}
 				}
 				&:hover {
-					background: #eee;
+					border-color: #6899d0;
+					background: #6899d0;
+					color: #fff;
 				}
 			}
 			&.active {
 				a {
-					background: #000;
-					border-color: #ccc;
-					color: #fff;
+					background: #fff;
+					border: 2px solid #000;
+					margin: -4px 1px 0 1px;
+					color: #000;
+					padding: 20px 0;
+					
+					span {
+						color: #666;
+					}
+					@media screen and (max-width: 700px) {
+						margin: 0;
+					}
 				}
 			}
 		}

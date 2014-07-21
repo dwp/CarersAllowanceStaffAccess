@@ -104,6 +104,9 @@
 					&:hover {
 						border-color: #666;
 					}
+					&:focus {
+						border: #f47738 1px solid;
+					}
 					
 					@media screen and (min-width: 720px) {
 						width: 56%;
@@ -114,15 +117,19 @@
 				}
 				
 				button {
-					padding: .8em 1.4em;
-					border: 0;
+					padding: .75em 1.4em;
 					background: #000;
 					color: #fff;
-					border-radius: 5px;
 					font-family: 'colaborate-light';
 					font-size: 18px;
+					border: 0;
 					&:hover {
 						background: #666;
+					}
+					&:focus {
+						background: #f47738;
+						outline: 0px solid transparent;
+						box-shadow: none;
 					}
 				}
 				

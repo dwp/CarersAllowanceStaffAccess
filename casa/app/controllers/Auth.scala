@@ -1,13 +1,15 @@
 package controllers
 
 import play.api.mvc._
-import services.{AccessControlServiceComponent, PasswordService}
+import services.{AccessControlService, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
 import views.html
 import scala.Predef._
 
-object Auth extends Controller with AccessControlServiceComponent {
+class Auth extends Controller {
+
+  this: AccessControlService =>
 
   val loginForm = Form(
     tuple(
@@ -19,7 +21,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   )
 
   def checkUser(userId: String, inputPassword: String): Boolean = {
-    val userJson =  accessControlService.findByUserId(userId)
+    val userJson =  findByUserId(userId)
 
     val password = (userJson \ "password").as[String]
 
@@ -31,7 +33,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   }
 
   def checkPassword(userId: String): Boolean = {
-    val userJson =  accessControlService.getDaysToExpiration(userId)
+    val userJson =  getDaysToExpiration(userId)
     if(userJson.toString().equalsIgnoreCase("false")) false
     else {
       val days = userJson.as[Int]
@@ -40,7 +42,6 @@ object Auth extends Controller with AccessControlServiceComponent {
     }
   }
 
-  def getDaysToExpiration(userId: String): String = accessControlService.getDaysToExpiration(userId).toString()
 
   /**
    * Login page.
@@ -55,7 +56,7 @@ object Auth extends Controller with AccessControlServiceComponent {
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1), "currentTime"->System.nanoTime().toString)
+      user => Redirect(routes.Application.index).withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
     )
   }
 

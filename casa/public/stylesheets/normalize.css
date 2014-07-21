@@ -96,6 +96,8 @@ body {
     background: #000;
 }
 
+
+
 /* ==========================================================================
    Links
    ========================================================================== */
@@ -104,9 +106,17 @@ body {
  * Address `outline` inconsistency between Chrome and other browsers.
  */
 
-a:focus {
-    outline: thin dotted;
+a:focus, button:focus {
+    outline: solid #f47738 4px;
+    z-index: 9999;
+    position: relative;
+     }
+
+table a:focus {
+	outline: solid #f47738 2px;
+	box-shadow: none;
 }
+
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
@@ -657,3 +667,5 @@ textarea {
 .clearfix {
     *zoom: 1;
 }
+
+

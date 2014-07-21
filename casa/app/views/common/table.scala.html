@@ -19,29 +19,30 @@
                 <th id="thTransactionId">Transaction Id</th>
                 <th id="thNameId" class="view">Name</th>
                 <th class="ni">NI Number</th>
-                <th class="view">Claim type</th>
+                <th>Claim type</th>
                 <th class="view">Submit Date</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
             @if(!isStatusCompleted){
-                <div class="completebutton">
+                <div class="actions">
                     <button type="submit" class="active" id="completeButton1" >Complete</button>
                 </div>
             }
             @if(claimList.isDefined){
                 @for((claim,i) <- claimList.get.value.zipWithIndex){
                     <tr id="row_@claim.p.transactionId">
-                        <td>
+                        <td class="checked">
                         @if(claim.p.status.asString == "viewed") {
-                            <label for="@claim.p.transactionId">Claim</label><input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                            <input type="checkbox" name="completedCheckboxes[@i]" id="@claim.p.transactionId" value="@claim.p.transactionId">
+                            <label for="@claim.p.transactionId">Claim</label>
                         }
                         </td>
                         <td id="transactionId" class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
-                        <td id="name" class="view">@claim.p.surname @claim.p.forename</td>
+                        <td id="name" class="name view">@claim.p.surname @claim.p.forename</td>
                         <td id="nino" class="ni">@claim.p.nino</td>
-                        <td id="claimType" class="view">@claim.p.claimType</td>
+                        <td id="claimType" class="claimtype">@claim.p.claimType</td>
                         <td id="claimDate" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td class="status">@claim.p.status</td>
@@ -51,12 +52,13 @@
         </tbody>
     </table>
 
-    @if(!isStatusCompleted){
-        <div class="completebutton">
-        	<button type="submit" class="active" id="completeButton2" >Complete</button>
-        </div>
-    }
-}
-    <div class="completebutton">
+	<div class="actions below">
         <a class="active" id="exportButton" href="@{controllers.routes.Application.export.url}" >Export</a>
+        @if(!isStatusCompleted){
+        	<button type="submit" class="active" id="completeButton2" >Complete</button>
+		}
     </div>
+
+    
+}
+    

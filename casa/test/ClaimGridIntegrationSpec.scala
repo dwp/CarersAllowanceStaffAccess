@@ -2,7 +2,7 @@ import org.fluentlenium.core.domain.{FluentList, FluentWebElement}
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.LocalDate
 import org.specs2.mutable.{Specification, Tags}
-import play.api.test.{FakeApplication, TestBrowser, WithBrowser}
+import play.api.test.{TestBrowser, WithBrowser}
 import scala._
 import scala.collection.JavaConverters._
 
@@ -13,7 +13,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
   "Claim Grid" should {
 
-    "Show claims filtered by today's date" in new WithBrowserStub {
+    "show claims filtered by today's date" in new WithBrowser {
       login(browser)
 
       browser.title() mustEqual "Claims list"
@@ -22,7 +22,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkCasaDates(today, browser)
     }
 
-    "Only contain received or viewed statuses" in new WithBrowserStub {
+    "only contain received or viewed statuses by default on home page" in new WithBrowser {
       login(browser)
 
       browser.goTo("/")
@@ -32,7 +32,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
-    "Filtering by completed only shows completed claims" in new WithBrowserStub {
+    "show only completed claims when filtering by completed" in new WithBrowser {
       login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
@@ -43,7 +43,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("completed"))
     }
 
-    "Filtering by work queue only shows received or viewed claims for default sort a to m" in new WithBrowserStub {
+    "show received or viewed claims for default sort a to m" in new WithBrowser {
       login(browser)
 
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
@@ -51,7 +51,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
-    "Filtering by surname a to m shows only received or viewed claims for claimants with surnames starting with a to m" in new WithBrowserStub {
+    "show only received or viewed claims for claimants with surnames a to m when filtering by surname a to m" in new WithBrowser {
       login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
@@ -62,7 +62,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
-    "Filtering by surname n to z shows only received or viewed claims for claimants with surnames starting with n to z" in new WithBrowserStub {
+    "show only received or viewed claims for claimants with surnames n to z when filtering by surname n to z" in new WithBrowser {
       login(browser)
 
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
@@ -73,7 +73,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkForStatus(statuses, Seq("received", "viewed"))
     }
 
-    "Show claims filtered by specified date" in new WithBrowserStub {
+    "show claims filtered by specified date" in new WithBrowser {
       login(browser)
 
       val yesterday = new LocalDate().minusDays(1)
@@ -84,7 +84,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       checkCasaDates(yesterday, browser = browser)
     }
 
-    "Update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowserStub {
+    "update the claim status for all selected claims when 'Complete Claims' button clicked" in new WithBrowser {
       login(browser)
 
       val transactionId = "20140102071"
@@ -95,7 +95,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.pageSource() must not contain transactionId
     }
 
-    "Open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowserStub {
+    "open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowser {
       import scala.collection.JavaConverters._
 
       login(browser)
@@ -113,7 +113,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.title mustEqual s"Claim $transactionId"
     }
 
-    "Open completed claim pdf and check the status hasn't changed" in new WithBrowserStub {
+    "open completed claim pdf and check the status hasn't changed" in new WithBrowser {
       import scala.collection.JavaConverters._
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
@@ -134,29 +134,29 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       browser.title mustEqual s"Claim $transactionId"
     }
 
-    "Should show circs under the circs tab" in new WithBrowserStub {
+    "show circs under the circs tab" in new WithBrowser {
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
       login(browser)
 
       browser.goTo(s"/circs/$today")
 
-      val claimTypes = browser.$("#claimsTable .view")
+      val claimTypes = browser.$("#claimsTable .claimtype")
       assertCircsType (claimTypes)
     }
 
-    "Should show claims first then Circs for completed" in new WithBrowserStub {
+    "show claims first then circs on completed tab" in new WithBrowser {
       val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
 
       login(browser)
 
       browser.goTo(s"/filter/$today/completed")
 
-      val claimTypes = browser.$("#claimsTable .view")
+      val claimTypes = browser.$("#claimsTable .claimtype")
       assertClaimTypesOrdering (claimTypes)
     }
 
-    "Sort by transaction id should return the same number of entries as the original list" in new WithBrowserStub {
+    "sort by transaction id should return the same number of entries as the original list" in new WithBrowser {
       login(browser)
 
       browser.goTo("/")
@@ -170,7 +170,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       transactionIds.size must beEqualTo(transactionIdsSorted.size)
     }
 
-    "Sort by name should return the same number of entries as the original list" in new WithBrowserStub {
+    "return after a sort the same number of entries as the original list" in new WithBrowser {
       login(browser)
 
       browser.goTo("/")
@@ -184,33 +184,34 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       names.size must beEqualTo(namesSorted.size)
     }
 
-    "sort by transaction id " in new WithBrowserStub {
-      pending
+    "sort by transaction id " in new WithBrowser {
       login(browser)
 
       browser.goTo("/")
 
-      val transactionIds = browser.$("#transactionId").asScala.toList
-
       browser.$("#thTransactionId").click()
 
-      val transactionIdsSorted = browser.$("#claimsTable .transactionId").asScala.toList
+      Thread.sleep(1000)
+
+      var transactionIdsSorted = browser.$("#claimsTable .transactionId").asScala.toList
 
       compareSort(transactionIdsSorted)
-    }.pendingUntilFixed("The javascript code does not seem to get executed on click from the test")
+    }
 
-    "sort by name" in new WithBrowserStub {
-      pending
+    "sort by name" in new WithBrowser {
       login(browser)
 
       browser.goTo("/")
 
       browser.$("#thNameId").click()
 
-      val namesSorted = browser.$("#name").asScala.toList
+      Thread.sleep(1000)
 
-      compareSort(namesSorted)
-    }.pendingUntilFixed("The javascript code does not seem to get executed on click from the test")
+      var nameIds = browser.$("#claimsTable .name").asScala.toList
+
+      compareSort(nameIds)
+    }
+
   }
 
   def login(browser: TestBrowser) = {
@@ -274,8 +275,5 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       current.getText.compareTo(previous) must be_>=(0)
       previous = current.getText
     }
-
   }
 }
-
-class WithBrowserStub extends WithBrowser(app=FakeApplication(additionalConfiguration = Map("enableStub"->"true")))
