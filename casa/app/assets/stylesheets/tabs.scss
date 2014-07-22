@@ -10,13 +10,13 @@
 		
 		li {
 			float: left;
-			width: 14.2%;
+			width: 12.4%;
 			border-left: 1px solid #fff;
 			&:first-child {
 					border: 0;
 				}
-			@media screen and (max-width: 1024px) {
-				width: 14%;
+			@media screen and (max-width: 900px) {
+				width: 12.3%;
 			}	
 			@media screen and (max-width: 700px) {
 				float: none;
@@ -35,19 +35,34 @@
 				font-weight: 600;
 				padding: 16px 0;
 				border: 2px solid #4477b0;
+				
+				@media screen and (max-width: 900px) {
+						font-size: 14px;
+					}
 
 				@media screen and (max-width: 700px) {
 					padding: 8px 0;
-					font-size: 14px;
 				}
+				
+				b {
+					@media screen and (max-width: 940px) {
+						display: block;
+					}
+					@media screen and (max-width: 700px) {
+						display: inline;
+					}
+				}
+				
 				span {
 					display: block;
 					font-size: 16px;
 					font-weight: 200;
 					color: #fff;
+					@media screen and (max-width: 900px) {
+						font-size: 13px;
+					}
 					@media screen and (max-width: 700px) {
 						display: inline;
-						font-size: 14px;
 						padding-left: 5px;
 					}
 				}

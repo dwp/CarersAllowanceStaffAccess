@@ -11,12 +11,24 @@ table {
 		text-align: left;
 		background: #4477b0;
 		color: #fff;
-		padding: 15px;
+		padding: 17px 15px 15px 15px;
 		font-size: 16px;
         cursor: pointer;
+        font-weight: 600;
         @media screen and (max-width: 700px) {
 	        font-size: 13px;
         }
+        &:hover {
+	        background: #5588c0;
+	        background-image: url('/assets/img/sort.png');
+	        background-repeat: no-repeat;
+	        background-position: 90% center;
+	        background-size: 10px 14px;
+	        &:first-child {
+		        background-position: center;    
+			}
+        }
+        
 	}
 	tr {
 		background: #fff;
@@ -42,6 +54,10 @@ table {
 		}
 		
 		&:first-letter {
+			text-transform: uppercase;
+		}
+		
+		&.ni {
 			text-transform: uppercase;
 		}
 		
@@ -79,10 +95,7 @@ table {
 			color: #555;
 		}
 	}
-	
-	.ni {
-		text-transform: uppercase;
-	}
+
 	
 	.ni, .view {
 		@media screen and (max-width: 700px) {
@@ -126,28 +139,21 @@ table {
  				.checked {
 	 				position: relative;
 					   input {
-						   position: absolute;
-						   left: -9999px;
-					   }
-					   
-					   label {
-						   display: block;
+
+						   width: 25px;
+						   height: 25px;
 						   background: #fff;
 						   cursor: pointer;
 						   border: 1px solid #4477b0;
-						   width: 25px;
-						   height: 25px;
-						   text-indent: -9999px;
-						   
-						   &:hover {
-							   border-color: #000;
+						   &:focus {
+							   outline: solid #f47738 4px;
 						   }
-
 					   }
 					   
-					   input:checked + label {
-						   background: #fff url('/assets/img/tick.png') center no-repeat;
-						   background-size: 15px 15px;
-						   border-color: #000;
+					   label {
+						   position: absolute;
+						   left: -9999px;
+
 					   }
+
 				   }

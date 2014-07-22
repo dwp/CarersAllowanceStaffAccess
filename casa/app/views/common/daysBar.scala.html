@@ -14,6 +14,6 @@
 <ul class="dates clearfix">
 
     @for(day <- daysList){
-        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/surname/@{formatToLink(day)}/atom">@dayName(day) (@{claimNumbers \ formatToLink(day)})<span>@dayDate(day)</span></a></li>
+        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/surname/@{formatToLink(day)}/atom">@dayName(day) <b>(@{claimNumbers \ formatToLink(day)})</b><span>@dayDate(day)</span></a></li>
     }
 </ul>
