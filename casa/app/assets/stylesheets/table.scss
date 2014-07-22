@@ -32,7 +32,7 @@ table {
 	}
 	tr {
 		background: #fff;
-		border-top: 1px dashed #99cccd;
+
 		&:nth-child(even) {
 			background: #f9f9f9;
 		}
@@ -144,8 +144,9 @@ table {
 						   background: #fff;
 						   cursor: pointer;
 						   border: 1px solid #4477b0;
+						   box-shadow: none;
 						   &:focus {
-							   outline: solid #f47738 4px;
+							   outline: solid #f47738 2px;
 						   }
 					   }
 					   
