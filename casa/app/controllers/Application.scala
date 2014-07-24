@@ -10,6 +10,7 @@ import play.api.templates.Html
 import play.api.libs.json.JsArray
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
+import play.api.Logger
 
 class Application extends Controller with Secured {
 
@@ -94,9 +95,15 @@ class Application extends Controller with Secured {
   }
 
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
-    buildClaimHtml(transactionId) match {
-      case Some(renderedClaim) => Ok(Html(renderedClaim))
-      case _ => BadRequest
+    try {
+      buildClaimHtml(transactionId) match {
+        case Some(renderedClaim) => Ok(Html(renderedClaim))
+        case _ => Ok(views.html.common.error("/", "Error while rendering claim."))
+      }
+    } catch {
+      case e: Exception =>
+        Logger.error(s"Could not connect to the render service",e)
+        Ok(views.html.common.error("/", "Could not connect to the render service."))
     }
   }
 

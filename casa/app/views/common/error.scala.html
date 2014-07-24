@@ -1,0 +1,41 @@
+@(url:String, message:String)(implicit lang: Lang, request: Request[AnyContent], session: play.api.mvc.Session)
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Carer's Allowance Staff Access (CASA)</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("img/favicon.png")">
+
+    </head>
+    <body class="login">
+
+
+        <header>
+            <h1>Carer's Allowance Staff Access</h1>
+        </header>
+
+        <main>
+            <fieldset>
+
+                <legend>Application Error</legend>
+                <div>
+                    <article class="error">
+                        <h1>@Html(message)</h1>
+                    </article>
+                </div>
+            </fieldset>
+        </main>
+
+        @footer()
+
+    </body>
+
+
+</html>

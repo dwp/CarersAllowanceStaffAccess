@@ -17,7 +17,7 @@ trait AccessControlService extends CasaRemoteService {
 
   implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
 
-   def findByUserId(userId: String): JsValue =
+  def findByUserId(userId: String): JsValue =
     s"$url/user/$userId" post { response =>
       response.status match {
         case Status.OK => response.json
@@ -28,15 +28,14 @@ trait AccessControlService extends CasaRemoteService {
       }
     } exec()
 
-   def getDaysToExpiration(userId: String): JsValue =
+  def getDaysToExpiration(userId: String): JsValue =
     s"$url/expire/$userId" post { response =>
       response.status match {
-        case Status.OK => response.json
-        case _ =>
-          Logger.error(s"Access control service could not find expiry date for user [${userId}]. Response ${response.status}:${response.body}")
-          Counters.incrementAcSubmissionErrorStatus(response.status)
-          new JsBoolean(false)
+      case Status.OK => response.json
+      case _ =>
+        Logger.error(s"Access control service could not find expiry date for user [${userId}]. Response ${response.status}:${response.body}")
+        Counters.incrementAcSubmissionErrorStatus(response.status)
+        new JsBoolean(false)
       }
     } exec()
-
 }

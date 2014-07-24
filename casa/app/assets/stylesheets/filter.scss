@@ -1,11 +1,11 @@
 .filter {
-	padding: .5em 3em 0 3em;
+	padding: .5em 2em 0 2em;
 	background: #ddd;
 	position: relative;
 	z-index: 999;
 
 	@media screen and (max-width: 1200px) {
-		padding: .4em 2em 0 2em;
+		padding: .4em 1em 0 1em;
 	}
 	@media screen and (max-width: 700px) {
 		padding: 0 .5em;

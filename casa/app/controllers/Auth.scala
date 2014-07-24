@@ -6,6 +6,8 @@ import play.api.data._
 import play.api.data.Forms._
 import views.html
 import scala.Predef._
+import play.api.Logger
+import monitoring.Counters
 
 class Auth extends Controller {
 
@@ -21,15 +23,14 @@ class Auth extends Controller {
   )
 
   def checkUser(userId: String, inputPassword: String): Boolean = {
-    val userJson =  findByUserId(userId)
+      val userJson =  findByUserId(userId)
+      val password = (userJson \ "password").as[String]
 
-    val password = (userJson \ "password").as[String]
-
-    if(password.length() > 4) {
-      if (PasswordService.checkPassword(inputPassword, password.toString)) true
+      if(password.length() > 4) {
+        if (PasswordService.checkPassword(inputPassword, password.toString)) true
+        else false
+      }
       else false
-    }
-    else false
   }
 
   def checkPassword(userId: String): Boolean = {
@@ -42,7 +43,6 @@ class Auth extends Controller {
     }
   }
 
-
   /**
    * Login page.
    */
@@ -54,10 +54,16 @@ class Auth extends Controller {
    * Handle login form submission.
    */
   def authenticate = Action { implicit request =>
-    loginForm.bindFromRequest.fold(
-      formWithErrors => BadRequest(html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
-    )
+    try {
+      loginForm.bindFromRequest.fold(
+        formWithErrors => BadRequest(html.login(formWithErrors)),
+        user => Redirect(routes.Application.index).withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
+      )
+    } catch {
+    case e: Exception =>
+      Logger.error(s"Could not connect to the access service",e)
+      Ok(views.html.common.error("login", "Could not connect to the access control service."))
+    }
   }
 
   /**
