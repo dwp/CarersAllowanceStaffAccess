@@ -18,6 +18,7 @@ class CasaSettings extends WithFilters(MonitorFilter) with Injector with CasaMon
     Logger.info("SA is now starting")
 
     registerReporters()
+    registerHealthChecks()
   }
 
   override def onStop(app: Application): Unit = {

@@ -18,7 +18,7 @@ trait ClaimService extends CasaRemoteService {
 
   override def getUrlPropertyName = "claimsServiceUrl"
 
-  override def getTimeoutPropertyName = "ws.timeout"
+  override def getTimeoutPropertyName = "cs.timeout"
 
   override def getDefaultUrl = "http://localhost:9002"
 

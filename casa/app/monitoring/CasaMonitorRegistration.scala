@@ -1,10 +1,11 @@
 package monitoring
 
 import app.ConfigProperties._
+import play.api.Logger
 import utils.Injector
-import monitor.{MonitorRegistration, NoHealthCheck}
+import monitor.{HealthMonitor, MonitorRegistration}
 
-trait CasaMonitorRegistration extends MonitorRegistration with NoHealthCheck {
+trait CasaMonitorRegistration extends MonitorRegistration {
   this: Injector =>
 
   override def getFrequency: Int = getProperty("metrics.frequency", default = 1)
@@ -13,5 +14,12 @@ trait CasaMonitorRegistration extends MonitorRegistration with NoHealthCheck {
 
   override def isLogHealth: Boolean = getProperty("health.logging", default = false)
 
+  override   def getHealthMonitor : HealthMonitor = ProdHealthMonitor
+
+  override def registerHealthChecks(): Unit = {
+    Logger.info("Health Checks registered.")
+    ProdHealthMonitor.register("casa-connection-ac", new AccessServiceConnectionCheck)
+    ProdHealthMonitor.register("casa-connection-cs", new ClaimServiceConnectionCheck)
+  }
 
 }
