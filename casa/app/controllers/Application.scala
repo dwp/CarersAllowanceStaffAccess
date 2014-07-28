@@ -95,16 +95,10 @@ class Application extends Controller with Secured {
   }
 
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
-    try {
       buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
         case _ => Ok(views.html.common.error("/", "Error while rendering claim."))
       }
-    } catch {
-      case e: Exception =>
-        Logger.error(s"Could not connect to the render service",e)
-        Ok(views.html.common.error("/", "Could not connect to the render service."))
-    }
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>

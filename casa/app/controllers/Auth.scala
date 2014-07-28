@@ -8,6 +8,7 @@ import views.html
 import scala.Predef._
 import play.api.Logger
 import monitoring.Counters
+import scala.util.{Failure, Success, Try}
 
 class Auth extends Controller {
 
@@ -80,6 +81,7 @@ class Auth extends Controller {
  * Provide security features
  */
 trait Secured {
+  import play.api.mvc.Results._
 
   /**
    * Retrieve the connected user id.
@@ -97,7 +99,19 @@ trait Secured {
    */
   def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
     Action{request =>
-      f(user)(request).withSession("userId"->user, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
+
+      Try(
+        f(user)(request).withSession("userId"->user, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
+      ) match {
+        case Success(s) => s
+        case Failure(e) =>
+          val errorMsg = request.path match {
+            case s if s.startsWith("/render") => "Could not connect to the render service"
+            case _ => "Unexpected error"
+          }
+          Logger.error(errorMsg,e)
+          Ok(views.html.common.error("/", errorMsg))
+      }
     }
   }
 
