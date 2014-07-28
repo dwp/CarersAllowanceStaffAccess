@@ -98,7 +98,7 @@ trait Secured {
    * Action for authenticated users.
    */
   def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
-    Action{request =>
+    Action{implicit request =>
 
       Try(
         f(user)(request).withSession("userId"->user, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
