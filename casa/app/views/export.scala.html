@@ -54,7 +54,7 @@
         <main>
 
             @if(csvClaims.isDefined){
-            
+                @form(action = controllers.routes.Application.purge()){
             		<div class="actions">
                         <a href="@{controllers.routes.Application.csvExport().url}" target="_blank">Download</a>
                         <a href="#" id="purgeButton" onclick="confirmPurge();" >Purge</a>
@@ -85,6 +85,7 @@
                         <a href="@{controllers.routes.Application.csvExport().url}" target="_blank">Download</a>
                         <a href="#" id="purgeButton" onclick="confirmPurge();" >Purge</a>
                     </div>
+                }
             }else{
 
                 <div class="no-data">
