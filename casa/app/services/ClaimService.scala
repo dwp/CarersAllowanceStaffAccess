@@ -29,7 +29,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/claims/$dateString" get { response =>
       response.status match {
-        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
+        case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date  ${dateString}")
           None
@@ -45,7 +45,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/circs/$dateString" get { response =>
       response.status match {
-        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
+        case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find coc for date ${dateString}")
           None
@@ -62,7 +62,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/claims/surname/$dateString/$sortBy" get { response =>
       response.status match {
-        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
+        case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date ${dateString} and sort by ${sortBy}.")
           None
@@ -81,7 +81,7 @@ trait ClaimService extends CasaRemoteService {
 
     s"$url/claims/$dateString/$status" get { response =>
       response.status match {
-        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
+        case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date  ${dateString} and status ${status}.")
           None
@@ -161,7 +161,6 @@ trait ClaimService extends CasaRemoteService {
     s"$url/export" get { response =>
       response.status match {
         case Status.OK =>
-          Logger.info("Export response:"+response.body)
           Some(decryptArray(response.json.as[JsArray]))
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
@@ -181,13 +180,27 @@ trait ClaimService extends CasaRemoteService {
     } exec()
   }
 
-  private def decryptArray(toDecrypt:JsArray):JsArray = {
+  private def decryptObjArray(toDecrypt:JsArray):JsArray = {
     val ret = toDecrypt.value.map { jsValue =>
       JsObject(jsValue.as[JsObject].value.map { tuple =>
         if (tuple._2.isInstanceOf[JsString]){
           tuple._1 -> JsString(decryptString(tuple._2.as[JsString].value))
         }else{
           tuple
+        }
+      }.toSeq)
+    }
+
+    Json.toJson(ret).as[JsArray]
+  }
+
+  private def decryptArray(toDecrypt:JsArray):JsArray = {
+    val ret = toDecrypt.value.map { jsValue =>
+      JsArray(jsValue.as[JsArray].value.map { elem =>
+        if (elem.isInstanceOf[JsString]){
+          JsString(decryptString(elem.as[JsString].value))
+        }else{
+          elem
         }
       }.toSeq)
     }
