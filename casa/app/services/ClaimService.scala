@@ -160,7 +160,9 @@ trait ClaimService extends CasaRemoteService {
   def getOldClaims: Option[JsArray] = {
     s"$url/export" get { response =>
       response.status match {
-        case Status.OK => Some(decryptArray(response.json.as[JsArray]))
+        case Status.OK =>
+          Logger.info("Export response:"+response.body)
+          Some(decryptArray(response.json.as[JsArray]))
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
           None

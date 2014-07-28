@@ -102,7 +102,6 @@ class Application extends Controller with Secured {
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>
-    Logger.info("OldClaims:"+getOldClaims.toString)
     Ok(views.html.export(getOldClaims))
   }
 
