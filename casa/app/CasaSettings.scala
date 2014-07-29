@@ -1,4 +1,8 @@
+import java.net.InetAddress
+
+import app.ConfigProperties._
 import controllers.Auth
+import org.slf4j.MDC
 import play.api.{Logger, Application, GlobalSettings}
 import play.api.mvc._
 import scala.Some
@@ -15,10 +19,16 @@ class CasaSettings extends WithFilters(MonitorFilter) with Injector with CasaMon
   lazy val  authController = resolve(classOf[Auth])
 
   override def onStart(app: Application): Unit = {
+    MDC.put("httpPort", getProperty("http.port", "Value not set"))
+    MDC.put("hostName", Option(InetAddress.getLocalHost.getHostName).getOrElse("Value not set"))
+    MDC.put("envName", getProperty("env.name", "Value not set"))
+    MDC.put("appName", getProperty("app.name", "Value not set"))
     Logger.info("SA is now starting")
+    super.onStart(app)
 
     registerReporters()
     registerHealthChecks()
+    Logger.info("SA started")
   }
 
   override def onStop(app: Application): Unit = {
