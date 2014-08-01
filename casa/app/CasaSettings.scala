@@ -46,7 +46,7 @@ class CasaSettings extends WithFilters(MonitorFilter) with Injector with CasaMon
     val timeout = Play.application().configuration().getString("application.session.maxAge").toLong
 
     // could also filter out bad request; also find a smarter way to test contains
-    if(request.path.contains("assets") || request.path.contains("login")||request.path.contains("logout") ||request.path.contains("password") )
+    if(request.path.contains("assets") || request.path.contains("login")||request.path.contains("logout") ||request.path.contains("password") || request.path.contains("/report/") )
       super.onRouteRequest(request)
     else {
       request.session.get("currentTime") match {
