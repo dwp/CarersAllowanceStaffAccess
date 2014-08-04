@@ -1,4 +1,5 @@
 @(csvClaims:Option[play.api.libs.json.JsArray])(implicit session: play.api.mvc.Session, lang: Lang)
+@import play.api.Logger
 
 @import play.api.libs.json._
 @import helper._
@@ -23,8 +24,8 @@
     // otherwise just display the value passed in
     csvClaims.value.toList(0)(columnIdx).as[String].toLowerCase.contains("date") match {
         case true => {
-            val parsedDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(value)
-            DateTimeFormat.forPattern("dd-MMM-yyyy").print(parsedDate)
+            val parsedDate = DateTimeFormat.forPattern("ddMMyyyyHHmm").parseDateTime(value)
+            DateTimeFormat.forPattern("dd-MMM-yyyy HH:mm").print(parsedDate)
         }
         case _ => value
     }

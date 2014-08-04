@@ -7,7 +7,7 @@ import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.api.templates.Html
-import play.api.libs.json.JsArray
+import play.api.libs.json.{JsValue, JsString, JsArray}
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 import play.api.Logger
@@ -107,7 +107,27 @@ class Application extends Controller with Secured {
 
   def csvExport() = IsAuthenticated { implicit username => implicit request =>
     val stringValue = getOldClaims match {
-      case Some(s) => s.value.map(_.as[JsArray].value.mkString(",")).mkString("\n")
+      case Some(s) =>
+        //We need to parse the date time to be readable on the CSV by excel and openoffice
+        val claimDateTimePos = s.value(0).as[JsArray].value.indexOf(JsString("claimDateTime"))
+
+
+        JsArray(s.value.drop(1).map{a =>
+          //Getting the element we have to change by position
+          val elemToChange = a.as[JsArray].value.zipWithIndex.find(_._2 == claimDateTimePos)
+          //As order by position is important we save element lists previous and after the element we have to change
+          val prev = a.as[JsArray].value.zipWithIndex.filter(_._2 < claimDateTimePos).map(_._1)
+          val after = a.as[JsArray].value.zipWithIndex.filter(_._2 > claimDateTimePos).map(_._1)
+
+          //We parse the element into what we want
+          val parsedDate = DateTimeFormat.forPattern("ddMMyyyyHHmm").parseDateTime(elemToChange.get._1.as[JsString].value)
+          val modified = JsString(DateTimeFormat.forPattern("dd/MMM/yyyy HH:mm").print(parsedDate)).as[JsValue]
+          
+          //We put everything back together in the order they used to be
+          JsArray(prev.+:(modified) ++: after)
+          //This last bit is to put back at the start the column titles
+        }.+:(s.value(0).as[JsValue])).value.map(_.as[JsArray].value.mkString(",")).mkString("\n")
+
       case None => ""
     }
 
