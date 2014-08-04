@@ -113,7 +113,7 @@ class Application extends Controller with Secured {
 
     val fileName = s"exports${DateTimeFormat.forPattern("dd-MM-yyyy").print(new DateTime)}.csv"
 
-    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename='$fileName'")
+    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename=$fileName")
   }
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
