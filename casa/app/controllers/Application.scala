@@ -124,7 +124,7 @@ class Application extends Controller with Secured {
           val modified = JsString(DateTimeFormat.forPattern("dd/MMM/yyyy HH:mm").print(parsedDate)).as[JsValue]
           
           //We put everything back together in the order they used to be
-          JsArray(prev.+:(modified) ++: after)
+          JsArray(prev.:+(modified) ++: after)
           //This last bit is to put back at the start the column titles
         }.+:(s.value(0).as[JsValue])).value.map(_.as[JsArray].value.mkString(",")).mkString("\n")
 
