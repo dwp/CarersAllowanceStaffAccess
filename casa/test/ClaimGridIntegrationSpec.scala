@@ -161,13 +161,13 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
       browser.goTo("/")
 
-      val transactionIds = browser.$("#transactionId").asScala.toSeq
-
       browser.$("#thTransactionId").click()
 
       val transactionIdsSorted = browser.$("#claimsTable .transactionId").asScala.toSeq
-
-      transactionIds.size must beEqualTo(transactionIdsSorted.size)
+      val pastTransactionId = browser.$(s"#transactionId_${transactionIdsSorted.size}")
+      val lastTransactionId = browser.$(s"#transactionId_${transactionIdsSorted.size - 1}")
+      lastTransactionId.size() must beEqualTo(1)
+      pastTransactionId.size() must beEqualTo(0)
     }
 
     "return after a sort the same number of entries as the original list" in new WithBrowser {

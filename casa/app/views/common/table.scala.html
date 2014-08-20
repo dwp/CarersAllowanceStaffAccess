@@ -11,6 +11,11 @@
 @isStatusCompleted = @{ currentStatus == "completed"}
 
 @form(action = controllers.routes.Application.complete(currentDateToHiddenValue)){
+    @if(!isStatusCompleted){
+    <div class="actions">
+        <button type="submit" class="active" id="completeButton1" >Complete</button>
+    </div>
+    }
     <table id="claimsTable" class="tablesorter">
         <caption>List of claims</caption>
         <thead>
@@ -25,11 +30,6 @@
             </tr>
         </thead>
         <tbody>
-            @if(!isStatusCompleted){
-                <div class="actions">
-                    <button type="submit" class="active" id="completeButton1" >Complete</button>
-                </div>
-            }
             @if(claimList.isDefined){
                 @for((claim,i) <- claimList.get.value.zipWithIndex){
                     <tr id="row_@claim.p.transactionId">
@@ -39,13 +39,13 @@
                             <label for="@claim.p.transactionId">Claim</label>
                         }
                         </td>
-                        <td id="transactionId" class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
-                        <td id="name" class="name view">@claim.p.surname @claim.p.forename</td>
-                        <td id="nino" class="ni">@claim.p.nino</td>
-                        <td id="claimType" class="claimtype">@claim.p.claimType</td>
-                        <td id="claimDate" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
+                        <td id="transactionId_@i" class="transactionId"><a href="/render/@claim.p.transactionId" target="@claim.p.transactionId">@claim.p.transactionId</a></td>
+                        <td id="name_@i" class="name view">@claim.p.surname @claim.p.forename</td>
+                        <td id="nino_@i" class="ni">@claim.p.nino</td>
+                        <td id="claimType_@i" class="claimtype">@claim.p.claimType</td>
+                        <td id="claimDate_@i" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
-                        <td class="status">@claim.p.status</td>
+                        <td id="status_@i" class="status">@claim.p.status</td>
                     </tr>
                 }
             }
