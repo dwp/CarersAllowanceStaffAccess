@@ -1,5 +1,6 @@
 package controllers
 
+import play.api.http.HeaderNames._
 import play.api.mvc._
 import org.joda.time.{DateTime, LocalDate}
 import services.ClaimService
@@ -51,14 +52,16 @@ class Application extends Controller with Secured {
     val claims = claimsFilteredBySurname(localDate, sortBy)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
 
-    Ok(views.html.claimsList(localDate, sortBy, sortByDateTime(claims), claimNumbers))
+    Ok(views.html.claimsList(localDate, sortBy, sortByDateTime(claims), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val circs = getCircs(localDate)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(localDate, "circs", sortByDateTime(circs), claimNumbers))
+    Ok(views.html.claimsList(localDate, "circs", sortByDateTime(circs), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   def claimsForDate(date: String) = claimsForDateFiltered(date, "")
@@ -67,7 +70,8 @@ class Application extends Controller with Secured {
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) getClaims(localDate) else claimsFiltered(localDate, status)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(localDate, status, sortByClaimTypeDateTime(claims), claimNumbers))
+    Ok(views.html.claimsList(localDate, status, sortByClaimTypeDateTime(claims), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   case class ClaimsToComplete(completedCheckboxes: List[String])
@@ -97,12 +101,14 @@ class Application extends Controller with Secured {
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
       buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
-        case _ => Ok(views.html.common.error("/", "Error while rendering claim."))
+        case _ => Ok(views.html.common.error("/", "Error while rendering claim.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+          .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
       }
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>
-    Ok(views.html.export(getOldClaims))
+    Ok(views.html.export(getOldClaims)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   def csvExport() = IsAuthenticated { implicit username => implicit request =>
@@ -138,6 +144,7 @@ class Application extends Controller with Secured {
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
     purgeOldClaims()
-    Redirect(routes.Application.export())
+    Redirect(routes.Application.export()).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 }
