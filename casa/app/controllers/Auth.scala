@@ -49,7 +49,8 @@ class Auth extends Controller {
    */
   def login =
     Action { implicit request =>
-      Ok(html.login(loginForm)) // stop click jacking)
+      Ok(html.login(loginForm)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+        .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking)
     }
 
 
@@ -114,7 +115,8 @@ trait Secured {
             case _ => "Unexpected error"
           }
           Logger.error(errorMsg,e)
-          Ok(views.html.common.error("/", errorMsg))
+          Ok(views.html.common.error("/", errorMsg)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+            .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
       }
     }
   }

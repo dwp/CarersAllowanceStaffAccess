@@ -22,7 +22,8 @@ class Application extends Controller with Secured {
   def index = IsAuthenticated { implicit username => implicit request =>
     val today = new LocalDate
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(today, defaultStatus, sortByDateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers))
+    Ok(views.html.claimsList(today, defaultStatus, sortByDateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
   }
 
   def sortByClaimTypeDateTime(data: Option[JsArray]): Option[JsArray] = {
@@ -139,7 +140,8 @@ class Application extends Controller with Secured {
 
     val fileName = s"exports${DateTimeFormat.forPattern("dd-MM-yyyy").print(new DateTime)}.csv"
 
-    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename=$fileName")
+    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename=$fileName").withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
   }
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
