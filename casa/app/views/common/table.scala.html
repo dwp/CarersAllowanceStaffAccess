@@ -12,8 +12,9 @@
 @isStatusCompleted = @{ currentStatus == "completed"}
 
 @form(action = controllers.routes.Application.complete(currentDateToHiddenValue)){
+    @DwpCSRFFormHelper.formField
+
     @if(!isStatusCompleted){
-        @DwpCSRFFormHelper.formField
         <div class="actions">
             <button type="submit" class="active" id="completeButton1" >Complete</button>
         </div>

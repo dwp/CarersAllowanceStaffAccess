@@ -9,6 +9,7 @@ import views.html
 import scala.Predef._
 import play.api.Logger
 import scala.util.{Failure, Success, Try}
+import app.ConfigProperties._
 
 class Auth extends Controller {
 
@@ -76,7 +77,7 @@ class Auth extends Controller {
    * Logout and clean the session.
    */
   def logout = Action {
-    Redirect(controllers.routes.Auth.login).withNewSession.flashing(
+    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getProperty("csrf.cookie.name",""), secure= getProperty("csrf.cookie.secure",false))).withNewSession.flashing(
       "success" -> "You've been logged out"
     )
   }
