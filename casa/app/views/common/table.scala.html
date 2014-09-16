@@ -1,9 +1,10 @@
-@(claimList:Option[play.api.libs.json.JsArray], currentDate:org.joda.time.LocalDate, currentStatus: String)
+@(claimList:Option[play.api.libs.json.JsArray], currentDate:org.joda.time.LocalDate, currentStatus: String)(implicit request: Request[AnyContent])
 
 @import helper._
 @import org.joda.time.format.DateTimeFormat
 @import org.joda.time.DateTime
 @import utils.JsValueWrapper.improveJsValue
+@import utils.csrf.DwpCSRFFormHelper
 
 @dateTime(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy, HH:mm").print(date) }
 @date(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
@@ -12,9 +13,10 @@
 
 @form(action = controllers.routes.Application.complete(currentDateToHiddenValue)){
     @if(!isStatusCompleted){
-    <div class="actions">
-        <button type="submit" class="active" id="completeButton1" >Complete</button>
-    </div>
+        @DwpCSRFFormHelper.formField
+        <div class="actions">
+            <button type="submit" class="active" id="completeButton1" >Complete</button>
+        </div>
     }
     <table id="claimsTable" class="tablesorter">
         <caption>List of claims</caption>

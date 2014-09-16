@@ -1,4 +1,5 @@
-@(form: Form[(String,String)])(implicit flash: Flash)
+@(form: Form[(String,String)])(implicit flash: Flash, request: Request[AnyContent])
+@import utils.csrf.DwpCSRFFormHelper
 
 <!DOCTYPE html>
 
@@ -24,7 +25,9 @@
 		<main>
 
         @helper.form(controllers.routes.Auth.authenticate) {
-		
+
+            @DwpCSRFFormHelper.formField
+
 			<fieldset>
 			
 	            <legend>Login</legend>

@@ -5,6 +5,7 @@ import controllers.Auth
 import org.slf4j.MDC
 import play.api.{Logger, Application, GlobalSettings}
 import play.api.mvc._
+import utils.csrf.DwpCSRFFilter
 import scala.Some
 import play.Play
 import utils.Injector
@@ -12,7 +13,7 @@ import monitor.MonitorFilter
 import monitoring._
 import monitoring.CasaMonitorRegistration
 
-class CasaSettings extends WithFilters(MonitorFilter) with Injector with CasaMonitorRegistration with GlobalSettings {
+class CasaSettings extends WithFilters(MonitorFilter, DwpCSRFFilter()) with Injector with CasaMonitorRegistration with GlobalSettings {
 
   this: Injector =>
 
