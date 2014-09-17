@@ -11,7 +11,6 @@ import play.api.templates.Html
 import play.api.libs.json.{JsValue, JsString, JsArray}
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
-import play.api.Logger
 
 class Application extends Controller with Secured {
 

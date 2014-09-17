@@ -3,15 +3,20 @@ import java.net.InetAddress
 import app.ConfigProperties._
 import controllers.Auth
 import org.slf4j.MDC
+import play.api.i18n.Lang
 import play.api.{Logger, Application, GlobalSettings}
 import play.api.mvc._
+import play.api.mvc.Results._
+import play.api.http.HeaderNames._
 import utils.csrf.DwpCSRFFilter
-import scala.Some
 import play.Play
 import utils.Injector
 import monitor.MonitorFilter
-import monitoring._
 import monitoring.CasaMonitorRegistration
+import scala.concurrent.{ExecutionContext, Future}
+import ExecutionContext.Implicits.global
+
+import scala.concurrent.Future
 
 class CasaSettings extends WithFilters(MonitorFilter, DwpCSRFFilter()) with Injector with CasaMonitorRegistration with GlobalSettings {
 
@@ -66,5 +71,12 @@ class CasaSettings extends WithFilters(MonitorFilter, DwpCSRFFilter()) with Inje
 
   override def getControllerInstance[A](controllerClass: Class[A]): A = resolve(controllerClass)
 
+  override def onError(request: RequestHeader, ex: Throwable): Future[SimpleResult] = {
+    val errorMsg = "Unexpected error."
+    Logger.error (errorMsg + ex.getMessage)
+    Future (Ok(views.html.common.error ("/", errorMsg)(Lang.defaultLang, Request (request, AnyContentAsEmpty)))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders ("X-Frame-Options" -> "SAMEORIGIN"))
+  }
 }
 
