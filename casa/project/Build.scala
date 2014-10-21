@@ -1,32 +1,40 @@
-import net.litola.SassPlugin
 import sbt._
 import sbt.Keys._
+import play.Play.autoImport._
+import net.litola.SassPlugin
 
 object ApplicationBuild extends Build {
 
   val name = "sa"
-  val version = "1.0-SNAPSHOT"
+  val appVersion = "1.0-SNAPSHOT"
 
-  val dependencies = Seq(
+  val appDependencies = Seq(
+    ws,
     "org.specs2"         %% "specs2"              % "2.3.6" % "test" withSources() withJavadoc(),
     "me.moocar"           % "logback-gelf"        % "0.9.6p2",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "com.dwp.carers"     %% "wscommons"           % "1.0",
-    "com.dwp.carers"     %% "carerscommon"        % "5.5"
+    "com.dwp.carers"     %% "wscommons"           % "2.0",
+    "com.dwp.carers"     %% "carerscommon"        % "6.0"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
 
-  var sV:Setting[_] = scalaVersion := "2.10.3"
+  var sV:Setting[_] = scalaVersion := "2.10.4"
 
   var sR:Seq[Setting[_]] = Seq(
     resolvers += "Carers repo" at "http://build.3cbeta.co.uk:8080/artifactory/repo/",
     resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases")
 
-  var testOption:Setting[_] = javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""})
+  var jO: Seq[Def.Setting[_]] = Seq( javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""}),
+javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessControlServiceUrl") match { case s:String => s case null => ""}))
 
-  var acService:Setting[_] = javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessControlServiceUrl") match { case s:String => s case null => ""})
+  var vS: Seq[Def.Setting[_]] = Seq(version := appVersion, libraryDependencies ++= appDependencies)
 
-  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV +: testOption +: acService) ++ sR:_*)
+
+  var appSettings: Seq[Def.Setting[_]] =  sV ++ sO ++ sR ++ jO ++ vS
+
+  val main = Project(name, file(".")).enablePlugins(play.PlayScala, net.litola.SassPlugin).settings(appSettings: _*)
+
+//  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV +: testOption +: acService) ++ sR:_*)
 }

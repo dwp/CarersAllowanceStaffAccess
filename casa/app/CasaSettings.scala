@@ -13,7 +13,7 @@ import play.Play
 import utils.Injector
 import monitor.MonitorFilter
 import monitoring.CasaMonitorRegistration
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.ExecutionContext
 import ExecutionContext.Implicits.global
 
 import scala.concurrent.Future
@@ -74,7 +74,7 @@ class CasaSettings extends WithFilters(MonitorFilter, DwpCSRFFilter()) with Inje
 
   override def getControllerInstance[A](controllerClass: Class[A]): A = resolve(controllerClass)
 
-  override def onError(request: RequestHeader, ex: Throwable): Future[SimpleResult] = {
+  override def onError(request: RequestHeader, ex: Throwable): Future[Result] = {
     val errorMsg = "Unexpected error."
     Logger.error (errorMsg + ex.getMessage)
     Future (Ok(views.html.common.error ("/", errorMsg)(Lang.defaultLang, Request (request, AnyContentAsEmpty)))

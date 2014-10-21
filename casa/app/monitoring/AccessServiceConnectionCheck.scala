@@ -4,7 +4,7 @@ import app.ConfigProperties._
 import com.codahale.metrics.health.HealthCheck
 import com.codahale.metrics.health.HealthCheck.Result
 import play.api.http.Status
-import play.api.libs.ws.Response
+import play.api.libs.ws.WSResponse
 import utils.HttpUtils.HttpMethodWrapper
 
 import scala.concurrent.duration._
@@ -21,7 +21,7 @@ class AccessServiceConnectionCheck extends HealthCheck {
   override def check(): Result = {
     val submissionServerEndpoint = getProperty("accessControlServiceUrl","NotDefined") + "/ping"
 
-      submissionServerEndpoint get { response: Response =>
+      submissionServerEndpoint get { response: WSResponse =>
       response.status match {
         case Status.OK =>
           Result.healthy

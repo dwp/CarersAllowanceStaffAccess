@@ -7,7 +7,7 @@ import services.ClaimService
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
-import play.api.templates.Html
+import play.twirl.api.Html
 import play.api.libs.json.{JsValue, JsString, JsArray}
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
