@@ -25,7 +25,7 @@ class Application extends Controller with Secured {
       .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
   }
 
-  def sortByClaimTypeDateTime(data: Option[JsArray]): Option[JsArray] = {
+  private def sortByClaimTypeDateTime(data: Option[JsArray]): Option[JsArray] = {
     data match {
       case Some(data) =>
         Some(JsArray(
@@ -36,7 +36,7 @@ class Application extends Controller with Secured {
     }
   }
 
-  def sortByDateTime(data: Option[JsArray]): Option[JsArray] = {
+  private def sortByDateTime(data: Option[JsArray]): Option[JsArray] = {
     data match {
       case Some(data) =>
         Some(JsArray(

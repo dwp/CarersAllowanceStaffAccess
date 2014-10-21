@@ -22,9 +22,9 @@ object Password extends Controller {
       .verifying("Passwords do not match", checkPassword _)
     )
 
-  def checkPassword(form: PasswordData) = form.password1==form.password2
+  private def checkPassword(form: PasswordData) = form.password1==form.password2
 
-  def validPassword: Constraint[String] = Constraint[String]("constraint.password") { password =>
+  private def validPassword: Constraint[String] = Constraint[String]("constraint.password") { password =>
     val passwordPattern = """^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{9,20}$""".r
 
     passwordPattern.pattern.matcher(password).matches match {

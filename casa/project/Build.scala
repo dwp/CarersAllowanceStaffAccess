@@ -10,7 +10,7 @@ object ApplicationBuild extends Build {
 
   val appDependencies = Seq(
     ws,
-    "org.specs2"         %% "specs2"              % "2.3.6" % "test" withSources() withJavadoc(),
+    "org.specs2"         %% "specs2"              % "2.3.13" % "test" withSources() withJavadoc(),
     "me.moocar"           % "logback-gelf"        % "0.9.6p2",
     "org.jasypt"          % "jasypt"              % "1.9.2",
     "com.dwp.carers"     %% "wscommons"           % "2.0",
@@ -31,10 +31,7 @@ javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessC
 
   var vS: Seq[Def.Setting[_]] = Seq(version := appVersion, libraryDependencies ++= appDependencies)
 
-
   var appSettings: Seq[Def.Setting[_]] =  sV ++ sO ++ sR ++ jO ++ vS
 
   val main = Project(name, file(".")).enablePlugins(play.PlayScala, net.litola.SassPlugin).settings(appSettings: _*)
-
-//  val main = play.Project(name,version,dependencies).settings(SassPlugin.sassSettings ++ (sO +: sV +: testOption +: acService) ++ sR:_*)
 }
