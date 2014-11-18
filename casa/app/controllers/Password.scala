@@ -37,7 +37,8 @@ object Password extends Controller {
    * Display the create password page.
    */
   def display = Action { implicit request =>
-    Ok(html.password(passwordForm))
+    Ok(html.password(passwordForm)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
   }
 
   /**
@@ -49,7 +50,8 @@ object Password extends Controller {
       passwordData => {
         /* binding success, we get the actual value. */
         val pass = digestPasswordForUser(passwordData.userId, passwordData.password1)
-        Ok(html.displayDigestedPassword(URLEncoder.encode(pass, "UTF-8"), passwordData.userId))
+        Ok(html.displayDigestedPassword(URLEncoder.encode(pass, "UTF-8"), passwordData.userId)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+          .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
       }
     )
   }
@@ -63,9 +65,6 @@ object Password extends Controller {
    */
   def digestPasswordForUser(userId: String, password: String) = {
     Logger.debug(s"Digesting (encrypting) password for $userId")
-
-    val digestedPassword = PasswordService.encryptPassword(password)
-
-    digestedPassword
+    PasswordService.encryptPassword(password)
   }
 }
