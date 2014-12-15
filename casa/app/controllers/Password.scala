@@ -29,7 +29,7 @@ object Password extends Controller {
 
     passwordPattern.pattern.matcher(password).matches match {
       case true => Valid
-      case false => Invalid(ValidationError("Invalid password. Password must be 9 characters long with a mix of lower and uppercase characters and numbers. "))
+      case false => Invalid(ValidationError("Invalid password. Password must be at least 9 characters long and a maximum of 20 characters with a mix of lower and uppercase characters and numbers."))
     }
   }
 
