@@ -19,10 +19,18 @@ class Auth extends Controller {
     tuple(
       "userId" -> text,
       "password" -> text
-    ) verifying ("Invalid user id or password",
+    ) verifying("Staff ID contains special characters and/or spaces. Please re-enter",
+      result => result match {case (userId, password) => validateUserId(userId)}
+    )
+      verifying ("Invalid user id or password",
       result => result match {case (userId, password) => checkUser(userId, password)}
     )
   )
+
+  def validateUserId(userId:String) = {
+    val restrictedStringPattern = """^[A-Za-z0-9]*$""".r
+    restrictedStringPattern.pattern.matcher(userId).matches
+  }
 
   def checkUser(userId: String, inputPassword: String): Boolean = {
       val userJson =  findByUserId(userId)
