@@ -15,7 +15,7 @@ class IntegrationSpec  extends Specification with MockInjector with Tags {
 
       browser.pageSource must contain("CASA")
 
-      browser.fill("#userId") `with` "test"
+      browser.fill("#userId") `with` "12345678"
       browser.fill("#password") `with` "john"
       browser.submit("button[type='submit']")
 
@@ -27,7 +27,7 @@ class IntegrationSpec  extends Specification with MockInjector with Tags {
 
       browser.pageSource must contain("CASA")
 
-      browser.fill("#userId") `with` "expired"
+      browser.fill("#userId") `with` "12345679"
       browser.fill("#password") `with` "john"
       browser.submit("button[type='submit']")
 

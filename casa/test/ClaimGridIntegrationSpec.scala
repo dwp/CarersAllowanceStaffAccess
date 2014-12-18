@@ -8,7 +8,7 @@ import scala.collection.JavaConverters._
 
 class ClaimGridIntegrationSpec extends Specification with Tags {
 
-  val userId = "test"
+  val userId = "12345678"
   val password = "john"
 
   "Claim Grid" should {

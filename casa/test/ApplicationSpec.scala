@@ -4,7 +4,7 @@ import play.api.test._
 import play.api.test.Helpers._
 
 class ApplicationSpec extends Specification with MockInjector {
-  val userInput = Seq("userId" -> "test", "password" -> "john")
+  val userInput = Seq("userId" -> "12345678", "password" -> "john")
 
   "Application" should {
 

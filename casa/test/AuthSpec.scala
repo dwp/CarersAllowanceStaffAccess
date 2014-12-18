@@ -4,7 +4,7 @@ import play.api.test._
 import play.api.test.Helpers._
 
 class AuthSpec extends Specification with MockInjector {
-  val validUser = Seq("userId"-> "test", "password"-> "john")
+  val validUser = Seq("userId"-> "12345678", "password"-> "john")
   val invalidUser = Seq("userId"-> "blah", "password"-> "blah")
   val expiredUser = Seq("userId"-> "test1", "password"-> "john")
 
