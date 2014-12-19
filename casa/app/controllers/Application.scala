@@ -21,8 +21,8 @@ class Application extends Controller with Secured {
   def index = IsAuthenticated { implicit username => implicit request =>
     val today = new LocalDate
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(today, defaultStatus, sortByDateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
+    Ok(views.html.claimsList(today, defaultStatus, sortByDateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN")
   }
 
   private def sortByClaimTypeDateTime(data: Option[JsArray]): Option[JsArray] = {
@@ -52,16 +52,16 @@ class Application extends Controller with Secured {
     val claims = claimsFilteredBySurname(localDate, sortBy)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
 
-    Ok(views.html.claimsList(localDate, sortBy, sortByDateTime(claims), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+    Ok(views.html.claimsList(localDate, sortBy, sortByDateTime(claims), claimNumbers))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val circs = getCircs(localDate)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(localDate, "circs", sortByDateTime(circs), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+    Ok(views.html.claimsList(localDate, "circs", sortByDateTime(circs), claimNumbers))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   def claimsForDate(date: String) = claimsForDateFiltered(date, "")
@@ -70,8 +70,8 @@ class Application extends Controller with Secured {
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) getClaims(localDate) else claimsFiltered(localDate, status)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(localDate, status, sortByClaimTypeDateTime(claims), claimNumbers)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+    Ok(views.html.claimsList(localDate, status, sortByClaimTypeDateTime(claims), claimNumbers))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   case class ClaimsToComplete(completedCheckboxes: List[String])
@@ -101,14 +101,14 @@ class Application extends Controller with Secured {
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
       buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
-        case _ => Ok(views.html.common.error("/", "Error while rendering claim.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-          .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+        case _ => Ok(views.html.common.error("/", "Error while rendering claim."))
+          .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
       }
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>
-    Ok(views.html.export(getOldClaims)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+    Ok(views.html.export(getOldClaims))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 
   def csvExport() = IsAuthenticated { implicit username => implicit request =>
@@ -139,13 +139,13 @@ class Application extends Controller with Secured {
 
     val fileName = s"exports${DateTimeFormat.forPattern("dd-MM-yyyy").print(new DateTime)}.csv"
 
-    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename=$fileName").withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
+    Ok(stringValue).as("text/csv").withHeaders("content-disposition" -> s"attachment; filename=$fileName")
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN")
   }
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
     purgeOldClaims()
-    Redirect(routes.Application.export()).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+    Redirect(routes.Application.export())
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
   }
 }
