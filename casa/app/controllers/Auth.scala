@@ -10,6 +10,7 @@ import scala.Predef._
 import play.api.Logger
 import scala.util.{Failure, Success, Try}
 import app.ConfigProperties._
+import utils.ApplicationUtils
 
 class Auth extends Controller {
 
@@ -76,7 +77,7 @@ class Auth extends Controller {
     } catch {
     case e: Exception =>
       Logger.error(s"Could not connect to the access service",e)
-      Ok(views.html.common.error("login", "Could not connect to the access control service.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+      Ok(views.html.common.error(ApplicationUtils.startPage, "Could not connect to the access control service.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
         .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
     }
   }
@@ -124,7 +125,7 @@ trait Secured {
             case _ => "Unexpected error"
           }
           Logger.error(errorMsg,e)
-          Ok(views.html.common.error("/", errorMsg)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+          Ok(views.html.common.error(ApplicationUtils.startPage, errorMsg)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
             .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
       }
     }

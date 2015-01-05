@@ -11,6 +11,7 @@ import play.twirl.api.Html
 import play.api.libs.json.{JsValue, JsString, JsArray}
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
+import utils.ApplicationUtils
 
 class Application extends Controller with Secured {
 
@@ -101,7 +102,7 @@ class Application extends Controller with Secured {
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
       buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
-        case _ => Ok(views.html.common.error("/", "Error while rendering claim.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
+        case _ => Ok(views.html.common.error(ApplicationUtils.startPage, "Error while rendering claim.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
           .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
       }
   }
