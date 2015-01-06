@@ -2,6 +2,7 @@ package controllers
 
 import play.api.http.HeaderNames._
 import play.api.mvc._
+import play.mvc
 import services.{AccessControlService, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
@@ -59,8 +60,9 @@ class Auth extends Controller {
    */
   def login =
     Action { implicit request =>
-      Ok(html.login(loginForm)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-        .withHeaders("X-Frame-Options" -> "SAMEORIGIN").withCookies(request.cookies.toSeq.filterNot( _.name == "CASAVersion") :+ Cookie("CASAVersion", "1.2"): _*) // stop click jacking)
+      Ok(html.login(loginForm))
+        .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking)
+        .withCookies(request.cookies.toSeq.filterNot( _.name == "CASAVersion") :+ Cookie("CASAVersion", "1.3"): _*)
     }
 
 
@@ -70,15 +72,18 @@ class Auth extends Controller {
   def authenticate = Action { implicit request =>
     try {
       loginForm.bindFromRequest.fold(
-        formWithErrors => BadRequest(html.login(formWithErrors)),
-        user => Redirect(routes.Application.index).withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-          .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+        formWithErrors =>
+          BadRequest(html.login(formWithErrors)),
+        user =>
+          Redirect(routes.Application.index)
+          .withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
+          .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
       )
     } catch {
-    case e: Exception =>
-      Logger.error(s"Could not connect to the access service",e)
-      Ok(views.html.common.error(ApplicationUtils.startPage, "Could not connect to the access control service.")).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-        .withHeaders("X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
+      case e: Exception =>
+        Logger.error(s"Could not connect to the access service",e)
+        Ok(views.html.common.error(ApplicationUtils.startPage, "Could not connect to the access control service."))
+          .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
     }
   }
 
@@ -86,9 +91,8 @@ class Auth extends Controller {
    * Logout and clean the session.
    */
   def logout = Action {
-    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getProperty("csrf.cookie.name",""), secure= getProperty("csrf.cookie.secure",false))).withNewSession.flashing(
-      "success" -> "You've been logged out"
-    )
+    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getProperty("csrf.cookie.name",""), secure= getProperty("csrf.cookie.secure",false)))
+      .withNewSession.flashing("success" -> "You've been logged out")
   }
 }
 
@@ -125,15 +129,14 @@ trait Secured {
             case _ => "Unexpected error"
           }
           Logger.error(errorMsg,e)
-          Ok(views.html.common.error(ApplicationUtils.startPage, errorMsg)).withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-            .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
+          Ok(views.html.common.error(ApplicationUtils.startPage, errorMsg))
+            .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN")
       }
     }
   }
 
   protected def withSecureHeaders(result:Result): Result = {
-    result.withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders("X-Frame-Options" -> "SAMEORIGIN")
+    result.withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN")
   }
 
 }
