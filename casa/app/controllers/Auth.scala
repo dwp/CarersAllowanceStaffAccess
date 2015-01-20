@@ -62,7 +62,7 @@ class Auth extends Controller {
     Action { implicit request =>
       Ok(html.login(loginForm))
         .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking)
-        .withCookies(request.cookies.toSeq.filterNot( _.name == "CASAVersion") :+ Cookie("CASAVersion", "1.3"): _*)
+        .withCookies(request.cookies.toSeq.filterNot( _.name == "CASAVersion") :+ Cookie("CASAVersion", "1.4"): _*)
     }
 
 
