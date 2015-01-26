@@ -119,7 +119,7 @@ trait Secured {
   def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
     Action{implicit request =>
 
-      Try(
+      withSecureHeaders(Try(
         f(user)(request).withSession("userId"->user, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
       ) match {
         case Success(s) => s
@@ -130,8 +130,8 @@ trait Secured {
           }
           Logger.error(errorMsg,e)
           Ok(views.html.common.error(ApplicationUtils.startPage, errorMsg))
-            .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN")
-      }
+      })
+
     }
   }
 
