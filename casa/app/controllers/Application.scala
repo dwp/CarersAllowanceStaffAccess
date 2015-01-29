@@ -8,7 +8,7 @@ import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.twirl.api.Html
-import play.api.libs.json.{JsValue, JsString, JsArray}
+import play.api.libs.json.{JsObject, JsValue, JsString, JsArray}
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 import utils.{SortBy, ApplicationUtils}
@@ -22,7 +22,8 @@ class Application extends Controller with Secured {
   def index = IsAuthenticated { implicit username => implicit request =>
     val today = new LocalDate
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(today, defaultStatus, SortBy dateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers))
+    val countOfClaimsTabs = countOfClaimsForTabs(today)
+    Ok(views.html.claimsList(today, defaultStatus, SortBy dateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
   def claimsForDateFilteredBySurname(date: String, sortBy: String) = IsAuthenticated { implicit username => implicit request =>
@@ -30,15 +31,17 @@ class Application extends Controller with Secured {
 
     val claims = claimsFilteredBySurname(localDate, sortBy)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
+    val countOfClaimsTabs = countOfClaimsForTabs(localDate)
 
-    Ok(views.html.claimsList(localDate, sortBy, SortBy surname(claims), claimNumbers))
+    Ok(views.html.claimsList(localDate, sortBy, SortBy surname(claims), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
   def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val circs = getCircs(localDate)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(localDate, "circs", SortBy dateTime(circs), claimNumbers))
+    val countOfClaimsTabs = countOfClaimsForTabs(localDate)
+    Ok(views.html.claimsList(localDate, "circs", SortBy dateTime(circs), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
   def claimsForDate(date: String) = claimsForDateFiltered(date, "")
@@ -47,7 +50,12 @@ class Application extends Controller with Secured {
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
     val claims = if (status.isEmpty) getClaims(localDate) else claimsFiltered(localDate, status)
     val claimNumbers = claimNumbersFiltered("received", "viewed")
-    Ok(views.html.claimsList(localDate, status, SortBy claimTypeDateTime(claims), claimNumbers))
+    val countOfClaimsTabs = countOfClaimsForTabs(localDate)
+    Ok(views.html.claimsList(localDate, status, SortBy claimTypeDateTime(claims), claimNumbers, countForTabs(countOfClaimsTabs)))
+  }
+
+  private def countForTabs(countsRecieved:JsObject):JsObject = {
+     (countsRecieved \ "counts").as[JsObject]
   }
 
   case class ClaimsToComplete(completedCheckboxes: List[String])

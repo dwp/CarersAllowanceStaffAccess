@@ -1,6 +1,6 @@
-@(currentDate:org.joda.time.LocalDate, currentStatus:String, claimList:Option[play.api.libs.json.JsArray], claimNumbers:play.api.libs.json.JsObject)(implicit session: play.api.mvc.Session, request: Request[AnyContent])
+@(currentDate:org.joda.time.LocalDate, currentStatus:String, claimList:Option[play.api.libs.json.JsArray], claimNumbers:play.api.libs.json.JsObject, tabNumbersList:play.api.libs.json.JsObject)(implicit session: play.api.mvc.Session, request: Request[AnyContent])
 
 @import views.html.common._
 
 
-@main("Claims list", currentDate,currentStatus, claimList, claimNumbers, session)
+@main("Claims list", currentDate,currentStatus, claimList, claimNumbers, tabNumbersList, session)
