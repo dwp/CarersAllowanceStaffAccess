@@ -10,6 +10,9 @@ import play.api.libs.json.JsBoolean
 import scala.Some
 import play.api.libs.json.JsNumber
 import play.api.libs.json.JsObject
+import play.api.http.Status
+import play.api.Logger
+import monitoring.Counters
 
 /**
  * I exist so that the app can be run up without the need for external services running
@@ -89,6 +92,28 @@ trait ClaimServiceStub extends ClaimService {
     }
 
     JsObject(daysMap.map(t => dateToString(t._1) -> JsNumber(t._2)).toSeq)
+  }
+
+
+  override def countOfClaimsForTabs(date: LocalDate):JsObject = {
+    Json.toJson(
+      Map("counts"-> Json.toJson(Map("atom" -> Json.toJson(countOfClaimsForTabs(date,"[n-z%]")),
+        "ntoz" -> Json.toJson(countOfClaimsForTabs(date,"[a-m%]")),
+        "circs" -> Json.toJson(countOfCircsForTabs(date)))))
+    ).as[JsObject]
+  }
+
+  private def countOfClaimsForTabs(date:LocalDate,sortBy:String):Long = {
+    val regex = if(sortBy=="atom") "[a-m].*".r else "[n-z].*".r
+
+    listOfClaimSummaries.filter{ _.claimDateTime.toLocalDate.eq(DateTime.now().toLocalDate) }
+      .foldLeft(0l)((count,cs) => if(!regex.findAllMatchIn(cs.surname).equals(None)) count +1 else count)
+
+  }
+
+  private def countOfCircsForTabs(date:LocalDate):Long = {
+    val circsSummaryList = listOfCircsSummaries.filter{_.claimDateTime.toLocalDate == date}.filter{_.status != "completed"}
+    circsSummaryList.size
   }
 
   override def buildClaimHtml(transactionId: String): Option[String] = {

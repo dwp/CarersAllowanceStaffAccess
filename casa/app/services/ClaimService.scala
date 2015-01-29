@@ -107,6 +107,24 @@ trait ClaimService extends CasaRemoteService {
       }
     }
 
+  def countOfClaimsForTabs(date: LocalDate):JsObject = {
+    val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
+
+    s"$url/countOfClaimsForTabs/$dateString" get { response =>
+      response.status match {
+        case Status.OK => response.json.as[JsObject]
+        case Status.BAD_REQUEST =>
+          Logger.error(s"Claim service could not get count of claims for tabs for $dateString")
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          Json.parse("{}").as[JsObject]
+        case _ =>
+          Counters.incrementCsSubmissionErrorStatus(response.status)
+          Json.parse("{}").as[JsObject]
+      }
+    }
+  }
+
+
   def updateClaim(transactionId: String, status: String): JsBoolean =
     s"$url/claim/$transactionId/$status" put { response =>
       response.status match {
