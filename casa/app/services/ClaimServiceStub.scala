@@ -97,8 +97,8 @@ trait ClaimServiceStub extends ClaimService {
 
   override def countOfClaimsForTabs(date: LocalDate):JsObject = {
     Json.toJson(
-      Map("counts"-> Json.toJson(Map("atom" -> Json.toJson(countOfClaimsForTabs(date,"[n-z%]")),
-        "ntoz" -> Json.toJson(countOfClaimsForTabs(date,"[a-m%]")),
+      Map("counts"-> Json.toJson(Map("atom" -> Json.toJson(countOfClaimsForTabs(date,"atom")),
+        "ntoz" -> Json.toJson(countOfClaimsForTabs(date,"ntoz")),
         "circs" -> Json.toJson(countOfCircsForTabs(date)))))
     ).as[JsObject]
   }
@@ -106,7 +106,7 @@ trait ClaimServiceStub extends ClaimService {
   private def countOfClaimsForTabs(date:LocalDate,sortBy:String):Long = {
     val regex = if(sortBy=="atom") "[a-m].*".r else "[n-z].*".r
 
-    listOfClaimSummaries.filter{ _.claimDateTime.toLocalDate.eq(DateTime.now().toLocalDate) }
+    listOfClaimSummaries.filter{ _.claimDateTime.toLocalDate.compareTo(date) == 0}.filter{_.status != "completed"}
       .foldLeft(0l)((count,cs) => if(!regex.findAllMatchIn(cs.surname).equals(None)) count +1 else count)
 
   }

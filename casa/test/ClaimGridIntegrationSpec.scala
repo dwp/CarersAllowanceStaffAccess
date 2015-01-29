@@ -10,6 +10,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
 
   val userId = "12345678"
   val password = "john"
+  val regExForCount= "\\((.*?)\\)".r
 
   "Claim Grid" should {
 
@@ -60,6 +61,34 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       val statuses = browser.$("#claimsTable .status").asScala.toSeq
 
       checkForStatus(statuses, Seq("received", "viewed"))
+    }
+
+    "show count on tabs when filtering by surname a to m" in new WithBrowser {
+      login(browser)
+
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+      browser.goTo(s"/filter/surname/$today/atom")
+
+      assertCount(browser)
+    }
+
+    "show count on tabs when filtering by surname n to z" in new WithBrowser {
+      login(browser)
+
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+      browser.goTo(s"/filter/surname/$today/ntoz")
+
+      assertCount(browser)
+    }
+
+    "show count when circs tab is pressed" in new WithBrowser {
+      val today = DateTimeFormat.forPattern("ddMMyyyy").print(new LocalDate)
+
+      login(browser)
+
+      browser.goTo(s"/circs/$today")
+
+      assertCount(browser)
     }
 
     "show only received or viewed claims for claimants with surnames n to z when filtering by surname n to z" in new WithBrowser {
@@ -276,4 +305,16 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
       previous = current.getText
     }
   }
+
+  def assertCount(browser:TestBrowser) = {
+    val tabCounts = browser.$("ol.clearfix > li").asScala.toSeq.drop(4)
+
+    tabCounts.map(t => {
+      regExForCount.findFirstIn(t.getText) match {
+        case Some(t) => t.replace("(", "").replace(")", "").toInt must be_>(0)
+        case _ => failure
+      }
+    })
+  }
+
 }
