@@ -36,7 +36,7 @@ object SortBy {
     d match {
       case Some(data) =>
         Some(JsArray(
-          data.value.seq.sortWith((p1,p2)=>p1.p.surname.toString().compareTo(p2.p.surname.toString()) <= 0)
+          data.value.seq.sortWith((p1,p2)=>p1.p.surname.toString().toLowerCase.compareTo(p2.p.surname.toString().toLowerCase) <= 0)
         ))
       case _ => d
     }
@@ -46,7 +46,7 @@ object SortBy {
     d match {
       case Some(data) =>
         Some(JsArray(
-          data.value.seq.sortWith((p1,p2)=>p1.p.forename.toString().compareTo(p2.p.forename.toString()) <= 0)
+          data.value.seq.sortWith((p1,p2)=>p1.p.forename.toString().toLowerCase.compareTo(p2.p.forename.toString().toLowerCase) <= 0)
         ))
       case _ => d
     }
