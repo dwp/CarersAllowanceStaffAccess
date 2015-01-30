@@ -23,7 +23,7 @@ class Application extends Controller with Secured {
     val today = new LocalDate
     val claimNumbers = claimNumbersFiltered("received", "viewed")
     val countOfClaimsTabs = countOfClaimsForTabs(today)
-    Ok(views.html.claimsList(today, defaultStatus, SortBy dateTime(claimsFilteredBySurname(today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs)))
+    Ok(views.html.claimsList(today, defaultStatus, SortBy surname(claimsFilteredBySurname(today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
   def claimsForDateFilteredBySurname(date: String, sortBy: String) = IsAuthenticated { implicit username => implicit request =>
