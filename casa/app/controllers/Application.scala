@@ -85,7 +85,7 @@ class Application extends Controller with Secured {
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
       buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
-        case _ => Ok(views.html.common.error(ApplicationUtils.startPage, "Error while rendering claim."))
+        case _ => Ok(views.html.common.error(ApplicationUtils.startPage, "Problem rendering claim."))
       }
   }
 

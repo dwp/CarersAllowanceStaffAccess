@@ -1,5 +1,6 @@
 @(url:String, message:String)(implicit lang: Lang, request: Request[AnyContent])
 
+@import play.utils.UriEncoding
 
 <!DOCTYPE html>
 
@@ -27,7 +28,8 @@
                 <legend>Application Error</legend>
                 <div>
                     <article class="error">
-                        <h1>@Html(message)</h1>
+                        <p>Log out and log back in to continue.</p>
+                        <p>Email <a href="mailto:cau.casa.@@dwp.gsi.gov.uk?Subject=@UriEncoding.encodePathSegment(message,"UTF-8")" target="_top">cau.casa.@@dwp.gsi.gov.uk</a> if you still see this error.</p>
                     </article>
                     <nav class="form-steps">
                         <ul>

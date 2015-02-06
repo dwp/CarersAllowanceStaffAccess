@@ -82,7 +82,7 @@ class Auth extends Controller {
     } catch {
       case e: Exception =>
         Logger.error(s"Could not connect to the access service",e)
-        Ok(views.html.common.error(ApplicationUtils.startPage, "Could not connect to the access control service."))
+        Ok(views.html.common.error(ApplicationUtils.startPage, "Access control connection error"))
           .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
     }
   }
