@@ -20,7 +20,15 @@ object Password extends Controller {
       "password2" -> text.verifying(validPassword)
     )(PasswordData.apply)(PasswordData.unapply)
       .verifying("Passwords do not match", checkPassword _)
+      .verifying("Staff ID should be numerals only and 8 characters long.",
+      result => result match {case PasswordData(userId, password,_) => validateUserId(userId)}
+      )
     )
+
+  private def validateUserId(userId:String) = {
+    val restrictedStringPattern = """^[0-9]{8}$""".r
+    restrictedStringPattern.pattern.matcher(userId).matches
+  }
 
   private def checkPassword(form: PasswordData) = form.password1==form.password2
 
