@@ -4,10 +4,10 @@ import play.api.test._
 import play.api.test.Helpers._
 
 class PasswordSpec extends Specification {
-  val validPasswords = Seq("userId"-> "test123", "password1"-> "Abc123Abc", "password2"->"Abc123Abc")
-  val invalidPassword = Seq("userId"-> "test123", "password1"-> "Abc123Abc", "password2"->"abc")
-  val invalidPasswords = Seq("userId"-> "test123", "password1"-> "Abc123Abc", "password2"->"abc")
-  val nonMatchingPasswords = Seq("userId"-> "test123", "password1"-> "Abc123Abc", "password2"->"Abc345Abc")
+  val validPasswords = Seq("userId"-> "11111111", "password1"-> "Abc123Abc", "password2"->"Abc123Abc")
+  val invalidPassword = Seq("userId"-> "11111111", "password1"-> "Abc123Abc", "password2"->"abc")
+  val invalidPasswords = Seq("userId"-> "11111111", "password1"-> "Abc123Abc", "password2"->"abc")
+  val nonMatchingPasswords = Seq("userId"-> "11111111", "password1"-> "Abc123Abc", "password2"->"Abc345Abc")
 
   "Password" should {
 
