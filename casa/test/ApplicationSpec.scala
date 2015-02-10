@@ -37,5 +37,10 @@ class ApplicationSpec extends Specification with MockInjector {
       redirectLocation(result) must beSome("/")
     }
 
+    "render change password page when change password link is clicked on the login page" in new WithBrowser {
+      browser.goTo("/login")
+      val changePasswordPage = browser.click("#changePasswordLoginscreen")
+      changePasswordPage.url() must beEqualTo("/password")
+    }
   }
 }
