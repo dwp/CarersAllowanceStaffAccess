@@ -15,14 +15,11 @@ object Password extends Controller {
 
   val passwordForm = Form(
     mapping (
-      "userId" -> text,
+      "userId" -> text.verifying("Staff ID should be numerals only and 8 characters long.",validateUserId _),
       "password1" -> text.verifying(validPassword),
       "password2" -> text
     )(PasswordData.apply)(PasswordData.unapply)
       .verifying("Passwords do not match", checkPassword _)
-      .verifying("Staff ID should be numerals only and 8 characters long.",
-      result => result match {case PasswordData(userId, password,_) => validateUserId(userId)}
-      )
     )
 
   private def validateUserId(userId:String) = {
