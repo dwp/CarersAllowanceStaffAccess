@@ -6,14 +6,14 @@ import net.litola.SassPlugin
 object ApplicationBuild extends Build {
 
   val name = "sa"
-  val appVersion = "1.5-SNAPSHOT"
+  val appVersion = "1.6-SNAPSHOT"
 
   val appDependencies = Seq(
     ws,
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "com.dwp.carers"     %% "wscommons"           % "2.2",
-    "com.dwp.carers"     %% "carerscommon"        % "6.4"
+    "com.dwp.carers"     %% "wscommons"           % "2.3",
+    "com.dwp.carers"     %% "carerscommon"        % "6.5"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
