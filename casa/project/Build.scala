@@ -13,7 +13,7 @@ object ApplicationBuild extends Build {
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
     "com.dwp.carers"     %% "wscommons"           % "2.3",
-    "com.dwp.carers"     %% "carerscommon"        % "6.5"
+    "com.dwp.carers"     %% "carerscommon"        % "6.6"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
