@@ -234,7 +234,7 @@ trait ClaimService extends CasaRemoteService {
         // Means field was not encrypted.
         text
       case e: DwpRuntimeException =>
-        Logger.error("Could not decrypt node.")
+        Logger.error("Could not decrypt node.",e)
         throw e
     }
   }

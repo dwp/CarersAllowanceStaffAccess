@@ -76,7 +76,7 @@ class CasaSettings extends WithFilters(MonitorFilter, DwpCSRFFilter()) with Inje
 
   override def onError(request: RequestHeader, ex: Throwable): Future[Result] = {
     val errorMsg = "Unexpected error."
-    Logger.error (errorMsg + ex.getMessage)
+    Logger.error (errorMsg + ex.getMessage,ex)
     Future (Ok(views.html.common.error ("/", errorMsg)(Lang.defaultLang, Request (request, AnyContentAsEmpty)))
       .withHeaders(CACHE_CONTROL -> "no-cache, no-store")
       .withHeaders ("X-Frame-Options" -> "SAMEORIGIN"))
