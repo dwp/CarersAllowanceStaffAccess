@@ -136,11 +136,29 @@
 					margin-top: 1em;
 					overflow: hidden;
 				}
-				
-				.submit {
-					margin-top: 2em;
-					text-align: right;
-				}
+
+              .submit {
+                margin-top: 2em;
+                text-align: right;
+                overflow: hidden;
+
+                button {
+                  float: right;
+                  width: auto;
+                }
+
+                a {
+                  float: left;
+                  width: auto;
+                  color: #4477b0;
+                  margin-top: 10px;
+                  &:hover {
+                    color: #6899d0;
+                    text-decoration: none;
+                  }
+                }
+
+              }
 				
 			}
 		
