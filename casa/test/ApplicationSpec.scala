@@ -42,5 +42,12 @@ class ApplicationSpec extends Specification with MockInjector {
       val changePasswordPage = browser.click("#changePasswordLoginscreen")
       changePasswordPage.url() must beEqualTo("/password")
     }
+
+    "render login page when login link is clicked from password management screen " in new WithBrowser {
+      browser.goTo("/password")
+      val loginPage = browser.click("#backToLoginScreen")
+      loginPage.url() must beEqualTo("/login")
+    }
+
   }
 }
