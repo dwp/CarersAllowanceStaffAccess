@@ -236,6 +236,9 @@ trait ClaimService extends CasaRemoteService {
       case e: DwpRuntimeException =>
         Logger.error("Could not decrypt node.")
         throw e
+      case e: IndexOutOfBoundsException =>
+        // In case the text is not encrypted and has accented characters IOOBE will fire
+        text
     }
   }
 }
