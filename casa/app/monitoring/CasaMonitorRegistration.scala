@@ -20,6 +20,7 @@ trait CasaMonitorRegistration extends MonitorRegistration {
     Logger.info("Health Checks registered.")
     ProdHealthMonitor.register("casa-connection-ac", new AccessServiceConnectionCheck)
     ProdHealthMonitor.register("casa-connection-cs", new ClaimServiceConnectionCheck)
+    ProdHealthMonitor.register("casa-connection-renderer", new RenderServiceConnectionCheck())
   }
 
 }

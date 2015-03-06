@@ -14,7 +14,7 @@ import utils.HttpUtils.HttpMethodWrapper
 
 import scala.language.implicitConversions
 
-trait ClaimService extends CasaRemoteService {
+trait ClaimService extends CasaRemoteService with RenderServiceComponent {
 
   override def getUrlPropertyName = "claimsServiceUrl"
 
@@ -154,10 +154,11 @@ trait ClaimService extends CasaRemoteService {
     }
 
   def buildClaimHtml(transactionId: String) = {
-    s"$url/render/$transactionId" get { response =>
+    s"$url/claim/$transactionId" get { response =>
       response.status match {
         case Status.OK =>
-          val html = response.body
+          val claimXml = response.body
+          val html = renderService.claimHtml(claimXml.mkString).mkString
           Some(
             html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
                 .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")

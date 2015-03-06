@@ -10,4 +10,8 @@ object Counters {
   def incrementCsSubmissionErrorStatus(status:Int) {
     MetricsRegistry.defaultRegistry.counter(s"cs-submission-error-status-$status").inc()
   }
+
+  def incrementP1SubmissionErrorStatus(status: Int) {
+    MetricsRegistry.defaultRegistry.counter(s"p1-submission-error-status-$status").inc()
+  }
 }
