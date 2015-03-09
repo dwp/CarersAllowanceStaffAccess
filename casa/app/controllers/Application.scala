@@ -1,5 +1,6 @@
 package controllers
 
+import play.api.Logger
 import play.api.http.HeaderNames._
 import play.api.mvc._
 import org.joda.time.{DateTime, LocalDate}
@@ -85,7 +86,9 @@ class Application extends Controller with Secured {
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
       buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
-        case _ => Ok(views.html.common.error(ApplicationUtils.startPage, "Problem rendering claim."))
+        case _ =>
+          Logger.error(s"Problem rendering claim [$transactionId]")
+          Ok(views.html.common.error(ApplicationUtils.startPage, "Problem rendering claim."))
       }
   }
 

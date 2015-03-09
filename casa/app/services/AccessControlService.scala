@@ -15,14 +15,12 @@ trait AccessControlService extends CasaRemoteService {
 
   override def getDefaultUrl = "http://localhost:9003"
 
-  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
-
   def findByUserId(userId: String): JsValue =
     s"$url/user/$userId" post { response =>
       response.status match {
         case Status.OK => response.json
         case _ =>
-          Logger.error(s"Access control service could not find user [${userId}]. Response ${response.status}:${response.body}")
+          Logger.error(s"Access control service could not find user [$userId]. Response ${response.status}:${response.body}")
           Counters.incrementAcSubmissionErrorStatus(response.status)
           new JsBoolean(false)
       }
@@ -33,7 +31,7 @@ trait AccessControlService extends CasaRemoteService {
       response.status match {
       case Status.OK => response.json
       case _ =>
-        Logger.error(s"Access control service could not find expiry date for user [${userId}]. Response ${response.status}:${response.body}")
+        Logger.error(s"Access control service could not find expiry date for user [$userId]. Response ${response.status}:${response.body}")
         Counters.incrementAcSubmissionErrorStatus(response.status)
         new JsBoolean(false)
       }

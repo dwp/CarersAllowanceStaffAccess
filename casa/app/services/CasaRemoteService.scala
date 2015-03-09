@@ -1,9 +1,14 @@
 package services
 
+import utils.HttpUtils.HttpMethodWrapper
+
 import scala.concurrent.duration._
 import play.api.{Logger, Play}
 import scala.language.implicitConversions
 
+/**
+ * Interface of remote services used by CASA.
+ */
 trait CasaRemoteService {
 
   def getUrlPropertyName: String
@@ -24,4 +29,7 @@ trait CasaRemoteService {
     case Some(s) if s.length > 0 => Logger.info(s"Getting $getUrlPropertyName value ($s)"); s
     case _ => Logger.info("Getting default url value"); getDefaultUrl
   }
+
+  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
+
 }

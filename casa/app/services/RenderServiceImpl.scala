@@ -2,48 +2,51 @@ package services
 
 import monitoring.Counters
 import play.api.http.Status
-import play.api.{Logger, Play}
-import utils.HttpUtils.HttpMethodWrapper
+import play.api.Logger
 
-import app.ConfigProperties._
-
-import scala.concurrent.duration._
 import scala.language.implicitConversions
 import scala.util.{Failure, Success, Try}
 
-
+/**
+ * Implements call to Rendering Service to generate html. Relies on RenderServiceImpl object.
+ */
 class RenderServiceImpl extends RenderService {
   override def claimHtml(xml: String) = RenderServiceImpl.html(xml)
 }
 
-object RenderServiceImpl {
-  val renderServiceUrl = getUrl
-  val timeout = getProperty("render.timeout",60).seconds // Play.configuration(Play.current).getInt("render.timeout").getOrElse(30).seconds
+/**
+ * Calls Rendering service to generate html.
+ */
+object RenderServiceImpl extends CasaRemoteService {
 
-  def getUrl = {
-    val url = getProperty("renderServiceUrl","http://localhost:9010")
-    Logger.info(s"Using renderServiceUrl value ($url)");
-    url
-  }
+  override def getUrlPropertyName = "RenderingServiceUrl"
 
-  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url,timeout)
+  override def getTimeoutPropertyName = "render.timeout"
 
-  def call(xml:String) = {
-    s"$renderServiceUrl/show" postXml { response =>
+  override def getDefaultUrl = "http://localhost:9010"
+
+  private def call(xml:String) = {
+    s"$url/show" postXml { response =>
       response.status match {
         case Status.OK => response.body
         case _ =>
           Counters.incrementP1SubmissionErrorStatus(response.status)
           Logger.error(s"Submission to rendering service failed with status ${response.status}:${response.body}.")
-          "Error"
+          "Error: Failed to render the claim."
       }
-    } exec(xml)
+    } exec xml
   }
 
+  /**
+   * Call rendering service to convert an XML claim into an HTML claim.
+   * @param xml claim to render into html.
+   * @return Option containing html generated or None if problem occurred.
+   */
   def html(xml: String) = {
 
     Try(call(xml)) match {
       case Success(s) =>
+        Logger.debug("rendered successfully a claim.")
         Some(s)
       case Failure(e) =>
         Counters.incrementP1SubmissionErrorStatus(0)

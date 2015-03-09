@@ -78,8 +78,7 @@ class CasaSettings extends WithFilters(MonitorFilter, DwpCSRFFilter()) with Inje
     val errorMsg = "Unexpected error."
     Logger.error (errorMsg + ex.getMessage,ex)
     Future (Ok(views.html.common.error ("/", errorMsg)(Lang.defaultLang, Request (request, AnyContentAsEmpty)))
-      .withHeaders(CACHE_CONTROL -> "no-cache, no-store")
-      .withHeaders ("X-Frame-Options" -> "SAMEORIGIN"))
+      .withHeaders(CACHE_CONTROL -> "no-cache, no-store","X-Frame-Options" -> "SAMEORIGIN"))
   }
 }
 

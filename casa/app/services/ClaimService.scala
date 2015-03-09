@@ -10,7 +10,6 @@ import org.joda.time.format.DateTimeFormat
 import play.api.Logger
 import play.api.http.Status
 import play.api.libs.json.{JsArray, JsBoolean, JsObject, _}
-import utils.HttpUtils.HttpMethodWrapper
 
 import scala.language.implicitConversions
 
@@ -22,7 +21,6 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
 
   override def getDefaultUrl = "http://localhost:9002"
 
-  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
 
   def getClaims(date: LocalDate): Option[JsArray] = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
@@ -31,7 +29,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
-          Logger.warn(s"Claim service did not find claims for date  ${dateString}")
+          Logger.warn(s"Claim service did not find claims for date  $dateString")
           None
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
@@ -47,7 +45,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
-          Logger.warn(s"Claim service did not find coc for date ${dateString}")
+          Logger.warn(s"Claim service did not find coc for date $dateString")
           None
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
@@ -64,7 +62,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
-          Logger.warn(s"Claim service did not find claims for date ${dateString} and sort by ${sortBy}.")
+          Logger.warn(s"Claim service did not find claims for date $dateString and sort by $sortBy.")
           None
         
         case _ =>
@@ -83,7 +81,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND => 
-          Logger.warn(s"Claim service did not find claims for date  ${dateString} and status ${status}.")
+          Logger.warn(s"Claim service did not find claims for date  $dateString and status $status.")
           None
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
@@ -98,7 +96,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => response.json.as[JsObject]
         case Status.BAD_REQUEST => 
-          Logger.error(s"Claim service could not count claims with status ${status}")
+          Logger.error(s"Claim service could not count claims with status $status")
           Counters.incrementCsSubmissionErrorStatus(response.status)
           Json.parse("{}").as[JsObject]
         case _ =>
@@ -130,7 +128,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => new JsBoolean(true)
         case Status.BAD_REQUEST => 
-          Logger.error(s"Claim service did not update claim transactionId [${transactionId}] and status ${status}.")
+          Logger.error(s"Claim service did not update claim transactionId [$transactionId] and status $status.")
           Counters.incrementCsSubmissionErrorStatus(response.status)
           new JsBoolean(false)
         case _ =>
@@ -144,7 +142,7 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
       response.status match {
         case Status.OK => Some(response.json)
         case Status.BAD_REQUEST => 
-          Logger.error(s"Claim service did not find claim transactionId [${transactionId}].")
+          Logger.error(s"Claim service did not find claim transactionId [$transactionId].")
           Counters.incrementCsSubmissionErrorStatus(response.status)
           None
         case _ =>
@@ -157,8 +155,10 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
     s"$url/claim/$transactionId" get { response =>
       response.status match {
         case Status.OK =>
+          Logger.debug(s"Received claim from claim service [$transactionId].")
           val claimXml = response.body
           val html = renderService.claimHtml(claimXml.mkString).mkString
+          Logger.debug(s"Received response from rendering service? ${html.nonEmpty}.")
           Some(
             html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
                 .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")
@@ -166,9 +166,10 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
           )
         case Status.NOT_FOUND =>
-          Logger.error(s"Claim service could not build html for claim transactionId [${transactionId}].")
+          Logger.error(s"Claim service could not build html for claim transactionId [$transactionId].")
           None
         case _ =>
+          Logger.error(s"Failed building an html for claim [$transactionId] status ${response.status} full response: ${response.toString}")
           Counters.incrementCsSubmissionErrorStatus(response.status)
           None
       }
