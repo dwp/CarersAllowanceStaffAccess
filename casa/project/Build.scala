@@ -10,6 +10,7 @@ object ApplicationBuild extends Build {
 
   val appDependencies = Seq(
     ws,
+    filters,
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
     "com.dwp.carers"     %% "wscommons"           % "2.3",
