@@ -2,8 +2,8 @@ package services
 
 import javax.xml.bind.DatatypeConverter
 
-import com.dwp.carers.security.encryption.{NotEncryptedException, EncryptorAES}
-import com.dwp.exceptions.DwpRuntimeException
+import gov.dwp.carers.security.encryption.{NotEncryptedException, EncryptorAES}
+import gov.dwp.exceptions.DwpRuntimeException
 import monitoring.Counters
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
