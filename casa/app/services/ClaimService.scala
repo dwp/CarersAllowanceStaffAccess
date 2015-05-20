@@ -161,8 +161,6 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
           Logger.debug(s"Received response from rendering service? ${html.nonEmpty}.")
           Some(
             html.replace("<title></title>",s"<title>Claim PDF $transactionId</title>")
-                .replace("##CHECK##","""<img src="/assets/img/yes.png" style="height:20px;"/>""")
-                .replace("##CROSS##","""<img src="/assets/img/no.png" style="height:20px;"/>""")
                 .replace("</body>","<script>window.onload = function(){window.opener.location.reload(false);};</script></body>")
           )
         case Status.NOT_FOUND =>
