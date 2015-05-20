@@ -30,6 +30,7 @@
                 <th>Claim type</th>
                 <th class="view">Submit Date</th>
                 <th>Status</th>
+                <th>DRS Status</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@
                         <td id="claimDate_@i" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td id="status_@i" class="status">@claim.p.status</td>
+                        <td id="drs_status_@i" class="drsstatus">@claim.p.drsStatus</td>
                     </tr>
                 }
             }
