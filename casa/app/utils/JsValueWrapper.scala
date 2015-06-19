@@ -1,9 +1,11 @@
 package utils
 
-import play.api.libs.json.JsValue
+import play.api.Logger
+import play.api.libs.json.{JsUndefined, JsString, JsValue}
 import org.joda.time.DateTime
 import scala.language.dynamics
 import scala.language.implicitConversions
+import scala.util.{Success, Try}
 
 object JsValueWrapper {
 
@@ -16,7 +18,12 @@ object JsValueWrapper {
 class ImprovedJsValue(jsValue: JsValue) extends Dynamic {
 
   def selectDynamic(value:String) = {
-    new ImprovedValue(jsValue \ value)
+    new ImprovedValue(
+      jsValue \ value match {
+        case undefined:JsUndefined=> JsString(s"$value is not defined")
+        case jsValue:JsValue => jsValue
+      }
+    )
   }
 
 }

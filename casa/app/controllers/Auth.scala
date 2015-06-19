@@ -126,7 +126,7 @@ trait Secured {
         case Failure(e) =>
           val errorMsg = request.path match {
             case s if s.startsWith("/render") => "Could not connect to the render service"
-            case _ => "Unexpected error"
+            case _ => "Unexpected error in action authentication wrapper" //something happened on executing "f". The error is not really here, check source in stacktrace
           }
           Logger.error(errorMsg,e)
           Ok(views.html.common.error(ApplicationUtils.startPage, errorMsg))
