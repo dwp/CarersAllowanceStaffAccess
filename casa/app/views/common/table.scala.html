@@ -5,6 +5,7 @@
 @import org.joda.time.DateTime
 @import utils.JsValueWrapper.improveJsValue
 @import utils.csrf.DwpCSRFFormHelper
+@import app.ConfigProperties._
 
 @dateTime(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy, HH:mm").print(date) }
 @date(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
@@ -30,7 +31,9 @@
                 <th>Claim type</th>
                 <th class="view">Submit Date</th>
                 <th>Status</th>
-                <th>DRS Status</th>
+                @if(getProperty("drs.enabled", default = true)) {
+                    <th>DRS Status</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -50,7 +53,9 @@
                         <td id="claimDate_@i" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td id="status_@i" class="status">@claim.p.status</td>
-                        <td id="drs_status_@i" class="drsstatus">@claim.p.drsStatus</td>
+                        @if(getProperty("drs.enabled", default = true)) {
+                            <td id="drs_status_@i" class="drsstatus">@claim.p.drsStatus</td>
+                        }
                     </tr>
                 }
             }
