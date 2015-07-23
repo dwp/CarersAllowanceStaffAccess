@@ -6,7 +6,7 @@ import net.litola.SassPlugin
 object ApplicationBuild extends Build {
 
   val name = "sa"
-  val appVersion = "1.7-SNAPSHOT"
+  val appVersion = "1.8-SNAPSHOT"
 
   val appDependencies = Seq(
     ws,
