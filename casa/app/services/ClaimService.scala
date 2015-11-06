@@ -10,10 +10,10 @@ import org.joda.time.format.DateTimeFormat
 import play.api.Logger
 import play.api.http.Status
 import play.api.libs.json.{JsArray, JsBoolean, JsObject, _}
-
+import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 
-trait ClaimService extends CasaRemoteService with RenderServiceComponent {
+class ClaimService extends CasaRemoteService with RenderServiceComponent {
 
   override def getUrlPropertyName = "claimsServiceUrl"
 
@@ -64,7 +64,6 @@ trait ClaimService extends CasaRemoteService with RenderServiceComponent {
         case Status.NOT_FOUND => 
           Logger.warn(s"Claim service did not find claims for date $dateString and sort by $sortBy.")
           None
-        
         case _ =>
           Counters.incrementCsSubmissionErrorStatus(response.status)
           None

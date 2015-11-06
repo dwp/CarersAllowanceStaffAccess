@@ -5,10 +5,11 @@ import play.api.libs.json._
 import play.api.http.Status
 import scala.language.postfixOps
 import scala.language.implicitConversions
-import utils.HttpUtils.HttpMethodWrapper
 import monitoring.Counters
 
-trait AccessControlService extends CasaRemoteService {
+object AccessControlServiceImpl extends AccessControlService
+
+class AccessControlService extends CasaRemoteService {
   override def getUrlPropertyName = "accessControlServiceUrl"
 
   override def getTimeoutPropertyName = "ws.timeout"
@@ -37,3 +38,4 @@ trait AccessControlService extends CasaRemoteService {
       }
     } exec()
 }
+

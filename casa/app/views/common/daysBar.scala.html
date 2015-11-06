@@ -1,6 +1,7 @@
 @(claimsList:Option[play.api.libs.json.JsArray],claimNumbers:play.api.libs.json.JsObject,currentDate: org.joda.time.LocalDate)
 @import utils.DateUtils
 
+@import utils.JsValueWrapper.improveJsValue
 @import org.joda.time.format.DateTimeFormat
 @import org.joda.time.LocalDate
 
@@ -14,6 +15,6 @@
 <ul class="dates clearfix">
 
     @for(day <- daysList){
-        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/surname/@{formatToLink(day)}/atom">@dayName(day) <strong>(@{claimNumbers \ formatToLink(day)})</strong><span>@dayDate(day)</span></a></li>
+        <li @if(isActiveDay(day)){class="active"} ><a href="/filter/surname/@{formatToLink(day)}/atom">@dayName(day) <strong>(@{(claimNumbers \ formatToLink(day)).get})</strong><span>@dayDate(day)</span></a></li>
     }
 </ul>

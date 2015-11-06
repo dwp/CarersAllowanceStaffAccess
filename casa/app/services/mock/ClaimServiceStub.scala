@@ -1,26 +1,24 @@
-package services
+package services.mock
 
-import play.api.libs.json._
-import org.joda.time.{DateTime, LocalTime, LocalDate}
 import org.joda.time.format.DateTimeFormat
-import scala.util.Random
-import play.api.libs.functional.syntax._
-import play.api.libs.json.JsArray
-import play.api.libs.json.JsBoolean
-import scala.Some
-import play.api.libs.json.JsNumber
-import play.api.libs.json.JsObject
-import play.api.http.Status
+import org.joda.time.{DateTime, LocalDate, LocalTime}
 import play.api.Logger
-import monitoring.Counters
+import play.api.libs.functional.syntax._
+import play.api.libs.json.{JsArray, JsBoolean, JsNumber, JsObject, _}
+import services.{RenderServiceComponent, ClaimService}
+
+import scala.util.Random
+
+
 
 /**
  * I exist so that the app can be run up without the need for external services running
  * I can also be used as a base class for mocking
  */
-trait ClaimServiceStub extends ClaimService {
+class ClaimServiceStub extends ClaimService with RenderServiceComponent {
 
   override def getClaims(date: LocalDate): Option[JsArray] = {
+    Logger.warn("Using stub claim service.")
     Some(Json.toJson(listOfClaimSummaries.filter {
       _.claimDateTime.toLocalDate == date
     }.filter {
@@ -29,6 +27,7 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
+    Logger.warn("Using stub claim service.")
     Some(Json.toJson(listOfClaimSummaries.filter {
       _.status == status
     }.filter {
@@ -37,6 +36,7 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def getCircs(date: LocalDate): Option[JsArray] = {
+    Logger.warn("Using stub claim service.")
     Some(Json.toJson(listOfCircsSummaries.filter {
       _.claimDateTime.toLocalDate == date
     }.filter {
@@ -45,6 +45,7 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray] = {
+    Logger.warn("Using stub claim service.")
 
     val regex = if (sortBy == "atom") "[a-m].*".r else "[n-z].*".r
 
@@ -58,10 +59,12 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def fullClaim(transactionId: String): Option[JsValue] = {
+    Logger.warn("Using stub claim service.")
     Some(Json.parse("{}"))
   }
 
   override def updateClaim(transactionId: String, status: String): JsBoolean = {
+    Logger.warn("Using stub claim service.")
     listOfClaimSummaries.filter {
       _.transactionId == transactionId
     }.headOption match {
@@ -76,6 +79,7 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def claimNumbersFiltered(status: String*): JsObject = {
+    Logger.warn("Using stub claim service.")
     var daysMap = Map.empty[LocalDate, Int]
 
     listOfClaimSummaries.foreach(cs => {
@@ -96,6 +100,7 @@ trait ClaimServiceStub extends ClaimService {
 
 
   override def countOfClaimsForTabs(date: LocalDate):JsObject = {
+    Logger.warn("Using stub claim service.")
     Json.toJson(
       Map("counts"-> Json.toJson(Map("atom" -> Json.toJson(countOfClaimsForTabs(date,"atom")),
         "ntoz" -> Json.toJson(countOfClaimsForTabs(date,"ntoz")),
@@ -117,6 +122,7 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def buildClaimHtml(transactionId: String): Option[String] = {
+    Logger.warn("Using stub claim service.")
     if (listOfClaimSummaries.exists(_.transactionId == transactionId)) {
       this.updateClaim(transactionId, "viewed")
 
@@ -177,6 +183,7 @@ trait ClaimServiceStub extends ClaimService {
 
 
   override def getOldClaims: Option[JsArray] = {
+    Logger.warn("Using stub claim service.")
     val oldClaims = listOfClaimSummaries.filter(_.claimDateTime.isBefore(new DateTime().minus(20)))
     val dateFormat = DateTimeFormat.forPattern("ddMMyyyy")
 
@@ -191,6 +198,7 @@ trait ClaimServiceStub extends ClaimService {
   }
 
   override def purgeOldClaims(): JsBoolean = {
+    Logger.warn("Using stub claim service.")
     val newList = listOfClaimSummaries.filterNot(_.claimDateTime.isBefore(new DateTime().minus(20)))
     val result = newList.size != listOfClaimSummaries.size
     listOfClaimSummaries = newList

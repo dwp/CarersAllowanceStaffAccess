@@ -1,47 +1,49 @@
 package controllers
 
+import javax.inject.Inject
+
 import play.api.Logger
 import play.api.http.HeaderNames._
+import play.api.i18n.{MessagesApi, I18nSupport}
 import play.api.mvc._
 import org.joda.time.{DateTime, LocalDate}
-import services.ClaimService
 import org.joda.time.format.DateTimeFormat
 import play.api.data._
 import play.api.data.Forms._
 import play.twirl.api.Html
 import play.api.libs.json.{JsObject, JsValue, JsString, JsArray}
+import services.ClaimService
 import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 import utils.{SortBy, ApplicationUtils}
+import play.api.Play.current
 
-class Application extends Controller with Secured {
-
-  this: ClaimService =>
+class Application @Inject() (claimService: ClaimService) extends Controller with Secured with I18nSupport {
 
   val defaultStatus = "atom"
 
   def index = IsAuthenticated { implicit username => implicit request =>
     val today = new LocalDate
-    val claimNumbers = claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = countOfClaimsForTabs(today)
-    Ok(views.html.claimsList(today, defaultStatus, SortBy surname(claimsFilteredBySurname(today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs)))
+    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(today)
+    Ok(views.html.claimsList(today, defaultStatus, SortBy surname(claimService.claimsFilteredBySurname(today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
-  def claimsForDateFilteredBySurname(date: String, sortBy: String) = IsAuthenticated { implicit username => implicit request =>
+  def claimsForDateFilteredBySurname(date: String, sortBy: String) = Action { implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
 
-    val claims = claimsFilteredBySurname(localDate, sortBy)
-    val claimNumbers = claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = countOfClaimsForTabs(localDate)
+    val claims = claimService.claimsFilteredBySurname(localDate, sortBy)
+    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(localDate)
 
     Ok(views.html.claimsList(localDate, sortBy, SortBy surname(claims), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
   def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    val circs = getCircs(localDate)
-    val claimNumbers = claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = countOfClaimsForTabs(localDate)
+    val circs = claimService.getCircs(localDate)
+    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(localDate)
     Ok(views.html.claimsList(localDate, "circs", SortBy dateTime(circs), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
@@ -49,9 +51,9 @@ class Application extends Controller with Secured {
 
   def claimsForDateFiltered(date: String, status: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    val claims = if (status.isEmpty) getClaims(localDate) else claimsFiltered(localDate, status)
-    val claimNumbers = claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = countOfClaimsForTabs(localDate)
+    val claims = if (status.isEmpty) claimService.getClaims(localDate) else claimService.claimsFiltered(localDate, status)
+    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(localDate)
     Ok(views.html.claimsList(localDate, status, SortBy claimTypeDateTime(claims), claimNumbers, countForTabs(countOfClaimsTabs)))
   }
 
@@ -75,7 +77,7 @@ class Application extends Controller with Secured {
       errors => redirect
       , claimsToComplete => {
         for (transId <- claimsToComplete.completedCheckboxes) {
-          updateClaim(transId, "completed")
+          claimService.updateClaim(transId, "completed")
         }
         redirect
       }
@@ -84,7 +86,7 @@ class Application extends Controller with Secured {
   }
 
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
-      buildClaimHtml(transactionId) match {
+    claimService.buildClaimHtml(transactionId) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
         case _ =>
           Logger.error(s"Problem rendering claim [$transactionId]")
@@ -93,11 +95,11 @@ class Application extends Controller with Secured {
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>
-    Ok(views.html.export(getOldClaims))
+    Ok(views.html.export(claimService.getOldClaims))
   }
 
   def csvExport() = IsAuthenticated { implicit username => implicit request =>
-    val stringValue = getOldClaims match {
+    val stringValue = claimService.getOldClaims match {
       case Some(s) =>
         //We need to parse the date time to be readable on the CSV by excel and openoffice
         val claimDateTimePos = s.value(0).as[JsArray].value.indexOf(JsString("claimDateTime"))
@@ -113,7 +115,7 @@ class Application extends Controller with Secured {
           //We parse the element into what we want
           val parsedDate = DateTimeFormat.forPattern("ddMMyyyyHHmm").parseDateTime(elemToChange.get._1.as[JsString].value)
           val modified = JsString(DateTimeFormat.forPattern("dd/MMM/yyyy HH:mm").print(parsedDate)).as[JsValue]
-          
+
           //We put everything back together in the order they used to be
           JsArray(prev.:+(modified) ++: after)
           //This last bit is to put back at the start the column titles
@@ -128,7 +130,9 @@ class Application extends Controller with Secured {
   }
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
-    purgeOldClaims()
+    claimService.purgeOldClaims()
     Redirect(routes.Application.export())
   }
+
+  override def messagesApi: MessagesApi = current.injector.instanceOf[MessagesApi]
 }

@@ -8,5 +8,5 @@
 </header>
 
 	@if(session.get("days").map(days => days.toInt).getOrElse(0) <= 0) {
-	<div class="expired"><p>Your password has expired. <a href = "@controllers.routes.Password.display()" class="log"> Change Password</a></p></div>
+	<div class="expired"><p>Your password has expired. <a href = "@routes.Password.display()" class="log"> Change Password</a></p></div>
 	}

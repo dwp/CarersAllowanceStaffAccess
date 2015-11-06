@@ -17,6 +17,7 @@ trait RenderServiceComponent {
     new RenderServiceStub()
   }
   else {
+    Logger.warn("Using normal pdf service.")
     new RenderServiceImpl()
   }
 

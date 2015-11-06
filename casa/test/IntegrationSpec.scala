@@ -1,16 +1,16 @@
 import org.specs2.mutable._
-import play.api.test._
+import utils.WithBrowser
 
 /**
  * add your integration spec here.
  * An integration test will fire up a whole play application in a real (or headless) browser
  */
 
-class IntegrationSpec  extends Specification with MockInjector with Tags {
+class IntegrationSpec extends Specification {
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowser(app = FakeApplication(withGlobal = Some(global))) {
+    "work from within a browser" in new WithBrowser() {
       browser.goTo("/login")
 
       browser.pageSource must contain("CASA")
@@ -22,7 +22,7 @@ class IntegrationSpec  extends Specification with MockInjector with Tags {
       browser.pageSource must contain("Claims list")
     }
 
-    "display a message to user with expired password" in new WithBrowser(app = FakeApplication(withGlobal = Some(global))) {
+    "display a message to user with expired password" in new WithBrowser() {
       browser.goTo("/login")
 
       browser.pageSource must contain("CASA")

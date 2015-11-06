@@ -1,12 +1,12 @@
 import org.fluentlenium.core.domain.{FluentList, FluentWebElement}
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.LocalDate
-import org.specs2.mutable.{Specification, Tags}
-import play.api.test.{TestBrowser, WithBrowser}
-import scala._
+import org.specs2.mutable.Specification
+import play.api.test.TestBrowser
+import utils.WithBrowser
 import scala.collection.JavaConverters._
 
-class ClaimGridIntegrationSpec extends Specification with Tags {
+class ClaimGridIntegrationSpec extends Specification {
 
   val userId = "12345678"
   val password = "john"
@@ -125,7 +125,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "open html rendered pdf in new tab and checked updated status from received to viewed" in new WithBrowser {
-      import scala.collection.JavaConverters._
+      pending("with browser is not capable of handling the level of JS used")
 
       login(browser)
 
@@ -214,6 +214,7 @@ class ClaimGridIntegrationSpec extends Specification with Tags {
     }
 
     "sort by transaction id " in new WithBrowser {
+      pending("with browser is not capable of handling the level of JS used")
       login(browser)
 
       browser.goTo("/")

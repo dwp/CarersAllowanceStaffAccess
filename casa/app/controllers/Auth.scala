@@ -1,8 +1,11 @@
 package controllers
 
+import javax.inject.Inject
+
+import play.api.Play._
 import play.api.http.HeaderNames._
+import play.api.i18n.{MessagesApi, I18nSupport}
 import play.api.mvc._
-import play.mvc
 import services.{AccessControlService, PasswordService}
 import play.api.data._
 import play.api.data.Forms._
@@ -12,11 +15,11 @@ import play.api.Logger
 import scala.util.{Failure, Success, Try}
 import app.ConfigProperties._
 import utils.ApplicationUtils
+import utils.JsValueWrapper.improveJsValue
+import scala.language.implicitConversions
 
-class Auth extends Controller {
-
-  this: AccessControlService =>
-
+class Auth @Inject() (accessControlService: AccessControlService) extends Controller with I18nSupport {
+  override def messagesApi: MessagesApi = current.injector.instanceOf[MessagesApi]
   val loginForm = Form(
     tuple(
       "userId" -> text,
@@ -35,7 +38,7 @@ class Auth extends Controller {
   }
 
   def checkUser(userId: String, inputPassword: String): Boolean = {
-      val userJson =  findByUserId(userId)
+      val userJson = accessControlService.findByUserId(userId)
       val password = (userJson \ "password").as[String]
 
       if(password.length() > 4) {
@@ -46,7 +49,7 @@ class Auth extends Controller {
   }
 
   def checkPassword(userId: String): Boolean = {
-    val userJson =  getDaysToExpiration(userId)
+    val userJson = accessControlService.getDaysToExpiration(userId)
     if(userJson.toString().equalsIgnoreCase("false")) false
     else {
       val days = userJson.as[Int]
@@ -76,7 +79,7 @@ class Auth extends Controller {
           BadRequest(html.login(formWithErrors)),
         user =>
           Redirect(routes.Application.index)
-          .withSession("userId" -> user._1, "days"->getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
+          .withSession("userId" -> user._1, "days"->accessControlService.getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
           .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
       )
     } catch {
@@ -91,7 +94,7 @@ class Auth extends Controller {
    * Logout and clean the session.
    */
   def logout = Action {
-    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getProperty("csrf.cookie.name",""), secure= getProperty("csrf.cookie.secure",false)))
+    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getProperty("play.filters.csrf.cookie.name",""), secure= getProperty("play.filters.csrf.cookie.secure",false)))
       .withNewSession.flashing("success" -> "You've been logged out")
   }
 }
@@ -105,12 +108,18 @@ trait Secured {
   /**
    * Retrieve the connected user id.
    */
-  private def username(request: RequestHeader) = request.session.get("userId")
+  private def username(request: RequestHeader) = {
+    println("user name")
+    request.session.get("userId")
+  }
 
   /**
    * Redirect to login if the user is not authorized.
    */
-  private def onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Auth.login)
+  private def onUnauthorized(request: RequestHeader) = {
+    println("failure to authorise")
+    Results.Redirect(routes.Auth.login)
+  }
 
 
   /**

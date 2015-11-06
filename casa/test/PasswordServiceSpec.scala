@@ -1,7 +1,7 @@
-import org.specs2.mutable.{Tags, Specification}
+import org.specs2.mutable.Specification
 import services.PasswordService
 
-class PasswordServiceSpec extends Specification with Tags {
+class PasswordServiceSpec extends Specification {
 
   "PasswordService" should {
 

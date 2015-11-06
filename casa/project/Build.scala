@@ -1,25 +1,29 @@
+
 import sbt._
 import sbt.Keys._
-import play.Play.autoImport._
-import net.litola.SassPlugin
+import play.sbt.PlayImport._
 
 object ApplicationBuild extends Build {
 
   val name = "sa"
-  val appVersion = "1.8-SNAPSHOT"
+  val appVersion = "2.0-SNAPSHOT"
 
   val appDependencies = Seq(
     ws,
     filters,
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "gov.dwp.carers"     %% "wscommons"           % "2.3",
-    "gov.dwp.carers"     %% "carerscommon"        % "6.6"
+    "gov.dwp.carers"     %% "wscommons"           % "3.0",
+    "gov.dwp.carers"     %% "carerscommon"        % "7.0",
+    "org.specs2" %% "specs2-core" % "3.3.1" % "test" withSources() withJavadoc(),
+    "org.specs2" %% "specs2-mock" % "3.3.1" % "test" withSources() withJavadoc(),
+    "org.specs2" %% "specs2-junit" % "3.3.1" % "test" withSources() withJavadoc(),
+    "com.kenshoo" % "metrics-play_2.10" % "2.4.0_0.4.0"
   )
 
   var sO:Setting[_] = scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-language:reflectiveCalls")
 
-  var sV:Setting[_] = scalaVersion := "2.10.4"
+  var sV:Setting[_] = scalaVersion := "2.10.5"
 
   var sR:Seq[Setting[_]] = Seq(
     resolvers += "Carers repo" at "http://build.3cbeta.co.uk:8080/artifactory/repo/",
@@ -33,5 +37,5 @@ javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessC
 
   var appSettings: Seq[Def.Setting[_]] =  sV ++ sO ++ sR ++ jO ++ vS
 
-  val main = Project(name, file(".")).enablePlugins(play.PlayScala, net.litola.SassPlugin).settings(appSettings: _*)
+  val main = Project(name, file(".")).enablePlugins(play.sbt.PlayScala).settings(appSettings: _*)
 }

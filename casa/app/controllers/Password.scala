@@ -1,5 +1,7 @@
 package controllers
 
+import play.api.Play._
+import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc._
 import play.api.Logger
 import services.PasswordService
@@ -11,8 +13,8 @@ import play.api.data.validation._
 import play.api.data.validation.ValidationError
 import java.net.URLEncoder
 
-object Password extends Controller {
-
+object Password extends Controller with I18nSupport {
+  override def messagesApi: MessagesApi = current.injector.instanceOf[MessagesApi]
   val passwordForm = Form(
     mapping (
       "userId" -> text.verifying("Staff ID should be numerals only and 8 characters long.",validateUserId _),

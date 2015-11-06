@@ -11,9 +11,9 @@
 
 <nav class="filter">
         <ol class="clearfix">
-            <li><a href="/filter/surname/@{formatToLink(currentDate)}/atom" class="@{if(isStatusAtoM)"active"}">Claims A - M (@{tabNumbersList \ "atom"})</a></li>
-            <li><a href="/filter/surname/@{formatToLink(currentDate)}/ntoz" class="@{if(isStatusNtoZ)"active"}">Claims N - Z (@{tabNumbersList \ "ntoz"})</a></li>
-            <li><a href="/circs/@{formatToLink(currentDate)}" class="@{if(isStatusCircs)"active"}">Circs (@{tabNumbersList \ "circs"})</a></li>
+            <li><a href="/filter/surname/@{formatToLink(currentDate)}/atom" class="@{if(isStatusAtoM)"active"}">Claims A - M (@{(tabNumbersList \ "atom").get})</a></li>
+            <li><a href="/filter/surname/@{formatToLink(currentDate)}/ntoz" class="@{if(isStatusNtoZ)"active"}">Claims N - Z (@{(tabNumbersList \ "ntoz").get})</a></li>
+            <li><a href="/circs/@{formatToLink(currentDate)}" class="@{if(isStatusCircs)"active"}">Circs (@{(tabNumbersList \ "circs").get})</a></li>
             <li><a href="/filter/@{formatToLink(currentDate)}/completed" class="@{if(isStatusCompleted)"active"}">Completed</a></li>
         </ol>
 </nav>

@@ -1,17 +1,17 @@
 package monitoring
 
-import com.kenshoo.play.metrics.MetricsRegistry
-
+import com.codahale.metrics.SharedMetricRegistries
+import play.api.Play._
 
 object Counters {
   def incrementAcSubmissionErrorStatus(status:Int) {
-    MetricsRegistry.defaultRegistry.counter(s"ac-submission-error-status-$status").inc()
+    SharedMetricRegistries.getOrCreate(current.configuration.getString("metrics.name").getOrElse("default")).counter(s"ac-submission-error-status-$status").inc()
   }
   def incrementCsSubmissionErrorStatus(status:Int) {
-    MetricsRegistry.defaultRegistry.counter(s"cs-submission-error-status-$status").inc()
+    SharedMetricRegistries.getOrCreate(current.configuration.getString("metrics.name").getOrElse("default")).counter(s"cs-submission-error-status-$status").inc()
   }
 
   def incrementP1SubmissionErrorStatus(status: Int) {
-    MetricsRegistry.defaultRegistry.counter(s"p1-submission-error-status-$status").inc()
+    SharedMetricRegistries.getOrCreate(current.configuration.getString("metrics.name").getOrElse("default")).counter(s"p1-submission-error-status-$status").inc()
   }
 }

@@ -18,12 +18,8 @@ object JsValueWrapper {
 class ImprovedJsValue(jsValue: JsValue) extends Dynamic {
 
   def selectDynamic(value:String) = {
-    new ImprovedValue(
-      jsValue \ value match {
-        case undefined:JsUndefined=> JsString(s"$value is not defined")
-        case jsValue:JsValue => jsValue
-      }
-    )
+    val newValue = (jsValue \ value).get
+    new ImprovedValue(newValue)
   }
 
 }

@@ -1,7 +1,8 @@
 import org.specs2.mutable._
 import controllers.Password
-import play.api.test._
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
+import utils.WithApplication
 
 class PasswordSpec extends Specification {
   val validPasswords = Seq("userId"-> "11111111", "password1"-> "Abc123Abc", "password2"->"Abc123Abc")

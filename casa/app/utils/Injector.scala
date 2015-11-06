@@ -1,10 +1,11 @@
 package utils
 
 import play.api.Logger
+import services.mock.{ClaimServiceStub, AccessControlServiceStub}
 
 import scala.reflect._
 import scala.language.existentials
-import services.{AccessControlService, AccessControlServiceStub, ClaimService, ClaimServiceStub}
+import services.{AccessControlService, ClaimService}
 
 trait Injector {
   def resolve[A](clazz: Class[A]) = instances(clazz).asInstanceOf[A]
@@ -17,11 +18,11 @@ trait Injector {
 
     if (stubEnabled) {
       Logger.warn("Using stubs.")
-      Map(bind[controllers.Application](new controllers.Application with ClaimServiceStub),
-        bind[controllers.Auth](new controllers.Auth with AccessControlServiceStub))
+      Map(bind[controllers.Application](new controllers.Application(new ClaimServiceStub())),
+        bind[controllers.Auth](new controllers.Auth(new AccessControlServiceStub())))
     } else {
-      Map(bind[controllers.Application](new controllers.Application with ClaimService),
-        bind[controllers.Auth](new controllers.Auth with AccessControlService))
+      Map(bind[controllers.Application](new controllers.Application(new ClaimService())),
+        bind[controllers.Auth](new controllers.Auth(new AccessControlService())))
     }
   }
 }
