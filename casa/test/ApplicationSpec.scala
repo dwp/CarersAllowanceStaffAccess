@@ -2,11 +2,11 @@ import controllers.Auth
 import org.specs2.mutable._
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import utils.{Injector, LightFakeApplication, WithApplication, WithBrowser}
+import utils.{LightFakeApplication, WithApplication, WithBrowser}
 
 import scalaz.Inject
 
-class ApplicationSpec extends Specification with Injector {
+class ApplicationSpec extends Specification {
   val userInput = Seq("userId" -> "12345678", "password" -> "john")
 
   "Application" should {

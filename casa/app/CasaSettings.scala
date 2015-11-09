@@ -1,4 +1,5 @@
 import java.net.InetAddress
+import javax.inject.Inject
 
 import app.ConfigProperties._
 import controllers.Auth
@@ -11,7 +12,7 @@ import play.api.http.HeaderNames._
 import play.Play
 
 import monitoring.CasaMonitorRegistration
-import utils.Injector
+import services.AccessControlService
 import scala.concurrent.ExecutionContext
 import ExecutionContext.Implicits.global
 
@@ -20,11 +21,7 @@ import scala.concurrent.Future
 /**
  * The MonitorFilter handles all the metrics and health checks. The DwpCSRFilter activates CSRF when not in test mode.
  */
-class CasaSettings extends Injector with CasaMonitorRegistration with GlobalSettings {
-
-  this: Injector =>
-
-  lazy val  authController = resolve(classOf[Auth])
+class CasaSettings extends CasaMonitorRegistration with GlobalSettings {
 
   override def onStart(app: Application): Unit = {
     MDC.put("httpPort", getProperty("http.port", "Value not set"))
@@ -34,16 +31,14 @@ class CasaSettings extends Injector with CasaMonitorRegistration with GlobalSett
     Logger.info("SA is now starting")
     super.onStart(app)
 
-    registerReporters()
-    registerHealthChecks()
+    //registerReporters()
+    //registerHealthChecks()
     Logger.info("SA started")
   }
 
   override def onStop(app: Application): Unit = {
     Logger.info("SA is now stopping")
   }
-
-
 
   /**
    * Intercept requests to check for session timeout
@@ -52,6 +47,7 @@ class CasaSettings extends Injector with CasaMonitorRegistration with GlobalSett
    */
   override def onRouteRequest(request: RequestHeader): Option[Handler] = {
     val timeout = Play.application().configuration().getString("play.http.session.maxAge").toLong
+    val authController = play.api.Play.current.injector.instanceOf[Auth]
 
     // could also filter out bad request; also find a smarter way to test contains
     if(request.path.contains("assets") || request.path.contains("login")||request.path.contains("logout") ||request.path.contains("password") || request.path.contains("/report/") )
@@ -70,8 +66,6 @@ class CasaSettings extends Injector with CasaMonitorRegistration with GlobalSett
       }
     }
   }
-
-  def getControllerInstance[A](controllerClass: Class[A]): A = resolve(controllerClass)
 
   override def onError(request: RequestHeader, ex: Throwable): Future[Result] = {
     val errorMsg = "Unexpected error."

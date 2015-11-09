@@ -2,11 +2,9 @@ package monitoring
 
 import app.ConfigProperties._
 import play.api.Logger
-import utils.Injector
 import monitor.{HealthMonitor, MonitorRegistration}
 
 trait CasaMonitorRegistration extends MonitorRegistration {
-  this: Injector =>
 
   override def getFrequency: Int = getProperty("metrics.frequency", default = 1)
 

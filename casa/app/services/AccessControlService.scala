@@ -7,9 +7,13 @@ import scala.language.postfixOps
 import scala.language.implicitConversions
 import monitoring.Counters
 
-object AccessControlServiceImpl extends AccessControlService
+trait AccessControlService {
+  def findByUserId(userId: String): JsValue
+  def getDaysToExpiration(userId: String): JsValue
+}
 
-class AccessControlService extends CasaRemoteService {
+
+class AccessControlServiceImpl extends CasaRemoteService with AccessControlService{
   override def getUrlPropertyName = "accessControlServiceUrl"
 
   override def getTimeoutPropertyName = "ws.timeout"

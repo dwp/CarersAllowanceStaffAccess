@@ -12,7 +12,7 @@ import services.AccessControlService
 class AccessControlServiceStub extends AccessControlService {
   override def findByUserId(userId: String): JsValue = {
     Logger.warn("Using stub access control service.")
-    Json.parse( """{"password":"jU8D6oropoq4UTnwGklTCqOc1LFObE2LF/Pb6fahvIjjB73x0uwlkGAh/AWzmIgV"}""")
+    Json.parse( """{"password":"nqvq7hNvyFJM0ImFYSYIle7Q8nXtFM7itoKoIC9/4QdmHZw0VGQUtMxX7Ej1M5FB"}""")
   }
 
   override def getDaysToExpiration(userId: String): JsValue = {
