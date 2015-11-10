@@ -1,5 +1,4 @@
 import java.net.InetAddress
-import javax.inject.Inject
 
 import app.ConfigProperties._
 import controllers.Auth
@@ -9,10 +8,8 @@ import play.api.{Logger, Application, GlobalSettings}
 import play.api.mvc._
 import play.api.mvc.Results._
 import play.api.http.HeaderNames._
-import play.Play
 
 import monitoring.CasaMonitorRegistration
-import services.AccessControlService
 import scala.concurrent.ExecutionContext
 import ExecutionContext.Implicits.global
 
@@ -31,8 +28,8 @@ class CasaSettings extends CasaMonitorRegistration with GlobalSettings {
     Logger.info("SA is now starting")
     super.onStart(app)
 
-    //registerReporters()
-    //registerHealthChecks()
+    registerReporters()
+    registerHealthChecks()
     Logger.info("SA started")
   }
 
@@ -46,7 +43,7 @@ class CasaSettings extends CasaMonitorRegistration with GlobalSettings {
    * @return
    */
   override def onRouteRequest(request: RequestHeader): Option[Handler] = {
-    val timeout = Play.application().configuration().getString("play.http.session.maxAge").toLong
+    val timeout: Long = play.api.Play.current.configuration.getLong("play.http.session.maxAge").getOrElse(0l)
     val authController = play.api.Play.current.injector.instanceOf[Auth]
 
     // could also filter out bad request; also find a smarter way to test contains

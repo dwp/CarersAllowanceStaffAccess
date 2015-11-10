@@ -13,7 +13,7 @@ import play.api.data.validation._
 import play.api.data.validation.ValidationError
 import java.net.URLEncoder
 
-object Password extends Controller with I18nSupport {
+class Password extends Controller with I18nSupport {
   override def messagesApi: MessagesApi = current.injector.instanceOf[MessagesApi]
   val passwordForm = Form(
     mapping (

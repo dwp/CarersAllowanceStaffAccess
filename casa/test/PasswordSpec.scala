@@ -25,7 +25,7 @@ class PasswordSpec extends Specification {
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(invalidPassword: _*)
 
-      val result = Password.digestPassword(passwordRequest)
+      val result = new Password().digestPassword(passwordRequest)
 
       status(result) mustEqual BAD_REQUEST
     }
@@ -35,7 +35,7 @@ class PasswordSpec extends Specification {
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(invalidPasswords: _*)
 
-      val result = Password.digestPassword(passwordRequest)
+      val result = new Password().digestPassword(passwordRequest)
 
       status(result) mustEqual BAD_REQUEST
     }
@@ -45,7 +45,7 @@ class PasswordSpec extends Specification {
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(nonMatchingPasswords: _*)
 
-      val result = Password.digestPassword(passwordRequest)
+      val result = new Password().digestPassword(passwordRequest)
 
       status(result) mustEqual BAD_REQUEST
     }
@@ -55,7 +55,7 @@ class PasswordSpec extends Specification {
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(validPasswords: _*)
 
-      val result = Password.digestPassword(passwordRequest)
+      val result = new Password().digestPassword(passwordRequest)
 
       status(result) mustEqual OK
     }
@@ -65,7 +65,7 @@ class PasswordSpec extends Specification {
 
       val passwordRequest = FakeRequest().withSession().withFormUrlEncodedBody(validPasswords: _*)
 
-      val result = Password.digestPassword(passwordRequest)
+      val result = new Password().digestPassword(passwordRequest)
 
       status(result) mustEqual OK
 

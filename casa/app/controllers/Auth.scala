@@ -39,8 +39,7 @@ class Auth @Inject() (accessControlService: AccessControlService) extends Contro
 
   def checkUser(userId: String, inputPassword: String): Boolean = {
       val userJson = accessControlService.findByUserId(userId)
-      val password = (userJson \ "password").as[String]
-
+      val password = (userJson \ "password").get.as[String]
       if(password.length() > 4) {
         if (PasswordService.checkPassword(inputPassword, password.toString)) true
         else false

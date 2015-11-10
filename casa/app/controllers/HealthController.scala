@@ -23,4 +23,4 @@ trait HealthController {
   }
 }
 
-object HealthController extends Controller with HealthController
+class HealthControllerImpl extends Controller with HealthController

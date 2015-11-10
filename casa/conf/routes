@@ -2,32 +2,32 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET         /report/metrics                              @com.kenshoo.play.metrics.MetricsController.metrics
-GET         /report/health                               controllers.HealthController.healthReport
+GET         /report/metrics                              com.kenshoo.play.metrics.MetricsController.metrics()
+GET         /report/health                               controllers.HealthControllerImpl.healthReport()
 
 # Home page
-GET         /                                            @controllers.Application.index
-GET         /filter/:currentDate/:status                 @controllers.Application.claimsForDateFiltered(currentDate,status)
-GET         /circs/:currentDate                          @controllers.Application.circsForDateFiltered(currentDate)
-GET         /filter/surname/:currentDate/:sortBy         @controllers.Application.claimsForDateFilteredBySurname(currentDate,sortBy)
+GET         /                                            controllers.Application.index()
+GET         /filter/:currentDate/:status                 controllers.Application.claimsForDateFiltered(currentDate,status)
+GET         /circs/:currentDate                          controllers.Application.circsForDateFiltered(currentDate)
+GET         /filter/surname/:currentDate/:sortBy         controllers.Application.claimsForDateFilteredBySurname(currentDate,sortBy)
 
 
 
-POST        /complete                                    @controllers.Application.complete(currentDate)
-GET         /render/:transactionId                       @controllers.Application.renderClaim(transactionId)
+POST        /complete                                    controllers.Application.complete(currentDate)
+GET         /render/:transactionId                       controllers.Application.renderClaim(transactionId)
 
 # Authentication
-GET         /login                                       @controllers.Auth.login
-POST        /login                                       @controllers.Auth.authenticate
-GET         /logout                                      @controllers.Auth.logout
+GET         /login                                       controllers.Auth.login()
+POST        /login                                       controllers.Auth.authenticate()
+GET         /logout                                      controllers.Auth.logout()
 
 # Password Management
-GET         /password                                    controllers.Password.display
-POST        /password                                    controllers.Password.digestPassword
+GET         /password                                    controllers.Password.display()
+POST        /password                                    controllers.Password.digestPassword()
 
-GET         /export                                      @controllers.Application.export
-GET         /exportCsv                                   @controllers.Application.csvExport()
-POST        /purge                                       @controllers.Application.purge
+GET         /export                                      controllers.Application.export()
+GET         /exportCsv                                   controllers.Application.csvExport()
+POST        /purge                                       controllers.Application.purge()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                controllers.Assets.at(path="/public", file)

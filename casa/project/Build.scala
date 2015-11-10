@@ -2,6 +2,7 @@
 import sbt._
 import sbt.Keys._
 import play.sbt.PlayImport._
+import play.sbt.routes.RoutesKeys._
 
 object ApplicationBuild extends Build {
 
@@ -28,12 +29,13 @@ object ApplicationBuild extends Build {
   var sR:Seq[Setting[_]] = Seq(
     resolvers += "Carers repo" at "http://build.3cbeta.co.uk:8080/artifactory/repo/",
     resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
-    resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases")
+    resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases"
+  )
 
   var jO: Seq[Def.Setting[_]] = Seq( javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""}),
 javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessControlServiceUrl") match { case s:String => s case null => ""}))
 
-  var vS: Seq[Def.Setting[_]] = Seq(version := appVersion, libraryDependencies ++= appDependencies)
+  var vS: Seq[Def.Setting[_]] = Seq(routesGenerator := InjectedRoutesGenerator, version := appVersion, libraryDependencies ++= appDependencies)
 
   var appSettings: Seq[Def.Setting[_]] =  sV ++ sO ++ sR ++ jO ++ vS
 

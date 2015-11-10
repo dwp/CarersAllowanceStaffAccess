@@ -19,7 +19,7 @@ class ApplicationSpec extends Specification {
       contentAsString(bad) must contain("login")
     }
 
-    "redirect to the login page when user not authenticated" in new WithApplication(app = new LightFakeApplication()) {
+    "redirect to the login page when user not authenticated" in new WithApplication() {
       val home = route(FakeRequest(GET, "/")).get
 
       status(home) must equalTo(OK)
@@ -27,18 +27,18 @@ class ApplicationSpec extends Specification {
       contentAsString(home) must contain("login")
     }
 
-//    "render the index page when user is authenticated" in new WithApplication {
-//      val authController = resolve(Auth.getClass)
-//      val login = route(FakeRequest(GET, "/login")).get
-//
-//      contentAsString(login) must contain("CASA")
-//
-//      val authRequest = FakeRequest().withSession().withFormUrlEncodedBody(userInput: _*)
-//
-//      val result = authController.authenticate(authRequest)
-//
-//      redirectLocation(result) must beSome("/")
-//    }
+    "render the index page when user is authenticated" in new WithApplication {
+      val authController = app.injector.instanceOf(classOf[Auth])
+      val login = route(FakeRequest(GET, "/login")).get
+
+      contentAsString(login) must contain("CASA")
+
+      val authRequest = FakeRequest().withSession().withFormUrlEncodedBody(userInput: _*)
+
+      val result = authController.authenticate(authRequest)
+
+      redirectLocation(result) must beSome("/")
+    }
 
     "render change password page when change password link is clicked on the login page" in new WithBrowser {
       browser.goTo("/login")
