@@ -108,7 +108,6 @@ trait Secured {
    * Retrieve the connected user id.
    */
   private def username(request: RequestHeader) = {
-    println("user name")
     request.session.get("userId")
   }
 
@@ -116,7 +115,6 @@ trait Secured {
    * Redirect to login if the user is not authorized.
    */
   private def onUnauthorized(request: RequestHeader) = {
-    println("failure to authorise")
     Results.Redirect(routes.Auth.login)
   }
 
