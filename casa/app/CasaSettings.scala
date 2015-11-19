@@ -15,9 +15,6 @@ import ExecutionContext.Implicits.global
 
 import scala.concurrent.Future
 
-/**
- * The MonitorFilter handles all the metrics and health checks. The DwpCSRFilter activates CSRF when not in test mode.
- */
 class CasaSettings extends CasaMonitorRegistration with GlobalSettings {
 
   override def onStart(app: Application): Unit = {
