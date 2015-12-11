@@ -47,6 +47,11 @@ class Auth @Inject() (accessControlService: AccessControlService) extends Contro
       else false
   }
 
+  def getOriginTag(userId: String): String = {
+    val userJson = accessControlService.findByUserId(userId)
+    (userJson \ "originTag").get.as[String]
+  }
+
   def checkPassword(userId: String): Boolean = {
     val userJson = accessControlService.getDaysToExpiration(userId)
     if(userJson.toString().equalsIgnoreCase("false")) false
@@ -64,7 +69,7 @@ class Auth @Inject() (accessControlService: AccessControlService) extends Contro
     Action { implicit request =>
       Ok(html.login(loginForm))
         .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking)
-        .withCookies(request.cookies.toSeq.filterNot( _.name == "CASAVersion") :+ Cookie("CASAVersion", "1.7"): _*)
+        .withCookies(request.cookies.toSeq.filterNot( _.name == "CASAVersion") :+ Cookie("CASAVersion", "2.1"): _*)
     }
 
 
@@ -78,7 +83,7 @@ class Auth @Inject() (accessControlService: AccessControlService) extends Contro
           BadRequest(html.login(formWithErrors)),
         user =>
           Redirect(routes.Application.index)
-          .withSession("userId" -> user._1, "days"->accessControlService.getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
+          .withSession("userId" -> user._1, "originTag" -> getOriginTag(user._1), "days"->accessControlService.getDaysToExpiration(user._1).toString(), "currentTime"->System.nanoTime().toString)
           .withHeaders(CACHE_CONTROL -> "no-cache, no-store", "X-Frame-Options" -> "SAMEORIGIN") // stop click jacking
       )
     } catch {
@@ -111,6 +116,9 @@ trait Secured {
     request.session.get("userId")
   }
 
+  protected def getOriginTag(request: RequestHeader) = {
+    request.session.get("originTag").getOrElse("GB")
+  }
   /**
    * Redirect to login if the user is not authorized.
    */
@@ -123,10 +131,10 @@ trait Secured {
    * Action for authenticated users.
    */
   def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
-    Action{implicit request =>
+    Action { implicit request =>
 
       withSecureHeaders(Try(
-        f(user)(request).withSession("userId"->user, "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
+        f(user)(request).withSession("userId"->user, "originTag" -> getOriginTag(request), "days"-> request.session.get("days").getOrElse(""), "currentTime"->System.nanoTime().toString)
       ) match {
         case Success(s) => s
         case Failure(e) =>

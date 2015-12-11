@@ -1,4 +1,4 @@
-@(claimList:Option[play.api.libs.json.JsArray], currentDate:org.joda.time.LocalDate, currentStatus: String)(implicit request: Request[AnyContent])
+@(claimList:Option[play.api.libs.json.JsArray], currentDate:org.joda.time.LocalDate, currentStatus: String, originTag: String)(implicit request: Request[AnyContent])
 
 @import helper._
 @import org.joda.time.format.DateTimeFormat
@@ -11,6 +11,7 @@
 @date(date:DateTime) = @{ DateTimeFormat.forPattern("dd/MM/yyyy").print(date) }
 @currentDateToHiddenValue = @{ DateTimeFormat.forPattern("ddMMyyyy").print(currentDate)}
 @isStatusCompleted = @{ currentStatus == "completed"}
+@isNISSA = @{ originTag=="GB-NIR" }
 
 @form(action = controllers.routes.Application.complete(currentDateToHiddenValue)){
     @DwpCSRFFormHelper.formField
@@ -31,7 +32,7 @@
                 <th>Claim type</th>
                 <th class="view">Submit Date</th>
                 <th>Status</th>
-                @if(getProperty("drs.enabled", default = true)) {
+                @if(getProperty("drs.enabled", default = true) && !isNISSA) {
                     <th>DRS Status</th>
                 }
             </tr>
@@ -53,7 +54,7 @@
                         <td id="claimDate_@i" class="view">@dateTime(claim.p.claimDateTime.asDate)</td>
 
                         <td id="status_@i" class="status">@claim.p.status</td>
-                        @if(getProperty("drs.enabled", default = true)) {
+                        @if(getProperty("drs.enabled", default = true) && !isNISSA) {
                             <td id="drs_status_@i" class="drsstatus">@claim.p.drsStatus</td>
                         }
                     </tr>

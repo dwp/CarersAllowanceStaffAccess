@@ -17,7 +17,7 @@ import scala.util.Random
  */
 class ClaimServiceStub extends ClaimService with RenderServiceComponent {
 
-  override def getClaims(date: LocalDate): Option[JsArray] = {
+  override def getClaims(originTag: String, date: LocalDate): Option[JsArray] = {
     Logger.warn("Using stub claim service.")
     Some(Json.toJson(listOfClaimSummaries.filter {
       _.claimDateTime.toLocalDate == date
@@ -26,7 +26,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     }).asInstanceOf[JsArray])
   }
 
-  override def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
+  override def claimsFiltered(originTag: String, date: LocalDate, status: String): Option[JsArray] = {
     Logger.warn("Using stub claim service.")
     Some(Json.toJson(listOfClaimSummaries.filter {
       _.status == status
@@ -35,7 +35,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     }).asInstanceOf[JsArray])
   }
 
-  override def getCircs(date: LocalDate): Option[JsArray] = {
+  override def getCircs(originTag: String, date: LocalDate): Option[JsArray] = {
     Logger.warn("Using stub claim service.")
     Some(Json.toJson(listOfCircsSummaries.filter {
       _.claimDateTime.toLocalDate == date
@@ -44,7 +44,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     }).asInstanceOf[JsArray])
   }
 
-  override def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray] = {
+  override def claimsFilteredBySurname(originTag: String, date: LocalDate, sortBy: String): Option[JsArray] = {
     Logger.warn("Using stub claim service.")
 
     val regex = if (sortBy == "atom") "[a-m].*".r else "[n-z].*".r
@@ -58,7 +58,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     Some(Json.toJson(listSum dropWhile (c => regex.findAllMatchIn(c.surname).isEmpty)).asInstanceOf[JsArray])
   }
 
-  override def fullClaim(transactionId: String): Option[JsValue] = {
+  override def fullClaim(transactionId: String, originTag: String): Option[JsValue] = {
     Logger.warn("Using stub claim service.")
     Some(Json.parse("{}"))
   }
@@ -78,7 +78,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     }
   }
 
-  override def claimNumbersFiltered(status: String*): JsObject = {
+  override def claimNumbersFiltered(originTag: String, status: String*): JsObject = {
     Logger.warn("Using stub claim service.")
     var daysMap = Map.empty[LocalDate, Int]
 
@@ -99,7 +99,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
   }
 
 
-  override def countOfClaimsForTabs(date: LocalDate):JsObject = {
+  override def countOfClaimsForTabs(originTag: String, date: LocalDate):JsObject = {
     Logger.warn("Using stub claim service.")
     Json.toJson(
       Map("counts"-> Json.toJson(Map("atom" -> Json.toJson(countOfClaimsForTabs(date,"atom")),
@@ -121,7 +121,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     circsSummaryList.size
   }
 
-  override def buildClaimHtml(transactionId: String): Option[String] = {
+  override def buildClaimHtml(transactionId: String, originTag: String): Option[String] = {
     Logger.warn("Using stub claim service.")
     if (listOfClaimSummaries.exists(_.transactionId == transactionId)) {
       this.updateClaim(transactionId, "viewed")
@@ -182,7 +182,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
   var listOfClaimSummaries = mandatoryClaims ++ randomList
 
 
-  override def getOldClaims: Option[JsArray] = {
+  override def getOldClaims(originTag: String): Option[JsArray] = {
     Logger.warn("Using stub claim service.")
     val oldClaims = listOfClaimSummaries.filter(_.claimDateTime.isBefore(new DateTime().minus(20)))
     val dateFormat = DateTimeFormat.forPattern("ddMMyyyy")

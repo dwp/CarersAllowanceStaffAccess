@@ -10,7 +10,6 @@ import org.joda.time.format.DateTimeFormat
 import play.api.Logger
 import play.api.http.Status
 import play.api.libs.json.{JsArray, JsBoolean, JsObject, _}
-import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 
 
@@ -23,10 +22,10 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
   override def getDefaultUrl = "http://localhost:9002"
 
 
-  override def getClaims(date: LocalDate): Option[JsArray] = {
+  override def getClaims(originTag: String, date: LocalDate): Option[JsArray] = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
-    s"$url/claims/$dateString" get { response =>
+    s"$url/claims/$dateString/$originTag" get { response =>
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND =>
@@ -39,10 +38,10 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
     }
   }
 
-  override def getCircs(date: LocalDate): Option[JsArray] = {
+  override def getCircs(originTag: String, date: LocalDate): Option[JsArray] = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
-    s"$url/circs/$dateString" get { response =>
+    s"$url/circs/$dateString/$originTag" get { response =>
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND =>
@@ -55,11 +54,11 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
     }
   }
 
-  override def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray] = {
+  override def claimsFilteredBySurname(originTag: String, date: LocalDate, sortBy: String): Option[JsArray] = {
 
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
-    s"$url/claims/surname/$dateString/$sortBy" get { response =>
+    s"$url/claims/surname/$dateString/$sortBy/$originTag" get { response =>
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND =>
@@ -73,11 +72,11 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
 
   }
 
-  override def claimsFiltered(date: LocalDate, status: String): Option[JsArray] = {
+  override def claimsFiltered(originTag: String, date: LocalDate, status: String): Option[JsArray] = {
 
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
-    s"$url/claims/$dateString/$status" get { response =>
+    s"$url/claims/$dateString/$status/$originTag" get { response =>
       response.status match {
         case Status.OK => Some(decryptObjArray(response.json.as[JsArray]))
         case Status.NOT_FOUND =>
@@ -91,8 +90,8 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
 
   }
 
-  override def claimNumbersFiltered(status: String*): JsObject =
-    s"$url/counts/${status.mkString(",")}" get { response =>
+  override def claimNumbersFiltered(originTag: String, status: String*): JsObject =
+    s"$url/counts/${status.mkString(",")}/$originTag" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
         case Status.BAD_REQUEST =>
@@ -105,10 +104,10 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
       }
     }
 
-  override def countOfClaimsForTabs(date: LocalDate):JsObject = {
+  override def countOfClaimsForTabs(originTag: String, date: LocalDate):JsObject = {
     val dateString = DateTimeFormat.forPattern("ddMMyyyy").print(date)
 
-    s"$url/countOfClaimsForTabs/$dateString" get { response =>
+    s"$url/countOfClaimsForTabs/$dateString/$originTag" get { response =>
       response.status match {
         case Status.OK => response.json.as[JsObject]
         case Status.BAD_REQUEST =>
@@ -137,8 +136,8 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
       }
     } exec()
 
-  override def fullClaim(transactionId: String): Option[JsValue] =
-    s"$url/claim/$transactionId/" get { response =>
+  override def fullClaim(transactionId: String, originTag: String): Option[JsValue] =
+    s"$url/claim/$transactionId/$originTag" get { response =>
       response.status match {
         case Status.OK => Some(response.json)
         case Status.BAD_REQUEST =>
@@ -151,8 +150,8 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
       }
     }
 
-  override def buildClaimHtml(transactionId: String) = {
-    s"$url/claim/$transactionId" get { response =>
+  override def buildClaimHtml(transactionId: String, originTag: String) = {
+    s"$url/claim/$transactionId/$originTag" get { response =>
       response.status match {
         case Status.OK =>
           Logger.debug(s"Received claim from claim service [$transactionId].")
@@ -175,8 +174,8 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
   }
 
 
-  override def getOldClaims: Option[JsArray] = {
-    s"$url/export" get { response =>
+  override def getOldClaims(originTag: String): Option[JsArray] = {
+    s"$url/export/$originTag" get { response =>
       response.status match {
         case Status.OK =>
           Some(decryptArray(response.json.as[JsArray]))

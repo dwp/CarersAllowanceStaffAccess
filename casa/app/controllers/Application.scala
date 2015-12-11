@@ -3,7 +3,6 @@ package controllers
 import javax.inject.Inject
 
 import play.api.Logger
-import play.api.http.HeaderNames._
 import play.api.i18n.{MessagesApi, I18nSupport}
 import play.api.mvc._
 import org.joda.time.{DateTime, LocalDate}
@@ -13,7 +12,6 @@ import play.api.data.Forms._
 import play.twirl.api.Html
 import play.api.libs.json.{JsObject, JsValue, JsString, JsArray}
 import services.ClaimService
-import utils.JsValueWrapper.improveJsValue
 import scala.language.implicitConversions
 import utils.{SortBy, ApplicationUtils}
 import play.api.Play.current
@@ -24,37 +22,40 @@ class Application @Inject() (claimService: ClaimService) extends Controller with
 
   def index = IsAuthenticated { implicit username => implicit request =>
     val today = new LocalDate
-    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = claimService.countOfClaimsForTabs(today)
-    Ok(views.html.claimsList(today, defaultStatus, SortBy surname(claimService.claimsFilteredBySurname(today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs)))
+    val originTag = getOriginTag(request)
+    val claimNumbers = claimService.claimNumbersFiltered(originTag, "received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(originTag, today)
+    Ok(views.html.claimsList(today, defaultStatus, SortBy surname(claimService.claimsFilteredBySurname(originTag, today, defaultStatus)), claimNumbers, countForTabs(countOfClaimsTabs), originTag))
   }
 
   def claimsForDateFilteredBySurname(date: String, sortBy: String) = Action { implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
+    val originTag = getOriginTag(request)
+    val claims = claimService.claimsFilteredBySurname(originTag, localDate, sortBy)
+    val claimNumbers = claimService.claimNumbersFiltered(originTag, "received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(originTag, localDate)
 
-    val claims = claimService.claimsFilteredBySurname(localDate, sortBy)
-    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = claimService.countOfClaimsForTabs(localDate)
-
-    Ok(views.html.claimsList(localDate, sortBy, SortBy surname(claims), claimNumbers, countForTabs(countOfClaimsTabs)))
+    Ok(views.html.claimsList(localDate, sortBy, SortBy surname(claims), claimNumbers, countForTabs(countOfClaimsTabs), originTag))
   }
 
   def circsForDateFiltered(date: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    val circs = claimService.getCircs(localDate)
-    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = claimService.countOfClaimsForTabs(localDate)
-    Ok(views.html.claimsList(localDate, "circs", SortBy dateTime(circs), claimNumbers, countForTabs(countOfClaimsTabs)))
+    val originTag = getOriginTag(request)
+    val circs = claimService.getCircs(originTag, localDate)
+    val claimNumbers = claimService.claimNumbersFiltered(originTag, "received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(originTag, localDate)
+    Ok(views.html.claimsList(localDate, "circs", SortBy dateTime(circs), claimNumbers, countForTabs(countOfClaimsTabs), originTag))
   }
 
   def claimsForDate(date: String) = claimsForDateFiltered(date, "")
 
   def claimsForDateFiltered(date: String, status: String) = IsAuthenticated { implicit username => implicit request =>
     val localDate = DateTimeFormat.forPattern("ddMMyyyy").parseLocalDate(date)
-    val claims = if (status.isEmpty) claimService.getClaims(localDate) else claimService.claimsFiltered(localDate, status)
-    val claimNumbers = claimService.claimNumbersFiltered("received", "viewed")
-    val countOfClaimsTabs = claimService.countOfClaimsForTabs(localDate)
-    Ok(views.html.claimsList(localDate, status, SortBy claimTypeDateTime(claims), claimNumbers, countForTabs(countOfClaimsTabs)))
+    val originTag = getOriginTag(request)
+    val claims = if (status.isEmpty) claimService.getClaims(originTag, localDate) else claimService.claimsFiltered(originTag, localDate, status)
+    val claimNumbers = claimService.claimNumbersFiltered(originTag, "received", "viewed")
+    val countOfClaimsTabs = claimService.countOfClaimsForTabs(originTag, localDate)
+    Ok(views.html.claimsList(localDate, status, SortBy claimTypeDateTime(claims), claimNumbers, countForTabs(countOfClaimsTabs), originTag))
   }
 
   private def countForTabs(countsRecieved:JsObject):JsObject = {
@@ -70,7 +71,7 @@ class Application @Inject() (claimService: ClaimService) extends Controller with
   )
 
   def complete(currentDate: String) = IsAuthenticated { implicit username => implicit request =>
-
+    val originTag = getOriginTag(request)
     val redirect = Redirect(routes.Application.claimsForDateFilteredBySurname(currentDate, defaultStatus))
 
     form.bindFromRequest.fold(
@@ -86,7 +87,8 @@ class Application @Inject() (claimService: ClaimService) extends Controller with
   }
 
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
-    claimService.buildClaimHtml(transactionId) match {
+    val originTag = getOriginTag(request)
+    claimService.buildClaimHtml(transactionId, originTag) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
         case _ =>
           Logger.error(s"Problem rendering claim [$transactionId]")
@@ -95,11 +97,13 @@ class Application @Inject() (claimService: ClaimService) extends Controller with
   }
 
   def export() = IsAuthenticated { implicit username => implicit request =>
-    Ok(views.html.export(claimService.getOldClaims))
+    val originTag = getOriginTag(request)
+    Ok(views.html.export(claimService.getOldClaims(originTag)))
   }
 
   def csvExport() = IsAuthenticated { implicit username => implicit request =>
-    val stringValue = claimService.getOldClaims match {
+    val originTag = getOriginTag(request)
+    val stringValue = claimService.getOldClaims(originTag) match {
       case Some(s) =>
         //We need to parse the date time to be readable on the CSV by excel and openoffice
         val claimDateTimePos = s.value(0).as[JsArray].value.indexOf(JsString("claimDateTime"))

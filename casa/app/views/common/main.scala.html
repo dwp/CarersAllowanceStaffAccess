@@ -1,4 +1,4 @@
-@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], claimNumbers:play.api.libs.json.JsObject, tabNumbersList:play.api.libs.json.JsObject, session: play.api.mvc.Session)(implicit request: Request[AnyContent])
+@(title: String, currentDate:org.joda.time.LocalDate,currentStatus:String, claimsList:Option[play.api.libs.json.JsArray], claimNumbers:play.api.libs.json.JsObject, tabNumbersList:play.api.libs.json.JsObject, session: play.api.mvc.Session, originTag: String)(implicit request: Request[AnyContent])
 
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
         @filterBar(currentDate,currentStatus,tabNumbersList)
         
         <main>
-            @table(claimsList,currentDate,currentStatus)
+            @table(claimsList,currentDate,currentStatus,originTag)
         </main>
         
         @footer()

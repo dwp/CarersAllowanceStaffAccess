@@ -1,4 +1,5 @@
 package services
+
 import org.joda.time.LocalDate
 import play.api.libs.json.{JsValue, JsBoolean, JsObject, JsArray}
 
@@ -7,25 +8,25 @@ import play.api.libs.json.{JsValue, JsBoolean, JsObject, JsArray}
  */
 trait ClaimService {
 
-  def getClaims(date: LocalDate): Option[JsArray]
+  def getClaims(originTag: String, date: LocalDate): Option[JsArray]
 
-  def getCircs(date: LocalDate): Option[JsArray]
+  def getCircs(originTag: String, date: LocalDate): Option[JsArray]
 
-  def claimsFilteredBySurname(date: LocalDate, sortBy: String): Option[JsArray]
+  def claimsFilteredBySurname(originTag: String, date: LocalDate, sortBy: String): Option[JsArray]
 
-  def claimsFiltered(date: LocalDate, status: String): Option[JsArray]
+  def claimsFiltered(originTag: String, date: LocalDate, status: String): Option[JsArray]
 
-  def claimNumbersFiltered(status: String*): JsObject
+  def claimNumbersFiltered(originTag: String, status: String*): JsObject
 
-  def countOfClaimsForTabs(date: LocalDate): JsObject
+  def countOfClaimsForTabs(originTag: String, date: LocalDate): JsObject
 
   def updateClaim(transactionId: String, status: String): JsBoolean
 
-  def fullClaim(transactionId: String): Option[JsValue]
+  def fullClaim(transactionId: String, originTag: String): Option[JsValue]
 
-  def buildClaimHtml(transactionId: String): Option[String]
+  def buildClaimHtml(transactionId: String, originTag: String): Option[String]
 
-  def getOldClaims: Option[JsArray]
+  def getOldClaims(originTag: String): Option[JsArray]
 
   def purgeOldClaims(): JsBoolean
 }
