@@ -134,7 +134,8 @@ class Application @Inject() (claimService: ClaimService) extends Controller with
   }
 
   def purge() = IsAuthenticated { implicit username => implicit request =>
-    claimService.purgeOldClaims()
+    val originTag = getOriginTag(request)
+    claimService.purgeOldClaims(originTag)
     Redirect(routes.Application.export())
   }
 

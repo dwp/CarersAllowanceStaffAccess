@@ -186,8 +186,8 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
     }
   }
 
-  override def purgeOldClaims(): JsBoolean = {
-    s"$url/purge" post { response =>
+  override def purgeOldClaims(originTag: String): JsBoolean = {
+    s"$url/purge/$originTag" post { response =>
       response.status match {
         case Status.OK => JsBoolean(value = true)
         case _ =>

@@ -28,5 +28,5 @@ trait ClaimService {
 
   def getOldClaims(originTag: String): Option[JsArray]
 
-  def purgeOldClaims(): JsBoolean
+  def purgeOldClaims(originTag: String): JsBoolean
 }

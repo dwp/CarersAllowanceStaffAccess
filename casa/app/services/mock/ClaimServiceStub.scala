@@ -197,7 +197,7 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     }
   }
 
-  override def purgeOldClaims(): JsBoolean = {
+  override def purgeOldClaims(originTag: String): JsBoolean = {
     Logger.warn("Using stub claim service.")
     val newList = listOfClaimSummaries.filterNot(_.claimDateTime.isBefore(new DateTime().minus(20)))
     val result = newList.size != listOfClaimSummaries.size
