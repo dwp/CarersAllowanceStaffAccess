@@ -7,7 +7,7 @@ import play.sbt.routes.RoutesKeys._
 object ApplicationBuild extends Build {
 
   val name = "sa"
-  val appVersion = "2.0-SNAPSHOT"
+  val appVersion = "2.1-SNAPSHOT"
 
   val appDependencies = Seq(
     ws,
@@ -15,7 +15,7 @@ object ApplicationBuild extends Build {
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
     "gov.dwp.carers"     %% "wscommons"           % "3.0",
-    "gov.dwp.carers"     %% "carerscommon"        % "7.0",
+    "gov.dwp.carers"     %% "carerscommon"        % "7.2",
     "org.specs2" %% "specs2-core" % "3.3.1" % "test" withSources() withJavadoc(),
     "org.specs2" %% "specs2-mock" % "3.3.1" % "test" withSources() withJavadoc(),
     "org.specs2" %% "specs2-junit" % "3.3.1" % "test" withSources() withJavadoc(),
