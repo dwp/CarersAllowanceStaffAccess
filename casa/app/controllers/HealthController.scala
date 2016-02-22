@@ -1,6 +1,6 @@
 package controllers
 
-import com.codahale.metrics.health.HealthCheck
+import gov.dwp.carers.CADSHealthCheck
 import monitoring.ProdHealthMonitor
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
@@ -10,8 +10,10 @@ trait HealthController {
 
   val healthMonitor = ProdHealthMonitor
 
-  implicit val healthWrites = new Writes[(String, HealthCheck.Result)] {
-    def writes(healthCheck: (String, HealthCheck.Result)) = Json.obj(
+  implicit val healthWrites = new Writes[(String, CADSHealthCheck.Result)] {
+    def writes(healthCheck: (String, CADSHealthCheck.Result)) = Json.obj(
+      "application name" -> healthCheck._2.getApplication,
+      "version" -> healthCheck._2.getVersion,
       "name" -> healthCheck._1,
       "isHealthy" -> healthCheck._2.isHealthy
     )
