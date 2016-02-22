@@ -3,6 +3,7 @@ logLevel := Level.Warn
 
 // The Typesafe repository 
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += "Carers repo" at "http://build.3cbeta.co.uk:8080/artifactory/repo/"
 
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.4.3")
 
