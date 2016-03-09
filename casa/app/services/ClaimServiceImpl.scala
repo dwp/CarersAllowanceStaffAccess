@@ -10,6 +10,7 @@ import org.joda.time.format.DateTimeFormat
 import play.api.Logger
 import play.api.http.Status
 import play.api.libs.json.{JsArray, JsBoolean, JsObject, _}
+import utils.RenameThread
 import scala.language.implicitConversions
 
 
@@ -124,6 +125,7 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
 
   override def updateClaim(transactionId: String, status: String): JsBoolean =
     s"$url/claim/$transactionId/$status" put { response =>
+      RenameThread.renameThreadFromTransactionId(transactionId)
       response.status match {
         case Status.OK => new JsBoolean(true)
         case Status.BAD_REQUEST =>
@@ -138,6 +140,7 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
 
   override def fullClaim(transactionId: String, originTag: String): Option[JsValue] =
     s"$url/claim/$transactionId/$originTag" get { response =>
+      RenameThread.renameThreadFromTransactionId(transactionId)
       response.status match {
         case Status.OK => Some(response.json)
         case Status.BAD_REQUEST =>
@@ -152,6 +155,7 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
 
   override def buildClaimHtml(transactionId: String, originTag: String) = {
     s"$url/claim/$transactionId/$originTag" get { response =>
+      RenameThread.renameThreadFromTransactionId(transactionId)
       response.status match {
         case Status.OK =>
           Logger.debug(s"Received claim from claim service [$transactionId].")

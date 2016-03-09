@@ -13,7 +13,7 @@ import play.twirl.api.Html
 import play.api.libs.json.{JsObject, JsValue, JsString, JsArray}
 import services.ClaimService
 import scala.language.implicitConversions
-import utils.{SortBy, ApplicationUtils}
+import utils.{RenameThread, SortBy, ApplicationUtils}
 import play.api.Play.current
 
 class Application @Inject() (claimService: ClaimService) extends Controller with Secured with I18nSupport {
@@ -87,6 +87,7 @@ class Application @Inject() (claimService: ClaimService) extends Controller with
   }
 
   def renderClaim(transactionId: String) = IsAuthenticated { implicit username => implicit request =>
+    RenameThread.renameThreadFromTransactionId(transactionId)
     val originTag = getOriginTag(request)
     claimService.buildClaimHtml(transactionId, originTag) match {
         case Some(renderedClaim) => Ok(Html(renderedClaim))
