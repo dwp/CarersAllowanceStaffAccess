@@ -37,9 +37,24 @@ object ApplicationBuild extends Build {
   var jO: Seq[Def.Setting[_]] = Seq( javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""}),
   javaOptions in Test += "-DaccessControlServiceUrl="+(System.getProperty("accessControlServiceUrl") match { case s:String => s case null => ""}))
 
-  var vS: Seq[Def.Setting[_]] = Seq(routesGenerator := InjectedRoutesGenerator, version := appVersion, libraryDependencies ++= appDependencies)
+  var vS: Seq[Def.Setting[_]] = Seq(routesGenerator := InjectedRoutesGenerator, libraryDependencies ++= appDependencies)
 
-  var appSettings: Seq[Def.Setting[_]] =  sV ++ sO ++ sR ++ jO ++ vS
+  var sAppN: Seq[Def.Setting[_]] = Seq(name := appName)
+  var sAppV: Seq[Def.Setting[_]] = Seq(version := appVersion)
+  var sOrg: Seq[Def.Setting[_]] = Seq(organization := "gov.dwp.carers")
+
+  val isSnapshotBuild = appVersion.endsWith("-SNAPSHOT")
+  var publ: Seq[Def.Setting[_]] = Seq(
+    publishTo := Some("Artifactory Realm" at "http://build.3cbeta.co.uk:8080/artifactory/repo/"),
+    publishTo <<= version {
+      (v: String) =>
+        if (isSnapshotBuild)
+          Some("snapshots" at "http://build.3cbeta.co.uk:8080/artifactory/libs-snapshot-local")
+        else
+          Some("releases" at "http://build.3cbeta.co.uk:8080/artifactory/libs-release-local")
+    })
+
+  var appSettings: Seq[Def.Setting[_]] =  sV ++ sO ++ sR ++ jO ++ vS ++ sAppN ++ sAppV ++ sOrg ++ publ
 
   val main = Project(appName, file(".")).enablePlugins(play.sbt.PlayScala).settings(appSettings: _*)
 }
