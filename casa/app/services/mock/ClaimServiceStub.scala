@@ -163,7 +163,9 @@ class ClaimServiceStub extends ClaimService with RenderServiceComponent {
     ClaimSummary(s"${transIdPrefix}071","claim", f"AB${Random.nextInt(999999)}%06dD", "lname", "lsurname", today, "viewed"),
     ClaimSummary(s"${transIdPrefix}072","claim", f"AB${Random.nextInt(999999)}%06dD", "mname", "msurname", today, "completed"))
 
-  def dayToReport = daysToReport(Math.abs(Random.nextInt()) % daysToReport.size).toDateTime(new LocalTime(Random.nextInt(23), Random.nextInt(59)))
+  // this blows up when the period covered includes the spring clock transition, as 1am-2am are not valid times on that day
+  // so limit it to 2am +
+  def dayToReport = daysToReport(Math.abs(Random.nextInt()) % daysToReport.size).toDateTime(new LocalTime(2 + Random.nextInt(21), Random.nextInt(59)))
 
   val alphaLetters = Seq("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z")
 
