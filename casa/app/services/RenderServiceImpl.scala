@@ -3,9 +3,10 @@ package services
 import monitoring.Counters
 import play.api.http.Status
 import play.api.Logger
-
 import scala.language.implicitConversions
 import scala.util.{Failure, Success, Try}
+import app.ConfigProperties._
+import utils.HttpUtils.HttpWrapper
 
 /**
  * Implements call to Rendering Service to generate html. Relies on RenderServiceImpl object.
@@ -25,16 +26,18 @@ object RenderServiceImpl extends CasaRemoteService {
 
   override def getDefaultUrl = "http://localhost:9010"
 
-  private def call(xml:String) = {
-    s"$url/show" postXml { response =>
-      response.status match {
-        case Status.OK => response.body
-        case _ =>
-          Counters.incrementP1SubmissionErrorStatus(response.status)
-          Logger.error(s"Submission to rendering service failed with status ${response.status}:${response.body}.")
-          "Error: Failed to render the claim."
-      }
-    } exec xml
+  private def call(xml: String) = {
+    val url = getProperty("RenderingServiceUrl", "http://localhost:9010")
+    val timeout = getProperty("render.timeout", 60)*1000
+    val httpWrapper = new HttpWrapper
+    val response = httpWrapper.post(url, xml, timeout)
+    response.getStatus match {
+      case Status.OK => response.getResponse
+      case _ =>
+        Counters.incrementP1SubmissionErrorStatus(response.getStatus)
+        Logger.error(s"Submission to rendering service failed with status ${response.getStatus}:${response.getResponse}.")
+        "Error: Failed to render the claim."
+    }
   }
 
   /**
@@ -50,7 +53,7 @@ object RenderServiceImpl extends CasaRemoteService {
         Some(s)
       case Failure(e) =>
         Counters.incrementP1SubmissionErrorStatus(0)
-        Logger.error("Error while trying to connect to rendering service.",e)
+        Logger.error("Error while trying to connect to rendering service.", e)
         None
     }
 
