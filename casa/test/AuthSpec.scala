@@ -53,15 +53,14 @@ class AuthSpec extends Specification {
     }
 
     "json response string from java must convert to scala json OK" in new WithApplication() {
-      val javaJsonAsString = "{\"userId\":\"12345678\"}";
+      val javaJsonAsString = "{\"userId\":12345678}";
 
       // Converting using JsString adds "\" in front of the " in the Js string thus cannot be recovered
       val badJson = JsString(javaJsonAsString)
-      println( "broken userId:"+ badJson \ "userId" )
 
       val goodJson=Json.parse(javaJsonAsString)
       println("Good conversion of js userId:"+(goodJson \ "userId").get)
-      (goodJson \ "userId").get mustEqual("12345678")
+      (goodJson \ "userId").get mustEqual(Json.parse("12345678"))
     }
   }
 }
