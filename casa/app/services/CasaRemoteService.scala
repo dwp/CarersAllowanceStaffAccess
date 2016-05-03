@@ -1,6 +1,6 @@
 package services
 
-import utils.HttpUtils.HttpMethodWrapper
+import utils.HttpUtils.HttpWrapper
 
 import scala.concurrent.duration._
 import play.api.{Logger, Play}
@@ -30,6 +30,10 @@ trait CasaRemoteService {
     case _ => Logger.info("Getting default url value"); getDefaultUrl
   }
 
-  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
-
+  //  implicit def stringGetWrapper(url: String) = new HttpMethodWrapper(url, timeout)
+  implicit def stringGetWrapper(url: String) = {
+    println("stringGetWrapper NO LONGER ACTIVE")
+    val httpWrapper = new HttpWrapper
+    httpWrapper.post(url, "", timeout.toMillis.toInt)
+  }
 }
