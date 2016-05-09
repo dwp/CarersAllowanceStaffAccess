@@ -20,15 +20,14 @@ class RenderServiceImpl extends RenderService {
  */
 object RenderServiceImpl extends CasaRemoteService {
 
-  override def getUrlPropertyName = "RenderingServiceUrl"
-
-  override def getTimeoutPropertyName = "render.timeout"
+  override def getUrlPropertyName = "n/a"
+  override def getTimeoutPropertyName = "n/a"
 
   override def getDefaultUrl = "http://localhost:9010"
 
   private def call(xml: String) = {
-    val url = getProperty("RenderingServiceUrl", "http://localhost:9010")
-    val timeout = getProperty("render.timeout", 60)*1000
+    val url = getStringProperty("RenderingServiceUrl")
+    val timeout = getIntProperty("render.timeout")*1000
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.post(url, xml, timeout)
     response.getStatus match {

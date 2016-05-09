@@ -13,7 +13,6 @@ class ClaimGridIntegrationSpec extends Specification {
   val regExForCount= "\\((.*?)\\)".r
 
   "Claim Grid" should {
-
     "show claims filtered by today's date" in new WithBrowser {
       login(browser)
 
@@ -241,7 +240,6 @@ class ClaimGridIntegrationSpec extends Specification {
 
       compareSort(nameIds)
     }
-
   }
 
   def login(browser: TestBrowser) = {

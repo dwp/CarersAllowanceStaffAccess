@@ -7,11 +7,11 @@ import play.api.http.Status
 import utils.HttpUtils.HttpWrapper
 import scala.language.{implicitConversions, postfixOps}
 
-class RenderServiceConnectionCheck extends CADSHealthCheck(s"${getProperty("application.name", default = "sa")}", getProperty("application.version", default = "x1").takeWhile(_ != '-')) {
+class RenderServiceConnectionCheck extends CADSHealthCheck(s"${getStringProperty("application.name", throwError = false)}", getStringProperty("application.version", throwError = false).takeWhile(_ != '-')) {
 
   override def check(): Result = {
-    val url = getProperty("renderServiceUrl", "NotDefined") + "/ping"
-    val timeout = getProperty("render.timeout", 60000)
+    val url = getStringProperty("renderServiceUrl") + "/ping"
+    val timeout = getIntProperty("render.timeout")
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.get(url, timeout)
     response.getStatus match {

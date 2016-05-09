@@ -12,7 +12,7 @@ trait RenderService {
 }
 
 trait RenderServiceComponent {
-  val renderService = if (getProperty("stub.renderService", default=true)) {
+  val renderService = if (getBooleanProperty("stub.renderService", throwError = false)) {
     Logger.warn("Using stub pdf service.")
     new RenderServiceStub()
   }

@@ -6,11 +6,11 @@ import monitor.{HealthMonitor, MonitorRegistration}
 
 trait CasaMonitorRegistration extends MonitorRegistration {
 
-  override def getFrequency: Int = getProperty("metrics.frequency", default = 1)
+  override def getFrequency: Int = getIntProperty("metrics.frequency", throwError = false)
 
-  override def isLogMetrics: Boolean = getProperty("metrics.slf4j", default = false)
+  override def isLogMetrics: Boolean = getBooleanProperty("metrics.slf4j", throwError = false)
 
-  override def isLogHealth: Boolean = getProperty("health.logging", default = false)
+  override def isLogHealth: Boolean = getBooleanProperty("health.logging", throwError = false)
 
   override   def getHealthMonitor : HealthMonitor = ProdHealthMonitor
 

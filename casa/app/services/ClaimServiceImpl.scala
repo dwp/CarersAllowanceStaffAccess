@@ -24,11 +24,11 @@ class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent wit
   override def getDefaultUrl = ""
 
   def csurl = {
-    getProperty("claimsServiceUrl", "http://localhost:9002")
+    getStringProperty("claimsServiceUrl")
   }
 
   def cstimeout = {
-    getProperty("claimsServiceUrl", 30000)
+    getIntProperty("cs.timeout")
   }
 
   def httpWrapper = new HttpWrapper

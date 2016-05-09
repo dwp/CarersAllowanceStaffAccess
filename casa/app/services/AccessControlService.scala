@@ -17,13 +17,12 @@ trait AccessControlService {
 class AccessControlServiceImpl extends CasaRemoteService with AccessControlService {
   override def getUrlPropertyName = "accessControlServiceUrl"
 
-  override def getTimeoutPropertyName = "ws.timeout"
-
-  override def getDefaultUrl = "http://localhost:9003"
+  override def getTimeoutPropertyName = "n/a"
+  override def getDefaultUrl = "n/a"
 
   def findByUserId(userId: String): JsValue = {
-    val timeout = getProperty("ws.timeout", 30000)
-    val url = getProperty("accessControlServiceUrl", "not-set") + s"/user/$userId"
+    val timeout = getIntProperty("ac.timeout")
+    val url = getStringProperty("accessControlServiceUrl") + s"/user/$userId"
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.post(url, "", timeout)
     response.getStatus match {
@@ -38,8 +37,8 @@ class AccessControlServiceImpl extends CasaRemoteService with AccessControlServi
   }
 
   def getDaysToExpiration(userId: String): JsValue = {
-    val timeout = getProperty("ws.timeout", 30000)
-    val url = getProperty("accessControlServiceUrl", "not-set") + s"/expire/$userId"
+    val timeout = getIntProperty("ac.timeout")
+    val url = getStringProperty("accessControlServiceUrl") + s"/expire/$userId"
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.post(url, "", timeout)
     response.getStatus match {

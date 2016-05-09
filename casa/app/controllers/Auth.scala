@@ -98,7 +98,7 @@ class Auth @Inject() (accessControlService: AccessControlService) extends Contro
    * Logout and clean the session.
    */
   def logout = Action {
-    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getProperty("play.filters.csrf.cookie.name",""), secure= getProperty("play.filters.csrf.cookie.secure",false)))
+    Redirect(controllers.routes.Auth.login).discardingCookies(DiscardingCookie(getStringProperty("play.filters.csrf.cookie.name"), secure= getBooleanProperty("play.filters.csrf.cookie.secure")))
       .withNewSession.flashing("success" -> "You've been logged out")
   }
 }

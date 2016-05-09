@@ -18,10 +18,10 @@ import scala.concurrent.Future
 class CasaSettings extends CasaMonitorRegistration with GlobalSettings {
 
   override def onStart(app: Application): Unit = {
-    MDC.put("httpPort", getProperty("http.port", "Value not set"))
+    MDC.put("httpPort", getStringProperty("http.port", throwError = false))
     MDC.put("hostName", Option(InetAddress.getLocalHost.getHostName).getOrElse("Value not set"))
-    MDC.put("envName", getProperty("env.name", "Value not set"))
-    MDC.put("appName", getProperty("app.name", "Value not set"))
+    MDC.put("envName", getStringProperty("env.name", throwError = false))
+    MDC.put("appName", getStringProperty("app.name", throwError = false))
     Logger.info("SA is now starting")
     super.onStart(app)
 

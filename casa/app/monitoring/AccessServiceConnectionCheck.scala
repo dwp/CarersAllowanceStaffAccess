@@ -10,10 +10,10 @@ import scala.language.{implicitConversions, postfixOps}
 /**
  * Ping ClaimService to check connection
  */
-class AccessServiceConnectionCheck extends CADSHealthCheck(s"${getProperty("application.name", default = "sa")}", getProperty("application.version", default = "x1").takeWhile(_ != '-')) {
+class AccessServiceConnectionCheck extends CADSHealthCheck(s"${getStringProperty("application.name", throwError = false)}", getStringProperty("application.version", throwError = false).takeWhile(_ != '-')) {
   override def check(): Result = {
-    val url = getProperty("accessControlServiceUrl", "NotDefined") + "/ping"
-    val timeout = getProperty("ac.timeout", 60000)
+    val url = getStringProperty("accessControlServiceUrl") + "/ping"
+    val timeout = getIntProperty("ac.timeout")
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.get(url, timeout)
     response.getStatus match {
