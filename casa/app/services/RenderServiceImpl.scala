@@ -26,7 +26,7 @@ object RenderServiceImpl extends CasaRemoteService {
   override def getDefaultUrl = "http://localhost:9010"
 
   private def call(xml: String) = {
-    val url = getStringProperty("RenderingServiceUrl")
+    val url = getStringProperty("RenderingServiceUrl") + "/show"
     val timeout = getIntProperty("render.timeout")*1000
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.post(url, xml, timeout)
@@ -34,7 +34,7 @@ object RenderServiceImpl extends CasaRemoteService {
       case Status.OK => response.getResponse
       case _ =>
         Counters.incrementP1SubmissionErrorStatus(response.getStatus)
-        Logger.error(s"Submission to rendering service failed with status ${response.getStatus}:${response.getResponse}.")
+        Logger.error(s"Submission to rendering service:$url failed with status ${response.getStatus}:${response.getResponse}.")
         "Error: Failed to render the claim."
     }
   }
