@@ -1,4 +1,3 @@
-
 import sbt._
 import sbt.Keys._
 import play.sbt.PlayImport._
@@ -16,7 +15,7 @@ object ApplicationBuild extends Build {
     filters,
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "gov.dwp.carers"     %% "carerscommon"        % "7.14-SNAPSHOT",
+    "gov.dwp.carers"     %% "carerscommon"        % "7.17-SNAPSHOT",
     "org.specs2" %% "specs2-core" % "3.3.1" % "test" withSources() withJavadoc(),
     "org.specs2" %% "specs2-mock" % "3.3.1" % "test" withSources() withJavadoc(),
     "org.specs2" %% "specs2-junit" % "3.3.1" % "test" withSources() withJavadoc(),
