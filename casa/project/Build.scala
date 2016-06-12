@@ -15,7 +15,7 @@ object ApplicationBuild extends Build {
     filters,
     "me.moocar"           % "logback-gelf"        % "0.12",
     "org.jasypt"          % "jasypt"              % "1.9.2",
-    "gov.dwp.carers"     %% "carerscommon"        % "7.17-SNAPSHOT",
+    "gov.dwp.carers"     % "carerscommon"        % "8.00-SNAPSHOT",
     "org.specs2" %% "specs2-core" % "3.3.1" % "test" withSources() withJavadoc(),
     "org.specs2" %% "specs2-mock" % "3.3.1" % "test" withSources() withJavadoc(),
     "org.specs2" %% "specs2-junit" % "3.3.1" % "test" withSources() withJavadoc(),
@@ -29,7 +29,8 @@ object ApplicationBuild extends Build {
   var sR:Seq[Setting[_]] = Seq(
     resolvers += "Carers repo" at "http://build.3cbeta.co.uk:8080/artifactory/repo/",
     resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
-    resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases"
+    resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases",
+    resolvers += "Local Maven" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
   )
 
   var jO: Seq[Def.Setting[_]] = Seq( javaOptions in Test += "-DclaimsServiceUrl="+(System.getProperty("claimsServiceUrl") match { case s:String => s case null => ""}),

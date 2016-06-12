@@ -2,7 +2,7 @@ package monitoring
 
 import app.ConfigProperties._
 import play.api.Logger
-import monitor.{HealthMonitor, MonitorRegistration}
+import utils.monitor.{HealthMonitor, MonitorRegistration}
 
 trait CasaMonitorRegistration extends MonitorRegistration {
 

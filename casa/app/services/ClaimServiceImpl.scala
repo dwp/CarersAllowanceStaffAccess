@@ -13,7 +13,7 @@ import play.api.libs.json.{JsArray, JsBoolean, JsObject, _}
 import utils.RenameThread
 import scala.language.implicitConversions
 import app.ConfigProperties._
-import utils.HttpUtils.HttpWrapper
+import utils.HttpWrapper
 
 class ClaimServiceImpl extends CasaRemoteService with RenderServiceComponent with ClaimService {
 

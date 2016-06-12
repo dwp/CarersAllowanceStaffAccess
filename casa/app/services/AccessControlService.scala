@@ -3,7 +3,7 @@ package services
 import play.api.Logger
 import play.api.libs.json._
 import play.api.http.Status
-import utils.HttpUtils.HttpWrapper
+import utils.HttpWrapper
 import scala.language.postfixOps
 import scala.language.implicitConversions
 import monitoring.Counters

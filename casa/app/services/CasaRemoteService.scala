@@ -1,6 +1,6 @@
 package services
 
-import utils.HttpUtils.HttpWrapper
+import utils.HttpWrapper
 
 import scala.concurrent.duration._
 import play.api.{Logger, Play}

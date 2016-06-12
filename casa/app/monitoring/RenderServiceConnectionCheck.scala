@@ -4,7 +4,7 @@ import app.ConfigProperties._
 import gov.dwp.carers.CADSHealthCheck
 import gov.dwp.carers.CADSHealthCheck.Result
 import play.api.http.Status
-import utils.HttpUtils.HttpWrapper
+import utils.HttpWrapper
 import scala.language.{implicitConversions, postfixOps}
 
 class RenderServiceConnectionCheck extends CADSHealthCheck(s"${getStringProperty("application.name", throwError = false)}", getStringProperty("application.version", throwError = false).takeWhile(_ != '-')) {

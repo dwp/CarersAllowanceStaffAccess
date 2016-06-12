@@ -6,7 +6,7 @@ import play.api.Logger
 import scala.language.implicitConversions
 import scala.util.{Failure, Success, Try}
 import app.ConfigProperties._
-import utils.HttpUtils.HttpWrapper
+import utils.HttpWrapper
 
 /**
  * Implements call to Rendering Service to generate html. Relies on RenderServiceImpl object.
