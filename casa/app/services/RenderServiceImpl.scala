@@ -27,7 +27,7 @@ object RenderServiceImpl extends CasaRemoteService {
 
   private def call(xml: String) = {
     val url = getStringProperty("RenderingServiceUrl") + "/show"
-    val timeout = getIntProperty("render.timeout")*1000
+    val timeout = getIntProperty("render.timeout")
     val httpWrapper = new HttpWrapper
     val response = httpWrapper.post(url, xml, timeout)
     response.getStatus match {
